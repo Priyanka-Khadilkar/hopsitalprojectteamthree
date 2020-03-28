@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -90,9 +91,10 @@ namespace HospitalProjectTeamThree.Controllers
             return View(new RoleViewModel(role));
         }
         [HttpPost]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> Delete(string id, string Name)
         {
             var role = await RoleManager.FindByIdAsync(id);
+            Debug.WriteLine("I am trying to delete" + id);
             await RoleManager.DeleteAsync(role);
             return RedirectToAction("List");
         }
