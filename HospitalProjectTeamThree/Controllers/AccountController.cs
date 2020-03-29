@@ -154,10 +154,10 @@ namespace HospitalProjectTeamThree.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            List<SelectListItem> list = new List<SelectListItem>();
-            foreach (var role in RoleManager.Roles)
-                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name});
-            ViewBag.Roles = list;          
+            //List<SelectListItem> list = new List<SelectListItem>();
+            //foreach (var role in RoleManager.Roles)
+                //list.Add(new SelectListItem() { Value = role.Name, Text = role.Name});
+            //ViewBag.Roles = list;          
             return View();
            
         }
@@ -182,9 +182,57 @@ namespace HospitalProjectTeamThree.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    //result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form                   
+            return View(model);
+        }
+        [Authorize(Roles = "Admin")]
+        public ActionResult AdminRegister()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.Roles = list;
+            return View();
+
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
+        //Problem 1: can not add because the dropdown list has null value
+        //Research: https://stackoverflow.com/questions/38921483/value-cannot-be-null-parameter-name-items-in-dropdown-list-asp-net-mvc5
+        //https://forums.asp.net/t/2021958.aspx?Value+cannot+be+null+Parameter+name+items+DrodownList+
+        //Solution: (this is a silly one) change ASP.NET 4.7.2 to 4.7
+
+        //Problem 2: How to authorize only admin can assign ppl to roles
+        public async Task<ActionResult> AdminRegister(AdminRegisterViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

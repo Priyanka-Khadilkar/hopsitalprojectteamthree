@@ -264,6 +264,7 @@
     <Content Include="Views\Role\Show.cshtml" />
     <Content Include="Views\Role\DeleteConfirmed.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\Account\AdminRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
