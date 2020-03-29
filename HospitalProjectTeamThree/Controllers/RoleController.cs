@@ -42,6 +42,8 @@ namespace HospitalProjectTeamThree.Controllers
            return View();
         }
         // GET: Role
+        [Authorize(Roles = "Admin")]
+        //this only let admin access and create roles
         public ActionResult List()
         {
             //return a list of role
@@ -50,8 +52,10 @@ namespace HospitalProjectTeamThree.Controllers
                 list.Add(new RoleViewModel(role));
             return View(list);
         }
+        [Authorize(Roles = "Admin")]
+        //this only let admin access and create roles
         //display the adding page
-        
+
         public ActionResult Add()
         {
             return View();
@@ -65,6 +69,8 @@ namespace HospitalProjectTeamThree.Controllers
             await RoleManager.CreateAsync(role);
             return RedirectToAction("List");
         }
+        [Authorize(Roles = "Admin")]
+        //this only let admin access and create roles
         //To display Edit we need the id of the role
         public async Task<ActionResult> Edit(string id)
         {
@@ -79,12 +85,16 @@ namespace HospitalProjectTeamThree.Controllers
             await RoleManager.UpdateAsync(role);
             return RedirectToAction("List");
         }
+        [Authorize(Roles = "Admin")]
+        //this only let admin access and create roles
         public async Task<ActionResult> Show(string id)
         {
             var role = await RoleManager.FindByIdAsync(id);
             //return the speicific role having the id
             return View(new RoleViewModel(role));
         }
+        [Authorize(Roles = "Admin")]
+        //this only let admin access and create roles
         public async Task<ActionResult> Delete(string id)
         {
             var role = await RoleManager.FindByIdAsync(id);

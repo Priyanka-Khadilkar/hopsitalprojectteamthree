@@ -12,7 +12,9 @@ namespace HospitalProjectTeamThree.Controllers
         {
             return View();
         }
-
+        //[Authorize(Roles = "Admin")]
+        //Authorize let you set who have access to which page
+        //For example, if you activate the above command, only admin can access the about page.
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
