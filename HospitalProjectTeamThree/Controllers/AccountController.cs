@@ -157,8 +157,9 @@ namespace HospitalProjectTeamThree.Controllers
             List<SelectListItem> list = new List<SelectListItem>();
             foreach (var role in RoleManager.Roles)
                 list.Add(new SelectListItem() { Value = role.Name, Text = role.Name});
-            ViewBag.Roles = list;
+            ViewBag.Roles = list;          
             return View();
+           
         }
 
         //
@@ -166,15 +167,19 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        //Problem: can not add because the dropdown list has null value
+        //Research: https://stackoverflow.com/questions/38921483/value-cannot-be-null-parameter-name-items-in-dropdown-list-asp-net-mvc5
+        //https://forums.asp.net/t/2021958.aspx?Value+cannot+be+null+Parameter+name+items+DrodownList+
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+
             if (ModelState.IsValid)
-            {
+            {             
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    //result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -188,7 +193,7 @@ namespace HospitalProjectTeamThree.Controllers
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
+            // If we got this far, something failed, redisplay form                   
             return View(model);
         }
 
