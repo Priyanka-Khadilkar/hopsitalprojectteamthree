@@ -170,6 +170,7 @@ namespace HospitalProjectTeamThree.Controllers
         //Problem: can not add because the dropdown list has null value
         //Research: https://stackoverflow.com/questions/38921483/value-cannot-be-null-parameter-name-items-in-dropdown-list-asp-net-mvc5
         //https://forums.asp.net/t/2021958.aspx?Value+cannot+be+null+Parameter+name+items+DrodownList+
+        //Solution: (this is a silly one) change ASP.NET 4.7.2 to 4.7
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
 
@@ -179,7 +180,7 @@ namespace HospitalProjectTeamThree.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
