@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -194,8 +195,17 @@
     <Compile Include="Migrations\202003291409451_change register view.Designer.cs">
       <DependentUpon>202003291409451_change register view.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003301939381_get well soon card.cs" />
+    <Compile Include="Migrations\202003301939381_get well soon card.Designer.cs">
+      <DependentUpon>202003301939381_get well soon card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003301944108_update get well soon card.cs" />
+    <Compile Include="Migrations\202003301944108_update get well soon card.Designer.cs">
+      <DependentUpon>202003301944108_update get well soon card.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
@@ -268,6 +278,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\GetWellSoonCard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -297,6 +308,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003291409451_change register view.resx">
       <DependentUpon>202003291409451_change register view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301939381_get well soon card.resx">
+      <DependentUpon>202003301939381_get well soon card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301944108_update get well soon card.resx">
+      <DependentUpon>202003301944108_update get well soon card.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

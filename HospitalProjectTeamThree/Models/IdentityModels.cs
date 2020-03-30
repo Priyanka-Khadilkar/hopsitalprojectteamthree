@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace HospitalProjectTeamThree.Models
 {
@@ -20,6 +22,7 @@ namespace HospitalProjectTeamThree.Models
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public ICollection<GetWellSoonCard> GetWellSoonCard { get; set; }
 
 
     }
