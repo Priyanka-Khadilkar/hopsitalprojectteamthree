@@ -30,7 +30,6 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult Add(string message)
         {
-            GetWellSoonCard newcard = new GetWellSoonCard();
 
             return View();
         }
