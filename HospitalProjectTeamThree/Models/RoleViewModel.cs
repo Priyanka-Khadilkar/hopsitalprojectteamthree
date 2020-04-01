@@ -8,8 +8,10 @@ namespace HospitalProjectTeamThree.Models
 {
     public class RoleViewModel
     {
+        //this is the role table model
         //adding a model to transfer information to the view
         public RoleViewModel () { }
+        
         public RoleViewModel (ApplicationRole role)
         {
             Id = role.Id;
