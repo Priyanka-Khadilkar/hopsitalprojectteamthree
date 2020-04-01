@@ -230,6 +230,10 @@
       <DependentUpon>202004011408497_removing haspic and picext from getwellsoon card.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202004011513340_testing 01\04.cs" />
+    <Compile Include="Migrations\202004011757038_adding database.cs" />
+    <Compile Include="Migrations\202004011757038_adding database.designer.cs">
+      <DependentUpon>202004011757038_adding database.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
@@ -302,11 +306,10 @@
     <Content Include="Views\Role\DeleteConfirmed.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Account\AdminRegister.cshtml" />
-    <Content Include="Views\GetWellSoonCard\List.cshtml" />
     <Content Include="Views\GetWellSoonCard\Add.cshtml" />
+    <Content Include="Views\GetWellSoonCard\List.cshtml" />
     <Content Include="Views\GetWellSoonCard\Show.cshtml" />
     <Content Include="Views\GetWellSoonCard\Update.cshtml" />
-    <Content Include="Views\GetWellSoonCard\Delete.cshtml" />
     <Content Include="Views\GetWellSoonCard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004011408497_removing haspic and picext from getwellsoon card.resx">
       <DependentUpon>202004011408497_removing haspic and picext from getwellsoon card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011757038_adding database.resx">
+      <DependentUpon>202004011757038_adding database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

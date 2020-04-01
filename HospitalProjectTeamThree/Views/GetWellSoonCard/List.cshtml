@@ -1,0 +1,29 @@
+﻿@model List<HospitalProjectTeamThree.Models.GetWellSoonCard>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Cards</h2>
+<div class="content">
+    @{
+        foreach (var Card in Model)
+        {
+            <div class="flexbox">
+                <div class="picture">
+                    <a href="/GetWellSoonCard/Show/@Card.CardId"><img src="../../Images/GetWellCard/@Card.CardDesignNumber" alt="Image of the card" /></a>
+                </div>
+                <div class="detail">
+                    <!--<div><a href="/Comic/Show/Comic.ComicId">Comic.ComicName</a></div>-->
+                    <div>Message: @Card.Message</div>
+                    <div>To: @Card.PatientName <span>@Card.PatientEmail</span></div>
+                    <div>Room Number: @Card.RoomNumber</div>
+                    <div>From: </div>
+                </div>
+                <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
+            </div>
+
+        }
+    }
+</div>
+<a href="/GetWellSoonCard/Add">Add a card</a>
+

@@ -1,0 +1,28 @@
+﻿@model HospitalProjectTeamThree.Models.GetWellSoonCard
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Editting the card:</h2>
+<form method="Post" action="/GetWellSoonCard/Update/@Model.CardId">
+    <div>
+        <!--TO Do: Create a Card Design table and projecting it here-->
+        Choose a card:
+        <input type="hidden" name="CardId" value="@Model.CardId" />
+        <img src="../../Images/GetWellCard/1.png" alt="Image of the card" />
+        <input type="radio" name="CardDesignNumber" value="1.png" />
+        <img src="../../Images/GetWellCard/2.png" alt="Image of the card" />
+        <input type="radio" name="CardDesignNumber" value="2.png" />
+        <img src="../../Images/GetWellCard/3.jpg" alt="Image of the card" />
+        <input type="radio" name="CardDesignNumber" value="3.jpg" />
+        <img src="../../Images/GetWellCard/4.jpg" alt="Image of the card" />
+        <input type="radio" name="CardDesignNumber" value="4.jpg" />
+        <img src="../../Images/GetWellCard/5.jpg" alt="Image of the card" />
+        <input type="radio" name="CardDesignNumber" value="5.jpg" />
+    </div>
+    <div>Edit patient name: <input type="text" name="PatientName" value="@Model.PatientName" /></div>
+    <div>Edit patient email: <input type="text" name="PatientEmail" value="@Model.PatientEmail" /></div>
+    <div>Edit room number: <input type="text" name="RoomNumber" value="@Model.RoomNumber" /></div>
+    <div>Edit your message :  <textarea name="Message">@Model.Message</textarea></div>
+    <div> <input type="submit" value="Update the card" /></div>
+</form>

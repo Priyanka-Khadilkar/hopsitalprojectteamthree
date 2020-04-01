@@ -1,0 +1,14 @@
+﻿@model HospitalProjectTeamThree.Models.GetWellSoonCard
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Card Detail:</h2>
+<div>Card Desgin:</div>
+<div><img src="~/Images/GetWellCard/@Model.CardDesignNumber" /></div>
+<div>Message: @Model.Message</div>
+<div>Patient Name: @Model.PatientName</div>
+<div>Patient Email: @Model.PatientEmail</div>
+<div>Room Number: @Model.RoomNumber</div>
+<div><a href="/GetWellSoonCard/Update/@Model.CardId">Edit the card</a></div>
+<div><a href="/GetWellSoonCard/Delete/@Model.CardId">Delete the card</a></div>
