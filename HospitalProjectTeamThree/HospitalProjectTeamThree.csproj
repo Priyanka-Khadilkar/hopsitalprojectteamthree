@@ -208,6 +208,14 @@
     <Compile Include="Migrations\202004010314313_fixing bug in application user.Designer.cs">
       <DependentUpon>202004010314313_fixing bug in application user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004011212193_get well soon card data.cs" />
+    <Compile Include="Migrations\202004011212193_get well soon card data.Designer.cs">
+      <DependentUpon>202004011212193_get well soon card data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004011301237_add dummy dât.cs" />
+    <Compile Include="Migrations\202004011301237_add dummy dât.Designer.cs">
+      <DependentUpon>202004011301237_add dummy dât.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
@@ -280,11 +288,12 @@
     <Content Include="Views\Role\DeleteConfirmed.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Account\AdminRegister.cshtml" />
-    <Content Include="Views\GetWellSoonCard\Add.cshtml" />
     <Content Include="Views\GetWellSoonCard\List.cshtml" />
+    <Content Include="Views\GetWellSoonCard\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\GetWellCard\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -323,6 +332,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004010314313_fixing bug in application user.resx">
       <DependentUpon>202004010314313_fixing bug in application user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011212193_get well soon card data.resx">
+      <DependentUpon>202004011212193_get well soon card data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011301237_add dummy dât.resx">
+      <DependentUpon>202004011301237_add dummy dât.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

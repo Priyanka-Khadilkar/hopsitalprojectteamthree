@@ -17,9 +17,13 @@ namespace HospitalProjectTeamThree.Models
         public int CardId { get; set; }
         public string Message { get; set; }
         public int HasPic { get; set; }
+        public int CardDesignNumber { get; set; }
         public string PicExt { get; set; }
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
+        public string PatientName { get; set; }
+        public string RoomNumber { get; set; }
+        public string PatientEmail { get; set; }
     }
 }
