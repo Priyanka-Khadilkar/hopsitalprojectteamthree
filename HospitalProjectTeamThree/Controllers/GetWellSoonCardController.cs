@@ -36,21 +36,29 @@ namespace HospitalProjectTeamThree.Controllers
         {
             return View();
         }
-        public ActionResult Add(string message, string HasPic, string PicExt, string PatientName, string PatientNumber, string RoomNumber)
+        [HttpPost]
+        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignNumber)
         {
-            string query = "Insert into GetWellSoonCards (message, HasPic, PicExt, PatientName, PatientEmail , RoomNumber) values (@message, @HasPic, @PicExt, @PatientName, @RoomNumber)";
+            string query = "Insert into GetWellSoonCards (message, PatientName, PatientEmail , RoomNumber, CardDesignNumber) values (@message, @PatientName, @PatientEmail, @RoomNumber, @CardDesignNumber)";
             SqlParameter[] sqlparams = new SqlParameter[5];
             sqlparams[0] = new SqlParameter("@message", message);
-            sqlparams[1] = new SqlParameter("@HasPic", HasPic);
-            sqlparams[2] = new SqlParameter("@PicExt", PicExt);
-            sqlparams[3] = new SqlParameter("@PatientName", PatientName);
-            sqlparams[4] = new SqlParameter("@PatientEmail", PatientEmail);
-            sqlparams[5] = new SqlParameter("@RoomNumber", RoomNumber);
+            sqlparams[1] = new SqlParameter("@CardDesignNumber", CardDesignNumber);
+            sqlparams[2] = new SqlParameter("@PatientName", PatientName);
+            sqlparams[3] = new SqlParameter("@PatientEmail", PatientEmail);
+            sqlparams[4] = new SqlParameter("@RoomNumber", RoomNumber);
 
             //Execute
             db.Database.ExecuteSqlCommand(query, sqlparams);
+            Debug.WriteLine("I am tryting to add the card with the message " + message);
             return RedirectToAction("List");
          ;
         }
+        public ActionResult Show(int id)
+        {
+            GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery ("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault());
+            Debug.WriteLine("I am trying to show card id" + id);
+            return View(Card);
+        }
+
     }
 }

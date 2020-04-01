@@ -10,12 +10,7 @@
         {
             <div class="flexbox">
                 <div class="picture">
-                    @{
-                        if (Card.HasPic == 1)
-                        {
-                            <img src="../../Images/GetWellCard/@(Card.CardId).@(Card.PicExt)" alt="Image of the card" />
-                        }
-                    }
+                    <a href="/GetWellSoonCard/Show/@Card.CardId"><img src="../../Images/GetWellCard/@Card.CardDesignNumber" alt="Image of the card" /></a>
                 </div>
                 <div class="detail">
                     <!--<div><a href="/Comic/Show/Comic.ComicId">Comic.ComicName</a></div>-->
@@ -23,14 +18,13 @@
                     <div>To: @Card.PatientName <span>@Card.PatientEmail</span></div>
                     <div>Room Number: @Card.RoomNumber</div>
                     <div>From: </div>
-
-                    <!--<div><a href="/Comic/Update/Comic.ComicId">Update the comic</a></div>-->
                 </div>
+                <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
             </div>
 
         }
     }
 </div>
 
-<a href="/Comic/Add">Add a card</a>
+<a href="/GetWellSoonCard/Add">Add a card</a>
 

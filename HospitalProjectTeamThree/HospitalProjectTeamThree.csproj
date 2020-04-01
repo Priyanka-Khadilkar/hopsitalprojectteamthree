@@ -216,6 +216,18 @@
     <Compile Include="Migrations\202004011301237_add dummy dât.Designer.cs">
       <DependentUpon>202004011301237_add dummy dât.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004011345258_adding card design.cs" />
+    <Compile Include="Migrations\202004011345258_adding card design.Designer.cs">
+      <DependentUpon>202004011345258_adding card design.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004011403264_changing data type of card design.cs" />
+    <Compile Include="Migrations\202004011403264_changing data type of card design.Designer.cs">
+      <DependentUpon>202004011403264_changing data type of card design.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004011408497_removing haspic and picext from getwellsoon card.cs" />
+    <Compile Include="Migrations\202004011408497_removing haspic and picext from getwellsoon card.Designer.cs">
+      <DependentUpon>202004011408497_removing haspic and picext from getwellsoon card.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
@@ -290,6 +302,7 @@
     <Content Include="Views\Account\AdminRegister.cshtml" />
     <Content Include="Views\GetWellSoonCard\List.cshtml" />
     <Content Include="Views\GetWellSoonCard\Add.cshtml" />
+    <Content Include="Views\GetWellSoonCard\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +351,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004011301237_add dummy dât.resx">
       <DependentUpon>202004011301237_add dummy dât.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011345258_adding card design.resx">
+      <DependentUpon>202004011345258_adding card design.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011403264_changing data type of card design.resx">
+      <DependentUpon>202004011403264_changing data type of card design.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004011408497_removing haspic and picext from getwellsoon card.resx">
+      <DependentUpon>202004011408497_removing haspic and picext from getwellsoon card.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
