@@ -88,7 +88,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(Card);
         }
         [HttpPost]
-        public ActionResult Delete(int id, int CardId)
+        public ActionResult Delete(int dsaid, int CardId)
         {
             string query = "Delete from GetWellSoonCards where CardId = @CardID";
             SqlParameter[] sqlparams = new SqlParameter[1];
