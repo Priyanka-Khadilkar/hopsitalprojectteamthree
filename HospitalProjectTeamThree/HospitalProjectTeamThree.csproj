@@ -229,6 +229,7 @@
     <Compile Include="Migrations\202004011408497_removing haspic and picext from getwellsoon card.Designer.cs">
       <DependentUpon>202004011408497_removing haspic and picext from getwellsoon card.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004011513340_testing 01\04.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
@@ -306,9 +307,6 @@
     <Content Include="Views\GetWellSoonCard\List.cshtml" />
     <Content Include="Views\GetWellSoonCard\Add.cshtml" />
     <Content Include="Views\GetWellSoonCard\Show.cshtml" />
-    <Content Include="Views\Room\ShowAll.cshtml" />
-    <Content Include="Views\Room\AdminView.cshtml" />
-    <Content Include="Views\Room\ShowOne.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
