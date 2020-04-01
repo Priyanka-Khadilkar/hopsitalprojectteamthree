@@ -306,6 +306,7 @@
     <Content Include="Views\GetWellSoonCard\Show.cshtml" />
     <Content Include="Views\GetWellSoonCard\Update.cshtml" />
     <Content Include="Views\GetWellSoonCard\Delete.cshtml" />
+    <Content Include="Views\GetWellSoonCard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
