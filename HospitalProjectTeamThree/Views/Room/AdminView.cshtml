@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "AdminView";
+}
+
+<h1 class="center">Admin view</h1>
+<div class="bigcontainer">
+    <!-- Total Table -->
+    <div class="dashcontainer ">
+        <h2>All rooms Table</h2>
+        <div class="totaltable">
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>#</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Total Rooms Available</strong></td>
+                        <td>100</td>
+                        <td><button>Update</button></td>
+                    </tr>
+                    <tr>
+                        <td>Private</td>
+                        <td>10</td>
+                        <td><button>Update</button></td>
+                    </tr>
+                    <tr>
+                        <td>Semi-Private</td>
+                        <td>30</td>
+                        <td><button>Update</button></td>
+                    </tr>
+                    <tr>
+                        <td>Public</td>
+                        <td>60</td>
+                        <td><button>Update</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="roomscontainer">
+            <h2>Room Occupancy Table</h2>
+            <table border="0">
+                <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Type</th>
+                        <th>Total Beds</th>
+                        <th>Occupied</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#">301</a></td>
+                        <td>Private</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>302</td>
+                        <td>Private</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>303</td>
+                        <td>Private</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End Total Table -->
+    <!-- Room Occupancy Table -->
+    <!-- End Room Occupancy Table -->
+    <!-- Individual Account -->
+    <div class="jumbotron profile">
+
+        <form action="" method="POST">
+
+            <label for="uid">User ID</label>
+            <input type="text" id="uid" name="uid" value="" disabled /></br>
+            <label for="userisAdmin">Role</label>
+            <input type="text" id="userisAdmin" name="userisAdmin" value="" disabled /></br>
+            <label for="userfname">First Name: </label>
+            <input type="text" id="userfname" name="userfname" value="" /> </br>
+            <label for="userlname">Last Name: </label>
+            <input type="text" id="userlname" name="userlname" value="" /></br>
+            <label for="useremail">Email: </label>
+            <input type="text" id="useremail" name="useremail" value="" /></br>
+            <label for="userpassword">Password: </label>
+            <input type="password" id="userpassword" name="userpassword" value="" /></br>
+            <button type="submit" name="updUser" id="updUser"> Update User</button>
+            <button type="submit" name="deleteUser" id="deleteUser"> Delete Account</button>
+
+        </form>
+
+    </div>
+    <!-- End Individual Account -->
+</div>
+
+
+
+
+

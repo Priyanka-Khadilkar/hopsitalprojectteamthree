@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Data\HospitalProjectTeamThreeContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,6 +235,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -242,6 +244,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Custom.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -303,6 +306,9 @@
     <Content Include="Views\GetWellSoonCard\List.cshtml" />
     <Content Include="Views\GetWellSoonCard\Add.cshtml" />
     <Content Include="Views\GetWellSoonCard\Show.cshtml" />
+    <Content Include="Views\Room\ShowAll.cshtml" />
+    <Content Include="Views\Room\AdminView.cshtml" />
+    <Content Include="Views\Room\ShowOne.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
