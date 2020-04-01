@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HospitalProjectTeamThree.Models;
 using System.Collections.Generic;
+using HospitalProjectTeamThree.Data;
 
 namespace HospitalProjectTeamThree.Controllers
 {

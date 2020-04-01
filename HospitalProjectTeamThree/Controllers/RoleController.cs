@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using HospitalProjectTeamThree.Models;
+using HospitalProjectTeamThree.Data;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace HospitalProjectTeamThree.Controllers

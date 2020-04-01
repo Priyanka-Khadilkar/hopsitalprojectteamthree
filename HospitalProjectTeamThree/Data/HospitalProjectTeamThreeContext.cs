@@ -23,9 +23,13 @@ namespace HospitalProjectTeamThree.Data
             return userIdentity;
         }
     }
+    //adding roles to user: Admin, Editor, Registered user
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName) : base(roleName) { }
+    }
 
-    //PetGroomingContext class has been adjusted to become a subclass of IdentityDbContext instead of DbContext
-    //Why? Because This class helps support base login functionality (IdentityDbContext).
     public class HospitalProjectTeamThreeContext : IdentityDbContext<ApplicationUser>
     {
         // You can add custom code to this file. Changes will not be overwritten.

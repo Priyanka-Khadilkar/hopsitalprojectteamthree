@@ -7,10 +7,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
 
+
 namespace HospitalProjectTeamThree.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    //IMPORTANT: This code has to be commented out to redirect the user to the database
+    /*public class ApplicationUser : IdentityUser
     {
         
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -22,8 +24,6 @@ namespace HospitalProjectTeamThree.Models
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public ICollection<GetWellSoonCard> GetWellSoonCard { get; set; }
-
 
     }
     public class ApplicationRole : IdentityRole
@@ -43,5 +43,5 @@ namespace HospitalProjectTeamThree.Models
         {
             return new ApplicationDbContext();
         }
-    }
+    }*/
 }
