@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Data\HospitalProjectTeamThreeContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -240,20 +241,56 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="ERD\ERDDoctorsBlog.png" />
+    <Content Include="ERD\ERDLiveWaitTimes.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="obj\Debug\HospitalProjectTeamThree.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ERD\ERDandWireframes_Vitaliy.docx" />
+    <Content Include="ERD\FeedbackAndStaffDirectoryERD.docx" />
+    <Content Include="ERD\HospitalTeam3_CardAndLogin.docx" />
+    <Content Include="ERD\HospitalTeam3_EventCalenderAndOnlineAppointment.docx" />
+    <Content Include="obj\Debug\HospitalProjectTeamThree.csproj.GenerateResource.cache" />
+    <Content Include="obj\Debug\HospitalProjectTeamThree.csprojAssemblyReference.cache" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -311,10 +348,17 @@
     <Content Include="Views\GetWellSoonCard\Show.cshtml" />
     <Content Include="Views\GetWellSoonCard\Update.cshtml" />
     <Content Include="Views\GetWellSoonCard\Index.cshtml" />
+    <Content Include="Views\Room\AdminView.cshtml" />
+    <Content Include="Views\Room\ShowAll.cshtml" />
+    <Content Include="Views\Room\ShowOne.cshtml" />
+    <Content Include="Wireframes\Job Listing .pdf" />
+    <Content Include="Wireframes\LoginCardWireframe.pptx" />
+    <Content Include="Wireframes\Volunteer Sign Up.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\GetWellCard\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -372,6 +416,19 @@
     <EmbeddedResource Include="Migrations\202004011757038_adding database.resx">
       <DependentUpon>202004011757038_adding database.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.changeregisterview.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.changingdatatypeofcarddesign.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.firstnamelastname.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.fixingbuginapplicationuser.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.getwellsooncard.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.getwellsooncarddata.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.removinghaspicandpicextfromgetwellsooncard.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.role.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.testing.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.updategetwellsooncard.resources" />
+    <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.usertable.resources" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
