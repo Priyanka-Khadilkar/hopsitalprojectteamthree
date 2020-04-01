@@ -1,31 +1,7 @@
-﻿@model List<HospitalProjectTeamThree.Models.Room>
+﻿
 @{
     ViewBag.Title = "ShowAll";
 }
 
+<h2>ShowAll</h2>
 
-
-
-<div class="flex-container">
-    @{
-
-
-        foreach (var Room in Model)
-        {
-
-
-            <div class="card">
-                <div class="thumb">
-                    <img src="~/images/private.jpg" alt="">
-                </div>
-                <div class="desc"><h2>@Room.RoomType</h2></div>
-                <div class="price center">@Room.RoomPrice</div>
-                <p class="center">Must be logged in to register for a room</p>
-                <input class="center" type="button" value="Login/Register">
-            </div>
-
-
-        }
-    }
-
-</div>
