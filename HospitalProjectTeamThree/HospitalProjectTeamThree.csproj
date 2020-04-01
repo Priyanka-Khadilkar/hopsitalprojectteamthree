@@ -173,6 +173,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Data\HospitalProjectTeamThreeContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,12 +235,17 @@
     <Compile Include="Migrations\202004011757038_adding database.designer.cs">
       <DependentUpon>202004011757038_adding database.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004012114324_room.cs" />
+    <Compile Include="Migrations\202004012114324_room.designer.cs">
+      <DependentUpon>202004012114324_room.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -280,6 +286,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Room\private.jpg" />
     <Content Include="obj\Debug\HospitalProjectTeamThree.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -411,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004011757038_adding database.resx">
       <DependentUpon>202004011757038_adding database.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004012114324_room.resx">
+      <DependentUpon>202004012114324_room.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
