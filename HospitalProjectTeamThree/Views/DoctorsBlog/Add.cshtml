@@ -1,0 +1,26 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddBlogTopic
+
+    @{
+        ViewBag.Title = "Add";
+    }
+
+    <h2>New Blog Entry</h2>
+    <form class="add" method="post" action="/DoctorsBlog/Add">
+
+        <div>Title: <input type="text" name="BlogTitle" id="BlogTitle" /></div>
+        <div>Topic: <select id="DoctorsBlogTopicId" type="text" name="TopicId">
+    @{
+
+        foreach (var Topic in Model.BlogTopics)
+        {
+            <option value="@Topic.TopicId">@Topic.TopicName</option>
+
+        }
+    }
+    </select></div>
+        <div>Content: <textarea type="text" name="BlogContent" id="BlogContent"></textarea></div>
+        <div>Source: <input type="text" name="BlogSource" id="BlogSource"/></div>
+        <div><input type="submit" value="Add Blog Entry" /></div>
+    </form>
+    <a href="/DoctorsBlog/List">Back to list</a>
+
