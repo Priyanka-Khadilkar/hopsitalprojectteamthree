@@ -1,24 +1,44 @@
-﻿
+﻿@model List<HospitalProjectTeamThree.Models.Article>
 @{
     ViewBag.Title = "List";
 }
 
-<h1 class="center">Covid - 19</h1>
-<div class="container">
+
+
+
+<h1 class="crisiscenter">Covid - 19</h1>
+
+
+<div class="crisiscontainer">
     <aside class="left">
         <ul>
-            <li><a href="#">Covid 19 2020</a></li>
+
+             <li><a href="#">Covid 19 2020</a></li>
             <li><a href="#">Spanish Flu 1920</a></li>
             <li><a href="#">Cholera 1820</a></li>
+           
         </ul>
     </aside>
-    <main class="main">
-        <h2>China Is Innocent</h2>
-        <div class="cred"><span class="auth">Author: Hospital</span><span class="publ">Published: April 1, 2020</span></div>
-        <p>Contrary to popular believe China did fantastic job to contain the virus, however it was not effective since other counties have not suspended Air Travel </p>
+    <main class="crisismain">
+
+        @{
+
+
+            foreach (var Article in Model)
+            {
+
+
+                <p></p>
+
+                <h2>@Article.ArticleTitle</h2>
+                <div class="cred"><span class="auth">Author: @Article.ArticleAuthor</span><span class="publ">Published: @Article.DatePosted</span></div>
+                <p>@Article.ArticleContent </p>
+            }
+        }
+
     </main>
     <aside class="right">
-        <h3>Did You Know...</h3>
+        <h3>You can stay healthy...</h3>
         <ul>
             <li>Wash your hands</li>
             <li>Wear Gloves</li>

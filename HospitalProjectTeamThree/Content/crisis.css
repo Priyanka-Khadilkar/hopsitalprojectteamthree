@@ -1,15 +1,15 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
     max-width: 1200px;
     margin: 0 auto;
-}
+} */
 
-.center {
+.crisiscenter {
     text-align: center;
     padding: 20px;
 }
@@ -21,13 +21,13 @@ body {
     margin: 2px;
 }
 
-.container {
+.crisiscontainer {
     display: flex;
 
 
 }
 
-.main {
+.crisismain {
     padding: 20px 40px;
     border-left: 5px solid black;
     border-radius: 5px;
@@ -46,13 +46,13 @@ body {
     padding: 20px;
 }
 
-li {
+/* li {
     padding: 20px;
     list-style-type: none;
-}
+} */
 .cred{
     padding:10px 20px;
 }
-span{
+.auth{
     margin: 10px;
 }
