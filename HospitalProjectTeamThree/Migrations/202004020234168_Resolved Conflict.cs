@@ -3,10 +3,22 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class events : DbMigration
+    public partial class ResolvedConflict : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Articles",
+                c => new
+                    {
+                        ArticleId = c.Int(nullable: false, identity: true),
+                        ArticleTitle = c.String(),
+                        ArticleAuthor = c.String(),
+                        ArticleContent = c.String(),
+                        DatePosted = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.ArticleId);
+            
             CreateTable(
                 "dbo.Events",
                 c => new
@@ -52,6 +64,7 @@
             DropIndex("dbo.Events", new[] { "EventCreatedBy" });
             DropColumn("dbo.AspNetUsers", "Event_EventId");
             DropTable("dbo.Events");
+            DropTable("dbo.Articles");
         }
     }
 }

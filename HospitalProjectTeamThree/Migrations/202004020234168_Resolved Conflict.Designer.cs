@@ -7,13 +7,13 @@ namespace HospitalProjectTeamThree.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class events_users_Added_Relationship : IMigrationMetadata
+    public sealed partial class ResolvedConflict : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(events_users_Added_Relationship));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ResolvedConflict));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004020156213_events_users_Added_Relationship"; }
+            get { return "202004020234168_Resolved Conflict"; }
         }
         
         string IMigrationMetadata.Source

@@ -239,33 +239,9 @@
     <Compile Include="Migrations\202004012114324_room.designer.cs">
       <DependentUpon>202004012114324_room.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004020158138_article.cs" />
-    <Compile Include="Migrations\202004020158138_article.designer.cs">
-      <DependentUpon>202004020158138_article.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004020139172_events.cs" />
-    <Compile Include="Migrations\202004020139172_events.designer.cs">
-      <DependentUpon>202004020139172_events.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004020144071_events_users_many_to_many.cs" />
-    <Compile Include="Migrations\202004020144071_events_users_many_to_many.designer.cs">
-      <DependentUpon>202004020144071_events_users_many_to_many.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004020148468_events_users_many_to_many_removed.cs" />
-    <Compile Include="Migrations\202004020148468_events_users_many_to_many_removed.designer.cs">
-      <DependentUpon>202004020148468_events_users_many_to_many_removed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004020150445_events_users_many_to_many_Reupdate.cs" />
-    <Compile Include="Migrations\202004020150445_events_users_many_to_many_Reupdate.designer.cs">
-      <DependentUpon>202004020150445_events_users_many_to_many_Reupdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004020154039_events_users_many_to_many_ReRemoved.cs" />
-    <Compile Include="Migrations\202004020154039_events_users_many_to_many_ReRemoved.designer.cs">
-      <DependentUpon>202004020154039_events_users_many_to_many_ReRemoved.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004020156213_events_users_Added_Relationship.cs" />
-    <Compile Include="Migrations\202004020156213_events_users_Added_Relationship.designer.cs">
-      <DependentUpon>202004020156213_events_users_Added_Relationship.cs</DependentUpon>
+    <Compile Include="Migrations\202004020234168_Resolved Conflict.cs" />
+    <Compile Include="Migrations\202004020234168_Resolved Conflict.designer.cs">
+      <DependentUpon>202004020234168_Resolved Conflict.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -459,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004012114324_room.resx">
       <DependentUpon>202004012114324_room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004020234168_Resolved Conflict.resx">
+      <DependentUpon>202004020234168_Resolved Conflict.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
