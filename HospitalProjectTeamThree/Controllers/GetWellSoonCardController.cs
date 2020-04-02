@@ -10,9 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 using HospitalProjectTeamThree.Data;
 using HospitalProjectTeamThree.Models;
-//using HospitalProjectTeamThree.Models.ViewModels;
+using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
-//using System.IO;
+using System.IO;
 
 
 namespace HospitalProjectTeamThree.Controllers
@@ -27,22 +27,38 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult List()
         {
+            //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId";
+            //string showCardQuery = "Select * from CardDesigns";
+            //List<GetWellSoonCard> allCards = db.GetWellSoonCards.SqlQuery(showCardQuery).ToList();
+            //CardDesign cardDesign = db.CardDesigns.SqlQuery(showDesignQuery).ToList();
+            //Debug.WriteLine("Iam trying to list all the cards");
+
+            //ListGetWell ListGetWellViewModel = new ListGetWell();
+            //ListGetWellViewModel.GetWellSoonCard = allCards;
+            //ListGetWellViewModel.CardDesign = cardDesign;
+
+            //return View(ListGetWellViewModel);
             string query = "Select * from GetWellSoonCards";
-            List<GetWellSoonCard> cards = db.GetWellSoonCards.SqlQuery(query).ToList();
+            List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
-            return View(cards);
+            return View(GetWellSoonCards);
         }
         public ActionResult Add()
         {
-            return View();
+            List<CardDesign> addingDesign = db.CardDesigns.SqlQuery("select * from CardDesigns").ToList();
+
+            AddGetWellCard AddGetWellCardViewModel = new AddGetWellCard();
+            AddGetWellCardViewModel.CardDesigns = addingDesign;
+    
+            return View(AddGetWellCardViewModel);
         }
         [HttpPost]
-        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignNumber)
+        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignID)
         {
-            string query = "Insert into GetWellSoonCards (message, PatientName, PatientEmail , RoomNumber, CardDesignNumber) values (@message, @PatientName, @PatientEmail, @RoomNumber, @CardDesignNumber)";
+            string query = "Insert into GetWellSoonCards (message, PatientName, PatientEmail , RoomNumber, CardDesignID) values (@message, @PatientName, @PatientEmail, @RoomNumber, @CardDesignID)";
             SqlParameter[] sqlparams = new SqlParameter[5];
             sqlparams[0] = new SqlParameter("@message", message);
-            sqlparams[1] = new SqlParameter("@CardDesignNumber", CardDesignNumber);
+            sqlparams[1] = new SqlParameter("@CardDesignID", CardDesignID);
             sqlparams[2] = new SqlParameter("@PatientName", PatientName);
             sqlparams[3] = new SqlParameter("@PatientEmail", PatientEmail);
             sqlparams[4] = new SqlParameter("@RoomNumber", RoomNumber);

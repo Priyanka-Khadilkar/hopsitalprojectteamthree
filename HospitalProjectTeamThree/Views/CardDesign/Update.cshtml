@@ -1,0 +1,21 @@
+﻿@model HospitalProjectTeamThree.Models.CardDesign
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Updating the card</h2>
+<form method="post" action="/CardDesign/Update" enctype="multipart/form-data">
+    @{
+        if (Model.HasPic == 1)
+        {
+            <div><img src="~/Images/GetWellCard/@(Model.CardDesignId).@(Model.PicExt)" /></div>
+        }
+    }
+    <label for="DesignNam">Editting design name</label>
+    <input type="text" name="DesignName" value="@Model.DesignName" />
+    <input type="hidden" name="CardDesignId" value="@Model.CardDesignId" />
+    <div class="imageupload"><span>Changing the image: </span> <input type="file" name="CardDesignPic" id="CardDesignPic" /></div>
+    <input type="submit" name="submit" value="Update the card" />
+</form>
+
+

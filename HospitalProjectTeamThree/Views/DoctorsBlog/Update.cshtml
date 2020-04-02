@@ -1,0 +1,30 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddBlogTopic
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update Blog Entry</h2>
+<form method="Post" action="/DoctorsBlog/Update/@Model.Blog.BlogId">
+    <div>Title: <input type="text" name="BlogTitle" value="@Model.Blog.BlogTitle" /></div>
+    <div>
+        Topic: <select id="TopicId" type="text" name="TopicId">
+            @{
+
+                foreach (var Topic in Model.BlogTopics)
+                {
+                    var selected = "";
+                    if (Model.Blog.TopicId == Topic.TopicId)
+                    {
+                        selected = "selected";
+                    }
+
+                    <option value="@Topic.TopicId" @selected>@Topic.TopicName</option>
+
+                }
+            }
+        </select>
+    </div>
+    <div>Content: <textarea type="text" name="BlogContent" id="BlogContent" value="@Model.Blog.BlogContent"></textarea></div>
+    <div>Source:  <input type="text" name="BlogTitle" value="@Model.Blog.BlogSource" /></div>
+    <div> <input type="submit" value="Update Blog Entry" /></div>
+</form>

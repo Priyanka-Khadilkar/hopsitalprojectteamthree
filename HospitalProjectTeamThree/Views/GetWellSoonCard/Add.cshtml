@@ -1,4 +1,4 @@
-﻿@model HospitalProjectTeamThree.Models.GetWellSoonCard
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddGetWellCard
 
 @{
     ViewBag.Title = "Add";
@@ -8,17 +8,13 @@
 <form class="add" method="post" action="/GetWellSoonCard/Add">
     <div>
         Choose a card:
-
-        <img src="../../Images/GetWellCard/1.png" alt="Image of the card" />
-        <input type="radio" name="CardDesignNumber" value="1.png" />
-        <img src="../../Images/GetWellCard/2.png" alt="Image of the card" />
-        <input type="radio" name="CardDesignNumber" value="2.png" />
-        <img src="../../Images/GetWellCard/3.jpg" alt="Image of the card" />
-        <input type="radio" name="CardDesignNumber" value="3.jpg" />
-        <img src="../../Images/GetWellCard/4.jpg" alt="Image of the card" />
-        <input type="radio" name="CardDesignNumber" value="4.jpg" />
-        <img src="../../Images/GetWellCard/5.jpg" alt="Image of the card" />
-        <input type="radio" name="CardDesignNumber" value="5.jpg" />
+        @{
+            foreach (var design in Model.CardDesigns)
+            {
+                <img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" alt="Image of the card" />
+                <input type="radio" name="CardDesignNumber" value="@(design.CardDesignId)" />
+            }
+        }
     </div>
 
     <div>Patient Full Name: <input type="text" name="PatientName" id="PatientName" /></div>

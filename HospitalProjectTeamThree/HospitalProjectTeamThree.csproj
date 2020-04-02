@@ -170,6 +170,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CardDesignController.cs" />
+    <Compile Include="Controllers\DoctorsBlogController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -244,15 +246,57 @@
     <Compile Include="Migrations\202004020234168_Resolved Conflict.designer.cs">
       <DependentUpon>202004020234168_Resolved Conflict.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004020338538_doctorsblog.cs" />
+    <Compile Include="Migrations\202004020338538_doctorsblog.Designer.cs">
+      <DependentUpon>202004020338538_doctorsblog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004020354382_db.cs" />
+    <Compile Include="Migrations\202004020354382_db.Designer.cs">
+      <DependentUpon>202004020354382_db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021148070_adding desgin table.cs" />
+    <Compile Include="Migrations\202004021148070_adding desgin table.designer.cs">
+      <DependentUpon>202004021148070_adding desgin table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021149290_adding relationship design table.cs" />
+    <Compile Include="Migrations\202004021149290_adding relationship design table.designer.cs">
+      <DependentUpon>202004021149290_adding relationship design table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021242074_card design debugging.cs" />
+    <Compile Include="Migrations\202004021242074_card design debugging.designer.cs">
+      <DependentUpon>202004021242074_card design debugging.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021253515_updating card design name in design table.cs" />
+    <Compile Include="Migrations\202004021253515_updating card design name in design table.designer.cs">
+      <DependentUpon>202004021253515_updating card design name in design table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021327396_adding HasPic into card design.cs" />
+    <Compile Include="Migrations\202004021327396_adding HasPic into card design.designer.cs">
+      <DependentUpon>202004021327396_adding HasPic into card design.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021616405_Doctors Table updated.cs" />
+    <Compile Include="Migrations\202004021616405_Doctors Table updated.designer.cs">
+      <DependentUpon>202004021616405_Doctors Table updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021620280_updating docotrs table and topics.cs" />
+    <Compile Include="Migrations\202004021620280_updating docotrs table and topics.designer.cs">
+      <DependentUpon>202004021620280_updating docotrs table and topics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\BlogTopic.cs" />
+    <Compile Include="Models\CardDesign.cs" />
+    <Compile Include="Models\DoctorsBlog.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
+    <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
+    <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -372,6 +416,16 @@
     <Content Include="Views\Crisis\UpdateCrisis.cshtml" />
     <Content Include="Views\Crisis\DeleteCrisis.cshtml" />
     <Content Include="Views\Article\Admin.cshtml" />
+    <Content Include="Views\DoctorsBlog\Add.cshtml" />
+    <Content Include="Views\DoctorsBlog\List.cshtml" />
+    <Content Include="Views\DoctorsBlog\Show.cshtml" />
+    <Content Include="Views\DoctorsBlog\Update.cshtml" />
+    <Content Include="Views\GetWellSoonCard\Delete.cshtml" />
+    <Content Include="Views\CardDesign\List.cshtml" />
+    <Content Include="Views\CardDesign\Add.cshtml" />
+    <Content Include="Views\CardDesign\Show.cshtml" />
+    <Content Include="Views\CardDesign\Update.cshtml" />
+    <Content Include="Views\CardDesign\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -439,6 +493,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004020234168_Resolved Conflict.resx">
       <DependentUpon>202004020234168_Resolved Conflict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004020338538_doctorsblog.resx">
+      <DependentUpon>202004020338538_doctorsblog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004020354382_db.resx">
+      <DependentUpon>202004020354382_db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021148070_adding desgin table.resx">
+      <DependentUpon>202004021148070_adding desgin table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021149290_adding relationship design table.resx">
+      <DependentUpon>202004021149290_adding relationship design table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021242074_card design debugging.resx">
+      <DependentUpon>202004021242074_card design debugging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021253515_updating card design name in design table.resx">
+      <DependentUpon>202004021253515_updating card design name in design table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021327396_adding HasPic into card design.resx">
+      <DependentUpon>202004021327396_adding HasPic into card design.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021616405_Doctors Table updated.resx">
+      <DependentUpon>202004021616405_Doctors Table updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021620280_updating docotrs table and topics.resx">
+      <DependentUpon>202004021620280_updating docotrs table and topics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
