@@ -342,3 +342,5 @@ healthchecksdb
 # Ignore APPData folder
 **/AppData/*.mdf
 **/Appdata/*.ldf
+
+web.config
