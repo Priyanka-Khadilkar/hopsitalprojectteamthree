@@ -343,4 +343,4 @@ healthchecksdb
 **/AppData/*.mdf
 **/Appdata/*.ldf
 
-web.config
+HospitalProjectTeamThree/Web.config
