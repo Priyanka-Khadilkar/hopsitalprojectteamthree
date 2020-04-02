@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HospitalProjectTeamThree</RootNamespace>
     <AssemblyName>HospitalProjectTeamThree</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -62,9 +62,9 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -239,6 +239,10 @@
     <Compile Include="Migrations\202004012114324_room.designer.cs">
       <DependentUpon>202004012114324_room.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004020158138_article.cs" />
+    <Compile Include="Migrations\202004020158138_article.designer.cs">
+      <DependentUpon>202004020158138_article.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004020139172_events.cs" />
     <Compile Include="Migrations\202004020139172_events.designer.cs">
       <DependentUpon>202004020139172_events.cs</DependentUpon>
@@ -265,6 +269,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -305,6 +310,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\crisis.css" />
     <Content Include="ERD\ERDDoctorsBlog.png" />
     <Content Include="ERD\ERDLiveWaitTimes.png" />
     <Content Include="favicon.ico" />
@@ -382,6 +388,13 @@
     <Content Include="Wireframes\LoginCardWireframe.pptx" />
     <Content Include="Wireframes\Volunteer Sign Up.pdf" />
     <Content Include="Views\Room\ShowAll.cshtml" />
+    <Content Include="Views\Article\ViewArticle.cshtml" />
+    <Content Include="Views\Article\List.cshtml" />
+    <Content Include="Views\Article\CreateArticle.cshtml" />
+    <Content Include="Views\Crisis\CreateCrisis.cshtml" />
+    <Content Include="Views\Crisis\UpdateCrisis.cshtml" />
+    <Content Include="Views\Crisis\DeleteCrisis.cshtml" />
+    <Content Include="Views\Article\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -446,24 +459,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004012114324_room.resx">
       <DependentUpon>202004012114324_room.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004020139172_events.resx">
-      <DependentUpon>202004020139172_events.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004020144071_events_users_many_to_many.resx">
-      <DependentUpon>202004020144071_events_users_many_to_many.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004020148468_events_users_many_to_many_removed.resx">
-      <DependentUpon>202004020148468_events_users_many_to_many_removed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004020150445_events_users_many_to_many_Reupdate.resx">
-      <DependentUpon>202004020150445_events_users_many_to_many_Reupdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004020154039_events_users_many_to_many_ReRemoved.resx">
-      <DependentUpon>202004020154039_events_users_many_to_many_ReRemoved.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004020156213_events_users_Added_Relationship.resx">
-      <DependentUpon>202004020156213_events_users_Added_Relationship.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
