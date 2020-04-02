@@ -25,6 +25,7 @@ namespace HospitalProjectTeamThree
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Custom.css",
+                      "~/Content/crisis.css",
                       "~/Content/site.css"));
         }
     }

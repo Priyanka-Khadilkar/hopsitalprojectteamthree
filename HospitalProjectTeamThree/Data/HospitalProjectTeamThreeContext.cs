@@ -49,5 +49,6 @@ namespace HospitalProjectTeamThree.Data
 
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.GetWellSoonCard> GetWellSoonCards { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Room> Rooms { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Article> Articles { get; set; }
     }
 }
