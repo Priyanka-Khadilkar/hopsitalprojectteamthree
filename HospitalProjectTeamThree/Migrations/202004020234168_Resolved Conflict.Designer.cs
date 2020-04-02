@@ -7,13 +7,13 @@ namespace HospitalProjectTeamThree.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class article : IMigrationMetadata
+    public sealed partial class ResolvedConflict : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(article));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ResolvedConflict));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004020158138_article"; }
+            get { return "202004020234168_Resolved Conflict"; }
         }
         
         string IMigrationMetadata.Source
