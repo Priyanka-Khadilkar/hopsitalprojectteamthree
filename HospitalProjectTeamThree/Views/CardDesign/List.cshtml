@@ -1,7 +1,16 @@
-﻿
+﻿@model List<HospitalProjectTeamThree.Models.CardDesign>
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h2>List of Card Design</h2>
+@{
+    foreach (var Design in Model)
+    {
+        <div><img src="../../Images/GetWellCard/@(Design.CardDesignId).@(Design.PicExt)" alt="Image of the card" />"</div>
+        <div>@Design.DesignName</div>
+        <div><a href="/CardDesign/Update/@Design.CardDesignId">Update the card</a></div>
+    }
+}
+<a href="/CardDesign/Add">Add a design</a>
 
