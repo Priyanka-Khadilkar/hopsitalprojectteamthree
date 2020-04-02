@@ -10,9 +10,9 @@ using System.Web;
 using System.Web.Mvc;
 using HospitalProjectTeamThree.Data;
 using HospitalProjectTeamThree.Models;
-//using HospitalProjectTeamThree.Models.ViewModels;
+using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
-//using System.IO;
+using System.IO;
 
 
 namespace HospitalProjectTeamThree.Controllers

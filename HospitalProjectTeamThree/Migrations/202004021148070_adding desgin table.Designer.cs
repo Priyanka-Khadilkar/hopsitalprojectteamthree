@@ -7,13 +7,13 @@ namespace HospitalProjectTeamThree.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class addingtables : IMigrationMetadata
+    public sealed partial class addingdesgintable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addingtables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addingdesgintable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202004020424560_adding tables"; }
+            get { return "202004021148070_adding desgin table"; }
         }
         
         string IMigrationMetadata.Source

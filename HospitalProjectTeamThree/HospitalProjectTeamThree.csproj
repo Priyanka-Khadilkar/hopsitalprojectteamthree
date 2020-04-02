@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CardDesignController.cs" />
     <Compile Include="Controllers\DoctorsBlogController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -244,6 +245,22 @@
     <Compile Include="Migrations\202004020234168_Resolved Conflict.cs" />
     <Compile Include="Migrations\202004020234168_Resolved Conflict.designer.cs">
       <DependentUpon>202004020234168_Resolved Conflict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004020338538_doctorsblog.cs" />
+    <Compile Include="Migrations\202004020338538_doctorsblog.Designer.cs">
+      <DependentUpon>202004020338538_doctorsblog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004020354382_db.cs" />
+    <Compile Include="Migrations\202004020354382_db.Designer.cs">
+      <DependentUpon>202004020354382_db.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021148070_adding desgin table.cs" />
+    <Compile Include="Migrations\202004021148070_adding desgin table.designer.cs">
+      <DependentUpon>202004021148070_adding desgin table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021149290_adding relationship design table.cs" />
+    <Compile Include="Migrations\202004021149290_adding relationship design table.designer.cs">
+      <DependentUpon>202004021149290_adding relationship design table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -377,6 +394,12 @@
     <Content Include="Views\Crisis\UpdateCrisis.cshtml" />
     <Content Include="Views\Crisis\DeleteCrisis.cshtml" />
     <Content Include="Views\Article\Admin.cshtml" />
+    <Content Include="Views\DoctorsBlog\Add.cshtml" />
+    <Content Include="Views\DoctorsBlog\List.cshtml" />
+    <Content Include="Views\DoctorsBlog\Show.cshtml" />
+    <Content Include="Views\DoctorsBlog\Update.cshtml" />
+    <Content Include="Views\GetWellSoonCard\Delete.cshtml" />
+    <Content Include="Views\CardDesign\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -444,6 +467,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004020234168_Resolved Conflict.resx">
       <DependentUpon>202004020234168_Resolved Conflict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004020338538_doctorsblog.resx">
+      <DependentUpon>202004020338538_doctorsblog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004020354382_db.resx">
+      <DependentUpon>202004020354382_db.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021148070_adding desgin table.resx">
+      <DependentUpon>202004021148070_adding desgin table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021149290_adding relationship design table.resx">
+      <DependentUpon>202004021149290_adding relationship design table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
