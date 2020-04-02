@@ -5,3 +5,21 @@
 
 <h2>Admin</h2>
 
+<a href="/Article/CreateArticle">Create Article</a>
+<a href="/Crisis/CreateCrisis">Create Crisis</a>
+<table>
+    <!--foreach here-->
+
+    <tr>
+        <td>Crisis.CrisisName</td>
+        <td><a href="/Crisis/Update/Crisis.CrisisID">Update </a></td>
+        <td><a href="/Crisis/Delete/Crisis.CrisisID">Delete </a></td>
+    </tr>
+    <!--foreach for articles here-->
+    <tr>
+        <td>Name of article</td>
+        <td><a href="/Article/ViewArticle/Article.ArticleID">View </a></td>
+        <td><a href="/Article/Update/Article.ArticleID">Update </a></td>
+        <td><a href="/Article/Delete/Article.ArticleID">Delete </a></td>
+    </tr>
+</table>

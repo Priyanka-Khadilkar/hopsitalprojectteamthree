@@ -32,5 +32,13 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("Checking if getting id :" +id);
             return View(article);
         }
+        public ActionResult CreateArticle()
+        {
+            return View();
+        }
+        public ActionResult Admin()
+        {
+            return View();
+        }
     }
 }
