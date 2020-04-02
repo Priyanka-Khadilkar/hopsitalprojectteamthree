@@ -57,5 +57,6 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.BlogTopic> Topics { get; set; }
 
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Article> Articles { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.CardDesign> CardDesigns { get; set; }
     }
 }
