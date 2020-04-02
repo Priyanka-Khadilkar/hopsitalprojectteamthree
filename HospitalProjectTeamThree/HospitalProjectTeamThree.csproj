@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\DoctorsBlogController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -384,6 +385,10 @@
     <Content Include="Views\Crisis\UpdateCrisis.cshtml" />
     <Content Include="Views\Crisis\DeleteCrisis.cshtml" />
     <Content Include="Views\Article\Admin.cshtml" />
+    <Content Include="Views\DoctorsBlog\Add.cshtml" />
+    <Content Include="Views\DoctorsBlog\List.cshtml" />
+    <Content Include="Views\DoctorsBlog\Show.cshtml" />
+    <Content Include="Views\DoctorsBlog\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
