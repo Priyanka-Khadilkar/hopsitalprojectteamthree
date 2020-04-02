@@ -19,9 +19,6 @@ namespace HospitalProjectTeamThree.Models
         //public virtual ApplicationUser User { get; set; }
         public string BlogContent { get; set; }
         public string BlogSource { get; set; }
-
-        public int TopicId { get; set; }
-        [ForeignKey("TopicId")]
-        public virtual BlogTopic Topic { get; set; }
+        public ICollection<BlogTopic> Topics { get; set; }
     }
 }

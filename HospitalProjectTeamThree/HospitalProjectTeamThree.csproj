@@ -274,6 +274,14 @@
     <Compile Include="Migrations\202004021327396_adding HasPic into card design.designer.cs">
       <DependentUpon>202004021327396_adding HasPic into card design.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004021616405_Doctors Table updated.cs" />
+    <Compile Include="Migrations\202004021616405_Doctors Table updated.designer.cs">
+      <DependentUpon>202004021616405_Doctors Table updated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004021620280_updating docotrs table and topics.cs" />
+    <Compile Include="Migrations\202004021620280_updating docotrs table and topics.designer.cs">
+      <DependentUpon>202004021620280_updating docotrs table and topics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -506,6 +514,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004021327396_adding HasPic into card design.resx">
       <DependentUpon>202004021327396_adding HasPic into card design.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021616405_Doctors Table updated.resx">
+      <DependentUpon>202004021616405_Doctors Table updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004021620280_updating docotrs table and topics.resx">
+      <DependentUpon>202004021620280_updating docotrs table and topics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
