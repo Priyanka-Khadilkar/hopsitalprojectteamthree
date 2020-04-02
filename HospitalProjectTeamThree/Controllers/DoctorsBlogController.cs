@@ -44,15 +44,16 @@ namespace HospitalProjectTeamThree.Controllers
             //Debug.WriteLine("Want to create a blog entry with a title of " + BlogTitle ) ;
 
             // We create the query to insert the values we will get into the database
-            string query = "insert into DoctorsBlogs (BlogTitle, BlogContent, BlogSource, TopicId) values (@Date,@Cost,@ParkID)";
-            SqlParameter[] sqlparams = new SqlParameter[3];
+            string query = "insert into DoctorsBlogs (BlogTitle, BlogContent, BlogSource, TopicId) values (@BlogTitle,@BlogContent,@BlogSource, @TopicId)";
+            SqlParameter[] sqlparams = new SqlParameter[4];
 
-            sqlparams[0] = new SqlParameter("@Date", Date);
-            sqlparams[1] = new SqlParameter("@Cost", Cost);
-            sqlparams[2] = new SqlParameter("@ParkID", ParkID);
+            sqlparams[0] = new SqlParameter("@BlogTitle", BlogTitle);
+            sqlparams[1] = new SqlParameter("@BlogContent", BlogContent);
+            sqlparams[2] = new SqlParameter("@BlogSource", BlogSource);
+            sqlparams[3] = new SqlParameter("@TopicId", TopicId);
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
-            // Once added we go back to the list of bookings where our new booking will be
+            // Once added we go back to the list of blogs
             return RedirectToAction("List");
         }
 

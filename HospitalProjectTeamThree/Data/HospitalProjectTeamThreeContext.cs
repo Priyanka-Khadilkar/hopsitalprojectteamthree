@@ -53,6 +53,8 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.GetWellSoonCard> GetWellSoonCards { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Room> Rooms { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.DoctorsBlog> DoctorsBlogs { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.BlogTopic> Topics { get; set; }
 
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Article> Articles { get; set; }
     }
