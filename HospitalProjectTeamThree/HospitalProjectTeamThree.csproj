@@ -287,6 +287,8 @@
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
+    <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
+    <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
