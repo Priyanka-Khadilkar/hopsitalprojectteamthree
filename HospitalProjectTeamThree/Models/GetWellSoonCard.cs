@@ -22,6 +22,11 @@ namespace HospitalProjectTeamThree.Models
         public virtual ApplicationUser User { get; set; }
         public string PatientName { get; set; }
         public string RoomNumber { get; set; }
-        public string PatientEmail { get; set; }
+        public string PatientEmail { get; set; }        
+        //use ? to allow it to be null first
+        public int? CardDesignId { get; set; }
+        [ForeignKey("CardDesignId")]
+        public virtual CardDesign CardDesign { get; set; }
+
     }
 }
