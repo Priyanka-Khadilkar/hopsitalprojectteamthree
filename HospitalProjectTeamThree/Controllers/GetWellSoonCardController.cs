@@ -13,18 +13,61 @@ using HospitalProjectTeamThree.Models;
 using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
 using System.IO;
-
+using Microsoft.AspNet.Identity.Owin;
+using System.Web.Security;
 
 namespace HospitalProjectTeamThree.Controllers
 {
     public class GetWellSoonCardController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
+        public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
         public ActionResult Index()
         {
-            return View();
+            //if user logged in to the get well card page AND they are admins or editors
+            //redirect them to list
+            //if they are logged in but is not admin, editor
+            //redirect to their personal page
+            //else if they are not logged in or wrong logged in infor
+            //reject them
+            if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                {
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    return RedirectToAction("Add");//To do: redirect action to personal list
+                }
+            }
+            else
+            {
+                return View();
+            }
+            
+            /*if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Editor")))
+            {
+                return RedirectToAction("List");
+            }
+            else if (Request.IsAuthenticated && !User.IsInRole("Admin, Editor"))
+            {
+                return RedirectToAction("Add");
+            }
+            else
+            {
+                return View();
+            }*/
         }
+        
+
+        [Authorize(Roles = "Admin, Editor")]
+        //only an admin can see the full list of card
+        //To Do: personal list of card, normal user can only see the card they create
         public ActionResult List()
         {
             //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId";
@@ -37,7 +80,7 @@ namespace HospitalProjectTeamThree.Controllers
             //ListGetWellViewModel.GetWellSoonCard = allCards;
             //ListGetWellViewModel.CardDesign = cardDesign;
 
-            //return View(ListGetWellViewModel);
+            //return View(ListGetWellViewModel);           
             string query = "Select * from GetWellSoonCards";
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
@@ -111,6 +154,46 @@ namespace HospitalProjectTeamThree.Controllers
             sqlparams[0] = new SqlParameter("@CardId", CardId);
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("List");
+        }
+        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
     }
