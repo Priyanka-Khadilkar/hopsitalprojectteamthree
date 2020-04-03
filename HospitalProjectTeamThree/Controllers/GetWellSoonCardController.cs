@@ -14,6 +14,7 @@ using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.AspNet.Identity.Owin;
+using System.Web.Security;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -21,12 +22,20 @@ namespace HospitalProjectTeamThree.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
+            //if user log in get them to add page
+            //otherwise return to the sign in
+           
+            if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Editor")))
+            {
+                return RedirectToAction("List");
+            }
+            else if (Request.IsAuthenticated && !User.IsInRole("Admin, Editor"))
             {
                 return RedirectToAction("Add");
             }
@@ -34,8 +43,23 @@ namespace HospitalProjectTeamThree.Controllers
             {
                 return View();
             }
+            /*if (Request.IsAuthenticated && User.IsInRole("Admin, Editor"))
+            {
+                return RedirectToAction("List");
+            }          
+            else if (Request.IsAuthenticated && !User.IsInRole("Admin, Editor"))
+            {
+                return RedirectToAction("Add");
+            }
+            else
+            {
+                return View();
+            }*/
         }
-        [Authorize(Roles = "Admin")]
+        //only an admin can see the full list of car
+        //To Do: personal list of card, normal user can only see the card they create
+
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult List()
         {
             //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId";
@@ -123,12 +147,23 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("List");
         }
-        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
-
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
         public ApplicationSignInManager SignInManager
         {
             get
