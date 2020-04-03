@@ -290,11 +290,16 @@
     <Compile Include="Migrations\202004032214467_Live Wait Times and Departments tables.designer.cs">
       <DependentUpon>202004032214467_Live Wait Times and Departments tables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004032313389_crisis.cs" />
+    <Compile Include="Migrations\202004032313389_crisis.designer.cs">
+      <DependentUpon>202004032313389_crisis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogTopic.cs" />
     <Compile Include="Models\CardDesign.cs" />
+    <Compile Include="Models\Crisis.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorsBlog.cs" />
     <Compile Include="Models\Event.cs" />
@@ -537,6 +542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004032214467_Live Wait Times and Departments tables.resx">
       <DependentUpon>202004032214467_Live Wait Times and Departments tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004032313389_crisis.resx">
+      <DependentUpon>202004032313389_crisis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
