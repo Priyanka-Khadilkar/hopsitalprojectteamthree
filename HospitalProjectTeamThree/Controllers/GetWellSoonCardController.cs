@@ -13,18 +13,29 @@ using HospitalProjectTeamThree.Models;
 using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
 using System.IO;
-
+using Microsoft.AspNet.Identity.Owin;
 
 namespace HospitalProjectTeamThree.Controllers
 {
     public class GetWellSoonCardController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
+        public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
         public ActionResult Index()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Add");
+            }
+            else
+            {
+                return View();
+            }
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
             //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId";
@@ -37,7 +48,7 @@ namespace HospitalProjectTeamThree.Controllers
             //ListGetWellViewModel.GetWellSoonCard = allCards;
             //ListGetWellViewModel.CardDesign = cardDesign;
 
-            //return View(ListGetWellViewModel);
+            //return View(ListGetWellViewModel);           
             string query = "Select * from GetWellSoonCards";
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
@@ -111,6 +122,35 @@ namespace HospitalProjectTeamThree.Controllers
             sqlparams[0] = new SqlParameter("@CardId", CardId);
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("List");
+        }
+        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
     }

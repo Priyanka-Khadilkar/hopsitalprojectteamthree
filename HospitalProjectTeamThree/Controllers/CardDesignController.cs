@@ -23,7 +23,8 @@ namespace HospitalProjectTeamThree.Controllers
         // GET: CardDesign
         public ActionResult Index()
         {
-            return View();
+           return View();
+            
         }
         public ActionResult List()
         {
