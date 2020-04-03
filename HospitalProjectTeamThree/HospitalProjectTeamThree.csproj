@@ -282,6 +282,10 @@
     <Compile Include="Migrations\202004021620280_updating docotrs table and topics.designer.cs">
       <DependentUpon>202004021620280_updating docotrs table and topics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004032106431_adding userId in get well soon card.cs" />
+    <Compile Include="Migrations\202004032106431_adding userId in get well soon card.designer.cs">
+      <DependentUpon>202004032106431_adding userId in get well soon card.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -521,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004021620280_updating docotrs table and topics.resx">
       <DependentUpon>202004021620280_updating docotrs table and topics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004032106431_adding userId in get well soon card.resx">
+      <DependentUpon>202004032106431_adding userId in get well soon card.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

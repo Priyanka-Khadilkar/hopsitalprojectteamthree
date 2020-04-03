@@ -25,6 +25,8 @@ namespace HospitalProjectTeamThree.Data
 
         //Representing the Many in (Many Events to Many Users)
         public virtual ICollection<Event> EventUsers { get; set; }
+        //One user can create many get well cards
+        public virtual ICollection<GetWellSoonCard> GetWellSoonCards { get; set; }
     }
     //adding roles to user: Admin, Editor, Registered user
     public class ApplicationRole : IdentityRole
