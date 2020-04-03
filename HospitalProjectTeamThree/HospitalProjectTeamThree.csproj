@@ -286,15 +286,21 @@
     <Compile Include="Migrations\202004032106431_adding userId in get well soon card.designer.cs">
       <DependentUpon>202004032106431_adding userId in get well soon card.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004032214467_Live Wait Times and Departments tables.cs" />
+    <Compile Include="Migrations\202004032214467_Live Wait Times and Departments tables.designer.cs">
+      <DependentUpon>202004032214467_Live Wait Times and Departments tables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogTopic.cs" />
     <Compile Include="Models\CardDesign.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\DoctorsBlog.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LiveWaitTime.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\Room.cs" />
@@ -528,6 +534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004032106431_adding userId in get well soon card.resx">
       <DependentUpon>202004032106431_adding userId in get well soon card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004032214467_Live Wait Times and Departments tables.resx">
+      <DependentUpon>202004032214467_Live Wait Times and Departments tables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
