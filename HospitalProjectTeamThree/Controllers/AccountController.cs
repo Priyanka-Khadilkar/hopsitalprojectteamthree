@@ -183,7 +183,8 @@ namespace HospitalProjectTeamThree.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, "Register User");
+                    //Automatically assign the role as Registered User when people sign in
+                    result = await UserManager.AddToRoleAsync(user.Id, "Registered User");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

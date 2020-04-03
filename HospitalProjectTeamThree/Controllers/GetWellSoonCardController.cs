@@ -42,7 +42,7 @@ namespace HospitalProjectTeamThree.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Add");
+                    return RedirectToAction("Add");//To do: redirect action to personal list
                 }
             }
             else
