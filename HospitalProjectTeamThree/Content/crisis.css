@@ -19,31 +19,41 @@
 .right {
     border: 2px solid black;
     margin: 2px;
+    width: 30%
 }
 
-.crisiscontainer {
+/*.crisiscontainer {
     display: flex;
+    width:100%;
+}*/
 
 
-}
-
-.crisismain {
-    padding: 20px 40px;
-    border-left: 5px solid black;
-    border-radius: 5px;
-}
 
 .left {
     width: 20%;
     /* border-right: 5px solid black; */
     border-radius: 3px;
     padding: 20px;
+    display: inline-block;
+    vertical-align: top;
 }
 
+.crisismain {
+    padding: 20px 40px;
+    border-left: 5px solid black;
+    
+    border-radius: 5px;
+    width:58%;
+    display:inline-block;
+}
+
+
 .right {
-    width: 30%;
+    width: 20%;
     border-radius: 10px;
     padding: 20px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 /* li {
