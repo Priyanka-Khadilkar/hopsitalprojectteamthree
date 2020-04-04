@@ -3,10 +3,34 @@
     ViewBag.Title = "Update";
 }
 
-<h2>Update Blog Entry</h2>
-<form method="Post" action="/DoctorsBlog/Update/@Model.Blog.BlogId">
-    <div>Title: <input type="text" name="BlogTitle" value="@Model.Blog.BlogTitle" /></div>
-    <div>Content: <textarea type="text" name="BlogContent" id="BlogContent" value="@Model.Blog.BlogContent"></textarea></div>
-    <div>Source:  <input type="text" name="BlogTitle" value="@Model.Blog.BlogSource" /></div>
-    <div> <input type="submit" value="Update Blog Entry" /></div>
-</form>
+    <div class="content">
+        <h2 class="title">Update Blog Entry</h2>
+        <a href="/DoctorsBlog/List" class="button">Back to List</a>
+        <div class="showinfo">
+            <form action="/DoctorsBlog/Update/@Model.Blog.BlogId" method="POST">
+                <div class="name">Blog Title : </div><input type="text" name="BlogTitle" id="BlogTitle" value="@Model.Blog.BlogTitle" />
+                <div class="name">Blog Content : </div><textarea type="text" name="BlogContent" id="BlogContent">@Model.Blog.BlogContent</textarea>
+                <div class="name">Topics : </div>
+                @{
+                    <!-- Here we show the topics that are on this blog entry -->
+                    foreach (var Topic in @Model.BlogTopics)
+                    {
+                        <div class="list">
+                            <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                            @{
+
+                            }
+                            <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId">
+                                Remove Topic
+                            </a>
+                        </div>
+                    }
+
+                }
+                <div class="name">Blog Source : </div><input type="text" name="BlogSource" id="BlogSource" value="@Model.Blog.BlogSource" />
+                <div>
+                    <input type="submit" value="Update Blog Entry" class="delbuttons" />
+                </div>
+            </form>
+        </div>
+    </div>

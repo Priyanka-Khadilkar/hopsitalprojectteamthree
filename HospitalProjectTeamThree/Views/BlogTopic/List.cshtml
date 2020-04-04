@@ -1,0 +1,24 @@
+﻿@model List<HospitalProjectTeamThree.Models.BlogTopic>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Blog Topics</h2>
+<div class="content">
+    @{
+        foreach (var Topic in Model)
+        {
+            <div>
+                    <div class="detail">
+                        <div>Id: @Topic.TopicId</div>
+                        <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName</a>
+
+                    </div>
+
+                <div><a href="/BlogTopic/Update/@Topic.TopicId">Edit Blog Topic</a></div>
+            </div>
+
+        }
+    }
+</div>
+<a href="/BlogTopic/Add">New Blog Entry</a>

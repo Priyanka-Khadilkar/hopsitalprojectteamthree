@@ -142,12 +142,16 @@ namespace HospitalProjectTeamThree.Controllers
         {
             //need information about a particular blog entry
             DoctorsBlog selectedblog = db.DoctorsBlogs.SqlQuery("select * from DoctorsBlogs where BlogId=@BlogId", new SqlParameter("@BlogId", id)).FirstOrDefault();
-            List<BlogTopic> Topics = db.Topics.SqlQuery("select * from BlogTopics").ToList();
+            string topic_query = "select * from BlogTopics inner join BlogTopicDoctorsBlogs on BlogTopics.TopicId = BlogTopicDoctorsBlogs.BlogTopic_TopicId where BlogTopicDoctorsBlogs.DoctorsBlog_BlogId=@BlogId";
+            var t_parameter = new SqlParameter("@BlogId", id);
+            List<BlogTopic> usedtopics = db.Topics.SqlQuery(topic_query, t_parameter).ToList();
+
+            
 
             //We use the AddBlogTopic viewmodel to show the topics.
             AddBlogTopic AddBlogTopicViewModel = new AddBlogTopic();
             AddBlogTopicViewModel.Blog = selectedblog;
-            AddBlogTopicViewModel.BlogTopics = Topics;
+            AddBlogTopicViewModel.BlogTopics = usedtopics;
 
 
             return View(AddBlogTopicViewModel);
