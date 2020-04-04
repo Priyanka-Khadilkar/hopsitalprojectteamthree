@@ -298,9 +298,9 @@
     <Compile Include="Migrations\202004040048063_update AddBlogTopic.designer.cs">
       <DependentUpon>202004040048063_update AddBlogTopic.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004040040210_Update Event.cs" />
-    <Compile Include="Migrations\202004040040210_Update Event.designer.cs">
-      <DependentUpon>202004040040210_Update Event.cs</DependentUpon>
+    <Compile Include="Migrations\202004040107468_Resolved Event issue.cs" />
+    <Compile Include="Migrations\202004040107468_Resolved Event issue.designer.cs">
+      <DependentUpon>202004040107468_Resolved Event issue.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -558,8 +558,8 @@
     <EmbeddedResource Include="Migrations\202004040048063_update AddBlogTopic.resx">
       <DependentUpon>202004040048063_update AddBlogTopic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004040040210_Update Event.resx">
-      <DependentUpon>202004040040210_Update Event.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004040107468_Resolved Event issue.resx">
+      <DependentUpon>202004040107468_Resolved Event issue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

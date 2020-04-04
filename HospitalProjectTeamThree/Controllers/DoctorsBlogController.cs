@@ -27,7 +27,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(blogs);
         }
         // GET details about one blog entry
-        /*
+        
         public ActionResult Show(int? id)
         {
             if (id == null)
@@ -43,23 +43,23 @@ namespace HospitalProjectTeamThree.Controllers
 
             
 
-            string guest_query = "select * from Guests inner join TourBookingGuests on Guests.GuestID = TourBookingGuests.Guest_GuestID where TourBookingGuests.TourBooking_BookingID=@BookingID";
-            var g_parameter = new SqlParameter("@BookingID", id);
-            List<Guest> knownguests = db.Guests.SqlQuery(guest_query, g_parameter).ToList();
+            string topic_query = "select * from BlogTopics inner join BlogTopicDoctorsBlogs on BlogTopics.TopicId = BlogTopicDoctorsBlogs.BlogTopic_TopicId where BlogTopicDoctorsBlogs.DoctorsBlog_BlogId=@BlogId";
+            var t_parameter = new SqlParameter("@BlogId", id);
+            List<BlogTopic> usedtopics = db.Topics.SqlQuery(topic_query, t_parameter).ToList();
 
-            string all_guests_query = "select * from Guests";
-            List<Guest> AllGuests = db.Guests.SqlQuery(all_guests_query).ToList();
+            string all_topics_query = "select * from Topics";
+            List<BlogTopic> AllTopics = db.Topics.SqlQuery(all_topics_query).ToList();
 
             // We use the AddParkGuest viewmodel so that we can show the guests that are on that booking and also so that we can see the dropdown list of guests
             // and add a guest to a booking if we want to
-            AddParkGuest viewmodel = new AddParkGuest();
-            viewmodel.Booking = tourbooking;
-            viewmodel.Guests = knownguests;
-            viewmodel.Add_Guest = AllGuests;
+            AddBlogTopic viewmodel = new AddBlogTopic();
+            viewmodel.Blog = doctorsblog;
+            viewmodel.BlogTopics = usedtopics;
+            viewmodel.Add_Topic = AllTopics;
 
             return View(viewmodel);
 
-        }*/
+        }
         public ActionResult Add()
         {
             // On the new blog entry we can select a topic
