@@ -27,6 +27,7 @@ namespace HospitalProjectTeamThree.Controllers
             
         }
         [Authorize(Roles = "Admin, Editor")]
+        //admin and editor can see the list of card designs
         public ActionResult List()
         {
             string query = "Select * from CardDesigns";
@@ -34,6 +35,7 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("Iam trying to list all the cards");
             return View(carddesigns);
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Add()
         {
             return View();
@@ -48,12 +50,14 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("I am tryting to add the card with the name " + DesignName);
             return RedirectToAction("List");
         }
+        //[Authorize(Roles = "Admin, Editor")]
         public ActionResult Show (int id)
         {
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns where CardDesignId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             Debug.WriteLine("I am trying to show card design id" + id);
             return View(Design);
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Update (int id)
         {
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns where CardDesignId = @id", new SqlParameter("@id", id)).FirstOrDefault();
@@ -111,6 +115,7 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("Show/" + CardDesignId);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns where CardDesignId = @id", new SqlParameter("@id", id)).FirstOrDefault();

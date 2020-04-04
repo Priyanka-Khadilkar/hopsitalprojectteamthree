@@ -20,9 +20,9 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class GetWellSoonCardController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
+        //private ApplicationSignInManager _signInManager;
+        //private ApplicationUserManager _userManager;
+        //private ApplicationRoleManager _roleManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
@@ -34,22 +34,23 @@ namespace HospitalProjectTeamThree.Controllers
             //redirect to their personal page
             //else if they are not logged in or wrong logged in infor
             //reject them
-            if (Request.IsAuthenticated)
-            {
-                if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+            //if (Request.IsAuthenticated)
+            //{
+                /*if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                 {
                     return RedirectToAction("List");
                 }
                 else
                 {
                     return RedirectToAction("Add");//To do: redirect action to personal list
-                }
-            }
-            else
-            {
-                return View();
-            }
-            
+                }*/
+                //return RedirectToAction("List");
+            //}
+            //else
+            //{
+            //return View();
+            //}
+
             /*if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Editor")))
             {
                 return RedirectToAction("List");
@@ -60,8 +61,9 @@ namespace HospitalProjectTeamThree.Controllers
             }
             else
             {
-                return View();
+                
             }*/
+            return View();
         }
         
 
@@ -155,7 +157,7 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("List");
         }
-        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        /*public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -194,7 +196,7 @@ namespace HospitalProjectTeamThree.Controllers
             {
                 _userManager = value;
             }
-        }
+        }*/
 
     }
 }
