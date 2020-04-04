@@ -5,7 +5,10 @@
 
 
 
-
+    <form action="/Article/List" method="GET">
+        <input type="text" name="articlesearchkey" id="articlesearchkey" />
+        <input type="submit" value="Search" />
+    </form>
 <h1 class="crisiscenter">Covid - 19</h1>
 
 
@@ -38,7 +41,13 @@
                 <hr />
             }
         }
-
+        <div class="paginate">
+            @{
+                <a href="/Article/List?pagenum=@((int)ViewData["pagenum"]-1)&articlesearchkey=@ViewData["articlesearchkey"]">Prev</a>
+                @ViewData["pagesummary"]
+                <a href="/Article/List?pagenum=@((int)ViewData["pagenum"]+1)&articlesearchkey=@ViewData["articlesearchkey"]">Next</a>
+            }
+        </div>
     </main>
     <aside class="right">
         <h3>Tips to stay Healthy...</h3>

@@ -23,12 +23,59 @@ namespace HospitalProjectTeamThree.Controllers
         {
             return View();
         }
-        public ActionResult List()
+        public ActionResult List(string articlesearchkey, int pagenum = 0)
         {
-            string query = "Select * from Articles ";
-            List<Article> articles = db.Articles.SqlQuery(query).ToList();
-            //Debug.WriteLine("Checking connection to database");
+            //can we access the search key?
+            //Debug.WriteLine("The search key is "+articlesearchkey);
+
+
+
+            string query = "Select * from Articles"; //order by is needed for offset
+            //easier in a list.. we don't know how many more we'll add yet
+            List<SqlParameter> sqlparams = new List<SqlParameter>();
+
+            if (articlesearchkey != "")
+            {
+                //modify the query to include the search key
+                query = query + " where ArticleTitle like @searchkey";
+                sqlparams.Add(new SqlParameter("@searchkey", "%" + articlesearchkey + "%"));
+                //Debug.WriteLine("The query is "+ query);
+            }
+
+            List<Article> articles = db.Articles.SqlQuery(query, sqlparams.ToArray()).ToList();
+            // Code reference - Christine Bittle
+            //Start of Pagination Algorithm (Raw MSSQL)
+            int perpage = 3;
+            int artcount = articles.Count();
+            int maxpage = (int)Math.Ceiling((decimal)artcount / perpage) - 1;
+            if (maxpage < 0) maxpage = 0;
+            if (pagenum < 0) pagenum = 0;
+            if (pagenum > maxpage) pagenum = maxpage;
+            int start = (int)(perpage * pagenum);
+            ViewData["pagenum"] = pagenum;
+            ViewData["pagesummary"] = "";
+            if (maxpage > 0)
+            {
+                ViewData["pagesummary"] = (pagenum + 1) + " of " + (maxpage + 1);
+                List<SqlParameter> newparams = new List<SqlParameter>();
+
+                if (articlesearchkey != "")
+                {
+                    newparams.Add(new SqlParameter("@searchkey", "%" + articlesearchkey + "%"));
+                    ViewData["articlesearchkey"] = articlesearchkey;
+                }
+                newparams.Add(new SqlParameter("@start", start));
+                newparams.Add(new SqlParameter("@perpage", perpage));
+                string pagedquery = query + " order by ArticleId offset @start rows fetch first @perpage rows only ";
+                //Debug.WriteLine(pagedquery);
+                //Debug.WriteLine("offset " + start);
+                //Debug.WriteLine("fetch first " + perpage);
+                articles = db.Articles.SqlQuery(pagedquery, newparams.ToArray()).ToList();
+            }
+            //End of Pagination Algorithm
+
             return View(articles);
+
         }
         public ActionResult ViewArticle(int? id)
         {
