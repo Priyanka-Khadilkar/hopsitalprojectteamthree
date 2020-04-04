@@ -27,6 +27,9 @@ namespace HospitalProjectTeamThree.Data
         public virtual ICollection<Event> Events { get; set; }
         //One user can create many get well cards
         public virtual ICollection<GetWellSoonCard> GetWellSoonCards { get; set; }
+
+        //One user can book many Appointments.
+        public virtual ICollection<OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
     }
     //adding roles to user: Admin, Editor, Registered user
     public class ApplicationRole : IdentityRole
@@ -63,5 +66,7 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Article> Articles { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.CardDesign> CardDesigns { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Crisis> Crisiss { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
+
     }
 }

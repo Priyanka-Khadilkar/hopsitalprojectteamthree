@@ -310,6 +310,14 @@
     <Compile Include="Migrations\202004040120519_Re Added Event.designer.cs">
       <DependentUpon>202004040120519_Re Added Event.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004040320468_OnlineAppointmentBooking.cs" />
+    <Compile Include="Migrations\202004040320468_OnlineAppointmentBooking.designer.cs">
+      <DependentUpon>202004040320468_OnlineAppointmentBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004040351527_OnlineAppointmentBooking added.cs" />
+    <Compile Include="Migrations\202004040351527_OnlineAppointmentBooking added.designer.cs">
+      <DependentUpon>202004040351527_OnlineAppointmentBooking added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -323,6 +331,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LiveWaitTime.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OnlineAppointmentBooking.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
@@ -574,6 +583,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004040120519_Re Added Event.resx">
       <DependentUpon>202004040120519_Re Added Event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040320468_OnlineAppointmentBooking.resx">
+      <DependentUpon>202004040320468_OnlineAppointmentBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040351527_OnlineAppointmentBooking added.resx">
+      <DependentUpon>202004040351527_OnlineAppointmentBooking added.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
