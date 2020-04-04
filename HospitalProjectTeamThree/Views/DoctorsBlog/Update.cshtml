@@ -7,22 +7,23 @@
 <form method="Post" action="/DoctorsBlog/Update/@Model.Blog.BlogId">
     <div>Title: <input type="text" name="BlogTitle" value="@Model.Blog.BlogTitle" /></div>
     <div>
-        Topic: <select id="TopicId" type="text" name="TopicId">
-            @{
+        Topic: 
+        @{
+            <!-- Here we show the topics that are on this blog entry -->
+            foreach (var Topic in @Model.BlogTopics)
+            {
+                <div class="list">
+                    <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                    @{
 
-                foreach (var Topic in Model.BlogTopics)
-                {
-                    var selected = "";
-                    if (Model.Blog.TopicId == Topic.TopicId)
-                    {
-                        selected = "selected";
                     }
-
-                    <option value="@Topic.TopicId" @selected>@Topic.TopicName</option>
-
-                }
+                    <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId">
+                        Remove Topic
+                    </a>
+                </div>
             }
-        </select>
+
+        }
     </div>
     <div>Content: <textarea type="text" name="BlogContent" id="BlogContent" value="@Model.Blog.BlogContent"></textarea></div>
     <div>Source:  <input type="text" name="BlogTitle" value="@Model.Blog.BlogSource" /></div>

@@ -9,5 +9,6 @@ namespace HospitalProjectTeamThree.Models.ViewModels
     {
         public DoctorsBlog Blog { get; set; }
         public List<BlogTopic> BlogTopics { get; set; }
+        public List<BlogTopic> Add_Topic { get; set; }
     }
 }
