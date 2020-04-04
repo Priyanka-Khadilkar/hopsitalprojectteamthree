@@ -324,6 +324,22 @@
     <Compile Include="Migrations\202004041431401_viewcrisis viewmodel.designer.cs">
       <DependentUpon>202004041431401_viewcrisis viewmodel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004041544593_application user get well soon card.cs" />
+    <Compile Include="Migrations\202004041544593_application user get well soon card.Designer.cs">
+      <DependentUpon>202004041544593_application user get well soon card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004041612426_getwellsooncard userid.cs" />
+    <Compile Include="Migrations\202004041612426_getwellsooncard userid.Designer.cs">
+      <DependentUpon>202004041612426_getwellsooncard userid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004041614068_remove redundant data get well soon card.cs" />
+    <Compile Include="Migrations\202004041614068_remove redundant data get well soon card.Designer.cs">
+      <DependentUpon>202004041614068_remove redundant data get well soon card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004041620279_application user in get well soon card.cs" />
+    <Compile Include="Migrations\202004041620279_application user in get well soon card.designer.cs">
+      <DependentUpon>202004041620279_application user in get well soon card.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -602,6 +618,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004041431401_viewcrisis viewmodel.resx">
       <DependentUpon>202004041431401_viewcrisis viewmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041544593_application user get well soon card.resx">
+      <DependentUpon>202004041544593_application user get well soon card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041612426_getwellsooncard userid.resx">
+      <DependentUpon>202004041612426_getwellsooncard userid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041614068_remove redundant data get well soon card.resx">
+      <DependentUpon>202004041614068_remove redundant data get well soon card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041620279_application user in get well soon card.resx">
+      <DependentUpon>202004041620279_application user in get well soon card.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

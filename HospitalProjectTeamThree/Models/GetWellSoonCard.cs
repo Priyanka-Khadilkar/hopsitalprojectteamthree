@@ -27,8 +27,8 @@ namespace HospitalProjectTeamThree.Models
         [ForeignKey("CardDesignId")]
         public virtual CardDesign CardDesign { get; set; }
 
-        public string CardUserId { get; set; }
-        [ForeignKey("CardUserId")]
+        /*public string CardUserId { get; set; }
+        [ForeignKey("CardUserId")]*/
         public virtual ApplicationUser Users { get; set; }
     }
     
