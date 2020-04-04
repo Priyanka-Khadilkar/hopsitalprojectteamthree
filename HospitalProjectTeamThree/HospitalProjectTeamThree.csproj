@@ -171,7 +171,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CardDesignController.cs" />
-    <Compile Include="Controllers\CrisisController.cs" />
     <Compile Include="Controllers\DoctorsBlogController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -443,7 +442,6 @@
     <Content Include="Views\CardDesign\Show.cshtml" />
     <Content Include="Views\CardDesign\Update.cshtml" />
     <Content Include="Views\CardDesign\Delete.cshtml" />
-    <Content Include="Views\Crisis\CrisisList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

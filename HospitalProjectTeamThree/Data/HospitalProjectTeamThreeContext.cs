@@ -61,6 +61,6 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Department> Departments { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Article> Articles { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.CardDesign> CardDesigns { get; set; }
-        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Crisis> Crises { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Crisis> Crisiss { get; set; }
     }
 }
