@@ -66,7 +66,7 @@ namespace HospitalProjectTeamThree.Controllers
         public async Task<ActionResult> Add(RoleViewModel model)
         {
             //take in the Name as a parameter
-            var role = new ApplicationRole() { Name = model.Name };
+            var role = new ApplicationRole() { Name = model.RoleName };
             await RoleManager.CreateAsync(role);
             return RedirectToAction("List");
         }
@@ -82,7 +82,7 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public async Task<ActionResult> Edit(RoleViewModel model)
         {
-            var role = new ApplicationRole() { Id = model.Id, Name = model.Name };
+            var role = new ApplicationRole() { Id = model.Id, Name = model.RoleName };
             await RoleManager.UpdateAsync(role);
             return RedirectToAction("List");
         }

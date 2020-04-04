@@ -15,9 +15,9 @@ namespace HospitalProjectTeamThree.Models
         public RoleViewModel (ApplicationRole role)
         {
             Id = role.Id;
-            Name = role.Name;
+            RoleName = role.Name;
         }
         public string Id { get; set; }
-        public string Name { get; set; }
+        public string RoleName { get; set; }
     }
 }

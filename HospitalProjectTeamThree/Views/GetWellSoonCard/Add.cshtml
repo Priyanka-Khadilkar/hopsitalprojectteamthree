@@ -12,7 +12,7 @@
             foreach (var design in Model.CardDesigns)
             {
                 <img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" alt="Image of the card" />
-                <input type="radio" name="CardDesignNumber" value="@(design.CardDesignId)" />
+                <input type="radio" name="CardDesignId" value="@(design.CardDesignId)" />
             }
         }
     </div>

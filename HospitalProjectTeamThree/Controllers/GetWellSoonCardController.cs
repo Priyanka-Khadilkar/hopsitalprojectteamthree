@@ -20,9 +20,9 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class GetWellSoonCardController : Controller
     {
-        //private ApplicationSignInManager _signInManager;
-        //private ApplicationUserManager _userManager;
-        //private ApplicationRoleManager _roleManager;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
@@ -34,41 +34,26 @@ namespace HospitalProjectTeamThree.Controllers
             //redirect to their personal page
             //else if they are not logged in or wrong logged in infor
             //reject them
-            //if (Request.IsAuthenticated)
-            //{
-                /*if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+            if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                 {
                     return RedirectToAction("List");
                 }
                 else
                 {
                     return RedirectToAction("Add");//To do: redirect action to personal list
-                }*/
-                //return RedirectToAction("List");
-            //}
-            //else
-            //{
-            //return View();
-            //}
-
-            /*if (Request.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Editor")))
-            {
-                return RedirectToAction("List");
-            }
-            else if (Request.IsAuthenticated && !User.IsInRole("Admin, Editor"))
-            {
-                return RedirectToAction("Add");
+                }
+                
             }
             else
             {
-                
-            }*/
-            return View();
-        }
-        
+                return View();
+            }       
+        }        
 
         [Authorize(Roles = "Admin, Editor")]
-        //only an admin can see the full list of card
+        //authorize function only allow a certain ppl role to see the full list of card
         //To Do: personal list of card, normal user can only see the card they create
         public ActionResult List()
         {
@@ -148,6 +133,10 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("I am trying to delete card id" + id);
             return View(Card);
         }
+        [Authorize(Roles = "Admin, Registered User")]
+        //authorize function only allow a certain ppl role to see the full list of card
+        //Admin has the full right to delete, User can delete their own cards.
+        //Editor has to ask for the permission from admin to delete.
         [HttpPost]
         public ActionResult Delete(int id, int CardId)
         {
@@ -157,7 +146,7 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("List");
         }
-        /*public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -196,7 +185,7 @@ namespace HospitalProjectTeamThree.Controllers
             {
                 _userManager = value;
             }
-        }*/
+        }
 
     }
 }
