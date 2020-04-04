@@ -298,6 +298,10 @@
     <Compile Include="Migrations\202004040048063_update AddBlogTopic.designer.cs">
       <DependentUpon>202004040048063_update AddBlogTopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004040040210_Update Event.cs" />
+    <Compile Include="Migrations\202004040040210_Update Event.designer.cs">
+      <DependentUpon>202004040040210_Update Event.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -553,6 +557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004040048063_update AddBlogTopic.resx">
       <DependentUpon>202004040048063_update AddBlogTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040040210_Update Event.resx">
+      <DependentUpon>202004040040210_Update Event.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

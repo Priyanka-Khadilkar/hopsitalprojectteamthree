@@ -24,7 +24,7 @@ namespace HospitalProjectTeamThree.Data
         }
 
         //Representing the Many in (Many Events to Many Users)
-        public virtual ICollection<Event> EventUsers { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
         //One user can create many get well cards
         public virtual ICollection<GetWellSoonCard> GetWellSoonCards { get; set; }
     }
@@ -54,7 +54,8 @@ namespace HospitalProjectTeamThree.Data
 
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.GetWellSoonCard> GetWellSoonCards { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Room> Rooms { get; set; }
-        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
+        
+        public virtual System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.DoctorsBlog> DoctorsBlogs { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.BlogTopic> Topics { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.LiveWaitTime> LiveWaitTimes { get; set; }
