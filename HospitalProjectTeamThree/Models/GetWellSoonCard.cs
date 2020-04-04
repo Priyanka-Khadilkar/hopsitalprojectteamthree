@@ -17,7 +17,7 @@ namespace HospitalProjectTeamThree.Models
         public int CardId { get; set; }
         public string Message { get; set; }
         public string CardDesignNumber { get; set; }
-        //public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public string PatientName { get; set; }
         public string RoomNumber { get; set; }
         public string PatientEmail { get; set; }
