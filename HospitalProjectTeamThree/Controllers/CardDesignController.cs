@@ -26,6 +26,7 @@ namespace HospitalProjectTeamThree.Controllers
            return View();
             
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult List()
         {
             string query = "Select * from CardDesigns";

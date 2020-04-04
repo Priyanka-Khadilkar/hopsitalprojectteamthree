@@ -344,6 +344,10 @@
     <Compile Include="Migrations\202004041626024_fixing bug get well soon card.designer.cs">
       <DependentUpon>202004041626024_fixing bug get well soon card.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004041726178_application user.cs" />
+    <Compile Include="Migrations\202004041726178_application user.designer.cs">
+      <DependentUpon>202004041726178_application user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -637,6 +641,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004041626024_fixing bug get well soon card.resx">
       <DependentUpon>202004041626024_fixing bug get well soon card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041726178_application user.resx">
+      <DependentUpon>202004041726178_application user.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

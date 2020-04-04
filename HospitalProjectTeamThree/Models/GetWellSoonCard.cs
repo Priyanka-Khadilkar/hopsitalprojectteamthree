@@ -29,7 +29,7 @@ namespace HospitalProjectTeamThree.Models
 
         /*public string CardUserId { get; set; }
         [ForeignKey("CardUserId")]*/
-        public virtual ApplicationUser Users { get; set; }
+        //public virtual ApplicationUser Users { get; set; }
     }
     
 }
