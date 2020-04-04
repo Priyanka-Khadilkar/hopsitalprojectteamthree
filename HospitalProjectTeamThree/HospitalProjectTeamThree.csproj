@@ -294,6 +294,22 @@
     <Compile Include="Migrations\202004032313389_crisis.designer.cs">
       <DependentUpon>202004032313389_crisis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004040048063_update AddBlogTopic.cs" />
+    <Compile Include="Migrations\202004040048063_update AddBlogTopic.designer.cs">
+      <DependentUpon>202004040048063_update AddBlogTopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004040107468_Resolved Event issue.cs" />
+    <Compile Include="Migrations\202004040107468_Resolved Event issue.designer.cs">
+      <DependentUpon>202004040107468_Resolved Event issue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004040119156_Removed Event.cs" />
+    <Compile Include="Migrations\202004040119156_Removed Event.designer.cs">
+      <DependentUpon>202004040119156_Removed Event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004040120519_Re Added Event.cs" />
+    <Compile Include="Migrations\202004040120519_Re Added Event.designer.cs">
+      <DependentUpon>202004040120519_Re Added Event.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -442,6 +458,7 @@
     <Content Include="Views\CardDesign\Show.cshtml" />
     <Content Include="Views\CardDesign\Update.cshtml" />
     <Content Include="Views\CardDesign\Delete.cshtml" />
+    <Content Include="Views\BlogTopics\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -545,6 +562,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004032313389_crisis.resx">
       <DependentUpon>202004032313389_crisis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040048063_update AddBlogTopic.resx">
+      <DependentUpon>202004040048063_update AddBlogTopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040107468_Resolved Event issue.resx">
+      <DependentUpon>202004040107468_Resolved Event issue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040119156_Removed Event.resx">
+      <DependentUpon>202004040119156_Removed Event.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004040120519_Re Added Event.resx">
+      <DependentUpon>202004040120519_Re Added Event.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

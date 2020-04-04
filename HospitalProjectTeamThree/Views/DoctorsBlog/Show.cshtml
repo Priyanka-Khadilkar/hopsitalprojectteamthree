@@ -1,12 +1,47 @@
-﻿@model HospitalProjectTeamThree.Models.DoctorsBlog
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddBlogTopic
 @{
     ViewBag.Title = "Show";
 }
 
 <h2>Blog Entry</h2>
-<div>Title: @Model.BlogTitle</div>
-<!--<div>Topic: @Model.Topics.</div>-->
-<div>Content: @Model.BlogContent</div>
-<div>Source: @Model.BlogSource</div>
-<div><a href="/DoctorsBlog/Update/@Model.BlogId">Edit Blog Entry</a></div>
-<div><a href="/DoctorsBlog/Delete/@Model.BlogId">Delete Blog Entry</a></div>
+<div>Title: @Model.Blog.BlogTitle</div>
+<div>
+    Topic:
+    @{
+        <!-- Here we show the topics that are on this blog entry -->
+        foreach (var Topic in @Model.BlogTopics)
+        {
+            <div class="list">
+                <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                @{
+
+                }
+                <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId">
+                    Remove Topic
+                </a>
+            </div>
+        }
+
+    }
+    <div class="add_topic">
+        <form method="post" action="/DoctorsBlog/AddTopic/@Model.Blog.BlogId">
+            <select name="TopicId" id="TopicId">
+                @{
+                    //We give the option to add another topic to the blog entry
+
+                    foreach (var Topic in Model.Add_Topic)
+                    {
+                        <option value="@Topic.TopicId">
+                            @Topic.TopicName
+                        </option>
+                    }
+                }
+            </select>
+            <input type="submit" class="button" value="Add Topic" />
+        </form>
+    </div>
+</div>
+<div>Content: @Model.Blog.BlogContent</div>
+<div>Source: @Model.Blog.BlogSource</div>
+<div><a href="/DoctorsBlog/Update/@Model.Blog.BlogId">Edit Blog Entry</a></div>
+<div><a href="/DoctorsBlog/Delete/@Model.Blog.BlogId">Delete Blog Entry</a></div>
