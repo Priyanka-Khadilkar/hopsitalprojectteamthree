@@ -348,6 +348,10 @@
     <Compile Include="Migrations\202004042117198_changing name in role table.designer.cs">
       <DependentUpon>202004042117198_changing name in role table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004042351025_crisis-date.cs" />
+    <Compile Include="Migrations\202004042351025_crisis-date.designer.cs">
+      <DependentUpon>202004042351025_crisis-date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -644,6 +648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004042117198_changing name in role table.resx">
       <DependentUpon>202004042117198_changing name in role table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004042351025_crisis-date.resx">
+      <DependentUpon>202004042351025_crisis-date.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

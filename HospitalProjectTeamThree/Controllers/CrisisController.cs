@@ -64,19 +64,22 @@ namespace HospitalProjectTeamThree.Controllers
         }
         [HttpPost]
 
-        public ActionResult CreateCrisis(string CrisisName, DateTime CrisisStarted, DateTime CrisisFinished, string CrisisDesc)
+        public ActionResult CreateCrisis(string CrisisName, string CrisisFinished, string CrisisDesc)
         {
+            DateTime CrisisStarted = DateTime.Now;
 
             Debug.WriteLine("Value of variables are " + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
+            
+                string query = "insert into Crises (CrisisName, CrisisStrated,CrisisFinished, CrisisDesc) values (@CrisisName, @CrisisStrated,@CrisisFinished,@CrisisDesc )";
+                SqlParameter[] sqlparams = new SqlParameter[3];
+                sqlparams[0] = new SqlParameter("@CrisisName", CrisisName);
+                sqlparams[1] = new SqlParameter("@CrisisStrated", CrisisStarted);
+                //sqlparams[2] = new SqlParameter("@CrisisFinished", CrisisFinished);
+                sqlparams[2] = new SqlParameter("@CrisisDesc", CrisisDesc);
+                db.Database.ExecuteSqlCommand(query, sqlparams);
 
-            string query = "insert into Crises (CrisisName, CrisisStrated, CrisisFinished, CrisisDesc) values (@CrisisName, @CrisisStrated, @CrisisFinished,@CrisisDesc )";
-            SqlParameter[] sqlparams = new SqlParameter[4];
-            sqlparams[0] = new SqlParameter("@CrisisName", CrisisName);
-            sqlparams[1] = new SqlParameter("@CrisisStrated", CrisisStarted);
-            sqlparams[2] = new SqlParameter("@CrisisFinished", CrisisFinished);
-            sqlparams[3] = new SqlParameter("@CrisisDesc", CrisisDesc);
-            db.Database.ExecuteSqlCommand(query, sqlparams);
-
+            
+            
             return RedirectToAction("CrisisList");
         }
 

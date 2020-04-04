@@ -16,7 +16,7 @@ namespace HospitalProjectTeamThree.Models
         public string CrisisName { get; set; }
         public string CrisisDesc { get; set; }
         public DateTime CrisisStrated { get; set; }
-        public DateTime CrisisFinished { get; set; }
+        public string CrisisFinished { get; set; }
 
         public ICollection<Article> Articles { get; set; }
 
