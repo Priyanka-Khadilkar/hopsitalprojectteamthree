@@ -319,6 +319,10 @@
     <Compile Include="Migrations\202004040351527_OnlineAppointmentBooking added.designer.cs">
       <DependentUpon>202004040351527_OnlineAppointmentBooking added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004041431401_viewcrisis viewmodel.cs" />
+    <Compile Include="Migrations\202004041431401_viewcrisis viewmodel.designer.cs">
+      <DependentUpon>202004041431401_viewcrisis viewmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -338,6 +342,7 @@
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
+    <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -470,6 +475,7 @@
     <Content Include="Views\CardDesign\Delete.cshtml" />
     <Content Include="Views\BlogTopics\List.cshtml" />
     <Content Include="Views\Crisis\CrisisList.cshtml" />
+    <Content Include="Views\Crisis\ViewCrisis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -591,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004040351527_OnlineAppointmentBooking added.resx">
       <DependentUpon>202004040351527_OnlineAppointmentBooking added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041431401_viewcrisis viewmodel.resx">
+      <DependentUpon>202004041431401_viewcrisis viewmodel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

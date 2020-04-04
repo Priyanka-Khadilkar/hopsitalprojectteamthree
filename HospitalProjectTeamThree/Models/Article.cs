@@ -18,8 +18,10 @@ namespace HospitalProjectTeamThree.Models
         public string ArticleContent { get; set; }
         public DateTime DatePosted { get; set; }
 
+        
+
         //public int CrisisId { get; set; }
         //[ForeignKey("CrisisId")]
-        //public virtual Crisis Crises { get; set; }
+        //public virtual Crisis Crisis { get; set; }
     }
 }
