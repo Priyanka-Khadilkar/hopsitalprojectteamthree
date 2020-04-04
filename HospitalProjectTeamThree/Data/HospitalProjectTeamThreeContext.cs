@@ -26,7 +26,7 @@ namespace HospitalProjectTeamThree.Data
         //Representing the Many in (Many Events to Many Users)
         public virtual ICollection<Event> Events { get; set; }
         //One user can create many get well cards
-        //public virtual ICollection<GetWellSoonCard> GetWellSoonCards { get; set; }
+        public virtual ICollection<GetWellSoonCard> GetWellSoonCards { get; set; }
 
         //One user can book many Appointments.
         public virtual ICollection<OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
