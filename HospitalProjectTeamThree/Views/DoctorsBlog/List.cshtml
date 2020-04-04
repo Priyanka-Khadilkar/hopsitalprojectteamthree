@@ -10,8 +10,25 @@
         {
             <div>
                 <div class="detail">
-                    <div>Title: @Blog.BlogTitle</div>
-                    <div>Topic: @Blog.Topics </div>
+                        <a href="/DoctorsBlog/Show/@Blog.BlogId">@Blog.BlogTitle</a>
+                        <div>
+                            Topic:  @{
+                                <!-- Here we show the topics that are on this blog entry -->
+                                foreach (var Topic in @Model.BlogTopics)
+                                {
+                                    <div class="list">
+                                        <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                                        @{
+
+                                        }
+                                        <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId">
+                                            Remove Topic
+                                        </a>
+                                    </div>
+                                }
+
+                            }
+                        </div>
                     <div>Content: @Blog.BlogContent</div>
                     <div>Source: @Blog.BlogSource </div>
                 </div>

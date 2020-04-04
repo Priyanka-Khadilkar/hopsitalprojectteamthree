@@ -476,6 +476,7 @@
     <Content Include="Views\BlogTopics\List.cshtml" />
     <Content Include="Views\Crisis\CrisisList.cshtml" />
     <Content Include="Views\Crisis\ViewCrisis.cshtml" />
+    <Content Include="Views\DoctorsBlog\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
