@@ -1,4 +1,6 @@
-﻿@model List<HospitalProjectTeamThree.Models.Article>
+﻿ <!--List<HospitalProjectTeamThree.Models.Article>-->
+@model HospitalProjectTeamThree.Models.ViewModels.ShowCrisis
+
 @{
     ViewBag.Title = "List";
 }
@@ -9,17 +11,19 @@
         <input type="text" name="articlesearchkey" id="articlesearchkey" />
         <input type="submit" value="Search" />
     </form>
-<h1 class="crisiscenter">Covid - 19</h1>
+<h1 class="crisiscenter">All Articles</h1>
 
 
 <div class="crisiscontainer">
     <aside class="left">
         <ul>
+            @{
+                foreach(var listcrisis in Model.listcrises) { 
 
-            <li><a href="#">Covid 19 2020</a></li>
-            <li><a href="#">Spanish Flu 1920</a></li>
-            <li><a href="#">Cholera 1820</a></li>
-
+                <li><a href="/Crisis/ViewCrisis/@listcrisis.CrisisId">@listcrisis.CrisisName</a></li>
+                
+                }
+            }
         </ul>
     </aside>
     <main class="crisismain">
@@ -27,17 +31,17 @@
         @{
 
 
-            foreach (var Article in Model)
+            foreach (var article in Model.articles)
             {
 
 
                 <p></p>
 
-                <h2>@Article.ArticleTitle</h2>
+                <h2>@article.ArticleTitle</h2>
 
-                <div class="cred"><span class="auth">Author: @Article.ArticleAuthor</span><span class="publ">Published: @Article.DatePosted</span></div>
-                <p>@Article.ArticleContent </p>
-                <button><a href="/Article/ViewArticle/@Article.ArticleId"> Click To Read</a></button>
+                <div class="cred"><span class="auth">Author: @article.ArticleAuthor</span><span class="publ">Published: @article.DatePosted</span></div>
+                <p>@article.ArticleContent </p>
+                <button><a href="/Article/ViewArticle/@article.ArticleId"> Click To Read</a></button>
                 <hr />
             }
         }

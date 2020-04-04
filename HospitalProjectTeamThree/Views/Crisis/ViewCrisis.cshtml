@@ -1,8 +1,23 @@
-﻿
+﻿@model HospitalProjectTeamThree.Models.ViewModels.ShowCrisis
 @{
     ViewBag.Title = "ViewCrisis";
 }
 
-<h2>ViewCrisis</h2>
 
 
+<h1 class="crisiscenter">@Model.crises.CrisisName</h1>
+
+@{ 
+
+    foreach(var Articles in Model.articles)
+    {
+        <p>Article Title: @Articles.ArticleTitle</p>
+        <p>Article Author: @Articles.ArticleAuthor</p>
+        <p>Published on: @Articles.DatePosted</p>
+        <p>@Articles.ArticleContent</p>
+        <hr />
+        
+    }
+
+
+}

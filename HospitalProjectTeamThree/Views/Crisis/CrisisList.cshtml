@@ -10,7 +10,7 @@
 
     foreach (var Crisis in Model)
     {
-        <p>Crisis Name: @Crisis.CrisisName</p>
+        <p>Crisis Name: <a href="/Crisis/ViewCrisis/@Crisis.CrisisId">@Crisis.CrisisName</a></p>
         <p>Crisis description: @Crisis.CrisisDesc</p>
         <p>Crisis Started: @Crisis.CrisisStrated</p>
         <p>Crisis Finished: @Crisis.CrisisFinished</p>

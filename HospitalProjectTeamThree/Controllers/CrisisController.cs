@@ -9,10 +9,13 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using HospitalProjectTeamThree.Models;
+using HospitalProjectTeamThree.Models.ViewModels;
 using System.Collections.Generic;
 using HospitalProjectTeamThree.Data;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.IO;
+using System.Data.Entity;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -32,6 +35,28 @@ namespace HospitalProjectTeamThree.Controllers
             //Debug.WriteLine("Checking connection to database");
             return View(crises);
 
+        }
+        public ActionResult ViewCrisis(int? id)
+        {
+
+
+            //get all info about specific crisis
+            Crisis Crisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId=@CrisisId", new SqlParameter("@CrisisId", id)).FirstOrDefault();
+
+
+            //list all articles related to specific crisis
+            string query = "select * from Articles inner join Crises on Articles.Crisis_CrisisId=Crises.CrisisId where Crisis_CrisisId = @id";
+            SqlParameter param = new SqlParameter("@id", id);
+            List<Article> Articles = db.Articles.SqlQuery(query, param).ToList();
+
+
+            ShowCrisis viewmodel = new ShowCrisis();
+            viewmodel.crises = Crisis;
+            viewmodel.articles = Articles;
+
+
+
+            return View(viewmodel);
         }
         public ActionResult CreateCrisis()
         {

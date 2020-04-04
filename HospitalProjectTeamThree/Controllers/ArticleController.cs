@@ -41,6 +41,7 @@ namespace HospitalProjectTeamThree.Controllers
                 sqlparams.Add(new SqlParameter("@searchkey", "%" + articlesearchkey + "%"));
                 //Debug.WriteLine("The query is "+ query);
             }
+            List<Crisis> crises = db.Crisiss.SqlQuery("select * from Crises").ToList();
 
             List<Article> articles = db.Articles.SqlQuery(query, sqlparams.ToArray()).ToList();
             // Code reference - Christine Bittle
@@ -73,8 +74,12 @@ namespace HospitalProjectTeamThree.Controllers
                 articles = db.Articles.SqlQuery(pagedquery, newparams.ToArray()).ToList();
             }
             //End of Pagination Algorithm
-
-            return View(articles);
+            //Begin ShowCrisis ViewModel
+            ShowCrisis viewmodel = new ShowCrisis();
+            viewmodel.listcrises = crises;
+            viewmodel.articles = articles;
+            //End ShowCrisis ViewModel
+            return View(viewmodel);
 
         }
         public ActionResult ViewArticle(int? id)
