@@ -1,0 +1,21 @@
+﻿@model List<HospitalProjectTeamThree.Models.Crisis>
+@{
+    ViewBag.Title = "CrisisList";
+}
+
+<h2>CrisisList</h2>
+
+@{
+
+
+    foreach (var Crisis in Model)
+    { 
+    <p>Crisis Name: @Crisis.CrisisName</p>
+    <p>Crisis description: @Crisis.CrisisDesc</p>
+    <p>Crisis Started: @Crisis.CrisisStrated</p>
+    <p>Crisis Finished: @Crisis.CrisisFinished</p>
+    <button><a href="/Crisis/UpdateCrisis/@Crisis.CrisisId">Update</a></button>
+    <button><a href="/Crisis/DeleteCrisis/@Crisis.CrisisId">Delete</a></button>
+    <hr />
+    }
+}

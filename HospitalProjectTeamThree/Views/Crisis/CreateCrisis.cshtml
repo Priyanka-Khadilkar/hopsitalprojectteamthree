@@ -3,5 +3,16 @@
     ViewBag.Title = "CreateCrisis";
 }
 
-<h2>CreateCrisis</h2>
 
+<a href="/Crisis/List">Back to List of all Crises</a>
+
+<form method="post" action="/Crisis/CreateCrisis">
+    
+        <h1> Create New Crisis</h1>
+        <div><label for="CrisisName">Enter crisis Name: </label><br /><input id="CrisisName" type="text" name="CrisisName" /></div>
+        <div><label for="CrisisStarted">Crisis Started</label><br /><input id="CrisisStarted" type="date" name="CrisisStarted" /></div>
+        <div><label for="CrisisFinished">Crisis Finished</label><br /><input id="CrisisFinished" type="date" name="CrisisFinished" /></div>
+        <div><label for="CrisisDesc">Crisis Description</label><br /><textarea id="CrisisDesc" name="CrisisDesc" rows="4" cols="50"></textarea></div>
+        <div><input type="submit" value="Add Crisis"></div>
+    
+</form>
