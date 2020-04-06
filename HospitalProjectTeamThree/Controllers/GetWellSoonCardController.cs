@@ -57,17 +57,18 @@ namespace HospitalProjectTeamThree.Controllers
         //To Do: personal list of card, normal user can only see the card they create
         public ActionResult List()
         {
-            //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId";
-            //string showCardQuery = "Select * from CardDesigns";
-            //List<GetWellSoonCard> allCards = db.GetWellSoonCards.SqlQuery(showCardQuery).ToList();
-            //CardDesign cardDesign = db.CardDesigns.SqlQuery(showDesignQuery).ToList();
-            //Debug.WriteLine("Iam trying to list all the cards");
+            //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id";
+            //string showCardQuery = "Select * from GetWellSoonCards";
+            /*List<GetWellSoonCard> allCards = db.GetWellSoonCards.SqlQuery(showCardQuery).ToList();
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[1] = new SqlParameter("@id", id);*/
+            Debug.WriteLine("Iam trying to list all the cards");
 
             //ListGetWell ListGetWellViewModel = new ListGetWell();
             //ListGetWellViewModel.GetWellSoonCard = allCards;
             //ListGetWellViewModel.CardDesign = cardDesign;
 
-            //return View(ListGetWellViewModel);           
+            //return View();           
             string query = "Select * from GetWellSoonCards";
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
@@ -101,13 +102,21 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult Show(int id)
         {
             GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             Debug.WriteLine("I am trying to show card id" + id);
-            return View(Card);
+            ShowGetWell ShowGetWellViewModel = new ShowGetWell();
+            ShowGetWellViewModel.GetWellSoonCard = Card;
+            ShowGetWellViewModel.CardDesign = Design;
+            return View(ShowGetWellViewModel);
         }
         public ActionResult Update(int id)
         {
             GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             Debug.WriteLine("I am trying to show card id" + id);
+            ShowGetWell ShowGetWellViewModel = new ShowGetWell();
+            ShowGetWellViewModel.GetWellSoonCard = Card;
+            ShowGetWellViewModel.CardDesign = Design;
             return View(Card);
         }
         [HttpPost]
