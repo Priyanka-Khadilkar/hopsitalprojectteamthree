@@ -30,6 +30,9 @@ namespace HospitalProjectTeamThree.Data
 
         //One user can book many Appointments.
         public virtual ICollection<OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
+
+        //One user can write many Job Listings
+        public virtual ICollection<JobListing> JobListings { get; set; }
     }
     //adding roles to user: Admin, Editor, Registered user
     public class ApplicationRole : IdentityRole
@@ -68,5 +71,6 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Crisis> Crisiss { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
 
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.JobListing> JobListings { get; set; }
     }
 }

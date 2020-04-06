@@ -176,6 +176,7 @@
     <Compile Include="Controllers\DoctorsBlogController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
@@ -352,6 +353,10 @@
     <Compile Include="Migrations\202004042351025_crisis-date.designer.cs">
       <DependentUpon>202004042351025_crisis-date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004060053186_jobListing.cs" />
+    <Compile Include="Migrations\202004060053186_jobListing.designer.cs">
+      <DependentUpon>202004060053186_jobListing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -363,6 +368,7 @@
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobListing.cs" />
     <Compile Include="Models\LiveWaitTime.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\OnlineAppointmentBooking.cs" />
@@ -506,6 +512,12 @@
     <Content Include="Views\Crisis\CrisisList.cshtml" />
     <Content Include="Views\Crisis\ViewCrisis.cshtml" />
     <Content Include="Views\DoctorsBlog\Delete.cshtml" />
+    <Content Include="Views\JobListing\List.cshtml" />
+    <Content Include="Views\JobListing\Add.cshtml" />
+    <Content Include="Views\JobListing\Delete.cshtml" />
+    <Content Include="Views\JobListing\Index.cshtml" />
+    <Content Include="Views\JobListing\Show.cshtml" />
+    <Content Include="Views\JobListing\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -651,6 +663,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004042351025_crisis-date.resx">
       <DependentUpon>202004042351025_crisis-date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004060053186_jobListing.resx">
+      <DependentUpon>202004060053186_jobListing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
