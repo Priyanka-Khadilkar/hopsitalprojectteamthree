@@ -96,8 +96,9 @@ namespace HospitalProjectTeamThree.Controllers
         }
         [HttpPost]
 
-        public ActionResult CreateArticle(string ArticleAuthor, string ArticleTitle, string ArticleContent, DateTime DatePosted, int CrisisId)
+        public ActionResult CreateArticle(string ArticleAuthor, string ArticleTitle, string ArticleContent, int CrisisId)
         {
+            DateTime DatePosted = DateTime.Now;
 
             Debug.WriteLine("Value of variables are " + ArticleAuthor + ArticleTitle + ArticleContent + DatePosted);
 

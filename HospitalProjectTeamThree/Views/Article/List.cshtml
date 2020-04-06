@@ -7,10 +7,10 @@
 
 
 
-    <form action="/Article/List" method="GET">
-        <input type="text" name="articlesearchkey" id="articlesearchkey" />
-        <input type="submit" value="Search" />
-    </form>
+<!--<form action="/Article/List" method="GET">
+    <input type="text" name="articlesearchkey" id="articlesearchkey" />
+    <input type="submit" value="Search" />
+</form>-->
 <h1 class="crisiscenter">All Articles</h1>
 
 
@@ -18,10 +18,11 @@
     <aside class="left">
         <ul>
             @{
-                foreach(var listcrisis in Model.listcrises) { 
+                foreach (var listcrisis in Model.listcrises)
+                {
 
-                <li><a href="/Crisis/ViewCrisis/@listcrisis.CrisisId">@listcrisis.CrisisName</a></li>
-                
+                    <li><a href="/Crisis/ViewCrisis/@listcrisis.CrisisId">@listcrisis.CrisisName</a></li>
+
                 }
             }
         </ul>

@@ -67,15 +67,19 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult CreateCrisis(string CrisisName, string CrisisFinished, string CrisisDesc)
         {
             DateTime CrisisStarted = DateTime.Now;
-
+            if (CrisisFinished == "")
+            {
+                CrisisFinished = "No";
+               
+            }
             Debug.WriteLine("Value of variables are " + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
             
                 string query = "insert into Crises (CrisisName, CrisisStrated,CrisisFinished, CrisisDesc) values (@CrisisName, @CrisisStrated,@CrisisFinished,@CrisisDesc )";
-                SqlParameter[] sqlparams = new SqlParameter[3];
+                SqlParameter[] sqlparams = new SqlParameter[4];
                 sqlparams[0] = new SqlParameter("@CrisisName", CrisisName);
                 sqlparams[1] = new SqlParameter("@CrisisStrated", CrisisStarted);
-                //sqlparams[2] = new SqlParameter("@CrisisFinished", CrisisFinished);
-                sqlparams[2] = new SqlParameter("@CrisisDesc", CrisisDesc);
+                sqlparams[2] = new SqlParameter("@CrisisFinished", CrisisFinished);
+                sqlparams[3] = new SqlParameter("@CrisisDesc", CrisisDesc);
                 db.Database.ExecuteSqlCommand(query, sqlparams);
 
             
@@ -85,13 +89,13 @@ namespace HospitalProjectTeamThree.Controllers
 
         public ActionResult UpdateCrisis(int id)
         {
-            //retrieves info for a specific vehicle type
+            //retrieves info for a specific crisis
             Crisis selectedcrisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId = @id", new SqlParameter("@id", id)).FirstOrDefault();
 
             return View(selectedcrisis);
         }
         [HttpPost]
-        public ActionResult UpdateCrisis(int id, string CrisisName, DateTime CrisisStarted, DateTime CrisisFinished, string CrisisDesc)
+        public ActionResult UpdateCrisis(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
         {
 
             Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
@@ -114,11 +118,19 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult DeleteCrisis(int id)
         {
-            //Deletes the record from the database
-            string query = "delete from Crises where CrisisId=@id";
-            SqlParameter sqlparam = new SqlParameter("@id", id);
+        //Deletes the record from the database
+        https://www.mysqltutorial.org/mysql-delete-join/
+              //string query = "delete Articles, Crises from Articles Inner Join Crises on Crises.CrisisId = Articles.Crisis_CrisisId where Crisis_CrisisID=@id";
 
+            string query = "delete  from Crises where CrisisID=@id";
+            SqlParameter sqlparam = new SqlParameter("@id", id);
             db.Database.ExecuteSqlCommand(query, sqlparam);
+
+            //Need to delete from Articles where CrisisId = id
+            //string query2 = "delete from Articles where Crisis_CrisiId=@id";
+            //SqlParameter sqlparam2 = new SqlParameter("@id", id);
+            //db.Database.ExecuteSqlCommand(query, sqlparam);
+
             return RedirectToAction("CrisisList");
         }
     }
