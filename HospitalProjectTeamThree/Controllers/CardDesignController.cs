@@ -125,7 +125,7 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public ActionResult Delete(int id, int CardDesignId)
         {
-            string query = "Delete from CardDesignId where CardDesignId = @CardDesignID";
+            string query = "Delete from CardDesigns where CardDesignId = @CardDesignID";
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[0] = new SqlParameter("@CardDesignId", CardDesignId);
             db.Database.ExecuteSqlCommand(query, sqlparams);

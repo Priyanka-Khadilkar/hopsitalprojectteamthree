@@ -7,10 +7,13 @@
 @{
     foreach (var Design in Model)
     {
-        <div><img src="../../Images/GetWellCard/@(Design.CardDesignId).@(Design.PicExt)" alt="Image of the card" />"</div>
-        <div>@Design.DesignName</div>
-        <div><a href="/CardDesign/Update/@Design.CardDesignId">Update the card</a></div>
+        <div class="col-md-3">
+            <a href="/CardDesign/Show/@Design.CardDesignId"><img src="../../Images/GetWellCard/@(Design.CardDesignId).@(Design.PicExt)" alt="Image of the card" /></a>
+            <div>@Design.DesignName</div>
+            <div><a href="/CardDesign/Update/@Design.CardDesignId">Update the card</a></div>
+        </div>
+
     }
 }
-<a href="/CardDesign/Add">Add a design</a>
+<div><a href="/CardDesign/Add">Add a design</a></div>
 

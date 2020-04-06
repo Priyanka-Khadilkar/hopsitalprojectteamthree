@@ -112,20 +112,20 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult Update(int id)
         {
             GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
-            CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            List<CardDesign> Designs = db.CardDesigns.SqlQuery("Select * from CardDesigns").ToList();
             Debug.WriteLine("I am trying to show card id" + id);
-            ShowGetWell ShowGetWellViewModel = new ShowGetWell();
-            ShowGetWellViewModel.GetWellSoonCard = Card;
-            ShowGetWellViewModel.CardDesign = Design;
-            return View(Card);
+            UpdateGetWell UpdateGetWellViewModel = new UpdateGetWell();
+            UpdateGetWellViewModel.GetWellSoonCard = Card;
+            UpdateGetWellViewModel.CardDesigns = Designs;
+            return View(UpdateGetWellViewModel);
         }
         [HttpPost]
-        public ActionResult Update(string Message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignNumber, int CardId)
+        public ActionResult Update(string Message, string PatientName, string PatientEmail, string RoomNumber, int CardId, int CardDesignId)
         {
-            string query = "Update GetWellSoonCards set Message=@Message, PatientName=@PatientName, PatientEmail=@PatientEmail, RoomNumber=@RoomNumber, CardDesignNumber=@CardDesignNumber where CardId=@CardId";
+            string query = "Update GetWellSoonCards set Message=@Message, PatientName=@PatientName, PatientEmail=@PatientEmail, CardDesignId=@CardDesignId, RoomNumber=@RoomNumber where CardId=@CardId";
             SqlParameter[] sqlparams = new SqlParameter[6];
             sqlparams[0] = new SqlParameter("@Message", Message);
-            sqlparams[1] = new SqlParameter("@CardDesignNumber", CardDesignNumber);
+            sqlparams[1] = new SqlParameter("@CardDesignId", CardDesignId);
             sqlparams[2] = new SqlParameter("@PatientName", PatientName);
             sqlparams[3] = new SqlParameter("@PatientEmail", PatientEmail);
             sqlparams[4] = new SqlParameter("@RoomNumber", RoomNumber);
@@ -139,8 +139,12 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult Delete(int id)
         {
             GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
-            Debug.WriteLine("I am trying to delete card id" + id);
-            return View(Card);
+            CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            Debug.WriteLine("I am trying to show card id" + id);
+            ShowGetWell ShowGetWellViewModel = new ShowGetWell();
+            ShowGetWellViewModel.GetWellSoonCard = Card;
+            ShowGetWellViewModel.CardDesign = Design;
+            return View(ShowGetWellViewModel);
         }
         [Authorize(Roles = "Admin, Registered User")]
         //authorize function only allow a certain ppl role to see the full list of card
