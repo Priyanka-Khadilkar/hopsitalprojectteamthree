@@ -25,18 +25,14 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult List(string articlesearchkey, int pagenum = 0)
         {
-            //can we access the search key?
-            //Debug.WriteLine("The search key is "+articlesearchkey);
 
-
-
-            string query = "Select * from Articles"; //order by is needed for offset
-            //easier in a list.. we don't know how many more we'll add yet
+            string query = "Select * from Articles"; 
+            
             List<SqlParameter> sqlparams = new List<SqlParameter>();
 
             if (articlesearchkey != "")
             {
-                //modify the query to include the search key
+                
                 query = query + " where ArticleTitle like @searchkey";
                 sqlparams.Add(new SqlParameter("@searchkey", "%" + articlesearchkey + "%"));
                 //Debug.WriteLine("The query is "+ query);
@@ -44,7 +40,9 @@ namespace HospitalProjectTeamThree.Controllers
             List<Crisis> crises = db.Crisiss.SqlQuery("select * from Crises").ToList();
 
             List<Article> articles = db.Articles.SqlQuery(query, sqlparams.ToArray()).ToList();
+           
             // Code reference - Christine Bittle
+
             //Start of Pagination Algorithm (Raw MSSQL)
             int perpage = 3;
             int artcount = articles.Count();
@@ -74,6 +72,7 @@ namespace HospitalProjectTeamThree.Controllers
                 articles = db.Articles.SqlQuery(pagedquery, newparams.ToArray()).ToList();
             }
             //End of Pagination Algorithm
+
             //Begin ShowCrisis ViewModel
             ShowCrisis viewmodel = new ShowCrisis();
             viewmodel.listcrises = crises;
@@ -89,14 +88,14 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("Checking if getting id :" + id);
             return View(article);
         }
-        public ActionResult CreateArticle()
+        public ActionResult Add()
         {
             List<Crisis> crises = db.Crisiss.SqlQuery("select * from Crises").ToList();
             return View(crises);
         }
         [HttpPost]
 
-        public ActionResult CreateArticle(string ArticleAuthor, string ArticleTitle, string ArticleContent, int CrisisId)
+        public ActionResult Add(string ArticleAuthor, string ArticleTitle, string ArticleContent, int CrisisId)
         {
             DateTime DatePosted = DateTime.Now;
 
@@ -113,7 +112,35 @@ namespace HospitalProjectTeamThree.Controllers
 
             return RedirectToAction("List");
         }
+        //begin
+        public ActionResult Update(int id)
+        {
+            //retrieves info for a specific article
+            Article selectedarticle = db.Articles.SqlQuery("select * from Articles where ArticleId = @id", new SqlParameter("@id", id)).FirstOrDefault();
 
+            return View(selectedarticle);
+        }
+        [HttpPost]
+        public ActionResult Update(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
+        {
+
+            //Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
+
+            // updates the record on the submission
+            string query = "update Crises SET  CrisisName=@CrisisName, CrisisStrated=@CrisisStrated, CrisisFinished=@CrisisFinished, CrisisDesc=@CrisisDesc where CrisisId=@id";
+            SqlParameter[] sqlparams = new SqlParameter[5];
+
+            sqlparams[0] = new SqlParameter("@CrisisName", CrisisName);
+            sqlparams[1] = new SqlParameter("@id", id);
+            sqlparams[2] = new SqlParameter("@CrisisStrated", CrisisStarted);
+            sqlparams[3] = new SqlParameter("@CrisisFinished", CrisisFinished);
+            sqlparams[4] = new SqlParameter("@CrisisDesc", CrisisDesc);
+
+
+            db.Database.ExecuteSqlCommand(query, sqlparams);
+            return RedirectToAction("CrisisList");
+        }
+        //end
         public ActionResult Admin()
         {
             return View();

@@ -98,12 +98,10 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult UpdateCrisis(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
         {
 
-            Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
+            //Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
 
             // updates the record on the submission
             string query = "update Crises SET  CrisisName=@CrisisName, CrisisStrated=@CrisisStrated, CrisisFinished=@CrisisFinished, CrisisDesc=@CrisisDesc where CrisisId=@id";
-
-
             SqlParameter[] sqlparams = new SqlParameter[5];
 
             sqlparams[0] = new SqlParameter("@CrisisName", CrisisName);
@@ -118,10 +116,17 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult DeleteCrisis(int id)
         {
-        //Deletes the record from the database
-        https://www.mysqltutorial.org/mysql-delete-join/
-              //string query = "delete Articles, Crises from Articles Inner Join Crises on Crises.CrisisId = Articles.Crisis_CrisisId where Crisis_CrisisID=@id";
+            //Deletes the record from the database
+            //https://www.mysqltutorial.org/mysql-delete-join/
+            //string query = "delete Articles, Crises from Articles Inner Join Crises on Crises.CrisisId = Articles.Crisis_CrisisId where Crisis_CrisisID=@id";
+            
+            //I  will delete all articles related to the Crisis with id provided first
+            string query1 = "delete from articles where Crisis_CrisisId=@id";
+            SqlParameter sqlparam1 = new SqlParameter("@id", id);
+            db.Database.ExecuteSqlCommand(query1, sqlparam1);
 
+
+            // and then delete crisis itself
             string query = "delete  from Crises where CrisisID=@id";
             SqlParameter sqlparam = new SqlParameter("@id", id);
             db.Database.ExecuteSqlCommand(query, sqlparam);

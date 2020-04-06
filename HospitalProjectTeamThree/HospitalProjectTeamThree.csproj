@@ -505,7 +505,7 @@
     <Content Include="Views\Room\ShowAll.cshtml" />
     <Content Include="Views\Article\ViewArticle.cshtml" />
     <Content Include="Views\Article\List.cshtml" />
-    <Content Include="Views\Article\CreateArticle.cshtml" />
+    <Content Include="Views\Article\Add.cshtml" />
     <Content Include="Views\Crisis\CreateCrisis.cshtml" />
     <Content Include="Views\Crisis\UpdateCrisis.cshtml" />
     <Content Include="Views\Crisis\DeleteCrisis.cshtml" />
@@ -532,6 +532,7 @@
     <Content Include="Views\JobListing\Update.cshtml" />
     <Content Include="Views\Room\ShowOne.cshtml" />
     <Content Include="Views\Room\AdminView.cshtml" />
+    <Content Include="Views\Article\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

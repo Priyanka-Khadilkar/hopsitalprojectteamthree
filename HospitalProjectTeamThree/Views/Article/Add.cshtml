@@ -1,12 +1,12 @@
 ﻿@model  List<HospitalProjectTeamThree.Models.Crisis>
 @{
-    ViewBag.Title = "CreateArticle";
+    ViewBag.Title = "Add";
 }
 
-<h2>CreateArticle</h2>
+<h2>Add New Article</h2>
 
 <a href="/Article/List">Back to List of all Articles</a>
-<form method="post" action="/Article/CreateArticle">
+<form method="post" action="/Article/Add">
     <div>
         <span>Crisis Name :</span><br />
         <select id="CrisisId" type="text" name="CrisisId">

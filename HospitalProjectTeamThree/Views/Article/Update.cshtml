@@ -1,0 +1,39 @@
+﻿@model  HospitalProjectTeamThree.Models.ViewModels.ShowCrisis
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Add New Article</h2>
+
+<a href="/Article/List">Back to List of all Articles</a>
+<form method="post" action="/Article/Add">
+    <div>
+        <span>Crisis Name :</span><br />
+        <select id="CrisisId" type="text" name="CrisisId">
+            @{
+
+                foreach (var Crisis in Model)
+                {
+                    <option value="@Crisis.CrisisId">@Crisis.CrisisName</option>
+
+                }
+            }
+        </select>
+
+    </div>
+    <div>
+        <span>Author Name: </span><br />
+        <input id="ArticleAuthor" type="text" name="ArticleAuthor" />
+    </div>
+    <!--<div><label for="DatePosted">Published: </label><br />
+    <input id="DatePosted" type="date" name="DatePosted" /></div>-->
+    <div>
+        <span>Article Title: </span><br />
+        <input id="ArticleTitle" type="text" name="ArticleTitle" />
+    </div>
+    <div>
+        <span>Article Content: </span><br />
+        <textarea id="ArticleContent" name="ArticleContent" rows="4" cols="50"> </textarea>
+    </div>
+    <div><input type="submit" value="Add New Article"></div>
+</form>
