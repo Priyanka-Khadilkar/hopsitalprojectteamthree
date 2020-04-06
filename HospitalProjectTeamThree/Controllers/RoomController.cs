@@ -25,6 +25,7 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult ShowAll()
         {
+
             string query = "Select * from Rooms ";
             List<Room> rooms = db.Rooms.SqlQuery(query).ToList();
             //Debug.WriteLine("Checking connection to database");

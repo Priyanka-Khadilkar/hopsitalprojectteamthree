@@ -15,9 +15,27 @@
 
 
             <div class="card">
-                <div class="thumb">
-                    <img src="~/images/Room/private.jpg" alt="">
-                </div>
+                    <div class="thumb">
+
+                        @{
+                            switch (@Room.RoomType)
+                            {
+                                case "Private":
+                                    <img src="~/images/Room/private.jpg" alt="">
+                                    break;
+                                case "Semi-private":
+                                    <img src="~/images/Room/semiprivate.jpg" alt="">
+                                    break;
+                                default:
+                                    <img src="~/images/Room/public.jpg" alt="">
+                                    break;
+                            }
+                        }
+
+
+
+
+                    </div>
                 <div class="desc"><h2>@Room.RoomType</h2></div>
                 <div class="price center">@Room.RoomPrice</div>
                 <p class="center">Must be logged in to register for a room</p>

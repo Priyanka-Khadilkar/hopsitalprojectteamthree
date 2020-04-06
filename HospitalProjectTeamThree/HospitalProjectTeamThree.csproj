@@ -420,6 +420,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Room\private.jpg" />
+    <Content Include="Images\Room\public.jpg" />
+    <Content Include="Images\Room\semiprivate.jpg" />
     <Content Include="obj\Debug\HospitalProjectTeamThree.csproj.FileListAbsolute.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
