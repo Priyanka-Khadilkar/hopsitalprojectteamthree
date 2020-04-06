@@ -13,7 +13,8 @@ using HospitalProjectTeamThree.Models;
 using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
 using System.IO;
-//using HospitalProjectTeamThree.Migrations;
+//need this for pagination
+using PagedList;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -28,12 +29,17 @@ namespace HospitalProjectTeamThree.Controllers
         }
         [Authorize(Roles = "Admin, Editor")]
         //admin and editor can see the list of card designs
-        public ActionResult List()
+        public ActionResult List(int? page)
         {
             string query = "Select * from CardDesigns";
-            List<CardDesign> carddesigns = db.CardDesigns.SqlQuery(query).ToList();
+            List<CardDesign> CardDesigns = db.CardDesigns.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
-            return View(carddesigns);
+            //return View(carddesigns);
+            //allow 4 index at the page
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            //passing the pagelist to the view
+            return View(CardDesigns.ToPagedList(pageNumber, pageSize));
         }
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult Add()

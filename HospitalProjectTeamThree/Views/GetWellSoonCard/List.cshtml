@@ -1,13 +1,17 @@
-﻿@model List<HospitalProjectTeamThree.Models.GetWellSoonCard>
+﻿<!--model List<HospitalProjectTeamThree.Models.GetWellSoonCard>-->
+<!--passing page list to the view-->
+@model PagedList.IPagedList<HospitalProjectTeamThree.Models.GetWellSoonCard>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List of Cards</h2>
 <div class="content">
-        @{
-            foreach (var Card in Model)
-            {
+    @{
+        foreach (var Card in Model)
+        {
             <div class="col-md-4">
                 <div>Message: @Card.Message</div>
                 <div>To: @Card.PatientName <span>@Card.PatientEmail</span></div>
@@ -16,7 +20,15 @@
                 <div><a href="/GetWellSoonCard/Show/@Card.CardId">Click to see the card</a></div>
                 <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
             </div>
-            }
         }
-    </div>
+    }
+</div>
 <a href="/GetWellSoonCard/Add">Add a card</a>
+<!--adding pagination-->
+<div>
+    <!--Display Page 1 of 2-->
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    <!--Display the link to click on and go to the 2nd page-->
+    @Html.PagedListPager(Model, page => Url.Action("List",
+    new { page }))
+</div>

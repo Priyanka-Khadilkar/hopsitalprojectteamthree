@@ -15,6 +15,8 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web.Security;
+//need this for pagination
+using PagedList;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -55,7 +57,7 @@ namespace HospitalProjectTeamThree.Controllers
         [Authorize(Roles = "Admin, Editor")]
         //authorize function only allow a certain ppl role to see the full list of card
         //To Do: personal list of card, normal user can only see the card they create
-        public ActionResult List()
+        public ActionResult List(int? page)
         {
             //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id";
             //string showCardQuery = "Select * from GetWellSoonCards";
@@ -72,7 +74,12 @@ namespace HospitalProjectTeamThree.Controllers
             string query = "Select * from GetWellSoonCards";
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
-            return View(GetWellSoonCards);
+            //return View(GetWellSoonCards);
+            //allow 3 index at the page
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            //passing the pagelist to the view
+            return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Add()
         {
