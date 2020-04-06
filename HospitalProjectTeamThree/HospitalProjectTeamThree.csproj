@@ -376,6 +376,7 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
+    <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
@@ -521,6 +522,8 @@
     <Content Include="Views\JobListing\Index.cshtml" />
     <Content Include="Views\JobListing\Show.cshtml" />
     <Content Include="Views\JobListing\Update.cshtml" />
+    <Content Include="Views\Room\ShowOne.cshtml" />
+    <Content Include="Views\Room\AdminView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

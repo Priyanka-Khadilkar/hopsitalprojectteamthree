@@ -1,0 +1,104 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.FeaturedRoom
+@{
+    ViewBag.Title = "ShowOne";
+}
+
+<h2>ShowOne</h2>
+
+<div class="featured">
+    <div class="card featured">
+        <div class="thumb">
+            
+            @{
+                <!--Display appropriate image, for room type-->
+                switch (@Model.room.RoomType)
+                {
+                    case "Private":
+                        <img src="~/images/Room/private.jpg" alt="">
+                        break;
+                    case "Semi-private":
+                        <img src="~/images/Room/semiprivate.jpg" alt="">
+                        break;
+                    default:
+                        <img src="~/images/Room/public.jpg" alt="">
+                        break;
+                }
+            }
+
+
+        </div>
+        <div class="desc">
+            <h2>@Model.room.RoomType</h2>
+        </div>
+        <div class="price center">Room Price: $@Model.room.RoomPrice</div>
+        <div class="price center">Total Bed: @Model.room.RoomTotalBeds</div>
+       
+    </div>
+
+    <div class="roomdesc">
+        <p>Private room</p>
+    </div>
+</div>
+@*<div class="jumbotron profile">
+
+            <form action="" method="POST">
+
+                <label for="uid">User ID</label>
+                <input type="text" id="uid" name="uid" value="" disabled /></br>
+                <label for="userisAdmin">Role</label>
+                <input type="text" id="userisAdmin" name="userisAdmin" value="" disabled /></br>
+                <label for="userfname">First Name: </label>
+                <input type="text" id="userfname" name="userfname" value="" /> </br>
+                <label for="userlname">Last Name: </label>
+                <input type="text" id="userlname" name="userlname" value="" /></br>
+                <label for="useremail">Email: </label>
+                <input type="text" id="useremail" name="useremail" value="" /></br>
+                <label for="userpassword">Password: </label>
+                <input type="password" id="userpassword" name="userpassword" value="" /></br>
+                <button type="submit" name="updUser" id="updUser"> Update User</button>
+                <button type="submit" name="deleteUser" id="deleteUser"> Delete Account</button>
+
+        </form>
+
+    </div>*@
+<div class="flex-container">
+    @{
+
+
+        foreach (var Room in Model.rooms)
+        {
+
+
+        <div class="card">
+            <div class="thumb">
+
+                <!--Display appropriate image, for room type-->
+                @{
+                    switch (@Room.RoomType)
+                    {
+                        case "Private":
+                            <img src="~/images/Room/private.jpg" alt="">
+                            break;
+                        case "Semi-private":
+                            <img src="~/images/Room/semiprivate.jpg" alt="">
+                            break;
+                        default:
+                            <img src="~/images/Room/public.jpg" alt="">
+                            break;
+                    }
+                }
+
+
+            </div>
+            <div class="desc"><h2>@Room.RoomType</h2></div>
+            <div class="price center">@Room.RoomPrice</div>
+            <p class="center">Must be logged in to register for a room</p>
+            <button><a href="/Room/ShowOne/@Room.RoomID">See Room Details</a></button>
+            <!--<input class="center" type="button" value="Login/Register">-->
+        </div>
+
+
+        }
+    }
+
+</div>

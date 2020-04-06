@@ -17,6 +17,7 @@
             <div class="card">
                     <div class="thumb">
 
+                        <!--Display appropriate image, for room type-->
                         @{
                             switch (@Room.RoomType)
                             {
@@ -32,14 +33,13 @@
                             }
                         }
 
-
-
-
+                                               
                     </div>
                 <div class="desc"><h2>@Room.RoomType</h2></div>
-                <div class="price center">@Room.RoomPrice</div>
+                <div class="price center">Price: @Room.RoomPrice</div>
                 <p class="center">Must be logged in to register for a room</p>
-                <input class="center" type="button" value="Login/Register">
+                <button><a href="/Room/ShowOne/@Room.RoomID">See Room Details</a></button>
+                <!--<input class="center" type="button" value="See Room Details">-->
             </div>
 
 
