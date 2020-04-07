@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HospitalProjectTeamThree.Data;
+using HospitalProjectTeamThree.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,14 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class HomeController : Controller
     {
+        private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         public ActionResult Index()
         {
-            return View();
+            string query = "Select * from Crises ";
+            List<Crisis> crises = db.Crisiss.SqlQuery(query).ToList();
+            //Debug.WriteLine("Checking connection to database");
+            return View(crises);
+           
         }
         //[Authorize(Roles = "Admin")]
         //Authorize let you set who have access to which page

@@ -31,8 +31,8 @@
 }
 <div class="paginate">
     @{
-        <a href="/Article/List?pagenum=@((int)ViewData["pagenum"]-1)&articlesearchkey=@ViewData["articlesearchkey"]">Prev</a>
+        <a href="/Crisis/ViewCrisis/@Model.crises.CrisisId?pagenum=@((int)ViewData["pagenum"]-1)&articlesearchkey=@ViewData["articlesearchkey"]">Prev</a>
         @ViewData["pagesummary"]
-        <a href="/Article/List?pagenum=@((int)ViewData["pagenum"]+1)&articlesearchkey=@ViewData["articlesearchkey"]">Next</a>
+        <a href="/Crisis/ViewCrisis/@Model.crises.CrisisId?pagenum=@((int)ViewData["pagenum"]+1)&articlesearchkey=@ViewData["articlesearchkey"]">Next</a>
     }
 </div>

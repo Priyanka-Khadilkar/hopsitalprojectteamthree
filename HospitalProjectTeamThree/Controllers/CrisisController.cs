@@ -38,8 +38,9 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult ViewCrisis( int? id,  string articlesearchkey,int pagenum= 0)
         {
+            Debug.WriteLine("Crisis Id is:" + id);
             //get all info about specific crisis
-            Crisis Crisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId=@CrisisId", new SqlParameter("@CrisisId", id)).FirstOrDefault();
+            Crisis Crisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId=@Id", new SqlParameter("@Id", id)).FirstOrDefault();
 
 
             //list all articles related to specific crisis
@@ -70,9 +71,10 @@ namespace HospitalProjectTeamThree.Controllers
                     newparams.Add(new SqlParameter("@searchkey", "%" + articlesearchkey + "%"));
                     ViewData["articlesearchkey"] = articlesearchkey;
                 }
+                newparams.Add(new SqlParameter("@id", id));
                 newparams.Add(new SqlParameter("@start", start));
                 newparams.Add(new SqlParameter("@perpage", perpage));
-                string pagedquery = query + " order by ArticleId offset @start rows fetch first @perpage rows only ";
+                string pagedquery = query + " order by Crisis_CrisisId offset @start rows fetch first @perpage rows only ";
                 //Debug.WriteLine(pagedquery);
                 //Debug.WriteLine("offset " + start);
                 //Debug.WriteLine("fetch first " + perpage);
