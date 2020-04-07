@@ -506,9 +506,9 @@
     <Content Include="Views\Article\ViewArticle.cshtml" />
     <Content Include="Views\Article\List.cshtml" />
     <Content Include="Views\Article\Add.cshtml" />
-    <Content Include="Views\Crisis\CreateCrisis.cshtml" />
-    <Content Include="Views\Crisis\UpdateCrisis.cshtml" />
-    <Content Include="Views\Crisis\DeleteCrisis.cshtml" />
+    <Content Include="Views\Crisis\Add.cshtml" />
+    <Content Include="Views\Crisis\Update.cshtml" />
+    <Content Include="Views\Crisis\Delete.cshtml" />
     <Content Include="Views\Article\Admin.cshtml" />
     <Content Include="Views\DoctorsBlog\Add.cshtml" />
     <Content Include="Views\DoctorsBlog\List.cshtml" />
@@ -521,7 +521,7 @@
     <Content Include="Views\CardDesign\Update.cshtml" />
     <Content Include="Views\CardDesign\Delete.cshtml" />
     <Content Include="Views\BlogTopic\List.cshtml" />
-    <Content Include="Views\Crisis\CrisisList.cshtml" />
+    <Content Include="Views\Crisis\List.cshtml" />
     <Content Include="Views\Crisis\ViewCrisis.cshtml" />
     <Content Include="Views\DoctorsBlog\Delete.cshtml" />
     <Content Include="Views\JobListing\List.cshtml" />
@@ -533,6 +533,7 @@
     <Content Include="Views\Room\ShowOne.cshtml" />
     <Content Include="Views\Room\AdminView.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
+    <Content Include="Views\Article\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

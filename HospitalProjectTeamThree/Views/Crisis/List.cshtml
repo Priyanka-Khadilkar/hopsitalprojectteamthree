@@ -2,8 +2,10 @@
 @{
     ViewBag.Title = "CrisisList";
 }
-
-<h2>CrisisList</h2>
+<div>
+    <a href="/Crisis/Add">Add new Crisis</a>
+</div>
+<h2>List of All Crises</h2>
 
 @{
 
@@ -14,8 +16,8 @@
         <p>Crisis description: @Crisis.CrisisDesc</p>
         <p>Crisis Started: @Crisis.CrisisStrated</p>
         <p>Crisis Finished: @Crisis.CrisisFinished</p>
-        <button><a href="/Crisis/UpdateCrisis/@Crisis.CrisisId">Update</a></button>
-        <button><a href="/Crisis/DeleteCrisis/@Crisis.CrisisId">Delete</a></button>
+        <button><a href="/Crisis/Update/@Crisis.CrisisId">Update</a></button>
+        <button><a href="/Crisis/Delete/@Crisis.CrisisId">Delete</a></button>
         <hr />
     }
 }

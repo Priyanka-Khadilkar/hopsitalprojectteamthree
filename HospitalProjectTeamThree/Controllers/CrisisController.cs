@@ -28,7 +28,7 @@ namespace HospitalProjectTeamThree.Controllers
         {
             return View();
         }
-        public ActionResult CrisisList()
+        public ActionResult List()
         {
             string query = "Select * from Crises ";
             List<Crisis> crises = db.Crisiss.SqlQuery(query).ToList();
@@ -36,10 +36,8 @@ namespace HospitalProjectTeamThree.Controllers
             return View(crises);
 
         }
-        public ActionResult ViewCrisis(int? id)
+        public ActionResult ViewCrisis( int? id,  string articlesearchkey,int pagenum= 0)
         {
-
-
             //get all info about specific crisis
             Crisis Crisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId=@CrisisId", new SqlParameter("@CrisisId", id)).FirstOrDefault();
 
@@ -48,6 +46,42 @@ namespace HospitalProjectTeamThree.Controllers
             string query = "select * from Articles inner join Crises on Articles.Crisis_CrisisId=Crises.CrisisId where Crisis_CrisisId = @id";
             SqlParameter param = new SqlParameter("@id", id);
             List<Article> Articles = db.Articles.SqlQuery(query, param).ToList();
+            //begin 
+
+            // Code reference - Christine Bittle
+
+            //Start of Pagination Algorithm (Raw MSSQL)
+            int perpage = 3;
+            int artcount = Articles.Count();
+            int maxpage = (int)Math.Ceiling((decimal)artcount / perpage) - 1;
+            if (maxpage < 0) maxpage = 0;
+            if (pagenum < 0) pagenum = 0;
+            if (pagenum > maxpage) pagenum = maxpage;
+            int start = (int)(perpage * pagenum);
+            ViewData["pagenum"] = pagenum;
+            ViewData["pagesummary"] = "";
+            if (maxpage > 0)
+            {
+                ViewData["pagesummary"] = (pagenum + 1) + " of " + (maxpage + 1);
+                List<SqlParameter> newparams = new List<SqlParameter>();
+
+                if (articlesearchkey != "")
+                {
+                    newparams.Add(new SqlParameter("@searchkey", "%" + articlesearchkey + "%"));
+                    ViewData["articlesearchkey"] = articlesearchkey;
+                }
+                newparams.Add(new SqlParameter("@start", start));
+                newparams.Add(new SqlParameter("@perpage", perpage));
+                string pagedquery = query + " order by ArticleId offset @start rows fetch first @perpage rows only ";
+                //Debug.WriteLine(pagedquery);
+                //Debug.WriteLine("offset " + start);
+                //Debug.WriteLine("fetch first " + perpage);
+                Articles = db.Articles.SqlQuery(pagedquery, newparams.ToArray()).ToList();
+            }
+            //End of Pagination Algorithm
+            //end
+
+
 
 
             ShowCrisis viewmodel = new ShowCrisis();
@@ -58,13 +92,13 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(viewmodel);
         }
-        public ActionResult CreateCrisis()
+        public ActionResult Add()
         {
             return View();
         }
         [HttpPost]
 
-        public ActionResult CreateCrisis(string CrisisName, string CrisisFinished, string CrisisDesc)
+        public ActionResult Add(string CrisisName, string CrisisFinished, string CrisisDesc)
         {
             DateTime CrisisStarted = DateTime.Now;
             if (CrisisFinished == "")
@@ -87,7 +121,7 @@ namespace HospitalProjectTeamThree.Controllers
             return RedirectToAction("CrisisList");
         }
 
-        public ActionResult UpdateCrisis(int id)
+        public ActionResult Update(int id)
         {
             //retrieves info for a specific crisis
             Crisis selectedcrisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId = @id", new SqlParameter("@id", id)).FirstOrDefault();
@@ -95,7 +129,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(selectedcrisis);
         }
         [HttpPost]
-        public ActionResult UpdateCrisis(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
+        public ActionResult Update(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
         {
 
             //Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
@@ -112,9 +146,9 @@ namespace HospitalProjectTeamThree.Controllers
 
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
-            return RedirectToAction("CrisisList");
+            return RedirectToAction("List");
         }
-        public ActionResult DeleteCrisis(int id)
+        public ActionResult Delete(int id)
         {
             //Deletes the record from the database
             //https://www.mysqltutorial.org/mysql-delete-join/
@@ -136,7 +170,7 @@ namespace HospitalProjectTeamThree.Controllers
             //SqlParameter sqlparam2 = new SqlParameter("@id", id);
             //db.Database.ExecuteSqlCommand(query, sqlparam);
 
-            return RedirectToAction("CrisisList");
+            return RedirectToAction("List");
         }
     }
 }

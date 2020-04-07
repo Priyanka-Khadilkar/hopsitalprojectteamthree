@@ -5,9 +5,9 @@
 
 <h2>UpdateCrisis</h2>
 
-<a href="/Crisis/CrisisList">Back to List</a>
+<a href="/Crisis/List">Back to List</a>
 
-<form action="/Crisis/UpdateCrisis/@Model.CrisisId" method="POST">
+<form action="/Crisis/Update/@Model.CrisisId" method="POST">
 
 
     <h1> Create New Crisis</h1>
@@ -15,7 +15,7 @@
     <input id="CrisisName" type="text" name="CrisisName" value="@Model.CrisisName" /></div>
     <div><label for="CrisisStarted">Crisis Started</label><br />
     <input id="CrisisStarted" type="text" name="CrisisStarted" value="@Model.CrisisStrated"/></div>
-    <div><label for="CrisisFinished">Crisis Finished</label><br />
+    <div><label for="CrisisFinished">Crisis Finished [Enter Yes, if Crisis is over]</label><br />
     <input id="CrisisFinished" type="text" name="CrisisFinished" value="@Model.CrisisFinished" /></div>
     <div><label for="CrisisDesc">Crisis Description</label><br />
     <textarea id="CrisisDesc" name="CrisisDesc" rows="4" cols="50">@Model.CrisisDesc</textarea></div>

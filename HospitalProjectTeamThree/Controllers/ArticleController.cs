@@ -112,7 +112,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             return RedirectToAction("List");
         }
-        //begin
+       
         public ActionResult Update(int id)
         {
             //retrieves info for a specific article
@@ -121,26 +121,38 @@ namespace HospitalProjectTeamThree.Controllers
             return View(selectedarticle);
         }
         [HttpPost]
-        public ActionResult Update(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
+        public ActionResult Update(int id, string ArticleTitle,  string ArticleAuthor, string ArticleContent)
         {
 
-            //Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
+            //Debug.WriteLine("I am trying to display variables" + id + ArticleTitle + ArticleAuthor + ArticleContent );
 
             // updates the record on the submission
-            string query = "update Crises SET  CrisisName=@CrisisName, CrisisStrated=@CrisisStrated, CrisisFinished=@CrisisFinished, CrisisDesc=@CrisisDesc where CrisisId=@id";
-            SqlParameter[] sqlparams = new SqlParameter[5];
+            string query = "update Articles SET  ArticleTitle=@ArticleTitle, ArticleAuthor=@ArticleAuthor, ArticleContent=@ArticleContent where ArticleId=@id";
+            SqlParameter[] sqlparams = new SqlParameter[4];
 
-            sqlparams[0] = new SqlParameter("@CrisisName", CrisisName);
+            sqlparams[0] = new SqlParameter("@ArticleTitle", ArticleTitle);
             sqlparams[1] = new SqlParameter("@id", id);
-            sqlparams[2] = new SqlParameter("@CrisisStrated", CrisisStarted);
-            sqlparams[3] = new SqlParameter("@CrisisFinished", CrisisFinished);
-            sqlparams[4] = new SqlParameter("@CrisisDesc", CrisisDesc);
+            sqlparams[2] = new SqlParameter("@ArticleAuthor", ArticleAuthor);
+            sqlparams[3] = new SqlParameter("@ArticleContent", ArticleContent);
+            
 
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
-            return RedirectToAction("CrisisList");
+            return RedirectToAction("List");
         }
-        //end
+        
+        public ActionResult Delete(int id)
+        {
+                        
+            //  delete article given id
+            string query = "delete  from Articles where ArticleId=@id";
+            SqlParameter sqlparam = new SqlParameter("@id", id);
+            db.Database.ExecuteSqlCommand(query, sqlparam);
+
+
+            return RedirectToAction("List");
+        }
+       
         public ActionResult Admin()
         {
             return View();

@@ -11,8 +11,11 @@
     <input type="text" name="articlesearchkey" id="articlesearchkey" />
     <input type="submit" value="Search" />
 </form>-->
+    <div>
+        <a href="/Article/Add">Add new Article</a>
+        <a href="/Crisis/Add">Add new Crisis</a>
+    </div>
 
-<a href="/Article/Add">Add new Article</a>
 <h1 class="crisiscenter">All Articles</h1>
 
 
@@ -42,9 +45,13 @@
 
                 <h2>@article.ArticleTitle</h2>
 
-                <div class="cred"><span class="auth">Author: @article.ArticleAuthor</span><span class="publ">Published: @article.DatePosted</span></div>
-                <p>@article.ArticleContent </p>
-                <button><a href="/Article/ViewArticle/@article.ArticleId"> Click To Read</a></button>
+                <div class="cred">
+                    
+                    <span class="auth">Author: @article.ArticleAuthor</span>
+                    <span class="publ">Published: @article.DatePosted</span>
+                </div>
+                    <p>@article.ArticleContent </p>
+                    <button><a href="/Article/ViewArticle/@article.ArticleId"> Click To Read</a></button>
                 <hr />
             }
         }
