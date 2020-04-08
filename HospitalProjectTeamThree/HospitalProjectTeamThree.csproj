@@ -368,10 +368,6 @@
     <Compile Include="Migrations\202004080035582_adding first name last name to user.designer.cs">
       <DependentUpon>202004080035582_adding first name last name to user.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004081203491_adding get well soon class.cs" />
-    <Compile Include="Migrations\202004081203491_adding get well soon class.designer.cs">
-      <DependentUpon>202004081203491_adding get well soon class.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -708,9 +704,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004080035582_adding first name last name to user.resx">
       <DependentUpon>202004080035582_adding first name last name to user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004081203491_adding get well soon class.resx">
-      <DependentUpon>202004081203491_adding get well soon class.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
