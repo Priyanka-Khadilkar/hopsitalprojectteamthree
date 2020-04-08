@@ -29,4 +29,13 @@ namespace HospitalProjectTeamThree.Models
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
     }
+
+    public enum OnlineAppointmentBookingStatus
+    {
+        [Display(Name = "In Process")]
+        InProcess = 1,
+        Booked = 2,
+        Cancelled = 3,
+        Completed = 4
+    }
 }

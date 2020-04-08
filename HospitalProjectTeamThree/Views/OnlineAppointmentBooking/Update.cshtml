@@ -1,0 +1,91 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.UpdateOnlineAppointmentBookingViewModel
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Update Appointment
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/OnlineAppointmentBooking/Update/@Model.OnlineAppointmentBooking.OnlineAppointmentBookingId">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Patient First Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" disabled class="form-control" id="Name" value="@Model.OnlineAppointmentBooking.User.FirstName" placeholder="Enter name" name="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Patient First Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" disabled class="form-control" id="Name" value="@Model.OnlineAppointmentBooking.User.LastName" placeholder="Enter name" name="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Patient Email:</label>
+                <div class="col-sm-10">
+                    <input type="text" disabled class="form-control" id="Name" value="@Model.OnlineAppointmentBooking.User.Email" placeholder="Enter name" name="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Patient Phone Number:</label>
+                <div class="col-sm-10">
+                    <input type="text" disabled class="form-control" value="@Model.OnlineAppointmentBooking.User.PhoneNumber" id="Name" placeholder="Enter name" name="Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Date Of Birth :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="DateOfBirth" value="@Model.OnlineAppointmentBooking.PatientDateOfBirth.ToString("MM/dd/yyyy")" placeholder="MM/DD/YYYY" name="DateOfBirth">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Preferred Date :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="PreferredDate" value="@Model.OnlineAppointmentBooking.PreferredDate.ToString("MM/dd/yyyy")" placeholder="MM/DD/YYYY" name="PreferredDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Preferred Time :</label>
+                <div class="col-sm-10  clockpicker">
+                    <input type="text" id="PreferredTime" value="@Model.OnlineAppointmentBooking.PreferredTime" placeholder="Select Preferred Time" name="PreferredTime" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Preferred Doctor :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="PreferredDoctor" value="@Model.OnlineAppointmentBooking.PreferredDoctor" placeholder="Enter Preferred Doctor" name="PreferredDoctor">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Status :</label>
+                <div class="col-sm-10">
+                    @Html.EnumDropDownListFor(
+    x => x.OnlineAppointmentBookingStatus,
+    "Select My Type",
+    new { @class = "form-control" })
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" id="BtnSubmit" class="btn btn-success">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<a href="/OnlineAppointmentBooking/List" class="btn btn-primary headtop">Back to Appointment List</a>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#PreferredDate").datepicker();
+            $("#DateOfBirth").datepicker();
+            $('.clockpicker').clockpicker({
+                donetext: 'Done'
+            });
+
+        });
+    </script>
+}

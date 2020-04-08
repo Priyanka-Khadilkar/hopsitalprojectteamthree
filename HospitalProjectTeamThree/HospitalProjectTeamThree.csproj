@@ -400,6 +400,7 @@
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
     <Compile Include="Models\ViewModels\UpdateGetWell.cs" />
+    <Compile Include="Models\ViewModels\UpdateOnlineAppointmentBookingViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -561,6 +562,8 @@
     <Content Include="Views\Article\Delete.cshtml" />
     <Content Include="Views\GetWellSoonCard\PersonalList.cshtml" />
     <Content Include="Views\OnlineAppointmentBooking\Book.cshtml" />
+    <Content Include="Views\OnlineAppointmentBooking\List.cshtml" />
+    <Content Include="Views\OnlineAppointmentBooking\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

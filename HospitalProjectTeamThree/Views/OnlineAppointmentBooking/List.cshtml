@@ -1,0 +1,82 @@
+﻿@model List<HospitalProjectTeamThree.Models.OnlineAppointmentBooking>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<a href="/OnlineAppointmentBooking/Book" class="btn btn-primary bottom-margin-10" title="Add">Book an Appointment</a>
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Appointments
+    </div>
+    <div class="panel-body">
+        <form class="form-inline form-border" method="post" action="/OnlineAppointmentBooking/List">
+            <div class="form-group marginright45">
+                <input type="text" class="form-control" placeholder="Enter Search Keyword" name="SearchText" id="SearchText">
+            </div>
+            <input type="submit" value="Search" class="btn btn-default custom-btn" />
+        </form>
+        <table class="table table-dark top">
+            <thead>
+                <tr>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                    {
+                        <th scope="col">Patient Name</th>
+                        <th scope="col">Patinet Phonenumber</th>
+                        <th scope="col">Patient Email</th>
+                        <th scope="col">Patient Date Of Birth</th>
+                    }
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Doctor</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Booked On</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var onlineAppointment in Model)
+                    {
+                        <tr>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                            {
+                                <td>
+                                    @onlineAppointment.User.FirstName  @onlineAppointment.User.LastName
+                                </td>
+                                <td>
+                                    @onlineAppointment.User.PhoneNumber
+                                </td>
+                                <td>
+                                    @onlineAppointment.User.Email
+                                </td>
+                                <td>
+                                    @onlineAppointment.PatientDateOfBirth
+                                </td>
+                            }
+                            <td>
+                                @onlineAppointment.PreferredDate
+                            </td>
+                            <td>
+                                @onlineAppointment.PreferredTime
+                            </td>
+                            <td>
+                                @onlineAppointment.PreferredDoctor
+                            </td>
+                            <td>
+                                @onlineAppointment.OnlineAppointmentBookingStatus
+                            </td>
+                            <td>
+                                @onlineAppointment.OnlineAppointmentBookingBookedOn
+                            </td>
+                            <td>
+                                <a href="/OnlineAppointmentBooking/Update/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="Edit">Edit</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
