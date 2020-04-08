@@ -75,7 +75,9 @@ namespace HospitalProjectTeamThree.Controllers
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
             //return View(GetWellSoonCards);
-            //allow 3 index at the page
+            //Reference link: 
+            //https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
+            //allow 3 items per page
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             //passing the pagelist to the view
