@@ -376,6 +376,14 @@
     <Compile Include="Migrations\202004081306072_adding user to get well.designer.cs">
       <DependentUpon>202004081306072_adding user to get well.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004081949535_adding RoomBooking functionality.cs" />
+    <Compile Include="Migrations\202004081949535_adding RoomBooking functionality.designer.cs">
+      <DependentUpon>202004081949535_adding RoomBooking functionality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004082019326_adding RoomDescription .cs" />
+    <Compile Include="Migrations\202004082019326_adding RoomDescription .designer.cs">
+      <DependentUpon>202004082019326_adding RoomDescription .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -397,6 +405,7 @@
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
+    <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
     <Compile Include="Models\ViewModels\UpdateGetWell.cs" />
@@ -721,6 +730,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004081306072_adding user to get well.resx">
       <DependentUpon>202004081306072_adding user to get well.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081949535_adding RoomBooking functionality.resx">
+      <DependentUpon>202004081949535_adding RoomBooking functionality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004082019326_adding RoomDescription .resx">
+      <DependentUpon>202004082019326_adding RoomDescription .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

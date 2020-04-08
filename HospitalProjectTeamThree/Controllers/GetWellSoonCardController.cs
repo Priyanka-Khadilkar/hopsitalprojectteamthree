@@ -45,7 +45,7 @@ namespace HospitalProjectTeamThree.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Add");//To do: redirect action to personal list
+                    return RedirectToAction("PersonalList");//To do: redirect action to personal list
                 }
                 
             }
@@ -86,10 +86,24 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult PersonalList()
         {
+            //get the current user id when they logged in
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
-            return View(currentUser);
-            //string query = "Select * from GetWellSoonCards where userId = userId";
+
+            //return his personal list of card based on his id
+            string query = "select * from GetWellSoonCards where User_Id=@userId";
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[0] = new SqlParameter("@userId", userId);
+
+            List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(query, sqlparams).ToList();
+
+            PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
+            PersonalListGetWellViewModel.GetWellSoonCard = Cards;
+            PersonalListGetWellViewModel.User = currentUser;
+            //allow 3 items per page
+            //int pageSize = 3;
+            //int pageNumber = (page ?? 1);
+            return View(PersonalListGetWellViewModel);
         }
         public ActionResult Add()
         {
@@ -120,7 +134,17 @@ namespace HospitalProjectTeamThree.Controllers
             //Execute
             db.Database.ExecuteSqlCommand(query, sqlparams);
             Debug.WriteLine("I am tryting to add the card with the message " + message);
-            return RedirectToAction("List");
+            //when adding is done, admin will return to the total list
+            //user will return to personal list
+            if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("PersonalList");
+            }
+            //return RedirectToAction("List");
         }
         public ActionResult Show(int id)
         {
@@ -180,7 +204,17 @@ namespace HospitalProjectTeamThree.Controllers
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[0] = new SqlParameter("@CardId", CardId);
             db.Database.ExecuteSqlCommand(query, sqlparams);
-            return RedirectToAction("List");
+            //when adding is done, admin will return to the total list
+            //user will return to personal list
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("PersonalList");
+            }
+            //return RedirectToAction("List");
         }
         public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {

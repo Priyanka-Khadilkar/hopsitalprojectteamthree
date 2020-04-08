@@ -17,7 +17,9 @@ namespace HospitalProjectTeamThree.Models
         public string RoomType { get; set; }
         public int RoomTotalBeds { get; set; }
         public int RoomPrice { get; set; } //in cents(e.g. 10 dollars = 1000 cents)
+        public string RoomDesc { get; set; }
 
-
+        //Room may have many users associated with room (Many bookings)
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
