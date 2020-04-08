@@ -184,6 +184,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobListingController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OnlineAppointmentBookingController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Data\HospitalProjectTeamThreeContext.cs" />
@@ -417,11 +418,20 @@
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\bootstrap-clockpicker.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\crisis.css" />
+    <Content Include="Content\Custom.css" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="ERD\ERDDoctorsBlog.png" />
     <Content Include="ERD\ERDLiveWaitTimes.png" />
@@ -433,6 +443,8 @@
     <Content Include="Images\Room\public.jpg" />
     <Content Include="Images\Room\semiprivate.jpg" />
     <Content Include="obj\Debug\HospitalProjectTeamThree.csproj.FileListAbsolute.txt" />
+    <Content Include="Scripts\bootstrap-clockpicker.js" />
+    <Content Include="Scripts\bootstrap-clockpicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ERD\ERDandWireframes_Vitaliy.docx" />
@@ -448,6 +460,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -534,6 +547,7 @@
     <Content Include="Views\Room\AdminView.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
+    <Content Include="Views\OnlineAppointmentBooking\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
