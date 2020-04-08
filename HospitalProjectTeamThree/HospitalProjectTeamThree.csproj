@@ -397,6 +397,7 @@
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
+    <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
     <Compile Include="Models\ViewModels\UpdateGetWell.cs" />
@@ -559,8 +560,8 @@
     <Content Include="Views\Room\AdminView.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
-    <Content Include="Views\GetWellSoonCard\PersonalList.cshtml" />
     <Content Include="Views\OnlineAppointmentBooking\Book.cshtml" />
+    <Content Include="Views\GetWellSoonCard\PersonalList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -86,10 +86,26 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult PersonalList()
         {
+            //string userId = User.Identity.GetUserId();
+            //ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            //return View(currentUser);
+            //string query = "Select * from GetWellSoonCards where userId = userId";
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
-            return View(currentUser);
-            //string query = "Select * from GetWellSoonCards where userId = userId";
+
+            string query = "select * from GetWellSoonCards where User_Id=@userId";
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[0] = new SqlParameter("@userId", userId);
+
+            List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(query, sqlparams).ToList();
+            //SqlParameter[] sqlparams = new SqlParameter[1];
+            //sqlparams[0] = new SqlParameter("@userId", userId);
+
+            PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
+            PersonalListGetWellViewModel.GetWellSoonCard = Cards;
+            PersonalListGetWellViewModel.User = currentUser;
+           
+            return View(PersonalListGetWellViewModel);
         }
         public ActionResult Add()
         {
