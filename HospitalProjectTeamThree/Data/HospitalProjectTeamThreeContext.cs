@@ -34,6 +34,8 @@ namespace HospitalProjectTeamThree.Data
 
         //One user can write many Job Listings
         public virtual ICollection<JobListing> JobListings { get; set; }
+        //One user may have many Bookings
+        public virtual ICollection<Room> Rooms { get; set; }
     }
     //adding roles to user: Admin, Editor, Registered user
     public class ApplicationRole : IdentityRole
