@@ -368,6 +368,14 @@
     <Compile Include="Migrations\202004080035582_adding first name last name to user.designer.cs">
       <DependentUpon>202004080035582_adding first name last name to user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004081303246_dropping user in get well card.cs" />
+    <Compile Include="Migrations\202004081303246_dropping user in get well card.designer.cs">
+      <DependentUpon>202004081303246_dropping user in get well card.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004081306072_adding user to get well.cs" />
+    <Compile Include="Migrations\202004081306072_adding user to get well.designer.cs">
+      <DependentUpon>202004081306072_adding user to get well.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -704,6 +712,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004080035582_adding first name last name to user.resx">
       <DependentUpon>202004080035582_adding first name last name to user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081303246_dropping user in get well card.resx">
+      <DependentUpon>202004081303246_dropping user in get well card.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081306072_adding user to get well.resx">
+      <DependentUpon>202004081306072_adding user to get well.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
