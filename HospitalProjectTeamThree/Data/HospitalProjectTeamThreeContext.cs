@@ -22,7 +22,8 @@ namespace HospitalProjectTeamThree.Data
             // Add custom user claims here
             return userIdentity;
         }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         //Representing the Many in (Many Events to Many Users)
         public virtual ICollection<Event> Events { get; set; }
         //One user can create many get well cards

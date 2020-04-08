@@ -364,6 +364,10 @@
     <Compile Include="Migrations\202004060053186_jobListing.designer.cs">
       <DependentUpon>202004060053186_jobListing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004080035582_adding first name last name to user.cs" />
+    <Compile Include="Migrations\202004080035582_adding first name last name to user.designer.cs">
+      <DependentUpon>202004080035582_adding first name last name to user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -547,6 +551,7 @@
     <Content Include="Views\Room\AdminView.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
+    <Content Include="Views\GetWellSoonCard\PersonalList.cshtml" />
     <Content Include="Views\OnlineAppointmentBooking\Book.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -696,6 +701,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004060053186_jobListing.resx">
       <DependentUpon>202004060053186_jobListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004080035582_adding first name last name to user.resx">
+      <DependentUpon>202004080035582_adding first name last name to user.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

@@ -17,6 +17,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Web.Security;
 //need this for pagination
 using PagedList;
+using Microsoft.AspNet.Identity;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -75,11 +76,24 @@ namespace HospitalProjectTeamThree.Controllers
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
             //return View(GetWellSoonCards);
-            //allow 3 index at the page
+            //Reference link: 
+            //https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/sorting-filtering-and-paging-with-the-entity-framework-in-an-asp-net-mvc-application
+            //allow 3 items per page
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             //passing the pagelist to the view
             return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult PersonalList()
+        {
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId); 
+            string query = "Select * from GetWellSoonCards where UserId=@userId";
+            
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[0] = new SqlParameter("@userId", userId);
+            db.Database.ExecuteSqlCommand(query);
+            return View();
         }
         public ActionResult Add()
         {
