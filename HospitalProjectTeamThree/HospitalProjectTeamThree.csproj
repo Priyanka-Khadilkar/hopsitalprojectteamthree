@@ -538,6 +538,7 @@
     <Content Include="Views\Room\AdminView.cshtml" />
     <Content Include="Views\Article\Update.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
+    <Content Include="Views\GetWellSoonCard\PersonalList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
