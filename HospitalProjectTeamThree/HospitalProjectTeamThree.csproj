@@ -380,6 +380,10 @@
     <Compile Include="Migrations\202004081949535_adding RoomBooking functionality.designer.cs">
       <DependentUpon>202004081949535_adding RoomBooking functionality.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004082019326_adding RoomDescription .cs" />
+    <Compile Include="Migrations\202004082019326_adding RoomDescription .designer.cs">
+      <DependentUpon>202004082019326_adding RoomDescription .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -726,6 +730,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004081949535_adding RoomBooking functionality.resx">
       <DependentUpon>202004081949535_adding RoomBooking functionality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004082019326_adding RoomDescription .resx">
+      <DependentUpon>202004082019326_adding RoomDescription .cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
