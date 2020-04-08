@@ -87,13 +87,8 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult PersonalList()
         {
             string userId = User.Identity.GetUserId();
-            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId); 
-            string query = "Select * from GetWellSoonCards where UserId=@userId";
-            
-            SqlParameter[] sqlparams = new SqlParameter[1];
-            sqlparams[0] = new SqlParameter("@userId", userId);
-            db.Database.ExecuteSqlCommand(query);
-            return View();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            return View(currentUser);
         }
         public ActionResult Add()
         {
