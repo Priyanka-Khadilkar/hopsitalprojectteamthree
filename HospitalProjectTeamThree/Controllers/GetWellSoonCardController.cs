@@ -89,26 +89,33 @@ namespace HospitalProjectTeamThree.Controllers
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
             return View(currentUser);
+            //string query = "Select * from GetWellSoonCards where userId = userId";
         }
         public ActionResult Add()
         {
             List<CardDesign> addingDesign = db.CardDesigns.SqlQuery("select * from CardDesigns").ToList();
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
             AddGetWellCard AddGetWellCardViewModel = new AddGetWellCard();
             AddGetWellCardViewModel.CardDesigns = addingDesign;
-    
+            AddGetWellCardViewModel.User = currentUser;
+
             return View(AddGetWellCardViewModel);
         }
         [HttpPost]
-        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignID)
+        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignId, string User_Id)
         {
-            string query = "Insert into GetWellSoonCards (message, PatientName, PatientEmail , RoomNumber, CardDesignID) values (@message, @PatientName, @PatientEmail, @RoomNumber, @CardDesignID)";
-            SqlParameter[] sqlparams = new SqlParameter[5];
+            string query = "Insert into GetWellSoonCards (message, PatientName, PatientEmail , RoomNumber, CardDesignId, User_Id) values (@message, @PatientName, @PatientEmail, @RoomNumber, @CardDesignId, @User_Id)";
+            SqlParameter[] sqlparams = new SqlParameter[6];
             sqlparams[0] = new SqlParameter("@message", message);
-            sqlparams[1] = new SqlParameter("@CardDesignID", CardDesignID);
+            sqlparams[1] = new SqlParameter("@CardDesignId", CardDesignId);
             sqlparams[2] = new SqlParameter("@PatientName", PatientName);
             sqlparams[3] = new SqlParameter("@PatientEmail", PatientEmail);
             sqlparams[4] = new SqlParameter("@RoomNumber", RoomNumber);
+            sqlparams[5] = new SqlParameter("@User_Id", User_Id);
+            //string userId = User.Identity.GetUserId();
+            //ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
             //Execute
             db.Database.ExecuteSqlCommand(query, sqlparams);

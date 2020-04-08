@@ -10,6 +10,7 @@ namespace HospitalProjectTeamThree.Models.ViewModels
     {
         //We need a list of card design to put in radio box
         public virtual List<CardDesign> CardDesigns { get; set; }
-
+        //A userId who create the card
+        public virtual ApplicationUser User { get; set; }
     }
 }
