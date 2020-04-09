@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using HospitalProjectTeamThree.Models;
 using System.Collections.Generic;
 using HospitalProjectTeamThree.Data;
+using HospitalProjectTeamThree.Migrations;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -21,6 +22,7 @@ namespace HospitalProjectTeamThree.Controllers
         private ApplicationUserManager _userManager;
         //assign user to a role in the register
         private ApplicationRoleManager _roleManager;
+        private IdentityResult role;
 
         public AccountController()
         {
@@ -179,7 +181,11 @@ namespace HospitalProjectTeamThree.Controllers
 
             if (ModelState.IsValid)
             {             
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, 
+                    Email = model.Email, 
+                    FirstName = model.FirstName,
+                    LastName = model.LastName, 
+                    PhoneNumber = model.PhoneNumber};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -229,11 +235,17 @@ namespace HospitalProjectTeamThree.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    role = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -244,7 +256,7 @@ namespace HospitalProjectTeamThree.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                AddErrors(role);
             }
 
             // If we got this far, something failed, redisplay form                   

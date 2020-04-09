@@ -48,7 +48,7 @@
         </div>
     </div>
     <!--This is vulnerable as everyone can set the role-->
-    <!--Solution: This register view will only accessed by the admin to set Admin and Editor Role, normal user will have a different log in-->
+    <!--Solution: Create another admin register view where only admin can have access and assign the role-->
     <!--<div class="form-group">-->
     //Html.LabelFor(m => m.RoleName, new { @class = "col-md-2 control-label" })
         <!--<div class="col-md-10">
