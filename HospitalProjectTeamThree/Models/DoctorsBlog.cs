@@ -16,10 +16,11 @@ namespace HospitalProjectTeamThree.Models
         [Key]
         public int BlogId { get; set; }
         public string BlogTitle { get; set; }
-        //public virtual ApplicationUser User { get; set; }
         public DateTime BlogDate { get; set; }
         public string BlogContent { get; set; }
         public string BlogSource { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public ICollection<BlogTopic> Topics { get; set; }
+
     }
 }

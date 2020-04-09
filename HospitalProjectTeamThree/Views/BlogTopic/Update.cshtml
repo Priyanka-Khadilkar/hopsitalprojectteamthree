@@ -1,0 +1,37 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddBlogTopic
+@{
+    ViewBag.Title = "Update";
+}
+
+<div class="content">
+    <h2 class="title">Update Blog Topic</h2>
+    <a href="/BlogTopic/List" class="button">Back to List</a>
+    <div class="showinfo">
+        <form action="/BlogTopic/Update/@Model.TopicId" method="POST">
+            <div class="name">Topic Name : </div><input type="text" name="TopicName" id="TopicName" value="@Model.TopicName" />
+
+            <div class="name">Topics : </div>
+            @{
+                <!-- Here we show the topics that are on this blog entry -->
+                foreach (var Topic in @Model.BlogTopics)
+                {
+                    <div class="list">
+                        <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                        @{
+
+                        }
+                        <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId">
+                            Remove Topic
+                        </a>
+                    </div>
+                }
+
+            }
+            <div class="name">Blog Source : </div><input type="text" name="BlogSource" id="BlogSource" value="@Model.Blog.BlogSource" />
+            <div>
+                <input type="submit" value="Update Blog Entry" class="delbuttons" />
+            </div>
+        </form>
+    </div>
+</div>
+
