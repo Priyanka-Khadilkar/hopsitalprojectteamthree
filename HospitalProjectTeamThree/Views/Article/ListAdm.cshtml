@@ -11,10 +11,10 @@
     <input type="text" name="articlesearchkey" id="articlesearchkey" />
     <input type="submit" value="Search" />
 </form>-->
-<!--<div>
+<div>
         <a href="/Article/Add">Add new Article</a>
         <a href="/Crisis/Add">Add new Crisis</a>
-    </div>-->
+</div>
 
 <h1 class="crisiscenter">All Articles</h1>
 
@@ -25,9 +25,10 @@
             @{
                 foreach (var listcrisis in Model.listcrises)
                 {
-
                     <li><a href="/Crisis/ViewCrisis/@listcrisis.CrisisId">@listcrisis.CrisisName</a></li>
-
+                    <button><a href="/Crisis/Delete/@listcrisis.CrisisId">Delete</a></button>
+                    <button><a href="/Crisis/Update/@listcrisis.CrisisId">Update</a></button>
+                                       
                 }
             }
         </ul>
@@ -52,6 +53,7 @@
                 </div>
                 <p>@article.ArticleContent </p>
                 <button><a href="/Article/ViewArticle/@article.ArticleId"> Click To Read</a></button>
+                <button><a href="/Article/Delete/@article.ArticleId"> Delete Article</a></button>
                 <hr />
             }
         }
@@ -63,13 +65,13 @@
             }
         </div>
     </main>
-    <aside class="right">
+    <!--<aside class="right">
         <h3>Tips to stay Healthy...</h3>
         <ul>
             <li>Wash your hands</li>
             <li>Wear Gloves</li>
             <li>Drink Water</li>
         </ul>
-    </aside>
+    </aside>-->
 </div>
 

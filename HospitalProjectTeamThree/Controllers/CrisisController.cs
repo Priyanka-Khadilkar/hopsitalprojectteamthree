@@ -22,14 +22,51 @@ namespace HospitalProjectTeamThree.Controllers
 
     public class CrisisController : Controller
     {
+
+    private ApplicationSignInManager _signInManager;
+    private ApplicationUserManager _userManager;
+    private ApplicationRoleManager _roleManager;
+    public CrisisController() { }
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         // GET: Crisis
         public ActionResult Index()
         {
-            return View();
+            //check if admin
+
+            if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                {
+                    return RedirectToAction("ListAdm");
+                }
+                else
+                {
+                    return RedirectToAction("List");
+                }
+
+            }
+            else
+            {
+                return View();
+            }
+            //end check if admin
+            
         }
         public ActionResult List()
         {
+                           
+            
+            
+            string query = "Select * from Crises ";
+            List<Crisis> crises = db.Crisiss.SqlQuery(query).ToList();
+            //Debug.WriteLine("Checking connection to database");
+            return View(crises);
+
+        }
+        public ActionResult ListAdm()
+        {
+
+           
             string query = "Select * from Crises ";
             List<Crisis> crises = db.Crisiss.SqlQuery(query).ToList();
             //Debug.WriteLine("Checking connection to database");
@@ -167,12 +204,9 @@ namespace HospitalProjectTeamThree.Controllers
             SqlParameter sqlparam = new SqlParameter("@id", id);
             db.Database.ExecuteSqlCommand(query, sqlparam);
 
-            //Need to delete from Articles where CrisisId = id
-            //string query2 = "delete from Articles where Crisis_CrisiId=@id";
-            //SqlParameter sqlparam2 = new SqlParameter("@id", id);
-            //db.Database.ExecuteSqlCommand(query, sqlparam);
-
+    
             return RedirectToAction("List");
         }
+
     }
 }

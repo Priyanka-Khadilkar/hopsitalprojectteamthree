@@ -627,6 +627,11 @@
     <Content Include="Views\DoctorsBlog\DoctorPersonalList.cshtml" />
     <Content Include="Views\DoctorsBlog\Index.cshtml" />
     <Content Include="Views\DoctorsBlog\PublicList.cshtml" />
+    <Content Include="Views\Crisis\Index.cshtml" />
+    <Content Include="Views\Crisis\ListAdm.cshtml" />
+    <Content Include="Views\Crisis\ViewCrisisAdm.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\ListAdm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
