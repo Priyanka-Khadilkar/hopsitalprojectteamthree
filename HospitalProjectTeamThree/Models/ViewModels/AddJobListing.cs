@@ -10,6 +10,7 @@ namespace HospitalProjectTeamThree.Models.ViewModels
     {
         public JobListing JobListing { get; set; }
         public List<Department> Departments { get; set; }
+        
         public virtual ApplicationUser User { get; set; }
     }
 }

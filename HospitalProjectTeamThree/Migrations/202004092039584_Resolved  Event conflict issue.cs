@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class conflict : DbMigration
+    public partial class ResolvedEventconflictissue : DbMigration
     {
         public override void Up()
         {
@@ -11,21 +11,6 @@
             DropForeignKey("dbo.Events", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetUsers", new[] { "Event_EventId" });
             DropIndex("dbo.Events", new[] { "ApplicationUser_Id" });
-            CreateTable(
-                "dbo.AspNetUserEvents",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        EventId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.EventId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.Events", t => t.EventId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.EventId);
-            
-            DropColumn("dbo.AspNetUsers", "Event_EventId");
-            DropColumn("dbo.Events", "ApplicationUser_Id");
         }
         
         public override void Down()

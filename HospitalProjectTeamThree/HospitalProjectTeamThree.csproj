@@ -424,9 +424,9 @@
     <Compile Include="Migrations\202004091940131_roombooking.designer.cs">
       <DependentUpon>202004091940131_roombooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004092001195_conflict.cs" />
-    <Compile Include="Migrations\202004092001195_conflict.designer.cs">
-      <DependentUpon>202004092001195_conflict.cs</DependentUpon>
+    <Compile Include="Migrations\202004092039584_Resolved  Event conflict issue.cs" />
+    <Compile Include="Migrations\202004092039584_Resolved  Event conflict issue.designer.cs">
+      <DependentUpon>202004092039584_Resolved  Event conflict issue.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -821,8 +821,8 @@
     <EmbeddedResource Include="Migrations\202004091940131_roombooking.resx">
       <DependentUpon>202004091940131_roombooking.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004092001195_conflict.resx">
-      <DependentUpon>202004092001195_conflict.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004092039584_Resolved  Event conflict issue.resx">
+      <DependentUpon>202004092039584_Resolved  Event conflict issue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

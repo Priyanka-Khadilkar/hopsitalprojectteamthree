@@ -84,7 +84,7 @@ namespace HospitalProjectTeamThree.Controllers
             //passing the pagelist to the view
             return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult PersonalList()
+        public ActionResult PersonalList(int? page)
         {
             //get the current user id when they logged in
             string userId = User.Identity.GetUserId();
@@ -95,14 +95,18 @@ namespace HospitalProjectTeamThree.Controllers
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[0] = new SqlParameter("@userId", userId);
 
+            
             List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(query, sqlparams).ToList();
-
-            PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
-            PersonalListGetWellViewModel.GetWellSoonCard = Cards;
-            PersonalListGetWellViewModel.User = currentUser;
             //allow 3 items per page
-            //int pageSize = 3;
-            //int pageNumber = (page ?? 1);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
+            //go to the viewmodel get the paged list and instanciate it here
+            PersonalListGetWellViewModel.GetWellSoonCard = Cards.ToPagedList(pageSize , pageNumber);
+            PersonalListGetWellViewModel.User = currentUser;
+            
+            //allow 3 items per page
+           
             return View(PersonalListGetWellViewModel);
         }
         public ActionResult Add()
