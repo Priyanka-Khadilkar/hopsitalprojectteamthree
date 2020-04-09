@@ -22,7 +22,6 @@ namespace HospitalProjectTeamThree.Controllers
         private ApplicationUserManager _userManager;
         //assign user to a role in the register
         private ApplicationRoleManager _roleManager;
-        private IdentityResult role;
 
         public AccountController()
         {
@@ -245,7 +244,7 @@ namespace HospitalProjectTeamThree.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    role = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
+                    result = await UserManager.AddToRoleAsync(user.Id, model.RoleName);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -256,7 +255,7 @@ namespace HospitalProjectTeamThree.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(role);
+                AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form                   
