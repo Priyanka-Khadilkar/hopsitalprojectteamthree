@@ -30,7 +30,7 @@
                     <th scope="col">Doctor</th>
                     <th scope="col">Status</th>
                     <th scope="col">Booked On</th>
-                    <th scope="col">Action</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +38,7 @@
                     foreach (var onlineAppointment in Model)
                     {
                         <tr>
+                            <!--If Logged in user is admin or Editor then add extra fields-->
                             @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                             {
                                 <td>
@@ -63,15 +64,53 @@
                                 @onlineAppointment.PreferredDoctor
                             </td>
                             <td>
-                                @onlineAppointment.OnlineAppointmentBookingStatus
+                                @{
+                                    var status = Enum.GetName(typeof(HospitalProjectTeamThree.Models.OnlineAppointmentBookingStatus),
+                                        Convert.ToInt32(onlineAppointment.OnlineAppointmentBookingStatus));
+                                    if (status == "InProcess")
+                                    {
+                                        status = "In Process";
+                                    }
+                                }
+                                @status
                             </td>
                             <td>
                                 @onlineAppointment.OnlineAppointmentBookingBookedOn
                             </td>
-                            <td>
-                                <a href="/OnlineAppointmentBooking/Update/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="Edit">Edit</a>
-                            </td>
-
+                            @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+                            {
+                                <td>
+                                    <a href="/OnlineAppointmentBooking/Update/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="Edit">Edit</a>
+                                </td>
+                            }
+                            @if (User.IsInRole("Registered User") && onlineAppointment.OnlineAppointmentBookingStatus == 1)
+                            {
+                                var myModal = "myModal" + onlineAppointment.OnlineAppointmentBookingId;
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm" data-modal-action="openconfimdialog" data-toggle="modal" data-target="#@myModal">
+                                        Cancel Appointment
+                                    </button>
+                                    <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to cancel this Appointment?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                    <button type="button" class="btn btn-danger" data-id="@onlineAppointment.OnlineAppointmentBookingId" data-modal-action="yes">
+                                                        Yes
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            }
                         </tr>
                     }
                 }
@@ -79,4 +118,27 @@
         </table>
     </div>
 </div>
+@section Scripts {
+    <script>
+        var onlineAppointmentBookingId;
+    $("[data-modal-action=yes]").click(function () {
+        onlineAppointmentBookingId = $(this).attr("data-id");
+        UpdateStatus(onlineAppointmentBookingId)  //calling delete method
+    });
 
+    //Function for delete restaurant
+        function UpdateStatus(onlineAppointmentBookingId) {
+        var postData = {
+            id: onlineAppointmentBookingId
+        };
+         $.ajax({
+                    url: '@Url.Action("UpdateStatus")',
+                    type: 'Get',
+                    data: postData
+                })
+                .done(function() {
+                    location.reload();
+               });
+    }
+    </script>
+}

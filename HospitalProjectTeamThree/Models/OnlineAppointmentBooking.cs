@@ -21,7 +21,7 @@ namespace HospitalProjectTeamThree.Models
 
         public string PreferredDoctor { get; set; }
 
-        public string OnlineAppointmentBookingStatus { get; set; }
+        public int OnlineAppointmentBookingStatus { get; set; }
 
         public DateTime OnlineAppointmentBookingBookedOn { get; set; }
 
