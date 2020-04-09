@@ -21,5 +21,6 @@ namespace HospitalProjectTeamThree.Models
 
         //Room may have many users associated with room (Many bookings)
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        //foreign key from Bookings(RoomAplicationUser) table
     }
 }

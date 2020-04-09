@@ -3,12 +3,12 @@
     ViewBag.Title = "ShowOne";
 }
 
-<h2>ShowOne</h2>
 
 <div class="featured">
     <div class="card featured">
+        <h2>@Model.room.RoomType</h2>
         <div class="thumb">
-            
+
             @{
                 <!--Display appropriate image, for room type-->
                 switch (@Model.room.RoomType)
@@ -27,16 +27,14 @@
 
 
         </div>
-        <div class="desc">
-            <h2>@Model.room.RoomType</h2>
-        </div>
-        <div class="price center">Room Price: $@Model.room.RoomPrice</div>
-        <div class="price center">Total Beds: @Model.room.RoomTotalBeds</div>
-       
+    
+
     </div>
 
     <div class="roomdesc">
-        <p>Private room</p>
+        <div class="price center">Room Price: $@Model.room.RoomPrice</div>
+        <div class="price center">Total Beds: @Model.room.RoomTotalBeds</div>
+        <p>@Model.room.RoomDesc</p>
     </div>
 </div>
 @*<div class="jumbotron profile">
@@ -44,7 +42,7 @@
             <form action="" method="POST">
 
                 <label for="uid">User ID</label>
-                <input type="text" id="uid" name="uid" value="" disabled /></br>
+                <input type="text" id="uid" name="uid" value="@" /></br>
                 <label for="userisAdmin">Role</label>
                 <input type="text" id="userisAdmin" name="userisAdmin" value="" disabled /></br>
                 <label for="userfname">First Name: </label>
