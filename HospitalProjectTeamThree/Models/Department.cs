@@ -17,5 +17,9 @@ namespace HospitalProjectTeamThree.Models
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
 
+        //representing the many in (one department to many job listings)
+        public ICollection<JobListing> JobListings { get; set; }
+
+
     }
 }

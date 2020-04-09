@@ -43,7 +43,7 @@ namespace HospitalProjectTeamThree.Models
         public int JobID { get; set; }
         public string JobTitle { get; set; }
         public string JobDescription { get; set; }
-        public double Salary { get; set; }
+        public string Salary { get; set; }
         public DateTime StartDate { get; set; }
         public bool Published { get; set; }
         public int DepartmentID { get; set; }

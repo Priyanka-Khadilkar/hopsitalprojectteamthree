@@ -112,14 +112,10 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(jobListing);
         }
-        public ActionResult Add()
-        {
-            List<Department> departments = db.Departments.SqlQuery("select * from Departments").ToList();
-            return View(departments);
-        }
+       
 
         [HttpPost]
-        public ActionResult Add(string JobTitle, string JobDescription, Double Salary, DateTime StartDate, Boolean Published, int DepartmentID, int UserID)
+        public ActionResult Add(string JobTitle, string JobDescription, string Salary, DateTime StartDate, Boolean Published, int DepartmentID, int UserID)
         {
             string query = "insert into JobListings (JobTitle, JobDescription, Salary, StartDate, Published, DepartmentID, UserID)values (@JobTitle, @JobDescription, @Salary, @StartDate, @Published, @DepartmentID, @UserID)";
             SqlParameter[] sqlparams = new SqlParameter[7];
@@ -138,27 +134,24 @@ namespace HospitalProjectTeamThree.Controllers
 
         }
 
-        public ActionResult New()
+        public ActionResult Add()
         {
-            List<JobListing> jobListings = db.JobListings.SqlQuery("select * from JobListings").ToList();
-            return View(jobListings);
+            List<Department> departments = db.Departments.SqlQuery("select * from Departments").ToList();
+            return View(departments);
 
         }
 
-        public ActionResult Update(int? id)
+        public ActionResult Update(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JobListing jobListing = db.JobListings.SqlQuery("select * from JobListings where JobID=@JobID", new SqlParameter("@JobID", id)).FirstOrDefault();
-          
-            if (jobListing == null)
-            {
-                return HttpNotFound();
-            }
+            JobListing selectedJobListing = db.JobListings.SqlQuery("select * from JobListings where JobID=@JobID", new SqlParameter("@JobID", id)).FirstOrDefault();
+            List<Department> department = db.Departments.SqlQuery("select * from Departments").ToList();
 
-            return View(jobListing);
+            UpdateJobListing UpdateJobListingViewModel = new UpdateJobListing();
+            UpdateJobListingViewModel.JobListing = selectedJobListing;
+            UpdateJobListingViewModel.Departments = department;
+
+            return View(UpdateJobListingViewModel);
+
         }
         
         [HttpPost]
@@ -177,7 +170,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
 
-            return RedirectToAction("/Show/" + id);
+            return RedirectToAction("List");
         }
         public ActionResult DeleteConfirm (int id)
         {

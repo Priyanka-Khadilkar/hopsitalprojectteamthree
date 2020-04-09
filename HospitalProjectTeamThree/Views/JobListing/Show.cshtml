@@ -1,7 +1,15 @@
-﻿
+﻿@model HospitalProjectTeamThree.Models.ViewModels.ShowJobListing
+
+
 @{
     ViewBag.Title = "Show";
 }
 
 <h2>Show</h2>
+
+<div>Job Title: @Model.JobListing.JobTitle</div>
+<div>Job Description: @Model.JobListing.JobDescription</div>
+<div>Department: @Model.JobListing.Department.DepartmentName</div>
+<div>Salary: @Model.JobListing.Salary</div>
+
 

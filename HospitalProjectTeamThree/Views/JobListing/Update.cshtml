@@ -1,7 +1,19 @@
-﻿
+﻿@model HospitalProjectTeamThree.Models.ViewModels.UpdateJobListing
 @{
     ViewBag.Title = "Update";
 }
 
 <h2>Update</h2>
+<span>Department</span>
+<select id="DepartmentID" name="DepartmentID">
+    @foreach (var department in Model.Departments)
+    {
+        var selected = "";
+        if(Model.JobListing.DepartmentID == department.DepartmentId )
+        {
+            selected = "selected";
+        }
+        <option value="@department.DepartmentId" @selected>@department.DepartmentName</option>
+    }
+</select>
 

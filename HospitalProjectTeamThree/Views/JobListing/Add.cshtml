@@ -1,7 +1,11 @@
-﻿
+﻿@model List<HospitalProjectTeamThree.Models.Department>
+
+
 
 @{
     ViewBag.Title = "Add";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Add a Job Listing</h2>
@@ -11,16 +15,30 @@
     <div>Job Description: <input type="text" name="JobDescription" id="JobDescription" /></div>
 
 
-    <div>Salary: <input type="number" name="Salary" id="Salary" /></div>
+    <div>Salary : <input type="text" name="Salary" id="Salary" /></div>
     <div>Start Date: <input type="datetime" name="StartDate" id="StartDate" /></div>
 
 
-    <div>Published <input type="radio" value="yes" /><input type="radio" value="no" /></div>
-    <div>Department:
+    <div>Published 
+        <input type="radio" value="yes" />
+    <input type="radio" value="no" />
+    </div>
+    <div>
+        Department:
         <select id="DepartmentID" typeof="text" name="DepartmentID">
-  
+            @{
+                foreach (var department in Model)
+                {
+                    <option value="@department.DepartmentId">@department.DepartmentName</option>
+                }
+
+
+
+            }
         </select>
-    
+
+
+
     </div>
 
 
@@ -29,3 +47,10 @@
 <a href="/JobListing/List">Back to list</a>
 
 
+@section Scripts {
+    <script>
+        $(function () {
+            $("#StartDate").datepicker();
+        })
+    </script>
+    }
