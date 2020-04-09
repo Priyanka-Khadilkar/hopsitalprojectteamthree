@@ -26,7 +26,6 @@
 <div>
     <!--Display Page 1 of 2-->
     Page @(Model.GetWellSoonCard.PageCount < Model.GetWellSoonCard.PageNumber ? 0 : Model.GetWellSoonCard.PageNumber) of @Model.GetWellSoonCard.PageCount
-    <!--Display the link to click on and go to the 2nd page-->
-    @Html.PagedListPager(Model.GetWellSoonCard, page => Url.Action("List",
-    new { page }))
+    <!--Display the link to click on and go to the 2nd page of PERSONAL List-->
+    @Html.PagedListPager(Model.GetWellSoonCard, page => Url.Action("PersonalList", new { page }))
 </div>
