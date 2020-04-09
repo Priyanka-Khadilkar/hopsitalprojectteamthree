@@ -12,5 +12,6 @@ namespace HospitalProjectTeamThree.Models.ViewModels
         public virtual CardDesign CardDesign { get; set; }
         //We need a card
         public virtual GetWellSoonCard GetWellSoonCard { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

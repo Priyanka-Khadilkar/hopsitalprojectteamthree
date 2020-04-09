@@ -10,6 +10,6 @@ namespace HospitalProjectTeamThree.Models.ViewModels
         //We need a single card design that belong to the card
         public virtual CardDesign CardDesign { get; set; }
        //showing all the card
-       public virtual List<GetWellSoonCard> GetWellSoonCard { get; set; }
+        public virtual List<GetWellSoonCard> GetWellSoonCard { get; set; }
     }
 }

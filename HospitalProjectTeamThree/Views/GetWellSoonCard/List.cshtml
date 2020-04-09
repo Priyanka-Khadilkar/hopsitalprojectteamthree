@@ -12,14 +12,14 @@
     @{
         foreach (var Card in Model)
         {
-            <div class="col-md-4">
-                <div>Message: @Card.Message</div>
-                <div>To: @Card.PatientName <span>@Card.PatientEmail</span></div>
-                <div>Room Number: @Card.RoomNumber</div>
-
-                <div><a href="/GetWellSoonCard/Show/@Card.CardId">Click to see the card</a></div>
-                <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
-            </div>
+        <div class="col-md-4">
+            <div>Message: @Card.Message</div>
+            <div>To: @Card.PatientName <span>@Card.PatientEmail</span></div>
+            <div>Room Number: @Card.RoomNumber</div>
+            <!--<div>From: Model.User.FirstName</div>-->
+            <div><a href="/GetWellSoonCard/Show/@Card.CardId">Click to see the card</a></div>
+            <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
+        </div>
         }
     }
 </div>

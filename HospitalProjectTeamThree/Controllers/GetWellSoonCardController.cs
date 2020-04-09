@@ -147,13 +147,19 @@ namespace HospitalProjectTeamThree.Controllers
             //return RedirectToAction("List");
         }
         public ActionResult Show(int id)
-        {
+        {   
+            //grab the id of current logged in user to display
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            //display the cards and the design of cards
             GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             Debug.WriteLine("I am trying to show card id" + id);
+            //instanciate the class
             ShowGetWell ShowGetWellViewModel = new ShowGetWell();
             ShowGetWellViewModel.GetWellSoonCard = Card;
             ShowGetWellViewModel.CardDesign = Design;
+            ShowGetWellViewModel.User = currentUser;
             return View(ShowGetWellViewModel);
         }
         public ActionResult Update(int id)
