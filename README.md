@@ -6,7 +6,13 @@
   * Add-migration
   * Hit build
   * Push everything
-## Team members: Priyanka, Alexa, Paul, Vitaly, Kshitija, Eseroghene
+## Team members: 
+* Priyanka 
+* Alexa 
+* Viet Phuong (Paul) Tran - n01400583
+* Vitaly
+* Kshitija 
+* Eseroghene
 ## Team members' feature and contribution"
 ### Paul: Log in system + Get Well Soon Card
   * Log in system
