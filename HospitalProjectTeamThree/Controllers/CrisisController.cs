@@ -63,6 +63,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(crises);
 
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult ListAdm()
         {
 
@@ -131,6 +132,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(viewmodel);
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Add()
         {
             return View();
@@ -145,7 +147,7 @@ namespace HospitalProjectTeamThree.Controllers
                 CrisisFinished = "No";
                
             }
-            Debug.WriteLine("Value of variables are " + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
+            //Debug.WriteLine("Value of variables are " + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
             
                 string query = "insert into Crises (CrisisName, CrisisStrated,CrisisFinished, CrisisDesc) values (@CrisisName, @CrisisStrated,@CrisisFinished,@CrisisDesc )";
                 SqlParameter[] sqlparams = new SqlParameter[4];
@@ -159,7 +161,7 @@ namespace HospitalProjectTeamThree.Controllers
             
             return RedirectToAction("CrisisList");
         }
-
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Update(int id)
         {
             //retrieves info for a specific crisis

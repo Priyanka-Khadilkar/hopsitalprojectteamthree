@@ -101,6 +101,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(viewmodel);
 
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult ListAdm(string articlesearchkey, int pagenum = 0)
         {
 
@@ -190,7 +191,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             return RedirectToAction("List");
         }
-       
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Update(int id)
         {
             //retrieves info for a specific article
@@ -218,7 +219,7 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, sqlparams);
             return RedirectToAction("List");
         }
-        
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int id)
         {
                         
