@@ -19,9 +19,16 @@
     <div>Start Date: <input type="datetime" name="StartDate" id="StartDate" /></div>
 
 
-    <div>Published 
-        <input type="radio" value="yes" />
-    <input type="radio" value="no" />
+    <div>
+        Published
+        <label>
+            Yes
+            <input id="publishedYes" type="radio" name="published" value="yes" />
+        </label>
+        <label>
+            No
+            <input id="publishedNo" type="radio" name="published" value="no" />
+        </label>
     </div>
     <div>
         Department:
@@ -32,14 +39,13 @@
                     <option value="@department.DepartmentId">@department.DepartmentName</option>
                 }
 
-
-
             }
         </select>
 
 
 
     </div>
+    <div><input type="hidden" name="UserID" value="29d339c9-bce2-4ad7-8e03-1e2b9ccf09af" /></div>
 
 
     <div><input type="submit" value="Add Job" /></div>
@@ -52,5 +58,6 @@
         $(function () {
             $("#StartDate").datepicker();
         })
+        
     </script>
     }

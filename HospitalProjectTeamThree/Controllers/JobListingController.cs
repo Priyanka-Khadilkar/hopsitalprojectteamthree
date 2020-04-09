@@ -48,7 +48,7 @@ namespace HospitalProjectTeamThree.Controllers
                 return View();
             }
         }
-        [Authorize(Roles = "Admin, Editor")]
+       // [Authorize(Roles = "Admin, Editor")]
         public ActionResult List(string jobsearchkey, int pagenum=0)
         {
             Debug.WriteLine("we are searching for " + jobsearchkey);
@@ -56,12 +56,12 @@ namespace HospitalProjectTeamThree.Controllers
             string query = "Select * from JobListings";
             List<SqlParameter> sqlparams = new List<SqlParameter>();
 
-            if(jobsearchkey!="")
-            {
-                query = query + "where JobTitle like @searchkey";
-                sqlparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
-                Debug.WriteLine("updated search should be looking for" + query);
-            }
+          //  if(jobsearchkey!="")
+           // {
+            //    query = query + "where JobTitle like @searchkey";
+            //    sqlparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
+              //  Debug.WriteLine("updated search should be looking for" + query);
+           // }
 
             List<JobListing> jobListings = db.JobListings.SqlQuery(query, sqlparams.ToArray()).ToList();
 
@@ -80,11 +80,11 @@ namespace HospitalProjectTeamThree.Controllers
                 ViewData["pagesummary"] = (pagenum + 1) + "of" + (maxpage + 1);
                 List<SqlParameter> newparams = new List<SqlParameter>();
 
-                if (jobsearchkey!="")
-                {
-                    newparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
-                    ViewData["jobsearchkey"] = jobsearchkey;
-                }
+               // if (jobsearchkey!="")
+               // {
+                 //   newparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
+                   // ViewData["jobsearchkey"] = jobsearchkey;
+               // }
                 newparams.Add(new SqlParameter("@start", start));
                 newparams.Add(new SqlParameter("@perpage", perpage));
                 string pagedquery = query + "order by JobID offset @start rows fetch first @perpage rows only";
@@ -115,7 +115,7 @@ namespace HospitalProjectTeamThree.Controllers
        
 
         [HttpPost]
-        public ActionResult Add(string JobTitle, string JobDescription, string Salary, DateTime StartDate, Boolean Published, int DepartmentID, int UserID)
+        public ActionResult Add(string JobTitle, string JobDescription, string Salary, DateTime StartDate, string Published, int DepartmentID, string UserID)
         {
             string query = "insert into JobListings (JobTitle, JobDescription, Salary, StartDate, Published, DepartmentID, UserID)values (@JobTitle, @JobDescription, @Salary, @StartDate, @Published, @DepartmentID, @UserID)";
             SqlParameter[] sqlparams = new SqlParameter[7];
@@ -155,7 +155,7 @@ namespace HospitalProjectTeamThree.Controllers
         }
         
         [HttpPost]
-        public ActionResult Update (int id, string JobTitle, string JobDescription, Double Salary, DateTime StartDate, Boolean Published, int DepartmentID, int UserID)
+        public ActionResult Update (int id, string JobTitle, string JobDescription, string Salary, DateTime StartDate, string Published, int DepartmentID, string UserID)
         {
             string query = "update JobListings set JobTitle=@JobTitle, JobDescription=@JobDescription, Salary=@Salary, StartDate=@StartDate, Published=@Published, DepartmentID=@DepartmentID, UserID=@UserID where JobID=@id";
             SqlParameter[] sqlparams = new SqlParameter[8];
@@ -180,7 +180,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(selectedjob);
         }
-        [Authorize(Roles="Admin, Registered User")]
+       // [Authorize(Roles="Admin, Registered User")]
 
         [HttpPost]
         public ActionResult Delete (int id)

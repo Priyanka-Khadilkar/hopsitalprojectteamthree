@@ -45,7 +45,7 @@ namespace HospitalProjectTeamThree.Models
         public string JobDescription { get; set; }
         public string Salary { get; set; }
         public DateTime StartDate { get; set; }
-        public bool Published { get; set; }
+        public string Published { get; set; }
         public int DepartmentID { get; set; }
         [ForeignKey("DepartmentID")]
         public virtual Department Department { get; set; }

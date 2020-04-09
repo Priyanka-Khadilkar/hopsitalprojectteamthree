@@ -392,6 +392,10 @@
     <Compile Include="Migrations\202004090354088_joblisting salary chage.designer.cs">
       <DependentUpon>202004090354088_joblisting salary chage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004090414287_joblisting published changed.cs" />
+    <Compile Include="Migrations\202004090414287_joblisting published changed.designer.cs">
+      <DependentUpon>202004090414287_joblisting published changed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -411,6 +415,7 @@
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
+    <Compile Include="Models\ViewModels\AddJobListing.cs" />
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
@@ -752,6 +757,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004090354088_joblisting salary chage.resx">
       <DependentUpon>202004090354088_joblisting salary chage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004090414287_joblisting published changed.resx">
+      <DependentUpon>202004090414287_joblisting published changed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
