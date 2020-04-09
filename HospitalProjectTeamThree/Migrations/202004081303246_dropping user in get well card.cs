@@ -14,8 +14,8 @@
             DropIndex("dbo.GetWellSoonCards", new[] { "User_Id" });
             DropIndex("dbo.GetWellSoonCards", new[] { "Users_Id" });
             DropColumn("dbo.GetWellSoonCards", "ApplicationUser_Id");
-            DropColumn("dbo.GetWellSoonCards", "User_Id");
-            DropColumn("dbo.GetWellSoonCards", "Users_Id");
+            //DropColumn("dbo.GetWellSoonCards", "User_Id");
+           // DropColumn("dbo.GetWellSoonCards", "Users_Id");
         }
         
         public override void Down()
