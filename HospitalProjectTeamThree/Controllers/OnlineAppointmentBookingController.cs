@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace HospitalProjectTeamThree.Controllers
 {
+    //Developed by : Priyanka Khadilkar
     public class OnlineAppointmentBookingController : Controller
     {
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
@@ -23,7 +24,7 @@ namespace HospitalProjectTeamThree.Controllers
         /// load the appointment booking form
         /// </summary>
         /// <returns>Returns the logged in user details</returns>
-        [Authorize(Roles = "Admin,NormalUser,Editor,Registered User")]
+        [Authorize(Roles = "Admin,Editor,Registered User")]
         public ActionResult Book()
         {
             //User.Identity.GetUserId() = this will get us loggedin user id
@@ -41,7 +42,7 @@ namespace HospitalProjectTeamThree.Controllers
         /// <param name="PreferredTime"></param>
         /// <param name="PreferredDoctor"></param>
         /// <returns>returns to view of list of all appointments </returns>
-        [Authorize(Roles = "Admin,NormalUser,Editor,Registered User")]
+        [Authorize(Roles = "Admin,Editor,Registered User")]
         [HttpPost]
         public ActionResult Book(string DateOfBirth, string PreferredDate, string PreferredTime, string PreferredDoctor)
         {
@@ -68,7 +69,11 @@ namespace HospitalProjectTeamThree.Controllers
             return RedirectToAction("List");
         }
 
-        [Authorize(Roles = "Admin,NormalUser,Editor,Registered User")]
+        /// <summary>
+        /// List all Online appointment
+        /// </summary>
+        /// <returns>returns list of appointments according to </returns>
+        [Authorize(Roles = "Admin,Editor,Registered User")]
         public ActionResult List()
         {
             List<OnlineAppointmentBooking> AllOnlineBookings = new List<OnlineAppointmentBooking>();
@@ -89,10 +94,17 @@ namespace HospitalProjectTeamThree.Controllers
             return View(AllOnlineBookings);
         }
 
-        [Authorize(Roles = "Admin,NormalUser,Editor,Registered User")]
+        /// <summary>
+        /// Load booking details on form
+        /// </summary>
+        /// <param name="id">Online appointment booking id</param>
+        /// <returns>Returns view model to update form</returns>
+        [Authorize(Roles = "Admin,Editor")]
         public ActionResult Update(int id)
         {
             UpdateOnlineAppointmentBookingViewModel UpdateOnlineAppointmentBookingViewModel = new UpdateOnlineAppointmentBookingViewModel();
+
+            //Get the appointment detail
             OnlineAppointmentBooking OnlineAppointmentBooking = db.OnlineAppointmentBookings.Include("User").Where(x => x.OnlineAppointmentBookingId == id).FirstOrDefault();
             UpdateOnlineAppointmentBookingViewModel.OnlineAppointmentBooking = OnlineAppointmentBooking;
             UpdateOnlineAppointmentBookingViewModel.OnlineAppointmentBookingStatus = (OnlineAppointmentBookingStatus)Enum.ToObject(typeof(OnlineAppointmentBookingStatus), Convert.ToInt32(OnlineAppointmentBooking.OnlineAppointmentBookingStatus));
@@ -100,16 +112,43 @@ namespace HospitalProjectTeamThree.Controllers
             return View(UpdateOnlineAppointmentBookingViewModel);
         }
 
-        //[HttpPost]
-        //public ActionResult Update(int id,string DateOfBirth,string PreferredDate,string PreferredTime, string PreferredDoctor,string OnlineAppointmentBookingStatus)
-        //{
+        /// <summary>
+        ///Admin and Editor can update the online booked appoinment
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="DateOfBirth"></param>
+        /// <param name="PreferredDate"></param>
+        /// <param name="PreferredTime"></param>
+        /// <param name="PreferredDoctor"></param>
+        /// <param name="OnlineAppointmentBookingStatus"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin,Editor")]
+        [HttpPost]
+        public ActionResult Update(int id, string DateOfBirth, string PreferredDate, string PreferredTime, string PreferredDoctor, int OnlineAppointmentBookingStatus)
+        {
+            //Get the booked appoitment booking details
+            OnlineAppointmentBooking onlineAppointmentBooking = db.OnlineAppointmentBookings.Include("User").Where(x => x.OnlineAppointmentBookingId == id).FirstOrDefault();
+
+            //Assign the updated details 
+            onlineAppointmentBooking.PatientDateOfBirth = Convert.ToDateTime(DateOfBirth);
+            onlineAppointmentBooking.PreferredDate = Convert.ToDateTime(PreferredDate);
+            onlineAppointmentBooking.PreferredTime = PreferredTime;
+            onlineAppointmentBooking.PreferredDoctor = PreferredDoctor;
+            onlineAppointmentBooking.OnlineAppointmentBookingStatus = OnlineAppointmentBookingStatus;
+
+            //Update the booking details online
+            db.SaveChanges();
+            //Return all bookings to the listing page
+            return RedirectToAction("List");
+        }
 
 
-        //    //Return all bookings to the listing page
-        //    return View(AllOnlineBookings);
-        //}
-
-
+        /// <summary>
+        /// Update the status of the booking to cancelled.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(Roles = "Admin,Editor,Registered User")]
         public ActionResult UpdateStatus(int id)
         {
             OnlineAppointmentBooking onlineAppointmentBooking = db.OnlineAppointmentBookings.Include("User").Where(x => x.OnlineAppointmentBookingId == id).FirstOrDefault();
@@ -117,7 +156,6 @@ namespace HospitalProjectTeamThree.Controllers
             db.SaveChanges();
             return RedirectToAction("List");
         }
-
 
     }
 }

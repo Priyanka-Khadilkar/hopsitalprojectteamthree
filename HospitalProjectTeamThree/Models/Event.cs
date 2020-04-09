@@ -29,7 +29,8 @@ namespace HospitalProjectTeamThree.Models
         public virtual ApplicationUser EventUpdater { get; set; }
         public DateTime EventCreatedOn { get; set; }
         public DateTime EventUpdatedOn { get; set; }
-        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+
+        public virtual ICollection<ApplicationUser> Users { get; set; }
 
     }
 }

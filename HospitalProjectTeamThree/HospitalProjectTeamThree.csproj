@@ -412,11 +412,20 @@
     <Compile Include="Migrations\202004091739505_users to doctors table.designer.cs">
       <DependentUpon>202004091739505_users to doctors table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091846024_Removed Event For many to Many.cs" />
+    <Compile Include="Migrations\202004091846024_Removed Event For many to Many.designer.cs">
+      <DependentUpon>202004091846024_Removed Event For many to Many.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091901245_Last time adding Many to Many Events User.cs" />
+    <Compile Include="Migrations\202004091901245_Last time adding Many to Many Events User.designer.cs">
+      <DependentUpon>202004091901245_Last time adding Many to Many Events User.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogTopic.cs" />
     <Compile Include="Models\CardDesign.cs" />
+    <Compile Include="Models\EventUser.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\Crisis.cs" />
     <Compile Include="Models\Department.cs" />
@@ -790,6 +799,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091739505_users to doctors table.resx">
       <DependentUpon>202004091739505_users to doctors table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091846024_Removed Event For many to Many.resx">
+      <DependentUpon>202004091846024_Removed Event For many to Many.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091901245_Last time adding Many to Many Events User.resx">
+      <DependentUpon>202004091901245_Last time adding Many to Many Events User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

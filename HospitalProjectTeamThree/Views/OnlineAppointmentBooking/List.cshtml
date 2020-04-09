@@ -65,6 +65,7 @@
                             </td>
                             <td>
                                 @{
+                                    //Change status to name
                                     var status = Enum.GetName(typeof(HospitalProjectTeamThree.Models.OnlineAppointmentBookingStatus),
                                         Convert.ToInt32(onlineAppointment.OnlineAppointmentBookingStatus));
                                     if (status == "InProcess")
@@ -77,12 +78,14 @@
                             <td>
                                 @onlineAppointment.OnlineAppointmentBookingBookedOn
                             </td>
+                            <!--If Logged in user is Admin or Editor then only can update the details of the Appointment-->
                             @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                             {
                                 <td>
                                     <a href="/OnlineAppointmentBooking/Update/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="Edit">Edit</a>
                                 </td>
                             }
+                            <!--If Logged in Registered User then they can only cancel the appointment if the status of the appointment is In process-->
                             @if (User.IsInRole("Registered User") && onlineAppointment.OnlineAppointmentBookingStatus == 1)
                             {
                                 var myModal = "myModal" + onlineAppointment.OnlineAppointmentBookingId;
@@ -126,7 +129,7 @@
         UpdateStatus(onlineAppointmentBookingId)  //calling delete method
     });
 
-    //Function for delete restaurant
+    //Function for Update the status if the appointment
         function UpdateStatus(onlineAppointmentBookingId) {
         var postData = {
             id: onlineAppointmentBookingId

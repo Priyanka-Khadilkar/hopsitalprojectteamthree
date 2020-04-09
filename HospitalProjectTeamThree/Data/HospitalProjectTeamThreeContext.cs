@@ -24,8 +24,7 @@ namespace HospitalProjectTeamThree.Data
         }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //Representing the Many in (Many Events to Many Users)
-        public virtual ICollection<Event> Events { get; set; }
+
         //One user can create many get well cards
         public virtual ICollection<GetWellSoonCard> GetWellSoonCards { get; set; }
 
@@ -36,6 +35,9 @@ namespace HospitalProjectTeamThree.Data
         public virtual ICollection<JobListing> JobListings { get; set; }
         //One user may have many Bookings
         public virtual ICollection<Room> Rooms { get; set; }
+
+        //Representing the Many in (Many Events to Many Users)
+        public virtual ICollection<Event> Events { get; set; }
     }
     //adding roles to user: Admin, Editor, Registered user
     public class ApplicationRole : IdentityRole
@@ -61,10 +63,29 @@ namespace HospitalProjectTeamThree.Data
             return new HospitalProjectTeamThreeContext();
         }
 
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //Done by : Priyanka Khadilkar
+            //Overriding the On model creating for many to many relationship with Application User 
+            //Representing the Many in (Many Events to Many Users)
+            modelBuilder.Entity<ApplicationUser>()
+                        .HasMany<Event>(s => s.Events)
+                        .WithMany(c => c.Users)
+                        .Map(cs =>
+                        {
+                            cs.MapLeftKey("UserId");
+                            cs.MapRightKey("EventId");
+                            cs.ToTable("AspNetUserEvents");
+                        });
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+
+
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.GetWellSoonCard> GetWellSoonCards { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Room> Rooms { get; set; }
-        
-        public virtual System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.DoctorsBlog> DoctorsBlogs { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.BlogTopic> Topics { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.LiveWaitTime> LiveWaitTimes { get; set; }
@@ -73,7 +94,7 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.CardDesign> CardDesigns { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Crisis> Crisiss { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
-
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.JobListing> JobListings { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
     }
 }
