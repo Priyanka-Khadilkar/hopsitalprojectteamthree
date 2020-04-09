@@ -392,6 +392,10 @@
     <Compile Include="Migrations\202004090354088_joblisting salary chage.designer.cs">
       <DependentUpon>202004090354088_joblisting salary chage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004090429020_Updated the data type of OnlineAppointmentBookingStatus.cs" />
+    <Compile Include="Migrations\202004090429020_Updated the data type of OnlineAppointmentBookingStatus.designer.cs">
+      <DependentUpon>202004090429020_Updated the data type of OnlineAppointmentBookingStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -752,6 +756,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004090354088_joblisting salary chage.resx">
       <DependentUpon>202004090354088_joblisting salary chage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004090429020_Updated the data type of OnlineAppointmentBookingStatus.resx">
+      <DependentUpon>202004090429020_Updated the data type of OnlineAppointmentBookingStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

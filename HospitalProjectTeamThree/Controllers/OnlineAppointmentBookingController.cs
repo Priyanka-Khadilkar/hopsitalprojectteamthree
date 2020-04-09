@@ -53,7 +53,7 @@ namespace HospitalProjectTeamThree.Controllers
             booking.PreferredDoctor = PreferredDoctor;
             booking.UserId = User.Identity.GetUserId();
             booking.OnlineAppointmentBookingBookedOn = DateTime.Now;
-            booking.OnlineAppointmentBookingStatus = Enum.GetName(typeof(OnlineAppointmentBookingStatus), OnlineAppointmentBookingStatus.InProcess);
+            booking.OnlineAppointmentBookingStatus = (int)OnlineAppointmentBookingStatus.InProcess;
             string currentUserId = User.Identity.GetUserId();
 
             //Get current user to set the FK data for an appointment.
@@ -95,8 +95,27 @@ namespace HospitalProjectTeamThree.Controllers
             UpdateOnlineAppointmentBookingViewModel UpdateOnlineAppointmentBookingViewModel = new UpdateOnlineAppointmentBookingViewModel();
             OnlineAppointmentBooking OnlineAppointmentBooking = db.OnlineAppointmentBookings.Include("User").Where(x => x.OnlineAppointmentBookingId == id).FirstOrDefault();
             UpdateOnlineAppointmentBookingViewModel.OnlineAppointmentBooking = OnlineAppointmentBooking;
+            UpdateOnlineAppointmentBookingViewModel.OnlineAppointmentBookingStatus = (OnlineAppointmentBookingStatus)Enum.ToObject(typeof(OnlineAppointmentBookingStatus), Convert.ToInt32(OnlineAppointmentBooking.OnlineAppointmentBookingStatus));
             //Return all bookings to the listing page
             return View(UpdateOnlineAppointmentBookingViewModel);
+        }
+
+        //[HttpPost]
+        //public ActionResult Update(int id,string DateOfBirth,string PreferredDate,string PreferredTime, string PreferredDoctor,string OnlineAppointmentBookingStatus)
+        //{
+
+
+        //    //Return all bookings to the listing page
+        //    return View(AllOnlineBookings);
+        //}
+
+
+        public ActionResult UpdateStatus(int id)
+        {
+            OnlineAppointmentBooking onlineAppointmentBooking = db.OnlineAppointmentBookings.Include("User").Where(x => x.OnlineAppointmentBookingId == id).FirstOrDefault();
+            onlineAppointmentBooking.OnlineAppointmentBookingStatus = (int)OnlineAppointmentBookingStatus.Cancelled;
+            db.SaveChanges();
+            return RedirectToAction("List");
         }
 
 
