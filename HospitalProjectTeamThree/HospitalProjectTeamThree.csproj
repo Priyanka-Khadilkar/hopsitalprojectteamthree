@@ -404,6 +404,10 @@
     <Compile Include="Migrations\202004091233591_apply pending change.designer.cs">
       <DependentUpon>202004091233591_apply pending change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004091247276_remove card desgin.cs" />
+    <Compile Include="Migrations\202004091247276_remove card desgin.designer.cs">
+      <DependentUpon>202004091247276_remove card desgin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -774,6 +778,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004091233591_apply pending change.resx">
       <DependentUpon>202004091233591_apply pending change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091247276_remove card desgin.resx">
+      <DependentUpon>202004091247276_remove card desgin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

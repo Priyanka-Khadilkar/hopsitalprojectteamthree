@@ -35,7 +35,7 @@ namespace HospitalProjectTeamThree.Controllers
             //redirect them to list
             //if they are logged in but is not admin, editor
             //redirect to their personal page
-            //else if they are not logged in or wrong logged in infor
+            //else if they are not logged in or having wrong logged in infor
             //reject them
             if (Request.IsAuthenticated)
             {
@@ -65,7 +65,7 @@ namespace HospitalProjectTeamThree.Controllers
             /*List<GetWellSoonCard> allCards = db.GetWellSoonCards.SqlQuery(showCardQuery).ToList();
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[1] = new SqlParameter("@id", id);*/
-            Debug.WriteLine("Iam trying to list all the cards");
+            //Debug.WriteLine("Iam trying to list all the cards");
 
             //ListGetWell ListGetWellViewModel = new ListGetWell();
             //ListGetWellViewModel.GetWellSoonCard = allCards;
@@ -108,6 +108,7 @@ namespace HospitalProjectTeamThree.Controllers
         public ActionResult Add()
         {
             List<CardDesign> addingDesign = db.CardDesigns.SqlQuery("select * from CardDesigns").ToList();
+            //get the current userId, display it in the view by a intput type="hidden" to add it in the query later
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
@@ -127,9 +128,8 @@ namespace HospitalProjectTeamThree.Controllers
             sqlparams[2] = new SqlParameter("@PatientName", PatientName);
             sqlparams[3] = new SqlParameter("@PatientEmail", PatientEmail);
             sqlparams[4] = new SqlParameter("@RoomNumber", RoomNumber);
+            //insert the Id grabbed from above to the get well cards table
             sqlparams[5] = new SqlParameter("@User_Id", User_Id);
-            //string userId = User.Identity.GetUserId();
-            //ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
             //Execute
             db.Database.ExecuteSqlCommand(query, sqlparams);
@@ -148,7 +148,7 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult Show(int id)
         {   
-            //grab the id of current logged in user to display
+            //grab the id of current logged in user to display their names, phone etc...
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
             //display the cards and the design of cards
@@ -210,7 +210,7 @@ namespace HospitalProjectTeamThree.Controllers
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[0] = new SqlParameter("@CardId", CardId);
             db.Database.ExecuteSqlCommand(query, sqlparams);
-            //when adding is done, admin will return to the total list
+            //when deleting is done, admin will return to the total list
             //user will return to personal list
             if (User.IsInRole("Admin"))
             {

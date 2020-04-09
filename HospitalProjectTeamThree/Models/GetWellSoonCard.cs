@@ -16,7 +16,9 @@ namespace HospitalProjectTeamThree.Models
         [Key]
         public int CardId { get; set; }
         public string Message { get; set; }
-        public string CardDesignNumber { get; set; }
+        //this will be substituted by a separate card design table
+        //one card has 1 design, 1 design can be apply to many cards
+        //public string CardDesignNumber { get; set; }
         public virtual ApplicationUser User { get; set; }
         public string PatientName { get; set; }
         public string RoomNumber { get; set; }

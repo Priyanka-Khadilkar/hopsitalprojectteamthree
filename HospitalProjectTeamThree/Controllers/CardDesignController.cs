@@ -56,7 +56,7 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("I am tryting to add the card with the name " + DesignName);
             return RedirectToAction("List");
         }
-        //[Authorize(Roles = "Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Show (int id)
         {
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns where CardDesignId = @id", new SqlParameter("@id", id)).FirstOrDefault();
