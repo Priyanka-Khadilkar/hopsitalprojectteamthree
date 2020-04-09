@@ -624,6 +624,9 @@
     <Content Include="Views\OnlineAppointmentBooking\Update.cshtml" />
     <Content Include="Views\BlogTopic\Add.cshtml" />
     <Content Include="Views\BlogTopic\Update.cshtml" />
+    <Content Include="Views\DoctorsBlog\DoctorPersonalList.cshtml" />
+    <Content Include="Views\DoctorsBlog\Index.cshtml" />
+    <Content Include="Views\DoctorsBlog\PublicList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
