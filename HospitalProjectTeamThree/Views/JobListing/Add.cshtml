@@ -1,4 +1,4 @@
-﻿@model List<HospitalProjectTeamThree.Models.Department>
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddJobListing
 
 
 
@@ -34,7 +34,7 @@
         Department:
         <select id="DepartmentID" typeof="text" name="DepartmentID">
             @{
-                foreach (var department in Model)
+                foreach (var department in Model.Departments)
                 {
                     <option value="@department.DepartmentId">@department.DepartmentName</option>
                 }
@@ -45,7 +45,7 @@
 
 
     </div>
-    <div><input type="hidden" name="UserID" value="29d339c9-bce2-4ad7-8e03-1e2b9ccf09af" /></div>
+    <div><input type="hidden" name="userID" value="@Model.User.Id" /></div>
 
 
     <div><input type="submit" value="Add Job" /></div>

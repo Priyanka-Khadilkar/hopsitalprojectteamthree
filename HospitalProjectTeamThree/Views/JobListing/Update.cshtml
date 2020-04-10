@@ -1,19 +1,69 @@
 ﻿@model HospitalProjectTeamThree.Models.ViewModels.UpdateJobListing
 @{
     ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<h2>Update</h2>
-<span>Department</span>
-<select id="DepartmentID" name="DepartmentID">
-    @foreach (var department in Model.Departments)
-    {
-        var selected = "";
-        if(Model.JobListing.DepartmentID == department.DepartmentId )
-        {
-            selected = "selected";
-        }
-        <option value="@department.DepartmentId" @selected>@department.DepartmentName</option>
-    }
-</select>
+<h2>Update Job Listing</h2>
+<form method="post" action="/JobListing/Update/@Model.JobListing.JobID">
+    <div class="col-md-4">
+        <div>Edit Job Title: <input type="text" name="JobTitle" value="@Model.JobListing.JobTitle" /></div>
+        <div>Edit Job Description <input type="text" name="JobDescription" value="@Model.JobListing.JobDescription" /></div>
+    </div>
+
+    <div class="col-md-4">
+        <input type="hidden" name="JobID" value="@Model.JobListing.JobID" />
+        <input type="hidden" name="UserID" value="@Model.User.Id" />
+
+        <span>Department</span>
+        <select id="DepartmentID" name="DepartmentID">
+            @foreach (var department in Model.Departments)
+                {
+                    var selected = "";
+                    if (Model.JobListing.DepartmentID == department.DepartmentId)
+                    {
+                        selected = "selected";
+                    }
+                    <option value="@department.DepartmentId" @selected>@department.DepartmentName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+        <div>Edit Salary: <input type="text" name="Salary" value="@Model.JobListing.Salary" /></div>
+        <div>Edit StartDate: <input type="text" name="StartDate" id="StartDate" value="@Model.JobListing.StartDate" /></div>
+    </div>
+    <div>
+        Published
+       
+        <label>
+            Yes
+            <input id="publishedYes" type="radio" name="published" value="yes" />
+        </label>
+        <label>
+            No
+            <input id="publishedNo" type="radio" name="published" value="no" />
+        </label>
+    </div>
+    <div class="col-md-4">
+        <div><input type="submit" value="Update Job Listing"/></div>
+    </div>
+
+
+</form>
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#StartDate").datepicker();
+        })
+
+
+    </script>
+}
+
+
 

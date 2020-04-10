@@ -11,7 +11,7 @@
         @{
             foreach (var design in Model.CardDesigns)
             {
-                <label for="CardDesignId"><img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" alt="Image of the card" /></label>
+                <label for="CardDesignId"><img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.cPiExt)" alt="Image of the card" /></label>
                 <input type="radio" name="CardDesignId" value="@(design.CardDesignId)" />
             }
         }

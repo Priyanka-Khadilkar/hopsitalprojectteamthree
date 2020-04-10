@@ -100,17 +100,22 @@ namespace HospitalProjectTeamThree.Controllers
 
         public ActionResult Show(int? id)
         {
+            JobListing jobListing = db.JobListings.SqlQuery("select * from JobListings where JobID=@JobID", new SqlParameter("@JobID", id)).FirstOrDefault();
+            List<Department> department = db.Departments.SqlQuery("select * from Departments inner join JobListings on JobListings.DepartmentID = Departments.DepartmentID where JobID = @id", new SqlParameter("@id", id)).ToList();
             if (id==null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            JobListing jobListing = db.JobListings.SqlQuery("select * from JobListings where JobID=@JobID", new SqlParameter("@JobID",id)).FirstOrDefault();
             if (jobListing == null)
             {
                 return HttpNotFound();
             }
+            ShowJobListing ShowJobListingViewModel = new ShowJobListing();
+            ShowJobListingViewModel.JobListing = jobListing;
+            ShowJobListingViewModel.Departments = department;
 
-            return View(jobListing);
+
+            return View(ShowJobListingViewModel);
         }
        
 
@@ -136,19 +141,34 @@ namespace HospitalProjectTeamThree.Controllers
 
         public ActionResult Add()
         {
-            List<Department> departments = db.Departments.SqlQuery("select * from Departments").ToList();
-            return View(departments);
+
+            //getting the user 
+            string userID = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userID);
+
+            List<Department> Departments = db.Departments.SqlQuery("select * from departments").ToList();
+
+
+            AddJobListing viewModel = new AddJobListing();
+            viewModel.Departments = Departments;
+            viewModel.User = currentUser;
+
+            return View(viewModel);
+
 
         }
 
         public ActionResult Update(int id)
         {
             JobListing selectedJobListing = db.JobListings.SqlQuery("select * from JobListings where JobID=@JobID", new SqlParameter("@JobID", id)).FirstOrDefault();
-            List<Department> department = db.Departments.SqlQuery("select * from Departments").ToList();
+            List<Department> departments = db.Departments.SqlQuery("select * from Departments").ToList();
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
             UpdateJobListing UpdateJobListingViewModel = new UpdateJobListing();
             UpdateJobListingViewModel.JobListing = selectedJobListing;
-            UpdateJobListingViewModel.Departments = department;
+            UpdateJobListingViewModel.Departments = departments;
+            UpdateJobListingViewModel.User = currentUser;
 
             return View(UpdateJobListingViewModel);
 
@@ -172,21 +192,24 @@ namespace HospitalProjectTeamThree.Controllers
 
             return RedirectToAction("List");
         }
-        public ActionResult DeleteConfirm (int id)
+        public ActionResult Delete  (int id)
         {
-            string query = "select * from JobListings where JobID = @id";
-            SqlParameter param = new SqlParameter("@id", id);
-            JobListing selectedjob = db.JobListings.SqlQuery(query, param).FirstOrDefault();
+            JobListing job = db.JobListings.SqlQuery("select * from JobListings where JobID = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            List<Department> department = db.Departments.SqlQuery("select * from Departments inner join JobListings on JobListings.DepartmentID = Departments.DepartmentID where JobID = @id", new SqlParameter("@id", id)).ToList();
 
-            return View(selectedjob);
+            ShowJobListing ShowJobListingViewModel = new ShowJobListing();
+            ShowJobListingViewModel.JobListing = job;
+            ShowJobListingViewModel.Departments = department;
+
+            return View(ShowJobListingViewModel);
         }
        // [Authorize(Roles="Admin, Registered User")]
 
         [HttpPost]
-        public ActionResult Delete (int id)
+        public ActionResult Delete (int id, int JobID)
         {
-            string query = "delete from JobListings where JobID = @id";
-            SqlParameter param = new SqlParameter("@id", id);
+            string query = "delete from JobListings where JobID = @Jobid";
+            SqlParameter param = new SqlParameter("@Jobid", JobID);
             db.Database.ExecuteSqlCommand(query, param);
 
             return RedirectToAction("List");
