@@ -475,7 +475,7 @@
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
-    <Compile Include="Models\ViewModels\RoomBooking.cs" />
+    <Compile Include="Models\ViewModels\RoomBookings.cs" />
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
     <Compile Include="Models\ViewModels\ShowJobListing.cs" />
@@ -994,6 +994,7 @@
     <Content Include="Views\OnlineAppointmentBooking\View.cshtml" />
     <Content Include="Views\Room\RoomBooking.cshtml" />
     <Content Include="Views\BlogTopic\PublicList.cshtml" />
+    <Content Include="Views\Room\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

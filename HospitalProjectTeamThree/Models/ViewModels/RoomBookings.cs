@@ -6,7 +6,7 @@ using System.Web;
 
 namespace HospitalProjectTeamThree.Models.ViewModels
 {
-    public class RoomBooking
+    public class RoomBookings
     {
         //need info about one room
         public virtual Room Room { get; set; }

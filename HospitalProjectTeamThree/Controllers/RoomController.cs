@@ -76,14 +76,31 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(viewmodel);
         }
-        public ActionResult RoomBooking(int id)
+        public ActionResult RoomBooking(int? id)
         {
             Debug.WriteLine("Room Id is: " +id);
-            //list all Rooms in the system
-            string query = "Select * from Rooms ";
-            List<Room> rooms = db.Rooms.SqlQuery(query).ToList();
-            return View(rooms);
-        }
 
+            //get all info about one room given the id
+            Room Rooms = db.Rooms.SqlQuery("select * from Rooms where RoomID=@RoomID", new SqlParameter("@RoomID", id)).FirstOrDefault();
+
+            
+            //get the current user id when they logged in. Code reference Paul Tran
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            
+            //checking is  I get logged in user
+            Debug.WriteLine("User id is" + currentUser);
+                        
+            RoomBookings viewmodel = new RoomBookings();
+            viewmodel.User = currentUser;
+            viewmodel.Room = Rooms;
+            return View(viewmodel);
+        }
+        public ActionResult Confirm()
+        {
+
+
+            return View();
+        }
     }
 }

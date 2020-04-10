@@ -1,29 +1,35 @@
-﻿
+﻿@model HospitalProjectTeamThree.Models.ViewModels.RoomBookings
 @{
     ViewBag.Title = "RoomBooking";
 }
-
+<div>
+    <a href="/Room/ShowAll">Back to list of all rooms</a>
+</div>
 <h2>RoomBooking</h2>
 
-<form>
+<form action="/Room/Confirm/@Model.User.Id" method="POST">
     <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" name="fname" value="@Model.User.FirstName" readonly>
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" name="lname" value="@Model.User.LastName" readonly>
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="@Model.User.Email" readonly>
+        <label for="password">Email</label>
+        <input type="password" class="form-control" id="password" name="email" value="@Model.User.PasswordHash" readonly>
+        <label for="roomselected">Selected Room</label>
+        <input type="text" class="form-control" id="roomselected" name="roomselected" value="@Model.Room.RoomType">
+
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
+        <label for="exampleFormControlSelect1">Select Your Payment. *Opens in new window</label>
+        <!--I Assume that when payment processed successfully it returns value "1" -->
         <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option value="1"><a href="paypal" target="_blank">PayPal</a></option>
+            <option value="1"><a href="facebook" target="_blank">FaceBook Money</a></option>
+            <option value="1"><a href="google" target="_blank">Google Money</a></option>
         </select>
     </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
