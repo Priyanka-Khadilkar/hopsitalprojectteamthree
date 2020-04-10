@@ -15,19 +15,25 @@
         <input type="text" class="form-control" id="lname" name="lname" value="@Model.User.LastName" readonly>
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" value="@Model.User.Email" readonly>
-        <label for="password">Email</label>
+        <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="email" value="@Model.User.PasswordHash" readonly>
         <label for="roomselected">Selected Room</label>
-        <input type="text" class="form-control" id="roomselected" name="roomselected" value="@Model.Room.RoomType">
+        <input type="text" class="form-control" id="roomselected" name="roomselected" value="@Model.Room.RoomType" readonly>
+        <label for="datefrom">Date From(YYYY-MM-DD):</label>
+        <input type="text" class="form-control" id="datefrom" name="datefrom">
+        <label for="dateto">Date To(YYYY-MM-DD):</label>
+        <input type="text" class="form-control" id="dateto" name="dateto">
+        <input type="hidden" name="roomId" id="roomId" value="@Model.Room.RoomID" />
+        <input type="hidden" name="userid" id="userid" value="@Model.User.Id" />
 
     </div>
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Select Your Payment. *Opens in new window</label>
+        <label for="payment">Select Your Payment. *Opens and process payment in new window</label>
         <!--I Assume that when payment processed successfully it returns value "1" -->
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option value="1"><a href="paypal" target="_blank">PayPal</a></option>
-            <option value="1"><a href="facebook" target="_blank">FaceBook Money</a></option>
-            <option value="1"><a href="google" target="_blank">Google Money</a></option>
+        <select class="form-control" id="payment" name="payment" >
+            <option value="True"><a href="#" target="_blank">PayPal</a></option>
+            <option value="True"><a href="#" target="_blank">FaceBook Money</a></option>
+            <option value="True"><a href="#" target="_blank">Google Money</a></option>
         </select>
     </div>
 

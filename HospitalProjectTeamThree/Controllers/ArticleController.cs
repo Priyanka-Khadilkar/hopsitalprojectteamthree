@@ -178,7 +178,7 @@ namespace HospitalProjectTeamThree.Controllers
         {
             DateTime DatePosted = DateTime.Now;
 
-            Debug.WriteLine("Value of variables are " + ArticleAuthor + ArticleTitle + ArticleContent + DatePosted);
+            //Debug.WriteLine("Value of variables are " + ArticleAuthor + ArticleTitle + ArticleContent + DatePosted);
 
             string query = "insert into Articles (ArticleTitle, ArticleAuthor, ArticleContent, DatePosted, Crisis_CrisisId) values (@ArticleTitle, @ArticleAuthor, @ArticleContent, @DatePosted, @Crisis_CrisisId)";
             SqlParameter[] sqlparams = new SqlParameter[5];
