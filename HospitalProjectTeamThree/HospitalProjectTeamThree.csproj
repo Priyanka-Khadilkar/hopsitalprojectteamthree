@@ -998,9 +998,12 @@
     <Content Include="Views\BlogTopic\Show.cshtml" />
     <Content Include="Views\BlogTopic\PublicShow.cshtml" />
     <Content Include="Views\Room\Confirm.cshtml" />
+    <Content Include="Views\Event\List.cshtml" />
+    <Content Include="Views\Event\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\Event\" />
     <Folder Include="Images\GetWellCard\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
