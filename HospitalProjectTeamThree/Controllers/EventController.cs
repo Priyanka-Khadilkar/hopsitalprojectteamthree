@@ -78,5 +78,16 @@ namespace HospitalProjectTeamThree.Controllers
             return View(eventdata);
         }
 
+        /// <summary>
+        /// Update the event details
+        /// </summary>
+        /// <returns>returns the update event</returns>
+        public ActionResult Update(int id)
+        {
+            Event eventdata = db.Events.Include("EventCreater").Where(x => x.EventId == id).FirstOrDefault();
+            //Return event detail
+            return View(eventdata);
+        }
+
     }
 }
