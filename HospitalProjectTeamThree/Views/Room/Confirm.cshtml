@@ -49,12 +49,12 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" name="email" value="@Model.User.PasswordHash" readonly>
         <!--<label for="roomselected">Selected Room</label>
-    <input type="text" class="form-control" id="roomselected" name="roomselected" value="@Model.Room.RoomType" readonly>
+    <input type="text" class="form-control" id="roomselected" name="roomselected" value="@Model.Room.RoomType" readonly>-->
     <label for="datefrom">Date From(YYYY-MM-DD):</label>
-    <input type="text" class="form-control" id="datefrom" name="datefrom">
+    <input type="text" class="form-control" id="datefrom" name="datefrom" value="@Model.AllRoomBookings.DateFrom">
     <label for="dateto">Date To(YYYY-MM-DD):</label>
-    <input type="text" class="form-control" id="dateto" name="dateto">
-    <input type="hidden" name="roomId" id="roomId" value="@Model.Room.RoomID" />
+    <input type="text" class="form-control" id="dateto" name="dateto" value="@Model.AllRoomBookings.DateTo">
+    <!--<input type="hidden" name="roomId" id="roomId" value="@Model.Room.RoomID" />
     <input type="hidden" name="userid" id="userid" value="@Model.User.Id" />-->
 
     </div>

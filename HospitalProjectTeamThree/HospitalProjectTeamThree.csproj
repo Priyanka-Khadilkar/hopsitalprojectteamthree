@@ -454,6 +454,10 @@
     <Compile Include="Migrations\202004102331079_Updated Event Table with time fields.designer.cs">
       <DependentUpon>202004102331079_Updated Event Table with time fields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004102348417_showbooking.cs" />
+    <Compile Include="Migrations\202004102348417_showbooking.designer.cs">
+      <DependentUpon>202004102348417_showbooking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1228,6 +1232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004102331079_Updated Event Table with time fields.resx">
       <DependentUpon>202004102331079_Updated Event Table with time fields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004102348417_showbooking.resx">
+      <DependentUpon>202004102348417_showbooking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

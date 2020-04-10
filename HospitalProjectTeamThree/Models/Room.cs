@@ -23,6 +23,7 @@ namespace HospitalProjectTeamThree.Models
 
         //Room may have many users associated with room (Many bookings)
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
-        
+        public virtual ICollection<RoomBooking> RoomBookings { get; set; }
+
     }
 }
