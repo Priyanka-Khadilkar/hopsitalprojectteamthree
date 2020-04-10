@@ -76,9 +76,9 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(viewmodel);
         }
-        public ActionResult RoomBooking()
+        public ActionResult RoomBooking(int id)
         {
-
+            Debug.WriteLine("Room Id is: " +id);
             //list all Rooms in the system
             string query = "Select * from Rooms ";
             List<Room> rooms = db.Rooms.SqlQuery(query).ToList();

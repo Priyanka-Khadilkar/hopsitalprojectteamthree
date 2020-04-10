@@ -14,6 +14,8 @@ namespace HospitalProjectTeamThree.Models
         [Key]
         public int RoomID { get; set; }
         public int RoomNumber { get; set; }
+
+        //I realized Room Type should have been separate table
         public string RoomType { get; set; }
         public int RoomTotalBeds { get; set; }
         public int RoomPrice { get; set; } //in cents(e.g. 10 dollars = 1000 cents)
@@ -21,6 +23,6 @@ namespace HospitalProjectTeamThree.Models
 
         //Room may have many users associated with room (Many bookings)
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
-        //foreign key from Bookings(RoomAplicationUser) table
+        
     }
 }

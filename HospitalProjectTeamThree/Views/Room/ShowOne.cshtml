@@ -4,61 +4,44 @@
 }
 
 
-<div class="featured">
-    <div class="card featured">
-        <h2>@Model.room.RoomType</h2>
-        <div class="thumb">
+    <div class="featured">
+        <div class="card featured">
+            <h2>@Model.room.RoomType</h2>
+            <div class="thumb">
 
-            @{
-                <!--Display appropriate image, for room type-->
-                switch (@Model.room.RoomType)
-                {
-                    case "Private":
-                        <img src="~/images/Room/private.jpg" alt="">
-                        break;
-                    case "Semi-private":
-                        <img src="~/images/Room/semiprivate.jpg" alt="">
-                        break;
-                    default:
-                        <img src="~/images/Room/public.jpg" alt="">
-                        break;
+                @{
+                    <!--Display appropriate image, for room type-->
+                    switch (@Model.room.RoomType)
+                    {
+                        case "Private":
+                            <img src="~/images/Room/private.jpg" alt="">
+                            break;
+                        case "Semi-private":
+                            <img src="~/images/Room/semiprivate.jpg" alt="">
+                            break;
+                        default:
+                            <img src="~/images/Room/public.jpg" alt="">
+                            break;
+                    }
                 }
-            }
+
+
+            </div>
 
 
         </div>
-    
 
+        <div class="roomdesc">
+            
+            <div class="price center">Room Price: $@Model.room.RoomPrice</div>
+            <div class="price center">Total Beds: @Model.room.RoomTotalBeds</div>
+            <p>@Model.room.RoomDesc</p>
+            <div> <button><a href="/Room/RoomBooking/@Model.room.RoomID">Reserve a room</a></button></div>
+        </div>
+        
     </div>
+   
 
-    <div class="roomdesc">
-        <div class="price center">Room Price: $@Model.room.RoomPrice</div>
-        <div class="price center">Total Beds: @Model.room.RoomTotalBeds</div>
-        <p>@Model.room.RoomDesc</p>
-    </div>
-</div>
-@*<div class="jumbotron profile">
-
-            <form action="" method="POST">
-
-                <label for="uid">User ID</label>
-                <input type="text" id="uid" name="uid" value="@" /></br>
-                <label for="userisAdmin">Role</label>
-                <input type="text" id="userisAdmin" name="userisAdmin" value="" disabled /></br>
-                <label for="userfname">First Name: </label>
-                <input type="text" id="userfname" name="userfname" value="" /> </br>
-                <label for="userlname">Last Name: </label>
-                <input type="text" id="userlname" name="userlname" value="" /></br>
-                <label for="useremail">Email: </label>
-                <input type="text" id="useremail" name="useremail" value="" /></br>
-                <label for="userpassword">Password: </label>
-                <input type="password" id="userpassword" name="userpassword" value="" /></br>
-                <button type="submit" name="updUser" id="updUser"> Update User</button>
-                <button type="submit" name="deleteUser" id="deleteUser"> Delete Account</button>
-
-        </form>
-
-    </div>*@
 <div class="flex-container">
     @{
 
