@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Add Event
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/OnlineAppointmentBooking/Book">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventTitle">Title:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="EventTitle" placeholder="Enter Title" name="EventTitle">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventStartDate">Start date:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="EventStartDate" placeholder="MM/DD/YYYY" name="EventStartDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventEndDate">End date :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="EventEndDate" placeholder="MM/DD/YYYY" name="EventEndDate">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventFromTime">Time :</label>
+                <div class="col-sm-10 ">
+                    <input type="text" class="form-control clockpicker" id="EventFromTime" placeholder="From" name="EventFromTime">
+                    <input type="text" class="form-control clockpicker" id="EventToTime" placeholder="To" name="EventToTime">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventImage">Image :</label>
+                <div class="col-sm-10  clockpicker">
+                    <input type="file" id="EventImage" name="EventImage" class="form-control" placeholder="Choose Image">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventLocation">Location :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="EventLocation" placeholder="Enter Event Location" name="EventLocation">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventTargetAudience">Target Audience  :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="EventTargetAudience" placeholder="Enter Preferred Doctor" name="EventTargetAudience">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Hosted By  :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="EventHostedBy" placeholder="Enter Hosted By" name="EventHostedBy">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventDetail">Details  :</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="EventDetail" placeholder="Enter Hosted By" name="EventDetail"> </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" id="BtnSubmit" class="btn btn-success">Book</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#EventStartDate").datepicker();
+            $("#EventEndDate").datepicker();
+            $('.clockpicker').clockpicker({
+                donetext: 'Done'
+            });
+
+        });
+    </script>
+}
+
