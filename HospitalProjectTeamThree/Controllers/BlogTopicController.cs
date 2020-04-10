@@ -12,13 +12,25 @@ using HospitalProjectTeamThree.Data;
 using HospitalProjectTeamThree.Models;
 using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
-//using System.IO;
+using System.IO;
+using Microsoft.AspNet.Identity.Owin;
+using System.Web.Security;
+//need this for pagination
+using PagedList;
+using Microsoft.AspNet.Identity;
 
 namespace HospitalProjectTeamThree.Controllers
 {
     public class BlogTopicController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
+
+        public BlogTopicController() { }
+
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult List()
         {
             string query = "Select * from BlogTopics";
@@ -26,6 +38,56 @@ namespace HospitalProjectTeamThree.Controllers
             Debug.WriteLine("Iam trying to list all the topics");
             return View(topics);
         }
-    
+
+        public BlogTopicController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
 }

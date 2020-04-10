@@ -645,6 +645,7 @@
     <Content Include="Views\Event\Add.cshtml" />
     <Content Include="Views\OnlineAppointmentBooking\View.cshtml" />
     <Content Include="Views\Room\RoomBooking.cshtml" />
+    <Content Include="Views\BlogTopic\PublicList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
