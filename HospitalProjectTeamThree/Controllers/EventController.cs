@@ -28,8 +28,8 @@ namespace HospitalProjectTeamThree.Controllers
         {
             Event eventModel = new Event();
             eventModel.EventTitle = EventTitle;
-            eventModel.EventStartDate = Convert.ToDateTime(EventStartDate);
-            eventModel.EventEndDate = Convert.ToDateTime(EventEndDate);
+            eventModel.EventStartDate = DateTime.ParseExact(EventStartDate, "MM/dd/yyyy", null);
+            eventModel.EventEndDate = DateTime.ParseExact(EventEndDate, "MM/dd/yyyy", null);
             eventModel.EventTime = EventFromTime + " TO " + EventToTime;
             eventModel.EventTargetAudience = EventTargetAudience;
 

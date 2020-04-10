@@ -184,6 +184,7 @@
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobListingController.cs" />
+    <Compile Include="Controllers\LiveWaitTimeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OnlineAppointmentBookingController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -998,6 +999,13 @@
     <Content Include="Views\BlogTopic\Show.cshtml" />
     <Content Include="Views\BlogTopic\PublicShow.cshtml" />
     <Content Include="Views\Room\Confirm.cshtml" />
+    <Content Include="Views\LiveWaitTimes\List.cshtml" />
+    <Content Include="Views\LiveWaitTimes\Add.cshtml" />
+    <Content Include="Views\LiveWaitTimes\Update.cshtml" />
+    <Content Include="Views\LiveWaitTimes\Delete.cshtml" />
+    <Content Include="Views\LiveWaitTimes\Show.cshtml" />
+    <Content Include="Views\LiveWaitTimes\PublicList.cshtml" />
+    <Content Include="Views\LiveWaitTimes\PublicShow.cshtml" />
     <Content Include="Views\Event\List.cshtml" />
     <Content Include="Views\Event\Show.cshtml" />
   </ItemGroup>
