@@ -96,5 +96,6 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.OnlineAppointmentBooking> OnlineAppointmentBookings { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.JobListing> JobListings { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.RoomBooking> RoomBookings { get; set; }
     }
 }

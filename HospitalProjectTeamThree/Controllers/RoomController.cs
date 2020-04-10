@@ -64,7 +64,7 @@ namespace HospitalProjectTeamThree.Controllers
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
-            //Debug.WriteLine("I want to see if I can get username from database" +User);
+            //Debug.WriteLine("I want to see if I can get username from database" +UserId);
 
 
             //Adding data to viewmodel    
