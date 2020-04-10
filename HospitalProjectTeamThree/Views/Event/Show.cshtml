@@ -1,0 +1,64 @@
+﻿@model HospitalProjectTeamThree.Models.Event
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="panel panel-primary top">
+        <div class="panel-heading header-color">
+            @Model.EventTitle
+            @if (User.IsInRole("Admin"))
+            {
+                <a href="/Event/Update/@Model.EventId" class="deleteicon marginright45" title="Click to Update"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="/Event/Update/@Model.EventId" class="deleteicon marginright45" title="Click to Delete"><span class="glyphicon glyphicon-trash"></span></a>
+            }
+        </div>
+        <div class="panel-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3"><img src="~/Images/Event/@Model.EventImagePath" class="img-responsive" alt="Event picture" width="500" height="600"></div>
+                    <div class="col-md-9">
+                        <div class="form-horizontal">
+                            <div class="form-group" style="margin:5px !important">
+                                <label class="control-label col-sm-4">Date :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label font-weight500"> @Model.EventStartDate.ToString("MM-dd-yyyy") TO @Model.EventEndDate.ToString("MM-dd-yyyy") </label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin:5px !important">
+                                <label class="control-label col-sm-4">Time :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label font-weight500"> @Model.EventTime </label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin:5px !important">
+                                <label class="control-label col-sm-4">Location :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label font-weight500"> @Model.EventLocation </label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin:5px !important">
+                                <label class="control-label col-sm-4">Target Audience :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label font-weight500"> @Model.EventTargetAudience </label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin:5px !important">
+                                <label class="control-label col-sm-4">Hosted By :</label>
+                                <div class="col-sm-8">
+                                    <label class="control-label font-weight500"> @Model.EventHostedBy </label>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin:5px !important">
+                                <label class="control-label col-sm-4">Details :</label>
+                                <div class="col-sm-8">
+                                    @Html.Raw(Model.EventDetails)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/Event/List" class="btn btn-primary headtop">Back to Event List</a>
+    </div>
