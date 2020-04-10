@@ -12,17 +12,16 @@ namespace HospitalProjectTeamThree.Models
     {
         [Key]
         public int BookingId { get; set; }
-
-        
+                
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
         public int RoomID { get; set; }
         [ForeignKey("RoomID")]
         public virtual Room Room { get; set; }
-        bool PaymentCleared { get; set; }
-        string DateFrom { get; set; }
-        string DateTo { get; set; }
+        public bool PaymentCleared { get; set; }
+        public string DateFrom { get; set; }
+        public string DateTo { get; set; }
         public ICollection<Room> Rooms { get; set; }
     }
 }
