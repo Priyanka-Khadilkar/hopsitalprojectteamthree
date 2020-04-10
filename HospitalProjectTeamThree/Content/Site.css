@@ -32,6 +32,17 @@ textarea {
     margin-bottom : 10px;
 }
 
+.deleteicon {
+    color: white;
+    float: right;
+}
+.marginright45 {
+    margin-right: 17px;
+}
+.font-weight500 {
+    font-weight: 100 !important;
+}
+
 /*Developer : Alexa Perez*/
 
 #container-bg {

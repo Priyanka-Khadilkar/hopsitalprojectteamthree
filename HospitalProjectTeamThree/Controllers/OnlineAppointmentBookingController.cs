@@ -142,6 +142,15 @@ namespace HospitalProjectTeamThree.Controllers
             return RedirectToAction("List");
         }
 
+        [Authorize(Roles = "Admin,Editor,Registered User")]
+        public ActionResult View(int id)
+        {
+            //Get the booked appoitment booking details according to Id
+            OnlineAppointmentBooking onlineAppointmentBooking = db.OnlineAppointmentBookings.Include("User").Where(x => x.OnlineAppointmentBookingId == id).FirstOrDefault();
+            //Return booking detail
+            return View(onlineAppointmentBooking);
+        }
+
 
         /// <summary>
         /// Update the status of the booking to cancelled.

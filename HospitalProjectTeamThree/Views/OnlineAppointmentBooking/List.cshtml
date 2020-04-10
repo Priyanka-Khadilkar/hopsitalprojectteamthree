@@ -55,7 +55,7 @@
                                 </td>
                             }
                             <td>
-                                @onlineAppointment.PreferredDate
+                                @onlineAppointment.PreferredDate.ToString("MM/dd/yyyy");
                             </td>
                             <td>
                                 @onlineAppointment.PreferredTime
@@ -77,6 +77,9 @@
                             </td>
                             <td>
                                 @onlineAppointment.OnlineAppointmentBookingBookedOn
+                            </td>
+                            <td>
+                                <a href="/OnlineAppointmentBooking/View/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="View">View</a>
                             </td>
                             <!--If Logged in user is Admin or Editor then only can update the details of the Appointment-->
                             @if (User.IsInRole("Admin") || User.IsInRole("Editor"))

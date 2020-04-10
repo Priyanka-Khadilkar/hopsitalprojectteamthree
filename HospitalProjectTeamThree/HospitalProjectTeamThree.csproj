@@ -180,6 +180,7 @@
     <Compile Include="Controllers\CardDesignController.cs" />
     <Compile Include="Controllers\CrisisController.cs" />
     <Compile Include="Controllers\DoctorsBlogController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobListingController.cs" />
@@ -634,6 +635,8 @@
     <Content Include="Views\Crisis\ViewCrisisAdm.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\ListAdm.cshtml" />
+    <Content Include="Views\Event\Add.cshtml" />
+    <Content Include="Views\OnlineAppointmentBooking\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
