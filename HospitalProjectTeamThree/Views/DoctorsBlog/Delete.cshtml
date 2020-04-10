@@ -3,12 +3,12 @@
     ViewBag.Title = "Delete";
 }
 
-<div class="content">
+<div>
     <!-- Confirmation page to confirm delete of blgo entry -->
     <h2 class="title">Are you sure you want to delete Blog Entry # <span class="delname">@Model.BlogId</span> ?</h2>
-    <div class="confirm_deletebtn">
-        <a href="/DoctorsBlog/DeleteF/@Model.BlogId" class="delbuttons">Confirm</a>
-        <a href="/DoctorsBlog/List" class="delbuttons">Back to List</a>
+    <div >
+        <a href="/DoctorsBlog/DeleteF/@Model.BlogId" class="btn btn-danger btn-sm">Confirm</a>
+        <a href="/DoctorsBlog/Index" class="btn btn-primary btn-sm">Back to List</a>
     </div>
 </div>
 

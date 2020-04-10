@@ -1,7 +1,44 @@
-﻿
+﻿@model List<HospitalProjectTeamThree.Models.DoctorsBlog>
 @{
     ViewBag.Title = "PublicList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        List of Doctor's Blogs
+    </div>
+    <div class="panel-body">
+        <table class="table table-dark top">
+            <thead>
+                <tr>
+                    <th scope="col">Blog ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var Blog in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Blog.BlogId
+                            </td>
+                            <td>
+                                <a href="/DoctorsBlog/PublicShow/@Blog.BlogId">@Blog.BlogTitle</a>
+                            </td>
+                            <td>
+                                @Blog.BlogDate.ToString("MM/dd/yyyy")
+                            </td>
+                            <td>
+                                @Blog.User.FirstName @Blog.User.LastName
+                            </td>
+                        </tr>
+                    }
+                }
 
-<h2>PublicList</h2>
-
+            </tbody>
+        </table>
+    </div>
+</div>

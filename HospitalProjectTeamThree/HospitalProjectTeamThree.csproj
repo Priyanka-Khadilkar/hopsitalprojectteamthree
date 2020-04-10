@@ -450,6 +450,7 @@
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
     <Compile Include="Models\ViewModels\AddJobListing.cs" />
+    <Compile Include="Models\ViewModels\DoctorPersonalBlogList.cs" />
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
@@ -627,6 +628,7 @@
     <Content Include="Views\DoctorsBlog\DoctorPersonalList.cshtml" />
     <Content Include="Views\DoctorsBlog\Index.cshtml" />
     <Content Include="Views\DoctorsBlog\PublicList.cshtml" />
+    <Content Include="Views\DoctorsBlog\PublicShow.cshtml" />
     <Content Include="Views\Crisis\Index.cshtml" />
     <Content Include="Views\Crisis\ListAdm.cshtml" />
     <Content Include="Views\Crisis\ViewCrisisAdm.cshtml" />

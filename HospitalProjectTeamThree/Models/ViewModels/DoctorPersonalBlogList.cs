@@ -6,11 +6,10 @@ using HospitalProjectTeamThree.Data;
 
 namespace HospitalProjectTeamThree.Models.ViewModels
 {
-    public class AddBlogTopic
+    public class DoctorPersonalBlogList
     {
-        public DoctorsBlog Blog { get; set; }
+        public List<DoctorsBlog> Blog { get; set; }
         public List<BlogTopic> BlogTopics { get; set; }
         public virtual ApplicationUser User { get; set; }
-        public List<BlogTopic> Add_Topic { get; set; }
     }
 }

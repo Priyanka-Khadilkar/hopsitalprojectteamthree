@@ -31,4 +31,43 @@ textarea {
 .bottom-margin-10{
     margin-bottom : 10px;
 }
+
+/*Developer : Alexa Perez*/
+
+#container-bg {
+    background-color: #07407b;
+    color:white;
+    padding:1em;
+    border-radius:20px;
+    max-width:600px;
+
+}
+.title-b{
+    text-transform:uppercase;
+    text-align:center;
+    padding:1em;
+}
+.blog-topic, .blog-topic-div {
+    padding: 0.3em;
+}
+.blog-topic a{
+    color:white;
+}
+.blog-date, .blog-author{
+    float:right;
+}
+.blog-content {
+    text-align:center;
+    text-justify:distribute-all-lines;
+    max-width:300px;
+    margin-top:3em;
+    margin-bottom:3em;
+}
+.blog-source{
+    float:left;
+}
+.blog-edit {
+   text-align:center;
+   margin-top:2em;
+}
 /*****************************/

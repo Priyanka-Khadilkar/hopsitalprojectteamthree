@@ -30,7 +30,7 @@ namespace HospitalProjectTeamThree
                       "~/Content/bootstrap-clockpicker.css",
                       "~/Content/Custom.css",
                       "~/Content/crisis.css",
-                      "~/Content/site.css"));
+                      "~/Content/Site.css"));
         }
     }
 }

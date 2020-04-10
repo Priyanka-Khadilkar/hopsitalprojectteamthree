@@ -1,0 +1,39 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddBlogTopic
+@{
+    ViewBag.Title = "PublicShow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container" id="container-bg">
+    <h2 class="title-b">@Model.Blog.BlogTitle</h2>
+    <div class="blog-date">
+        Date: @Model.Blog.BlogDate.ToString("MM/dd/yyyy")
+    </div>
+    <div class="blog-topic">
+        Topics:
+        @{
+            <!-- Here we show the topics that are on this blog entry -->
+            foreach (var Topic in @Model.BlogTopics)
+            {
+                <div class="blog-topic-div">
+                    <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                    @{
+
+                    }
+                </div>
+            }
+
+        }
+    </div>
+    <div class="blog-content">
+        @Model.Blog.BlogContent
+    </div>
+    <div class="blog-source">
+        Source: @Model.Blog.BlogSource
+    </div>
+    <div class="blog-author">
+        Author: @Model.Blog.User.FirstName @Model.Blog.User.LastName
+    </div>
+</div>
+<div class="blog-edit">
+    <a href="/DoctorsBlog/Index" class="btn btn-primary btn-sm">Back to List</a>
+</div>

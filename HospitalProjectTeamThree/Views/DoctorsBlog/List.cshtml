@@ -1,25 +1,51 @@
 ﻿@model List<HospitalProjectTeamThree.Models.DoctorsBlog>
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        List of Doctor's Blogs
+    </div>
+    <div class="panel-body">
+        <table class="table table-dark top">
+            <thead>
+                <tr>
+                    <th scope="col">Blog ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Author</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var Blog in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Blog.BlogId
+                            </td>
+                            <td>
+                                <a href="/DoctorsBlog/Show/@Blog.BlogId">@Blog.BlogTitle</a>
+                            </td>
+                            <td>
+                                @Blog.BlogDate.ToString("MM/dd/yyyy")
+                            </td>
+                            <td>
+                                @Blog.User.FirstName @Blog.User.LastName
+                            </td>
+                            <td>
+                                <a href="/DoctorsBlog/Update/@Blog.BlogId" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="/DoctorsBlog/Delete/@Blog.BlogId" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                 }
 
-<h2>List of Doctor's Blogs</h2>
-<div class="content">
-    @{
-        foreach (var Blog in Model)
-        {
-            <div>
-                <div class="detail">
-                        <a href="/DoctorsBlog/Show/@Blog.BlogId">@Blog.BlogTitle</a>
-                    <div>Content: @Blog.BlogContent</div>
-                    <div>Source: @Blog.BlogSource </div>
-                </div>
-
-                <div><a href="/DoctorsBlog/Update/@Blog.BlogId">Edit Blog Entry</a></div>
-            </div>
-
-        }
-    }
+            </tbody>
+        </table>
+    </div>
 </div>
-<a href="/DoctorsBlog/Add">New Blog Entry</a>
+<a href="/DoctorsBlog/Add" class="btn btn-primary bottom-margin-10">New Blog Entry</a>
 

@@ -1,36 +1,62 @@
 ﻿@model HospitalProjectTeamThree.Models.ViewModels.AddBlogTopic
 @{
     ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <div class="content">
-        <h2 class="title">Update Blog Entry</h2>
-        <a href="/DoctorsBlog/List" class="button">Back to List</a>
-        <div class="showinfo">
-            <form action="/DoctorsBlog/Update/@Model.Blog.BlogId" method="POST">
-                <div class="name">Blog Title : </div><input type="text" name="BlogTitle" id="BlogTitle" value="@Model.Blog.BlogTitle" />
-                <div class="name">Blog Content : </div><textarea type="text" name="BlogContent" id="BlogContent">@Model.Blog.BlogContent</textarea>
-                <div class="name">Topics : </div>
-                @{
-                    <!-- Here we show the topics that are on this blog entry -->
-                    foreach (var Topic in @Model.BlogTopics)
-                    {
-                        <div class="list">
-                            <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+   
+    <div class="panel panel-primary top">
+        <div class="panel-heading header-color">
+            Update Blog Entry
+        </div>
+            <div class="panel-body">
+                <form action="/DoctorsBlog/Update/@Model.Blog.BlogId" method="POST" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="BlogTitle">Blog Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="BlogTitle" id="BlogTitle" value="@Model.Blog.BlogTitle" placeholder="Enter Blog Title" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="BlogContent">Blog Content</label>
+                        <div class="col-sm-10">
+                            <textarea type="text" class="form-control" name="BlogContent" id="BlogContent" placeholder="Enter Blog Content">@Model.Blog.BlogContent</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="Blog Topics">Topics</label>
+
+                        <div class="col-sm-10">
                             @{
+                                <!-- Here we show the topics that are on this blog entry -->
+                                foreach (var Topic in @Model.BlogTopics)
+                                {
+                                    <div>
+                                        <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName </a>
+                                        @{
+
+                                        }
+                                        <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId" class="btn btn-danger btn-sm">
+                                            Remove Topic
+                                        </a>
+                                    </div>
+                                }
 
                             }
-                            <a href="/DoctorsBlog/DeleteTopic/@Model.Blog.BlogId?TopicId=@Topic.TopicId">
-                                Remove Topic
-                            </a>
                         </div>
-                    }
-
-                }
-                <div class="name">Blog Source : </div><input type="text" name="BlogSource" id="BlogSource" value="@Model.Blog.BlogSource" />
-                <div>
-                    <input type="submit" value="Update Blog Entry" class="delbuttons" />
-                </div>
-            </form>
-        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="BlogSource">Blog Source</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="BlogSource" id="BlogSource" value="@Model.Blog.BlogSource" placeholder="Enter Blog Source" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="submit" value="Update Blog Entry" class="btn btn-success" />
+                        </div>
+                    </div>
+                </form>
+            </div>
     </div>
+    <a href="/DoctorsBlog/Index" class="btn btn-primary headtop">Back to List</a>

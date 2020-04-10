@@ -12,22 +12,87 @@ using HospitalProjectTeamThree.Data;
 using HospitalProjectTeamThree.Models;
 using HospitalProjectTeamThree.Models.ViewModels;
 using System.Diagnostics;
-//using System.IO;
+using System.IO;
+using Microsoft.AspNet.Identity.Owin;
+using System.Web.Security;
+//need this for pagination
+using PagedList;
+using Microsoft.AspNet.Identity;
 
 namespace HospitalProjectTeamThree.Controllers
 {
     public class DoctorsBlogController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
+
+        public DoctorsBlogController() { }
+        public ActionResult Index()
+        {
+            // Depending on the user that logs in they will be sent to the doctors blog list,
+            // Admin will be sent to the list will all the entries
+            // Editor will be sent to their list of entries
+            // Registered Users will be sent to the list of all entries but with no access to delete, update or add
+            if (Request.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("List");
+                }
+                else if (User.IsInRole("Editor"))
+                {
+                    return RedirectToAction("DoctorPersonalList");
+                }
+                else
+                {
+                    return RedirectToAction("PublicList");
+                }
+
+            }
+            else
+            {
+                return View();
+            }
+        }
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
             string query = "Select * from DoctorsBlogs";
             List<DoctorsBlog> blogs = db.DoctorsBlogs.SqlQuery(query).ToList();
-            Debug.WriteLine("Iam trying to list all the blogs");
+            //Debug.WriteLine("Iam trying to list all the blogs");
+            return View(blogs);
+        }
+        [Authorize(Roles = "Editor")]
+        public ActionResult DoctorPersonalList()
+        {
+
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+
+
+            string query = "Select * from DoctorsBlogs where User_Id=@userId";
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[0] = new SqlParameter("@userId", userId);
+
+            List<DoctorsBlog> Blogs = db.DoctorsBlogs.SqlQuery(query, sqlparams).ToList();
+
+            DoctorPersonalBlogList viewModel = new DoctorPersonalBlogList();
+            viewModel.Blog = Blogs;
+            viewModel.User = currentUser;
+
+            return View(viewModel);
+        }
+        public ActionResult PublicList()
+        {
+            string query = "Select * from DoctorsBlogs";
+            List<DoctorsBlog> blogs = db.DoctorsBlogs.SqlQuery(query).ToList();
+            //Debug.WriteLine("Iam trying to list all the blogs");
             return View(blogs);
         }
         // GET details about one blog entry
-        
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Show(int? id)
         {
             if (id == null)
@@ -41,7 +106,7 @@ namespace HospitalProjectTeamThree.Controllers
                 return HttpNotFound();
             }
 
-            
+
 
             string topic_query = "select * from BlogTopics inner join BlogTopicDoctorsBlogs on BlogTopics.TopicId = BlogTopicDoctorsBlogs.BlogTopic_TopicId where BlogTopicDoctorsBlogs.DoctorsBlog_BlogId=@BlogId";
             var t_parameter = new SqlParameter("@BlogId", id);
@@ -60,37 +125,82 @@ namespace HospitalProjectTeamThree.Controllers
             return View(viewmodel);
 
         }
+        public ActionResult PublicShow(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //EF 6 technique
+            DoctorsBlog doctorsblog = db.DoctorsBlogs.SqlQuery("select * from DoctorsBlogs where BlogId=@BlogId", new SqlParameter("@BlogId", id)).FirstOrDefault();
+            if (doctorsblog == null)
+            {
+                return HttpNotFound();
+            }
+
+
+
+            string topic_query = "select * from BlogTopics inner join BlogTopicDoctorsBlogs on BlogTopics.TopicId = BlogTopicDoctorsBlogs.BlogTopic_TopicId where BlogTopicDoctorsBlogs.DoctorsBlog_BlogId=@BlogId";
+            var t_parameter = new SqlParameter("@BlogId", id);
+            List<BlogTopic> usedtopics = db.Topics.SqlQuery(topic_query, t_parameter).ToList();
+
+            string all_topics_query = "select * from BlogTopics";
+            List<BlogTopic> AllTopics = db.Topics.SqlQuery(all_topics_query).ToList();
+
+            // We use the AddParkGuest viewmodel so that we can show the guests that are on that booking and also so that we can see the dropdown list of guests
+            // and add a guest to a booking if we want to
+            AddBlogTopic viewmodel = new AddBlogTopic();
+            viewmodel.Blog = doctorsblog;
+            viewmodel.BlogTopics = usedtopics;
+            viewmodel.Add_Topic = AllTopics;
+
+            return View(viewmodel);
+
+        }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Add()
         {
             // On the new blog entry we can select a topic
             List<BlogTopic> Topics = db.Topics.SqlQuery("select * from BlogTopics").ToList();
 
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
             //We use the AddBlogTopic viewmodel to show the topics and be able to add them to the blog entry.
             AddBlogTopic AddBlogTopicViewModel = new AddBlogTopic();
             AddBlogTopicViewModel.BlogTopics = Topics;
+            AddBlogTopicViewModel.User = currentUser;
 
             return View(AddBlogTopicViewModel);
 
         }
+        [Authorize(Roles = "Admin, Editor")]
         [HttpPost]
-        public ActionResult Add(string BlogTitle, string BlogContent, string BlogSource)
+        public ActionResult Add(string BlogTitle, string BlogContent, string BlogSource, string User_Id)
         {
             //Debug.WriteLine("Want to create a blog entry with a title of " + BlogTitle ) ;
             DateTime BlogDate = DateTime.Now;
             // We create the query to insert the values we will get into the database
-            string query = "insert into DoctorsBlogs (BlogTitle, BlogContent, BlogSource, BlogDate) values (@BlogTitle,@BlogContent,@BlogSource, @BlogDate)";
-            SqlParameter[] sqlparams = new SqlParameter[4];
+            string query = "insert into DoctorsBlogs (BlogTitle, BlogContent, BlogSource, BlogDate, User_Id) values (@BlogTitle,@BlogContent,@BlogSource, @BlogDate, @User_Id)";
+            SqlParameter[] sqlparams = new SqlParameter[5];
 
             sqlparams[0] = new SqlParameter("@BlogTitle", BlogTitle);
             sqlparams[1] = new SqlParameter("@BlogContent", BlogContent);
             sqlparams[2] = new SqlParameter("@BlogSource", BlogSource);
             sqlparams[3] = new SqlParameter("@BlogDate", BlogDate);
+            sqlparams[4] = new SqlParameter("@User_Id", User_Id);
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
             // Once added we go back to the list of blogs
-            return RedirectToAction("List");
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("DoctorPersonalList");
+            }
         }
-        
+        [Authorize(Roles = "Admin, Editor")]
         [HttpPost]
         public ActionResult AddTopic(int id, int TopicId)
         {
@@ -138,6 +248,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             return RedirectToAction("Show/" + id);
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Update(int id)
         {
             //need information about a particular blog entry
@@ -146,7 +257,7 @@ namespace HospitalProjectTeamThree.Controllers
             var t_parameter = new SqlParameter("@BlogId", id);
             List<BlogTopic> usedtopics = db.Topics.SqlQuery(topic_query, t_parameter).ToList();
 
-            
+
 
             //We use the AddBlogTopic viewmodel to show the topics.
             AddBlogTopic AddBlogTopicViewModel = new AddBlogTopic();
@@ -157,6 +268,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(AddBlogTopicViewModel);
         }
 
+        [Authorize(Roles = "Admin, Editor")]
         [HttpPost]
         public ActionResult Update(string BlogTitle, string BlogContent, string BlogSource, int id)
         {
@@ -173,10 +285,17 @@ namespace HospitalProjectTeamThree.Controllers
             sqlparams[3] = new SqlParameter("@BlogId", id);
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
-            //It takes us back to the list where we can see any updates
-            return RedirectToAction("List");
+            //Once updated it takes an Admin back to full list of blogs and an Editor to their list of blogs.
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("DoctorPersonalList");
+            }
         }
-
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Delete(int id)
         {
             //We show a specific delete confirmation with the blog entry information
@@ -184,7 +303,7 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(blog);
         }
-
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult DeleteF(int id)
         {
             //Once the user confirms they want to delete the blog entry
@@ -194,10 +313,57 @@ namespace HospitalProjectTeamThree.Controllers
 
             db.Database.ExecuteSqlCommand(query, sqlparam);
 
-            return RedirectToAction("List");
+            //Once deleted it takes an Admin back to full list of blogs and an Editor to their list of blogs.
+            if (User.IsInRole("Admin"))
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("DoctorPersonalList");
+            }
         }
 
+        public DoctorsBlogController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
 
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {
