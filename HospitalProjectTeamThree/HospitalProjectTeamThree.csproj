@@ -437,6 +437,10 @@
     <Compile Include="Migrations\202004101435036_roombookinsfixed.designer.cs">
       <DependentUpon>202004101435036_roombookinsfixed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004101746331_Event Title datatype change.cs" />
+    <Compile Include="Migrations\202004101746331_Event Title datatype change.designer.cs">
+      <DependentUpon>202004101746331_Event Title datatype change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1184,6 +1188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004101435036_roombookinsfixed.resx">
       <DependentUpon>202004101435036_roombookinsfixed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101746331_Event Title datatype change.resx">
+      <DependentUpon>202004101746331_Event Title datatype change.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

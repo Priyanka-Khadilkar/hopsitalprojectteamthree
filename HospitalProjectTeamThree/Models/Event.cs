@@ -12,7 +12,7 @@ namespace HospitalProjectTeamThree.Models
     {
         [Key]
         public int EventId { get; set; }
-        public int EventTitle { get; set; }
+        public string EventTitle { get; set; }
         public DateTime EventStartDate { get; set; }
         public DateTime EventEndDate { get; set; }
         public string EventTime { get; set; }
