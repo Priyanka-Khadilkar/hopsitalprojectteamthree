@@ -15,7 +15,8 @@ namespace HospitalProjectTeamThree.Models
         public string EventTitle { get; set; }
         public DateTime EventStartDate { get; set; }
         public DateTime EventEndDate { get; set; }
-        public string EventTime { get; set; }
+        public string EventFromTime { get; set; }
+        public string EventToTime { get; set; }
         public string EventLocation { get; set; }
         public string EventTargetAudience { get; set; }
         public string EventHostedBy { get; set; }

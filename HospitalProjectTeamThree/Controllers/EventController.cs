@@ -30,7 +30,8 @@ namespace HospitalProjectTeamThree.Controllers
             eventModel.EventTitle = EventTitle;
             eventModel.EventStartDate = DateTime.ParseExact(EventStartDate, "MM/dd/yyyy", null);
             eventModel.EventEndDate = DateTime.ParseExact(EventEndDate, "MM/dd/yyyy", null);
-            eventModel.EventTime = EventFromTime + " TO " + EventToTime;
+            eventModel.EventFromTime = EventFromTime;
+            eventModel.EventToTime =  EventToTime;
             eventModel.EventTargetAudience = EventTargetAudience;
 
             string currentUserId = User.Identity.GetUserId();

@@ -1,31 +1,31 @@
-﻿
+﻿@model HospitalProjectTeamThree.Models.Event
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
-        Add Event
+        Update Event
     </div>
     <div class="panel-body">
         <form class="form-horizontal" enctype="multipart/form-data" method="post" action="/Event/Add">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="EventTitle">Title:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="EventTitle" placeholder="Enter Title" name="EventTitle">
+                    <input type="text" class="form-control" value="@Model.EventTitle" id="EventTitle" placeholder="Enter Title" name="EventTitle" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="EventStartDate">Start date:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="EventStartDate" placeholder="MM/DD/YYYY" name="EventStartDate">
+                    <input type="text" class="form-control" value="@Model.EventStartDate.ToString("MM/dd/yyyy")" id="EventStartDate" placeholder="MM/DD/YYYY" name="EventStartDate" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-2" for="EventEndDate">End date :</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="EventEndDate" placeholder="MM/DD/YYYY" name="EventEndDate">
+                    <input type="text" class="form-control" value="@Model.EventEndDate.ToString("MM/dd/yyyy")" id="EventEndDate" placeholder="MM/DD/YYYY" name="EventEndDate" required>
                 </div>
             </div>
             <div class="form-group">

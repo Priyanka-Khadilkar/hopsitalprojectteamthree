@@ -450,6 +450,10 @@
     <Compile Include="Migrations\202004101801561_Event removed Event Time from datatype change.designer.cs">
       <DependentUpon>202004101801561_Event removed Event Time from datatype change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004102331079_Updated Event Table with time fields.cs" />
+    <Compile Include="Migrations\202004102331079_Updated Event Table with time fields.designer.cs">
+      <DependentUpon>202004102331079_Updated Event Table with time fields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1008,6 +1012,7 @@
     <Content Include="Views\LiveWaitTimes\PublicShow.cshtml" />
     <Content Include="Views\Event\List.cshtml" />
     <Content Include="Views\Event\Show.cshtml" />
+    <Content Include="Views\Event\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1220,6 +1225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004101801561_Event removed Event Time from datatype change.resx">
       <DependentUpon>202004101801561_Event removed Event Time from datatype change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004102331079_Updated Event Table with time fields.resx">
+      <DependentUpon>202004102331079_Updated Event Table with time fields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
