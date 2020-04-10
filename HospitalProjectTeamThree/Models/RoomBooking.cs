@@ -19,9 +19,12 @@ namespace HospitalProjectTeamThree.Models
         public int RoomID { get; set; }
         [ForeignKey("RoomID")]
         public virtual Room Room { get; set; }
+        //for payments idea is to use third party processing services, and return will be 1 (cleared) or 0(not cleared) 
         public bool PaymentCleared { get; set; }
+        //using string since I am going to have drop down menu to select dates
         public string DateFrom { get; set; }
         public string DateTo { get; set; }
+        //refers to list of all rooms
         public ICollection<Room> Rooms { get; set; }
     }
 }
