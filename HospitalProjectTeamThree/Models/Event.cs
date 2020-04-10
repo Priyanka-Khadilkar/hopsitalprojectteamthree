@@ -28,7 +28,7 @@ namespace HospitalProjectTeamThree.Models
         [ForeignKey("EventUpdatedBy")]
         public virtual ApplicationUser EventUpdater { get; set; }
         public DateTime EventCreatedOn { get; set; }
-        public DateTime EventUpdatedOn { get; set; }
+        public DateTime? EventUpdatedOn { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
 

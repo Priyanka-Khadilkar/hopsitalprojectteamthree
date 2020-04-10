@@ -441,6 +441,14 @@
     <Compile Include="Migrations\202004101746331_Event Title datatype change.designer.cs">
       <DependentUpon>202004101746331_Event Title datatype change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004101800401_Event Updatedby datatype change.cs" />
+    <Compile Include="Migrations\202004101800401_Event Updatedby datatype change.designer.cs">
+      <DependentUpon>202004101800401_Event Updatedby datatype change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004101801561_Event removed Event Time from datatype change.cs" />
+    <Compile Include="Migrations\202004101801561_Event removed Event Time from datatype change.designer.cs">
+      <DependentUpon>202004101801561_Event removed Event Time from datatype change.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1191,6 +1199,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004101746331_Event Title datatype change.resx">
       <DependentUpon>202004101746331_Event Title datatype change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101800401_Event Updatedby datatype change.resx">
+      <DependentUpon>202004101800401_Event Updatedby datatype change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101801561_Event removed Event Time from datatype change.resx">
+      <DependentUpon>202004101801561_Event removed Event Time from datatype change.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
