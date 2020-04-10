@@ -21,11 +21,11 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class RoomController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
+        //private ApplicationSignInManager _signInManager;
+        //private ApplicationUserManager _userManager;
+        //private ApplicationRoleManager _roleManager;
 
-        private RoomController() { }
+        //private RoomController() { }
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         // GET: Room
         public ActionResult Index()
@@ -61,8 +61,8 @@ namespace HospitalProjectTeamThree.Controllers
             //trying to list one specific user by known UserName from AspNetUsers table
 
             //get the current user id when they logged in.  Code reference Paul Tran
-            string userId = User.Identity.GetUserId();
-            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            //string userId = User.Identity.GetUserId();
+            //ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
             //Debug.WriteLine("I want to see if I can get username from database" +UserId);
 
@@ -76,6 +76,14 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(viewmodel);
         }
-       
+        public ActionResult RoomBooking()
+        {
+
+            //list all Rooms in the system
+            string query = "Select * from Rooms ";
+            List<Room> rooms = db.Rooms.SqlQuery(query).ToList();
+            return View(rooms);
+        }
+
     }
 }

@@ -463,6 +463,7 @@
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
+    <Compile Include="Models\ViewModels\RoomBooking.cs" />
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
     <Compile Include="Models\ViewModels\ShowJobListing.cs" />
