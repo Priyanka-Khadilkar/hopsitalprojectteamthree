@@ -5,14 +5,14 @@
 
 <h2>Editting the card:</h2>
 <form method="Post" action="/GetWellSoonCard/Update/@Model.GetWellSoonCard.CardId">
-    <div class="col-md-4">
+    <div class="row">
         <input type="hidden" name="CardId" value="@Model.GetWellSoonCard.CardId" />
         <!--TO Do: Create a Card Design table and projecting it here-->
         Choose a card:
         @{
             foreach (var design in Model.CardDesigns)
             {
-                <div>
+                <div class="col-md-2">
                     <label for="CardDesignId"><img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" alt="Image of the card" /></label>
                     <input type="radio" name="CardDesignId" id="CardDesignId" value="@(design.CardDesignId)" />
                 </div>
@@ -26,7 +26,8 @@
     <div class="col-md-4">
         <div>Patient Email: <input type="text" name="PatientEmail" id="PatientEmail" value="@Model.GetWellSoonCard.PatientEmail"/></div>
         <div>Edit your message :  <textarea name="Message">@Model.GetWellSoonCard.Message</textarea></div>    
-        <div> <input type="submit" value="Update the card" /></div>
+        <div><input type="submit" value="Update the card" class="btn btn-primary" /></div>
+        <div><a href="/GetWellSoonCard/List">Back to list</a></div>
     </div>
-
+    
 </form>

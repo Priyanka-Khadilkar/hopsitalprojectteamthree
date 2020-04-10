@@ -5,23 +5,28 @@
 }
 
 <h2>List of Card Design</h2>
-@{
-    foreach (var Design in Model)
-    {
-        <div class="col-md-3">
-            <a href="/CardDesign/Show/@Design.CardDesignId"><img src="../../Images/GetWellCard/@(Design.CardDesignId).@(Design.PicExt)" alt="Image of the card" /></a>
-            <div>@Design.DesignName</div>
-            <div><a href="/CardDesign/Update/@Design.CardDesignId">Update the card</a></div>
-        </div>
+<div class="row">
+    @{
+        foreach (var Design in Model)
+        {
+            <div class="col-md-3">
+                <a href="/CardDesign/Show/@Design.CardDesignId"><img src="../../Images/GetWellCard/@(Design.CardDesignId).@(Design.PicExt)" alt="Image of the card" /></a>
+                <div>@Design.DesignName</div>
+                <div><a href="/CardDesign/Update/@Design.CardDesignId" >Update the card</a></div>
+            </div>
 
+        }
     }
-}
-<div><a href="/CardDesign/Add">Add a design</a></div>
-<div>
-    <!--Display Page 1 of 2-->
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-    <!--Display the link to click on and go to the 2nd page-->
-    @Html.PagedListPager(Model, page => Url.Action("List",
-    new { page }))
 </div>
+<div>
+    <div><a href="/CardDesign/Add" class="btn btn-primary">Add a design</a></div>
+    <div>
+        <!--Display Page 1 of 2-->
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        <!--Display the link to click on and go to the 2nd page-->
+        @Html.PagedListPager(Model, page => Url.Action("List",
+        new { page }))
+    </div>
+</div>
+
 

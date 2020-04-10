@@ -8,27 +8,29 @@
 }
 
 <h2>List of Cards</h2>
-<div class="content">
+<div class="row">
     @{
         foreach (var Card in Model)
         {
-        <div class="col-md-4">
-            <div>Message: @Card.Message</div>
-            <div>To: @Card.PatientName <span> @Card.PatientEmail</span></div>
-            <div>Room Number: @Card.RoomNumber</div>
-            <!--<div>From: Model.User.FirstName</div>-->
-            <div><a href="/GetWellSoonCard/Show/@Card.CardId">Click to see the card</a></div>
-            <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
-        </div>
+            <div class="col-md-3">
+                <div>Message: @Card.Message</div>
+                <div>To: @Card.PatientName <span> @Card.PatientEmail</span></div>
+                <div>Room Number: @Card.RoomNumber</div>
+                <!--<div>From: Model.User.FirstName</div>-->
+                <div><a href="/GetWellSoonCard/Show/@Card.CardId">Click to see the card</a></div>
+                <div><a href="/GetWellSoonCard/Update/@Card.CardId">Edit the card</a></div>
+            </div>
         }
     }
 </div>
-<a href="/GetWellSoonCard/Add">Add a card</a>
-<!--adding pagination-->
 <div>
-    <!--Display Page 1 of 2-->
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-    <!--Display the link to click on and go to the 2nd page-->
-    @Html.PagedListPager(Model, page => Url.Action("List",
-    new { page }))
+    <div><a href="/GetWellSoonCard/Add" class="btn btn-primary">Add a card</a></div>
+    <!--adding pagination-->
+    <div>
+        <!--Display Page 1 of 2-->
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        <!--Display the link to click on and go to the 2nd page-->
+        @Html.PagedListPager(Model, page => Url.Action("List",
+        new { page }))
+    </div>
 </div>

@@ -4,18 +4,21 @@
 }
 
 <h2>Card Detail</h2>
-<div class="col-md-6">
-    @{
-        if (Model.HasPic == 1)
-        {
-            <div><img src="~/Images/GetWellCard/@(Model.CardDesignId).@(Model.PicExt)" /></div>
+<div class="row">
+    <div class="col-md-4">
+        @{
+            if (Model.HasPic == 1)
+            {
+                <div><img src="~/Images/GetWellCard/@(Model.CardDesignId).@(Model.PicExt)" /></div>
+            }
         }
-    }
 
-</div>
-<div class="col-md-6">
-    <div>Design Name: @Model.DesignName</div>
-    <div><a href="/CardDesign/Delete/@Model.CardDesignId">Delete the card</a></div>
-    <div><a href="/CardDesign/Update/@Model.CardDesignId">Update the card</a></div>
+    </div>
+    <div class="col-md-8">
+        <div>Design Name: @Model.DesignName</div>
+        <div><a href="/CardDesign/Update/@Model.CardDesignId">Update design</a></div>
+        <div><a href="/CardDesign/Delete/@Model.CardDesignId" class="btn btn-warning">Delete design</a></div>
+
+    </div>
 </div>
 <a href="/CardDesign/List">Back to List</a>
