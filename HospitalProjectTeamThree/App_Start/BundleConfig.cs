@@ -28,8 +28,7 @@ namespace HospitalProjectTeamThree
                       "~/Content/bootstrap.css",
                       "~/Content/jquery-ui.css",
                       "~/Content/bootstrap-clockpicker.css",
-                      "~/Content/Custom.css",
-                      "~/Content/crisis.css",
+                                          
                       "~/Content/Site.css"));
         }
     }
