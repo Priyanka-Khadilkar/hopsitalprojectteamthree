@@ -1,0 +1,14 @@
+﻿@model HospitalProjectTeamThree.Models.BlogTopic
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <!-- Confirmation page to confirm delete of blog topic -->
+    <h2 class="title">Are you sure you want to delete Blog Topic: <span class="delname">@Model.TopicName</span> ?</h2>
+    <div>
+        <a href="/BlogTopic/DeleteF/@Model.TopicId" class="btn btn-danger btn-sm">Confirm</a>
+        <a href="/BlogTopic/List" class="btn btn-primary btn-sm">Back to List</a>
+    </div>
+</div>
+

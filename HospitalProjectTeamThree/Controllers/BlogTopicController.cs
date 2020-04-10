@@ -35,10 +35,142 @@ namespace HospitalProjectTeamThree.Controllers
         {
             string query = "Select * from BlogTopics";
             List<BlogTopic> topics = db.Topics.SqlQuery(query).ToList();
-            Debug.WriteLine("Iam trying to list all the topics");
+            //Debug.WriteLine("Iam trying to list all the topics");
             return View(topics);
         }
 
+        public ActionResult PublicList()
+        {
+            string query = "Select * from BlogTopics";
+            List<BlogTopic> topics = db.Topics.SqlQuery(query).ToList();
+            //Debug.WriteLine("Iam trying to list all the topics");
+            return View(topics);
+        }
+
+        [Authorize(Roles = "Admin, Editor")]
+        public ActionResult Show(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //EF 6 technique
+            BlogTopic blogtopic = db.Topics.SqlQuery("select * from BlogTopics where TopicId=@TopicId", new SqlParameter("@TopicId", id)).FirstOrDefault();
+            if (blogtopic == null)
+            {
+                return HttpNotFound();
+            }
+
+            string blogs_query = "Select * from DoctorsBlogs inner join BlogTopicDoctorsBlogs on DoctorsBlogs.BlogId = BlogTopicDoctorsBlogs.DoctorsBlog_BlogId where BlogTopicDoctorsBlogs.BlogTopic_TopicId=@TopicId";
+            var t_parameter = new SqlParameter("@TopicId", id);
+            List<DoctorsBlog> blogs = db.DoctorsBlogs.SqlQuery(blogs_query, t_parameter).ToList();
+
+
+            // We use the AddBlogTopic viewmodel so that we can show the blogs which have that specific topic
+            AddBlogTopic viewmodel = new AddBlogTopic();
+            viewmodel.Topics = blogtopic;
+            viewmodel.Blogs = blogs;
+
+            return View(viewmodel);
+        }
+        public ActionResult PublicShow(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //EF 6 technique
+            BlogTopic blogtopic = db.Topics.SqlQuery("select * from BlogTopics where TopicId=@TopicId", new SqlParameter("@TopicId", id)).FirstOrDefault();
+            if (blogtopic == null)
+            {
+                return HttpNotFound();
+            }
+
+            string blogs_query = "Select * from DoctorsBlogs inner join BlogTopicDoctorsBlogs on DoctorsBlogs.BlogId = BlogTopicDoctorsBlogs.DoctorsBlog_BlogId where BlogTopicDoctorsBlogs.BlogTopic_TopicId=@TopicId";
+            var t_parameter = new SqlParameter("@TopicId", id);
+            List<DoctorsBlog> blogs = db.DoctorsBlogs.SqlQuery(blogs_query, t_parameter).ToList();
+
+
+            // We use the AddBlogTopic viewmodel so that we can show the blogs which have that specific topic
+            AddBlogTopic viewmodel = new AddBlogTopic();
+            viewmodel.Topics = blogtopic;
+            viewmodel.Blogs = blogs;
+
+            return View(viewmodel);
+        }
+
+        [Authorize(Roles = "Admin, Editor")]
+        public ActionResult Add()
+        {
+
+            return View();
+
+        }
+
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpPost]
+        public ActionResult Add(string TopicName)
+        {
+            //Debug.WriteLine("Want to create a new glob topic named " + TopicName ) ;
+
+            // We create the query to insert the values we will get into the database
+            string query = "insert into BlogTopics (TopicName) values (@TopicName)";
+            SqlParameter[] sqlparams = new SqlParameter[1];
+
+            sqlparams[0] = new SqlParameter("@BlogTitle", TopicName);
+
+            db.Database.ExecuteSqlCommand(query, sqlparams);
+            // Once added we go back to the list of topics
+           
+            return RedirectToAction("List");
+
+        }
+        [Authorize(Roles = "Admin, Editor")]
+        public ActionResult Update(int id)
+        {
+            //need information about a blog topic to update
+            BlogTopic selectedtopic = db.Topics.SqlQuery("select * from BlogTopics where TopicId=@TopicId", new SqlParameter("@TopicId", id)).FirstOrDefault();
+
+            return View(selectedtopic);
+        }
+        [Authorize(Roles = "Admin, Editor")]
+        [HttpPost]
+        public ActionResult Update(string TopicName, int id)
+        {
+
+            // Debug.WriteLine("I am trying to edit a topics name to "+ TopicName +" );
+            // query to update information in the database
+            string query = "update BlogTopics set TopicName=@TopicName where TopicId=@TopicId";
+
+            SqlParameter[] sqlparams = new SqlParameter[2];
+            sqlparams[0] = new SqlParameter("@TopicName", TopicName);
+            sqlparams[1] = new SqlParameter("@TopicId", id);
+
+            db.Database.ExecuteSqlCommand(query, sqlparams);
+
+            return RedirectToAction("List");
+        }
+        [Authorize(Roles = "Admin, Editor")]
+        public ActionResult Delete(int id)
+        {
+            //We show a specific delete confirmation with the topic name so the user can confirm or cancel
+            BlogTopic topic = db.Topics.SqlQuery("select * from BlogTopics where TopicId=@TopicId", new SqlParameter("@TopicId", id)).FirstOrDefault();
+
+            return View(topic);
+        }
+        [Authorize(Roles = "Admin, Editor")]
+        public ActionResult DeleteF(int id)
+        {
+            //Once the user confirms they want to delete the topic
+            //We run the query to delete it
+            string query = "delete from BlogTopics where TopicId=@TopicId";
+            SqlParameter sqlparam = new SqlParameter("@TopicId", id);
+
+            db.Database.ExecuteSqlCommand(query, sqlparam);
+
+            //Once deleted it takes the user back to the list of topics
+            return RedirectToAction("List");
+        }
         public BlogTopicController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;

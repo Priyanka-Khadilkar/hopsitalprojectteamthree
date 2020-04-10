@@ -994,6 +994,9 @@
     <Content Include="Views\OnlineAppointmentBooking\View.cshtml" />
     <Content Include="Views\Room\RoomBooking.cshtml" />
     <Content Include="Views\BlogTopic\PublicList.cshtml" />
+    <Content Include="Views\BlogTopic\Delete.cshtml" />
+    <Content Include="Views\BlogTopic\Show.cshtml" />
+    <Content Include="Views\BlogTopic\PublicShow.cshtml" />
     <Content Include="Views\Room\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
