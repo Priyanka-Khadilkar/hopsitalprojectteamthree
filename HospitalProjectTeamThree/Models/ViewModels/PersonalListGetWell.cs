@@ -11,7 +11,8 @@ namespace HospitalProjectTeamThree.Models.ViewModels
     {
         //We need a list of card
         //Need the IpagedList here for pagination purpose
-        public virtual IPagedList<GetWellSoonCard> GetWellSoonCard { get; set; }
+        //public virtual IPagedList<GetWellSoonCard> GetWellSoonCard { get; set; }
+        public virtual List<GetWellSoonCard> GetWellSoonCard { get; set; }
         //a card design
         public virtual CardDesign CardDesign { get; set; }
         //1 user info

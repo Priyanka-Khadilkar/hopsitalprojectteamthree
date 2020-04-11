@@ -23,9 +23,7 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class GetWellSoonCardController : Controller
     {
-        /*private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;*/
+
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
@@ -107,14 +105,15 @@ namespace HospitalProjectTeamThree.Controllers
             //passing the pagelist to the view
             return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));*/
         }
-        public ActionResult PersonalList(int? page, string currentFilter, string cardsearch)
+        //Problem: Pagination doesn't work with viewmodel using the same technique above 
+        public ActionResult PersonalList(/*int? pagenum, string currentFilter,*/ string cardsearch)
         {
 
             //get the current user id when they logged in
             string userId = User.Identity.GetUserId();
 
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
-            if (cardsearch != null)
+            /*if (cardsearch != null)
             {
                 //reset the page to 1 if there is a result in the search
                 page = 1;
@@ -123,11 +122,11 @@ namespace HospitalProjectTeamThree.Controllers
             {
                 //maintain the filter setting during paging
                 cardsearch = currentFilter;
-            }
+            }*/
 
-            ViewBag.CurrentFilter = cardsearch;
+            //ViewBag.CurrentFilter = cardsearch;
             if (cardsearch != null && cardsearch != "")
-            {
+            {               
                 string searchquery = "select * from GetWellSoonCards where User_Id=@userId and (message=@cardsearch " +
                     "or PatientEmail=@cardsearch " +
                     "or PatientName=@cardsearch " +
@@ -137,17 +136,15 @@ namespace HospitalProjectTeamThree.Controllers
                 searchparams[1] = new SqlParameter("@cardsearch", cardsearch);
                 List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(searchquery, searchparams).ToList();
                 //allow 3 items per page
-                int pageSize = 3;
-                int pageNumber = (page ?? 1);
+                //int pageSize = 3;
+                //int pageNumber = (page ?? 1);
                 PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
                 //go to the viewmodel get the paged list and instanciate it here
-                PersonalListGetWellViewModel.GetWellSoonCard = Cards.ToPagedList(pageSize, pageNumber);
+                
+                PersonalListGetWellViewModel.GetWellSoonCard = Cards;//.ToPagedList(pageSize, pageNumber);
                 PersonalListGetWellViewModel.User = currentUser;
 
-                //allow 3 items per page
-
                 return View(PersonalListGetWellViewModel);
-
             }
             else
             {
@@ -159,11 +156,11 @@ namespace HospitalProjectTeamThree.Controllers
             
             List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(query, sqlparams).ToList();
             //allow 3 items per page
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
+            //int pageSize = 3;
+            //int pageNumber = (page ?? 1);
             PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
             //go to the viewmodel get the paged list and instanciate it here
-            PersonalListGetWellViewModel.GetWellSoonCard = Cards.ToPagedList(pageSize , pageNumber);
+            PersonalListGetWellViewModel.GetWellSoonCard = Cards;
             PersonalListGetWellViewModel.User = currentUser;
             
             //allow 3 items per page
@@ -175,7 +172,8 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult Add()
         {
-            List<CardDesign> addingDesign = db.CardDesigns.SqlQuery("select * from CardDesigns").ToList();
+            List<CardDesign> addingDesign = db.CardDesigns.ToList();
+            /*List<CardDesign> addingDesign = db.CardDesigns.SqlQuery("select * from CardDesigns").ToList();*/
             //get the current userId, display it in the view by a intput type="hidden" to add it in the query later
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
@@ -187,8 +185,24 @@ namespace HospitalProjectTeamThree.Controllers
             return View(AddGetWellCardViewModel);
         }
         [HttpPost]
-        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, string CardDesignId, string User_Id)
+        public ActionResult Add(string message, string PatientName, string PatientEmail, string RoomNumber, int CardDesignId, string User_Id)
         {
+            /*Linq technique
+            //LINQ technique doesn't work with current technique to grab userid and inject it in the Get Well Card table
+            //To do: find out why
+            GetWellSoonCard newCard = new GetWellSoonCard();  
+            //SQL Query: "Insert into ... "
+            newCard.Message = message;
+            newCard.PatientName = PatientName;
+            newCard.CardDesignId = CardDesignId;
+            newCard.PatientEmail = PatientEmail;
+            newCard.RoomNumber = RoomNumber;       
+            newCard.User_Id = User_Id (Error: User_Id is not on the GetWellCard table (but it is))
+
+            db.GetWellSoonCards.Add(newCard);
+            db.SaveChanges();*/
+            
+            //SQL technique
             string query = "Insert into GetWellSoonCards (message, PatientName, PatientEmail , RoomNumber, CardDesignId, User_Id) values (@message, @PatientName, @PatientEmail, @RoomNumber, @CardDesignId, @User_Id)";
             SqlParameter[] sqlparams = new SqlParameter[6];
             sqlparams[0] = new SqlParameter("@message", message);
@@ -203,7 +217,7 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, sqlparams);
             Debug.WriteLine("I am tryting to add the card with the message " + message);
             //when adding is done, admin will return to the total list
-            //user will return to personal list
+            //user will return to personal list            
             if (User.IsInRole("Admin") || User.IsInRole("Editor"))
             {
                 return RedirectToAction("List");
@@ -220,7 +234,9 @@ namespace HospitalProjectTeamThree.Controllers
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
             //display the cards and the design of cards
-            GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            GetWellSoonCard Card = db.GetWellSoonCards.Find(id);
+            //GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+           //Look into Inner join
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             Debug.WriteLine("I am trying to show card id" + id);
             //instanciate the class
@@ -232,8 +248,10 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult Update(int id)
         {
-            GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
-            List<CardDesign> Designs = db.CardDesigns.SqlQuery("Select * from CardDesigns").ToList();
+            GetWellSoonCard Card = db.GetWellSoonCards.Find(id);
+            List<CardDesign> Designs = db.CardDesigns.ToList();
+            //GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            //List<CardDesign> Designs = db.CardDesigns.SqlQuery("Select * from CardDesigns").ToList();
             Debug.WriteLine("I am trying to show card id" + id);
             UpdateGetWell UpdateGetWellViewModel = new UpdateGetWell();
             UpdateGetWellViewModel.GetWellSoonCard = Card;
@@ -241,9 +259,16 @@ namespace HospitalProjectTeamThree.Controllers
             return View(UpdateGetWellViewModel);
         }
         [HttpPost]
-        public ActionResult Update(string Message, string PatientName, string PatientEmail, string RoomNumber, int CardId, int CardDesignId)
+        public ActionResult Update( string Message, string PatientName, string PatientEmail, string RoomNumber, int CardId, int CardDesignId)
         {
-            string query = "Update GetWellSoonCards set Message=@Message, PatientName=@PatientName, PatientEmail=@PatientEmail, CardDesignId=@CardDesignId, RoomNumber=@RoomNumber where CardId=@CardId";
+            GetWellSoonCard Card = db.GetWellSoonCards.Find(CardId);
+            Card.Message = Message;
+            Card.CardDesignId = CardDesignId;
+            Card.PatientName = PatientName;
+            Card.PatientEmail = PatientEmail;
+            Card.RoomNumber = RoomNumber;
+            db.SaveChanges();
+            /*string query = "Update GetWellSoonCards set Message=@Message, PatientName=@PatientName, PatientEmail=@PatientEmail, CardDesignId=@CardDesignId, RoomNumber=@RoomNumber where CardId=@CardId";
             SqlParameter[] sqlparams = new SqlParameter[6];
             sqlparams[0] = new SqlParameter("@Message", Message);
             sqlparams[1] = new SqlParameter("@CardDesignId", CardDesignId);
@@ -253,13 +278,16 @@ namespace HospitalProjectTeamThree.Controllers
             sqlparams[5] = new SqlParameter("@CardId", CardId);
 
             //Execute
-            db.Database.ExecuteSqlCommand(query, sqlparams);
-            Debug.WriteLine("I am tryting to edit the card with the message " + Message);
+            db.Database.ExecuteSqlCommand(query, sqlparams);*/
+            Debug.WriteLine("I am trying to edit the card with the message " + Message);
             return RedirectToAction("/Show/" + CardId);
         }
         public ActionResult Delete(int id)
         {
-            GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
+            //find the card with that particular id
+            GetWellSoonCard Card = db.GetWellSoonCards.Find(id);            
+            /*GetWellSoonCard Card = db.GetWellSoonCards.SqlQuery("Select * from GetWellSoonCards where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();*/
+            //To do: Look into inner join Linq
             CardDesign Design = db.CardDesigns.SqlQuery("Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id", new SqlParameter("@id", id)).FirstOrDefault();
             Debug.WriteLine("I am trying to show card id" + id);
             ShowGetWell ShowGetWellViewModel = new ShowGetWell();
@@ -274,10 +302,14 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public ActionResult Delete(int id, int CardId)
         {
-            string query = "Delete from GetWellSoonCards where CardId = @CardID";
+            GetWellSoonCard Card = db.GetWellSoonCards.Find(CardId);
+            db.GetWellSoonCards.Remove(Card);
+            db.SaveChanges();
+            /*string query = "Delete from GetWellSoonCards where CardId = @CardID";
             SqlParameter[] sqlparams = new SqlParameter[1];
             sqlparams[0] = new SqlParameter("@CardId", CardId);
-            db.Database.ExecuteSqlCommand(query, sqlparams);
+            db.Database.ExecuteSqlCommand(query, sqlparams);*/
+
             //when deleting is done, admin will return to the total list
             //user will return to personal list
             if (User.IsInRole("Admin"))
@@ -290,46 +322,6 @@ namespace HospitalProjectTeamThree.Controllers
             }
             //return RedirectToAction("List");
         }
-        /*public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-            RoleManager = roleManager;
-        }
-        public ApplicationRoleManager RoleManager
-        {
-            get
-            {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-            }
-            private set
-            {
-                _roleManager = value;
-            }
-        }
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }*/
 
     }
 }
