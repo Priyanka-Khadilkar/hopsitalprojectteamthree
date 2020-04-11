@@ -3,14 +3,37 @@
     ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@if (User.IsInRole("Admin"))
+{
+    <a href="/Event/RegisteredUserList/@Model.EventId" class="btn btn-primary bottom-margin-10" title="View Registered User List">Registered User List</a>
+}
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
         @Model.EventTitle
         @if (User.IsInRole("Admin"))
         {
+            var myModal = "myModal" + Model.EventId;
             <a href="/Event/Update/@Model.EventId" class="deleteicon marginright45" title="Click to Update"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="/Event/Update/@Model.EventId" class="deleteicon marginright45" title="Click to Delete"><span class="glyphicon glyphicon-trash"></span></a>
+            <a href="#@myModal" class="deleteicon marginright45" data-modal-action="openconfimdialog" data-toggle="modal" data-target="#@myModal"><span class="glyphicon glyphicon-trash"></span></a>
+            <div class="modal fade" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content" style="color:black">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure you want to delete event: @Model.EventTitle
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" data-id="@Model.EventId" data-modal-action="yes">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
     </div>
     <div class="panel-body">
@@ -52,6 +75,7 @@
                                 <label class="control-label font-weight500"> @Model.EventHostedBy </label>
                             </div>
                         </div>
+
                         <a href="/Event/Register/@Model.EventId" class="btn btn-primary btn-sm" title="Edit">Register</a>
                     </div>
                 </div>
@@ -60,3 +84,29 @@
     </div>
 </div>
 <a href="/Event/List" class="btn btn-primary headtop">Back to Event List</a>
+@section Scripts {
+    <script>
+    var eventId;
+    $("[data-modal-action=yes]").click(function () {
+        eventId = $(this).attr("data-id");
+        deleteEvent(eventId)  //calling delete method
+    });
+
+    //Function for delete event
+        function deleteEvent(eventId) {
+        var postData = {
+            id: eventId
+        };
+         $.ajax({
+                    url: '@Url.Action("Delete")',
+                    type: 'Get',
+                    data: postData
+                })
+                .done(function() {
+                    window.location.href = '/Event/List/';
+               });
+    }
+    </script>
+}
+
+

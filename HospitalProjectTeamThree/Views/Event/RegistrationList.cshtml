@@ -1,8 +1,54 @@
-﻿
+﻿@model List<HospitalProjectTeamThree.Models.Event>
 @{
     ViewBag.Title = "RegistrationList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RegistrationList</h2>
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Past Event Registration
+    </div>
+    <div class="panel-body">
+        <table class="table table-dark top">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date </th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Target Audience</th>
+                    <th scope="col">Hosted By</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var eventData in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Event/Show/@eventData.EventId"> @eventData.EventTitle</a>
+                        </td>
+                        <td>
+                            @eventData.EventStartDate.ToString("MM-dd-yyyy") To @eventData.EventEndDate.ToString("MM-dd-yyyy")
+                        </td>
+                        <td>
+                            @eventData.EventFromTime To @eventData.EventToTime
+                        </td>
+                        <td>
+                            @eventData.EventLocation
+                        </td>
+                        <td>
+                            @eventData.EventTargetAudience
+                        </td>
+                        <td>
+                            @eventData.EventHostedBy
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="/Event/List" class="btn btn-primary headtop">Back to Event List</a>
 

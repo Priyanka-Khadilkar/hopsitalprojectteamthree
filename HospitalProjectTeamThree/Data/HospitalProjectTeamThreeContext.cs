@@ -62,7 +62,7 @@ namespace HospitalProjectTeamThree.Data
         {
         }
         public static HospitalProjectTeamThreeContext Create()
-        {
+            {
             return new HospitalProjectTeamThreeContext();
         }
 

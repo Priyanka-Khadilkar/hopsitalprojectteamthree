@@ -1,0 +1,40 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.RegisteredUserList
+@{
+    ViewBag.Title = "RegisteredUserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Registered User List - @Model.EventData.EventTitle
+    </div>
+    <div class="panel-body">
+        <table class="table table-dark top">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email </th>
+                    <th scope="col">Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.UserList)
+                {
+                    <tr>
+                        <td>
+                            @user.FirstName @user.LastName
+                        </td>
+                        <td>
+                            @user.Email
+                        </td>
+                        <td>
+                            @user.PhoneNumber
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="/Event/List" class="btn btn-primary headtop">Back to Event List</a>

@@ -3,6 +3,7 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<a href="/Event/RegistrationList" class="btn btn-primary bottom-margin-10" title="Add">Past Event Registration List</a>
 @if (User.IsInRole("Admin"))
 {
     <a href="/Event/Add" class="btn btn-primary bottom-margin-10" title="Add">Add an Event</a>
@@ -26,36 +27,35 @@
                                             <img src="~/Images/Event/@eventData.EventImagePath" style="width:72px;height:72px;" />
                                             <h4 id="thumbnail-label"><a href="/Event/Show/@eventData.EventId" target="_blank">@eventData.EventTitle</a></h4>
                                         </div>
-                                        <div class="form-horizontal">
-
-                                            <div class="form-group" style="margin:5px !important">
-                                                <label class="control-label col-sm-4">Date :</label>
-                                                <div class="col-sm-8">
-                                                    <label class="control-label font-weight500"> @eventData.EventStartDate.ToString("MM-dd-yyyy") TO @eventData.EventEndDate.ToString("MM-dd-yyyy") </label>
+                                        <div>
+                                            <div>
+                                                <label>Date</label>
+                                                <div>
+                                                    @eventData.EventStartDate.ToString("MM-dd-yyyy") To @eventData.EventEndDate.ToString("MM-dd-yyyy")
                                                 </div>
                                             </div>
-                                            <div class="form-group" style="margin:5px !important">
-                                                <label class="control-label col-sm-4">Time :</label>
-                                                <div class="col-sm-8">
-                                                    <label class="control-label font-weight500"> @eventData.EventFromTime To @eventData.EventToTime </label>
+                                            <div>
+                                                <label>Time</label>
+                                                <div>
+                                                    @eventData.EventFromTime To @eventData.EventToTime
                                                 </div>
                                             </div>
-                                            <div class="form-group" style="margin:5px !important">
-                                                <label class="control-label col-sm-4">Location :</label>
-                                                <div class="col-sm-7">
-                                                    <label class="control-label font-weight500"> @eventData.EventLocation </label>
+                                            <div>
+                                                <label>Location</label>
+                                                <div>
+                                                    @eventData.EventLocation
                                                 </div>
                                             </div>
-                                            <div class="form-group" style="margin:5px !important">
-                                                <label class="control-label col-sm-6">Target Audience :</label>
-                                                <div class="col-sm-6">
-                                                    <label class="control-label font-weight500"> @eventData.EventTargetAudience </label>
+                                            <div>
+                                                <label>Target Audience</label>
+                                                <div>
+                                                    @eventData.EventTargetAudience
                                                 </div>
                                             </div>
-                                            <div class="form-group" style="margin:5px !important">
-                                                <label class="control-label col-sm-5">Hosted By :</label>
-                                                <div class="col-sm-7">
-                                                    <label class="control-label font-weight500"> @eventData.EventHostedBy </label>
+                                            <div>
+                                                <label>Hosted By</label>
+                                                <div>
+                                                    @eventData.EventHostedBy
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +65,6 @@
                                             @if (User.IsInRole("Admin"))
                                             {
                                                 <li><a href="/Event/Update/@eventData.EventId" class="btn btn-primary btn-sm" title="Edit">Edit</a></li>
-                                                <li><a href="/Event/Update/@eventData.EventId" class="btn btn-danger btn-sm" title="Edit">Delete</a></li>
                                             }
                                             <li><a href="/Event/Show/@eventData.EventId" class="btn btn-success btn-sm" title="Edit">View Detail & Register</a></li>
                                         </ul>

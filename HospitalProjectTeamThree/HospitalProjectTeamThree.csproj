@@ -506,6 +506,7 @@
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
     <Compile Include="Models\ViewModels\ListGetWell.cs" />
     <Compile Include="Models\ViewModels\PersonalListGetWell.cs" />
+    <Compile Include="Models\ViewModels\RegisteredUserList.cs" />
     <Compile Include="Models\ViewModels\RoomBookings.cs" />
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
@@ -1050,6 +1051,7 @@
     <Content Include="Views\LiveWaitTime\Update.cshtml" />
     <Content Include="Views\LiveWaitTime\Index.cshtml" />
     <Content Include="Views\Event\RegistrationList.cshtml" />
+    <Content Include="Views\Event\RegisteredUserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
