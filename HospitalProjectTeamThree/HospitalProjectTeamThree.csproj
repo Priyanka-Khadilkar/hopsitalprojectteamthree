@@ -1040,6 +1040,7 @@
     <Content Include="Views\LiveWaitTime\PublicShow.cshtml" />
     <Content Include="Views\LiveWaitTime\Show.cshtml" />
     <Content Include="Views\LiveWaitTime\Update.cshtml" />
+    <Content Include="Views\Event\RegistrationList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

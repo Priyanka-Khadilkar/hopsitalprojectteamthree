@@ -131,5 +131,11 @@ namespace HospitalProjectTeamThree.Controllers
             return RedirectToAction("List");
         }
 
+        [Authorize(Roles = "Admin,Editor,Registered User")]
+        public ActionResult Register(int id)
+        {
+            return RedirectToAction("RegistrationList");
+        }
+
     }
 }
