@@ -22,13 +22,14 @@ namespace HospitalProjectTeamThree
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootstrap-clockpicker.js"));
+                      //Implemented clockpicker and ckeditor library - by Priyanka khadilkar
+                      "~/Scripts/bootstrap-clockpicker.js",
+                       "~/Scripts/ckeditor/ckeditor.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/jquery-ui.css",
                       "~/Content/bootstrap-clockpicker.css",
-                                          
                       "~/Content/Site.css"));
         }
     }

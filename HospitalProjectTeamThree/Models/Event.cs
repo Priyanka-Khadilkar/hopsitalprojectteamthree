@@ -12,10 +12,11 @@ namespace HospitalProjectTeamThree.Models
     {
         [Key]
         public int EventId { get; set; }
-        public int EventTitle { get; set; }
+        public string EventTitle { get; set; }
         public DateTime EventStartDate { get; set; }
         public DateTime EventEndDate { get; set; }
-        public string EventTime { get; set; }
+        public string EventFromTime { get; set; }
+        public string EventToTime { get; set; }
         public string EventLocation { get; set; }
         public string EventTargetAudience { get; set; }
         public string EventHostedBy { get; set; }
@@ -28,7 +29,7 @@ namespace HospitalProjectTeamThree.Models
         [ForeignKey("EventUpdatedBy")]
         public virtual ApplicationUser EventUpdater { get; set; }
         public DateTime EventCreatedOn { get; set; }
-        public DateTime EventUpdatedOn { get; set; }
+        public DateTime? EventUpdatedOn { get; set; }
 
         public virtual ICollection<ApplicationUser> Users { get; set; }
 

@@ -4,6 +4,7 @@
 }
 
 
+
     <div class="featured">
         <div class="card featured">
             <h2>@Model.room.RoomType</h2>
@@ -32,11 +33,27 @@
         </div>
 
         <div class="roomdesc">
-            
+
             <div class="price center">Room Price: $@Model.room.RoomPrice</div>
             <div class="price center">Total Beds: @Model.room.RoomTotalBeds</div>
             <p>@Model.room.RoomDesc</p>
-            <div> <button><a href="/Room/RoomBooking/@Model.room.RoomID">Reserve a room</a></button></div>
+
+            <!--Check if user registered-->
+            <!--Reference https://stackoverflow.com/questions/1332132/check-if-user-is-logged-in-in-user-control-asp-net-mvc-->
+            @{
+                if (@Request.IsAuthenticated)
+                {
+                    <div> <button><a href="/Room/RoomBooking/@Model.room.RoomID">Reserve a room</a></button></div>
+                }
+                else
+                {
+                    <div> <button><a href="/Account/Login/">Please log In to Reserve a room</a></button></div>
+                }
+            }
+
+
+
+            <!--<div> <button><a href="/Room/RoomBooking/@Model.room.RoomID">Reserve a room</a></button></div>-->
         </div>
         
     </div>

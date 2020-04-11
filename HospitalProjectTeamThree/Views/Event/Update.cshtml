@@ -1,0 +1,89 @@
+﻿@model HospitalProjectTeamThree.Models.Event
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Update Event
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post" action="/Event/Add">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventTitle">Title:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="@Model.EventTitle" id="EventTitle" placeholder="Enter Title" name="EventTitle" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventStartDate">Start date:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="@Model.EventStartDate.ToString("MM/dd/yyyy")" id="EventStartDate" placeholder="MM/DD/YYYY" name="EventStartDate" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventEndDate">End date :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="@Model.EventEndDate.ToString("MM/dd/yyyy")" id="EventEndDate" placeholder="MM/DD/YYYY" name="EventEndDate" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventFromTime">Time :</label>
+                <div class="col-sm-10 ">
+                    <input type="text" class="form-control clockpicker" value="@Model.EventFromTime" id="EventFromTime" placeholder="From" name="EventFromTime">
+                    <input type="text" class="form-control clockpicker" value="@Model.EventToTime" id="EventToTime" placeholder="To" name="EventToTime">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventImage">Image :</label>
+                <div class="col-sm-10">
+                    <input type="file" id="EventImage" name="EventImage" class="form-control" placeholder="Choose Image">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventLocation">Location :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="@Model.EventLocation" id="EventLocation" placeholder="Enter Event Location" name="EventLocation">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventTargetAudience">Target Audience  :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="@Model.EventTargetAudience" id="EventTargetAudience" placeholder="Enter Preferred Doctor" name="EventTargetAudience">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="Name">Hosted By  :</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" value="@Model.EventHostedBy" id="EventHostedBy" placeholder="Enter Hosted By" name="EventHostedBy">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="EventDetail">Details  :</label>
+                <div class="col-sm-10">
+                    <textarea type="text" class="form-control" id="EventDetail" placeholder="Enter Hosted By" name="EventDetail">@Model.EventDetails </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" id="BtnSubmit" class="btn btn-success">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<a href="/Event/List" class="btn btn-primary headtop">Back to Event List</a>
+@section Scripts {
+    <script>
+        $(function () {
+            $("#EventStartDate").datepicker();
+            $("#EventEndDate").datepicker();
+            $('.clockpicker').clockpicker({
+                donetext: 'Done'
+            });
+            CKEDITOR.replace("EventDetail");
+        });
+    </script>
+}
+

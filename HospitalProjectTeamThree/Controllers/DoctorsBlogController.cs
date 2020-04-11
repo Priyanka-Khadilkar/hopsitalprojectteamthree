@@ -115,7 +115,7 @@ namespace HospitalProjectTeamThree.Controllers
             string all_topics_query = "select * from BlogTopics";
             List<BlogTopic> AllTopics = db.Topics.SqlQuery(all_topics_query).ToList();
 
-            // We use the AddParkGuest viewmodel so that we can show the guests that are on that booking and also so that we can see the dropdown list of guests
+            // We use the AddBlogTopic viewmodel so that we can show the topics that are on that blog post and also so that we can see the dropdown list of topics
             // and add a guest to a booking if we want to
             AddBlogTopic viewmodel = new AddBlogTopic();
             viewmodel.Blog = doctorsblog;
@@ -138,21 +138,13 @@ namespace HospitalProjectTeamThree.Controllers
                 return HttpNotFound();
             }
 
-
-
             string topic_query = "select * from BlogTopics inner join BlogTopicDoctorsBlogs on BlogTopics.TopicId = BlogTopicDoctorsBlogs.BlogTopic_TopicId where BlogTopicDoctorsBlogs.DoctorsBlog_BlogId=@BlogId";
             var t_parameter = new SqlParameter("@BlogId", id);
             List<BlogTopic> usedtopics = db.Topics.SqlQuery(topic_query, t_parameter).ToList();
 
-            string all_topics_query = "select * from BlogTopics";
-            List<BlogTopic> AllTopics = db.Topics.SqlQuery(all_topics_query).ToList();
-
-            // We use the AddParkGuest viewmodel so that we can show the guests that are on that booking and also so that we can see the dropdown list of guests
-            // and add a guest to a booking if we want to
             AddBlogTopic viewmodel = new AddBlogTopic();
             viewmodel.Blog = doctorsblog;
             viewmodel.BlogTopics = usedtopics;
-            viewmodel.Add_Topic = AllTopics;
 
             return View(viewmodel);
 
@@ -175,6 +167,7 @@ namespace HospitalProjectTeamThree.Controllers
         }
         [Authorize(Roles = "Admin, Editor")]
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Add(string BlogTitle, string BlogContent, string BlogSource, string User_Id)
         {
             //Debug.WriteLine("Want to create a blog entry with a title of " + BlogTitle ) ;

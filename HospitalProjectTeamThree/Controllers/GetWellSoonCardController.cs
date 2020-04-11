@@ -23,9 +23,9 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class GetWellSoonCardController : Controller
     {
-        private ApplicationSignInManager _signInManager;
+        /*private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationRoleManager _roleManager;
+        private ApplicationRoleManager _roleManager;*/
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
         public GetWellSoonCardController() { }
         // GET: GetWellSoonCard
@@ -58,21 +58,44 @@ namespace HospitalProjectTeamThree.Controllers
         [Authorize(Roles = "Admin, Editor")]
         //authorize function only allow a certain ppl role to see the full list of card
         //To Do: personal list of card, normal user can only see the card they create
-        public ActionResult List(int? page)
+        public ActionResult List(int? page, string currentFilter, string cardsearch)
         {
-            //string showDesignQuery = "Select * from CardDesigns inner join GetWellSoonCards on GetWellSoonCards.CardDesignId = CardDesigns.CardDesignId where CardId = @id";
-            //string showCardQuery = "Select * from GetWellSoonCards";
-            /*List<GetWellSoonCard> allCards = db.GetWellSoonCards.SqlQuery(showCardQuery).ToList();
-            SqlParameter[] sqlparams = new SqlParameter[1];
-            sqlparams[1] = new SqlParameter("@id", id);*/
-            //Debug.WriteLine("Iam trying to list all the cards");
+            //Linq technique
+            if (cardsearch != null)
+            {
+                //reset the page to 1 if there is a result in the search
+                page = 1;
+            }
+            else
+            {
+                //maintain the filter setting during paging
+                cardsearch = currentFilter;
+            }
 
-            //ListGetWell ListGetWellViewModel = new ListGetWell();
-            //ListGetWellViewModel.GetWellSoonCard = allCards;
-            //ListGetWellViewModel.CardDesign = cardDesign;
-
-            //return View();           
-            string query = "Select * from GetWellSoonCards";
+            ViewBag.CurrentFilter = cardsearch;
+            if (cardsearch != null && cardsearch != "")
+            {
+                List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards
+                    .Where(card =>
+                        card.Message.Contains(cardsearch) ||
+                        card.PatientName.Contains(cardsearch) ||
+                        card.User.FirstName.Contains(cardsearch) ||
+                        card.PatientEmail.Contains(cardsearch)
+                    )
+                    .ToList();
+                int pageSize = 3;
+                int pageNumber = (page ?? 1);                
+                return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                int pageSize = 3;
+                int pageNumber = (page ?? 1);
+                List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.ToList();
+                return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
+            }
+            //SQL query
+            /*string query = "Select * from GetWellSoonCards";
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
             //return View(GetWellSoonCards);
@@ -82,14 +105,52 @@ namespace HospitalProjectTeamThree.Controllers
             int pageSize = 3;
             int pageNumber = (page ?? 1);
             //passing the pagelist to the view
-            return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
+            return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));*/
         }
-        public ActionResult PersonalList(int? PersonalList)
+        public ActionResult PersonalList(int? page, string currentFilter, string cardsearch)
         {
+
             //get the current user id when they logged in
             string userId = User.Identity.GetUserId();
-            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            if (cardsearch != null)
+            {
+                //reset the page to 1 if there is a result in the search
+                page = 1;
+            }
+            else
+            {
+                //maintain the filter setting during paging
+                cardsearch = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = cardsearch;
+            if (cardsearch != null && cardsearch != "")
+            {
+                string searchquery = "select * from GetWellSoonCards where User_Id=@userId and (message=@cardsearch " +
+                    "or PatientEmail=@cardsearch " +
+                    "or PatientName=@cardsearch " +
+                    "or RoomNumber=@cardsearch)";
+                SqlParameter[] searchparams = new SqlParameter[2];
+                searchparams[0] = new SqlParameter("@userId", userId);
+                searchparams[1] = new SqlParameter("@cardsearch", cardsearch);
+                List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(searchquery, searchparams).ToList();
+                //allow 3 items per page
+                int pageSize = 3;
+                int pageNumber = (page ?? 1);
+                PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
+                //go to the viewmodel get the paged list and instanciate it here
+                PersonalListGetWellViewModel.GetWellSoonCard = Cards.ToPagedList(pageSize, pageNumber);
+                PersonalListGetWellViewModel.User = currentUser;
+
+                //allow 3 items per page
+
+                return View(PersonalListGetWellViewModel);
+
+            }
+            else
+            {
             //return his personal list of card based on his id
             string query = "select * from GetWellSoonCards where User_Id=@userId";
             SqlParameter[] sqlparams = new SqlParameter[1];
@@ -99,7 +160,7 @@ namespace HospitalProjectTeamThree.Controllers
             List<GetWellSoonCard> Cards = db.GetWellSoonCards.SqlQuery(query, sqlparams).ToList();
             //allow 3 items per page
             int pageSize = 3;
-            int pageNumber = (PersonalList ?? 1);
+            int pageNumber = (page ?? 1);
             PersonalListGetWell PersonalListGetWellViewModel = new PersonalListGetWell();
             //go to the viewmodel get the paged list and instanciate it here
             PersonalListGetWellViewModel.GetWellSoonCard = Cards.ToPagedList(pageSize , pageNumber);
@@ -108,6 +169,9 @@ namespace HospitalProjectTeamThree.Controllers
             //allow 3 items per page
            
             return View(PersonalListGetWellViewModel);
+            }
+
+            
         }
         public ActionResult Add()
         {
@@ -226,7 +290,7 @@ namespace HospitalProjectTeamThree.Controllers
             }
             //return RedirectToAction("List");
         }
-        public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        /*public GetWellSoonCardController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -265,7 +329,7 @@ namespace HospitalProjectTeamThree.Controllers
             {
                 _userManager = value;
             }
-        }
+        }*/
 
     }
 }
