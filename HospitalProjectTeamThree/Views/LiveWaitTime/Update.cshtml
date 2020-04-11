@@ -1,0 +1,56 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.ShowLiveWaitTimes
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Update Live Wait Times Entry
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/LiveWaitTime/Update/@Model.WaitTime.WaitUpdateId">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="WaitUpdateDate">Date:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" name="WaitUpdateDate" id="WaitUpdateDate" value="@Model.WaitTime.WaitUpdateDate"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="WaitUpdateTime">Time:</label>
+                <div class="col-sm-10">
+                    <input type="datetime" class="form-control" name="WaitUpdateTime" id="WaitUpdateTime" value="@Model.WaitTime.WaitUpdateTime" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="DepartmentId">Department:</label>
+                <div class="col-sm-10">
+                    <select id="LiveWaitTimeDepartmentId" type="text" name="DepartmentId" class="form-control">
+                        @{
+
+                            foreach (var dept in Model.DepartmentsList)
+                            {
+                                <option value="@dept.DepartmentId">@dept.DepartmentName</option>
+
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="CurrentWaitTime">Current Wait Time:</label>
+                <div class="col-sm-10">
+                    @Html.EnumDropDownListFor(
+                    x => x.WaitTime.CurrentWaitTime, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="submit" value="Update" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<a href="/LiveWaitTime/Show" class="btn btn-primary headtop">Back to list</a>

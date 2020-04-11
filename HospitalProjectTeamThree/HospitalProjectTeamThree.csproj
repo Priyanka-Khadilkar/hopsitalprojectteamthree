@@ -463,6 +463,18 @@
     <Compile Include="Migrations\202004101730389_volunteer position.designer.cs">
       <DependentUpon>202004101730389_volunteer position.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004110117264_updates.cs" />
+    <Compile Include="Migrations\202004110117264_updates.designer.cs">
+      <DependentUpon>202004110117264_updates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004110134578_Live Wait Times table update.cs" />
+    <Compile Include="Migrations\202004110134578_Live Wait Times table update.designer.cs">
+      <DependentUpon>202004110134578_Live Wait Times table update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004110406100_Live Wait Times changes.cs" />
+    <Compile Include="Migrations\202004110406100_Live Wait Times changes.designer.cs">
+      <DependentUpon>202004110406100_Live Wait Times changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004110039077_PossibleFix.cs" />
     <Compile Include="Migrations\202004110039077_PossibleFix.designer.cs">
       <DependentUpon>202004110039077_PossibleFix.cs</DependentUpon>
@@ -498,6 +510,7 @@
     <Compile Include="Models\ViewModels\ShowCrisis.cs" />
     <Compile Include="Models\ViewModels\ShowGetWell.cs" />
     <Compile Include="Models\ViewModels\ShowJobListing.cs" />
+    <Compile Include="Models\ViewModels\ShowLiveWaitTimes.cs" />
     <Compile Include="Models\ViewModels\ShowVolunteerPosition.cs" />
     <Compile Include="Models\ViewModels\UpdateGetWell.cs" />
     <Compile Include="Models\ViewModels\UpdateJobListing.cs" />
@@ -1020,13 +1033,6 @@
     <Content Include="Views\BlogTopic\Show.cshtml" />
     <Content Include="Views\BlogTopic\PublicShow.cshtml" />
     <Content Include="Views\Room\Confirm.cshtml" />
-    <Content Include="Views\LiveWaitTimes\List.cshtml" />
-    <Content Include="Views\LiveWaitTimes\Add.cshtml" />
-    <Content Include="Views\LiveWaitTimes\Update.cshtml" />
-    <Content Include="Views\LiveWaitTimes\Delete.cshtml" />
-    <Content Include="Views\LiveWaitTimes\Show.cshtml" />
-    <Content Include="Views\LiveWaitTimes\PublicList.cshtml" />
-    <Content Include="Views\LiveWaitTimes\PublicShow.cshtml" />
     <Content Include="Views\Event\List.cshtml" />
     <Content Include="Views\Event\Show.cshtml" />
     <Content Include="Views\Event\Update.cshtml" />
@@ -1035,6 +1041,15 @@
     <Content Include="Views\VolunteerPosition\Show.cshtml" />
     <Content Include="Views\VolunteerPosition\Update.cshtml" />
     <Content Include="Views\VolunteerPosition\Delete.cshtml" />
+    <Content Include="Views\LiveWaitTime\Add.cshtml" />
+    <Content Include="Views\LiveWaitTime\Delete.cshtml" />
+    <Content Include="Views\LiveWaitTime\List.cshtml" />
+    <Content Include="Views\LiveWaitTime\PublicList.cshtml" />
+    <Content Include="Views\LiveWaitTime\PublicShow.cshtml" />
+    <Content Include="Views\LiveWaitTime\Show.cshtml" />
+    <Content Include="Views\LiveWaitTime\Update.cshtml" />
+    <Content Include="Views\LiveWaitTime\Index.cshtml" />
+    <Content Include="Views\Event\RegistrationList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1256,6 +1271,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004101730389_volunteer position.resx">
       <DependentUpon>202004101730389_volunteer position.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110117264_updates.resx">
+      <DependentUpon>202004110117264_updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110134578_Live Wait Times table update.resx">
+      <DependentUpon>202004110134578_Live Wait Times table update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110406100_Live Wait Times changes.resx">
+      <DependentUpon>202004110406100_Live Wait Times changes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004110039077_PossibleFix.resx">
       <DependentUpon>202004110039077_PossibleFix.cs</DependentUpon>

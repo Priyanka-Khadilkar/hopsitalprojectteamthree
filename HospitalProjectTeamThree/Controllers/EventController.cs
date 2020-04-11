@@ -31,23 +31,26 @@ namespace HospitalProjectTeamThree.Controllers
             eventModel.EventStartDate = DateTime.ParseExact(EventStartDate, "MM/dd/yyyy", null);
             eventModel.EventEndDate = DateTime.ParseExact(EventEndDate, "MM/dd/yyyy", null);
             eventModel.EventFromTime = EventFromTime;
-            eventModel.EventToTime =  EventToTime;
+            eventModel.EventToTime = EventToTime;
             eventModel.EventTargetAudience = EventTargetAudience;
 
             string currentUserId = User.Identity.GetUserId();
             eventModel.EventHostedBy = EventHostedBy;
             eventModel.EventDetails = EventDetail;
             eventModel.EventCreatedOn = DateTime.Now;
+
             eventModel.EventLocation = EventLocation;
 
             //Save Images
+            string fileName = Guid.NewGuid() + Path.GetFileName(EventImage.FileName);
             string path = Path.Combine(Server.MapPath("~/Images/Event"),
-                                       Path.GetFileName(EventImage.FileName));
+                                       fileName);
             EventImage.SaveAs(path);
-            eventModel.EventImagePath = Path.GetFileName(EventImage.FileName);
+            eventModel.EventImagePath = fileName;
 
             //Get the current logged in user
             eventModel.EventCreater = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+            eventModel.EventCreatedBy = currentUserId;
             db.Events.Add(eventModel);
 
             //Save data into database
@@ -82,11 +85,56 @@ namespace HospitalProjectTeamThree.Controllers
         /// Update the event details
         /// </summary>
         /// <returns>returns the update event</returns>
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id)
         {
             Event eventdata = db.Events.Include("EventCreater").Where(x => x.EventId == id).FirstOrDefault();
             //Return event detail
             return View(eventdata);
+        }
+
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [Authorize(Roles = "Admin")]
+        public ActionResult Update(int id, string EventTitle, string EventStartDate, string EventEndDate, string EventFromTime, string EventToTime, HttpPostedFileBase EventImage, string EventTargetAudience,
+            string EventHostedBy, string EventDetail, string EventLocation)
+        {
+            Event eventdata = db.Events.Include("EventCreater").Where(x => x.EventId == id).FirstOrDefault();
+            eventdata.EventTitle = EventTitle;
+            eventdata.EventStartDate = DateTime.ParseExact(EventStartDate, "MM/dd/yyyy", null);
+            eventdata.EventEndDate = DateTime.ParseExact(EventEndDate, "MM/dd/yyyy", null);
+            eventdata.EventFromTime = EventFromTime;
+            eventdata.EventToTime = EventToTime;
+            eventdata.EventTargetAudience = EventTargetAudience;
+
+            string currentUserId = User.Identity.GetUserId();
+            eventdata.EventHostedBy = EventHostedBy;
+            eventdata.EventDetails = EventDetail;
+            eventdata.EventUpdatedOn = DateTime.Now;
+            eventdata.EventUpdatedBy = currentUserId;
+            eventdata.EventLocation = EventLocation;
+            eventdata.EventUpdater = db.Users.FirstOrDefault(x => x.Id == currentUserId);
+
+            if (EventImage != null)
+            {
+                // Delete exiting file
+                System.IO.File.Delete(Path.Combine(Server.MapPath("~/Images/Event"), eventdata.EventImagePath));
+                // Save new file
+                string fileName = Guid.NewGuid() + Path.GetFileName(EventImage.FileName);
+                string path = Path.Combine(Server.MapPath("~/Images/Event"), fileName);
+                EventImage.SaveAs(path);
+                eventdata.EventImagePath = fileName;
+            }
+            //Return event detail
+            db.SaveChanges();
+            return RedirectToAction("List");
+        }
+
+        [Authorize(Roles = "Admin,Editor,Registered User")]
+        public ActionResult Register(int id)
+        {
+            return RedirectToAction("RegistrationList");
         }
 
     }

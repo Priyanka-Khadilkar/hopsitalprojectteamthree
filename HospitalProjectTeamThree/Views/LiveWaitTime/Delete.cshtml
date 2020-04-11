@@ -1,0 +1,14 @@
+﻿@model HospitalProjectTeamThree.Models.LiveWaitTime
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <!-- Confirmation page to confirm delete of live wait time update -->
+    <h2 class="title">Are you sure you want to delete Update # <span class="delname">@Model.WaitUpdateId</span> ?</h2>
+    <div>
+        <a href="/LiveWaitTime/DeleteF/@Model.WaitUpdateId" class="btn btn-danger btn-sm">Confirm</a>
+        <a href="/LiveWaitTime/List" class="btn btn-primary btn-sm">Back to List</a>
+    </div>
+</div>
+

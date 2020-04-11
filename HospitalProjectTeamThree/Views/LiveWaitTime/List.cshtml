@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Live Wait Times</h1>
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        List of Departments
+    </div>
+    <div class="panel-body">
+        <table class="table table-dark top">
+            <thead>
+                <tr>
+                    <th scope="col">Department</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var Department in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Department.DepartmentName
+                            </td>
+                            <td>
+                                <a href="/LiveWaitTime/Show/@Department.DepartmentId">View Updates</a>
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<a href="/LiveWaitTime/Add" class="btn btn-primary bottom-margin-10">New Live Wait Times Update</a>
