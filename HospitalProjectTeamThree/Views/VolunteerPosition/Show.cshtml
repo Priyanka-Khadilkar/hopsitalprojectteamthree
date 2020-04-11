@@ -7,11 +7,29 @@
 
 <h2>Show</h2>
 
-<div>Job Title: @Model.VolunteerPosition.VolunteerPositionTitle</div>
-<div>Job Description: @Model.VolunteerPosition.VolunteerPositionDescription</div>
+<div>Volunteer Position Title: @Model.VolunteerPosition.VolunteerPositionTitle</div>
+<div>Volunteer Position Description: @Model.VolunteerPosition.VolunteerPositionDescription</div>
 <div>Department: @Model.VolunteerPosition.Department.DepartmentName</div>
-<div>Salary: @Model.VolunteerPosition.StartDate</div>
+<div>Start Date: @Model.VolunteerPosition.StartDate</div>
 <div> <a href="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID">Edit this Job</a></div>
 <div> <a href="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID">Delete this Job</a></div>
+<div>
+    <div>Current Volunteers:</div>
+    <ul>
+        @{
+            foreach (var volunteer in Model.Users)
+            {
+                <li>@volunteer.UserName</li>
+            }
+        }
+    </ul>
+</div>
+
+<div>
+    <form method="post" action="/VolunteerPosition/SignUp/@Model.VolunteerPosition.VolunteerPositionID">
+        <input class="btn btn-primary" type="submit" value="Sign Up" />
+    </form>
+    
+</div>
 
 

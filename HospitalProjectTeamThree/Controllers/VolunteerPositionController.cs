@@ -123,6 +123,22 @@ namespace HospitalProjectTeamThree.Controllers
         {
             VolunteerPosition volunteerPosition = db.VolunteerPositions.SqlQuery("select * from VolunteerPositions where VolunteerPositionID = @VolunteerPositionID", new SqlParameter("@VolunteerPositionID", id)).FirstOrDefault();
             List<Department> department = db.Departments.SqlQuery("select * from Departments inner join VolunteerPositions on VolunteerPositions.DepartmentID = Departments.DepartmentID where VolunteerPositionID = @id", new SqlParameter("@id", id)).ToList();
+
+           // string query = "select * from VolunteerPositionApplicationUsers where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID";
+          //  var fk_param = new SqlParameter("@VolunteerPositionID", id);
+
+            //SqlParameter[] sqlparams = new SqlParameter[1];
+            // sqlparams[0] = new SqlParameter("@VolunteerPositionID", id);
+            // List<ApplicationUser> volunteers = db.VolunteerPositions.SqlQuery(query, sqlparams).ToList();
+
+          //  string fk_query = "select * from VolunteerPositions inner join VolunteerPositionApplicationUsers " +
+           //     "on VolunteerPositionApplicationUsers.VolunteerPosition_VolunteerPositionID = VolunteerPositions.VolunteerPositionID " +
+           //     "where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID";
+          //  var fk_param = new SqlParameter("@VolunteerPositionID", id);
+          //  List<VolunteerPosition> volunteers = db.VolunteerPositions.SqlQuery(fk_query, fk_param).ToList();
+
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -134,6 +150,7 @@ namespace HospitalProjectTeamThree.Controllers
             ShowVolunteerPosition ShowVolunteerPositionViewModel = new ShowVolunteerPosition();
             ShowVolunteerPositionViewModel.VolunteerPosition = volunteerPosition;
             ShowVolunteerPositionViewModel.Departments = department;
+           // ShowVolunteerPositionViewModel.Users = volunteers;
 
 
             return View(ShowVolunteerPositionViewModel);
@@ -189,6 +206,38 @@ namespace HospitalProjectTeamThree.Controllers
             db.Database.ExecuteSqlCommand(query, param);
 
             return RedirectToAction("List");
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(string id, string UserID)
+        {
+            string userId = User.Identity.GetUserId();
+            ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
+            UserID = userId;
+
+            //check if the user has already signed up for the volunteer position
+
+            string check_query = "select * from VolunteerPositions inner join VolunteerPositionApplicationUsers " +
+                "on VolunteerPositionApplicationUsers.VolunteerPosition_VolunteerPositionID = VolunteerPositions.VolunteerPositionID " +
+                "where VolunteerPosition_VolunteerPositionID=@VolunteerPositionID and ApplicationUser_ID = @id";
+            SqlParameter[] check_params = new SqlParameter[2];
+            check_params[0] = new SqlParameter("@id", UserID);
+            check_params[1] = new SqlParameter("@VolunteerPositionID", id);
+
+            List<VolunteerPosition> positions = db.VolunteerPositions.SqlQuery(check_query, check_params).ToList();
+            if(positions.Count <= 0)
+            {
+                string query = "insert into VolunteerPositionApplicationUsers (VolunteerPosition_VolunteerPositionID, ApplicationUser_Id)values(@VolunteerPositionID, @ApplicationUserID)";
+                SqlParameter[] sqlparams = new SqlParameter[2];
+                sqlparams[0] = new SqlParameter("@VolunteerPositionID", id);
+                sqlparams[1] = new SqlParameter("@ApplicationUserID", UserID);
+
+                db.Database.ExecuteSqlCommand(query, sqlparams);
+
+
+            }
+            return RedirectToAction("Show/" + id);
+
         }
 
     }
