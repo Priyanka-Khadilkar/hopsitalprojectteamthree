@@ -92,7 +92,7 @@ namespace HospitalProjectTeamThree.Controllers
                 List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.ToList();
                 return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));
             }
-            //SQL query
+            //SQL technique
             /*string query = "Select * from GetWellSoonCards";
             List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.SqlQuery(query).ToList();
             Debug.WriteLine("Iam trying to list all the cards");
