@@ -13,7 +13,8 @@
         <table class="table table-dark top">
             <thead>
                 <tr>
-                    <th scope="col">Date/Time</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
                     <th scope="col">Current Wait Time</th>
                 </tr>
             </thead>
@@ -23,7 +24,10 @@
                     {
                         <tr>
                             <td>
-                                @WaitTimes.DateandTime
+                                @WaitTimes.WaitUpdateDate.ToString("MM/dd/yyyy")
+                            </td>
+                            <td>
+                                @WaitTimes.WaitUpdateTime.ToString("h:mm tt")
                             </td>
                             <td>
                                 @WaitTimes.CurrentWaitTime

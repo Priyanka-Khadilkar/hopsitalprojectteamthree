@@ -471,6 +471,10 @@
     <Compile Include="Migrations\202004110134578_Live Wait Times table update.designer.cs">
       <DependentUpon>202004110134578_Live Wait Times table update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004110406100_Live Wait Times changes.cs" />
+    <Compile Include="Migrations\202004110406100_Live Wait Times changes.designer.cs">
+      <DependentUpon>202004110406100_Live Wait Times changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1040,6 +1044,7 @@
     <Content Include="Views\LiveWaitTime\PublicShow.cshtml" />
     <Content Include="Views\LiveWaitTime\Show.cshtml" />
     <Content Include="Views\LiveWaitTime\Update.cshtml" />
+    <Content Include="Views\LiveWaitTime\Index.cshtml" />
     <Content Include="Views\Event\RegistrationList.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -1268,6 +1273,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004110134578_Live Wait Times table update.resx">
       <DependentUpon>202004110134578_Live Wait Times table update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110406100_Live Wait Times changes.resx">
+      <DependentUpon>202004110406100_Live Wait Times changes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
