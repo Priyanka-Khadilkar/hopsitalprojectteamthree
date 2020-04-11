@@ -32,7 +32,35 @@ namespace HospitalProjectTeamThree.Controllers
 
         public LiveWaitTimeController() { }
 
+        public ActionResult PublicList()
+        {
+            List<Department> Departments = db.Departments.ToList();
 
+            //Debug.WriteLine("Iam trying to list all the departments");
+            return View(Departments);
+        }
+
+        public ActionResult PublicShow(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Department SelectedDepartment = db.Departments.Find(id);
+
+            List<LiveWaitTime> WaitTimes = db.LiveWaitTimes
+                .Where(waittimes => waittimes.DepartmentId == id)
+                .ToList();
+
+
+            //Debug.WriteLine("Iam trying to list all the blogs");
+            ShowLiveWaitTimes viewmodel = new ShowLiveWaitTimes();
+            viewmodel.Departments = SelectedDepartment;
+            viewmodel.WaitTimes = WaitTimes;
+
+            return View(viewmodel);
+
+        }
         public LiveWaitTimeController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
