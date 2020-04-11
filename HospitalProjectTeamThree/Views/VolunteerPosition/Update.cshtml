@@ -1,0 +1,79 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.UpdateVolunteerPosition
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Update Job Listing</h2>
+<form method="post" action="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID">
+    <div class="col-md-4">
+        <div>Edit Volunteer Position Title: <input type="text" name="VolunteerPositionTitle" value="@Model.VolunteerPosition.VolunteerPositionTitle" /></div>
+        <div>Edit Volunteer Position Description: <input type="text" name="VolunteerPositionDescription" value="@Model.VolunteerPosition.VolunteerPositionDescription" /></div>
+    </div>
+
+    <div class="col-md-4">
+        <input type="hidden" name="VolunteerPositionID" value="@Model.VolunteerPosition.VolunteerPositionID" />
+        
+        <span>Department</span>
+        <select id="DepartmentID" name="DepartmentID">
+            @foreach (var department in Model.Departments)
+            {
+                var selected = "";
+                if (Model.VolunteerPosition.DepartmentID == department.DepartmentId)
+                {
+                    selected = "selected";
+                }
+                <option value="@department.DepartmentId" @selected>@department.DepartmentName</option>
+            }
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+       <div>Edit StartDate: <input type="text" name="StartDate" id="StartDate" value="@Model.VolunteerPosition.StartDate" /></div>
+    </div>
+    <div>
+        Volunteers
+
+        <ul>
+            <li>Example</li>
+            <li>Example</li>
+
+        </ul>
+        <span>Add Volunteer:</span>
+        <select id="DepartmentID" name="DepartmentID">
+            <!--Change this to list of volunteers-->
+            @foreach (var department in Model.Departments)
+            {
+                var selected = "";
+                if (Model.VolunteerPosition.DepartmentID == department.DepartmentId)
+                {
+                    selected = "selected";
+                }
+                <option value="@department.DepartmentId" @selected>@department.DepartmentName</option>
+            }
+            }
+        </select>
+
+    </div>
+    <div class="col-md-4">
+        <div><input type="submit" value="Update Volunteer Position" /></div>
+    </div>
+
+
+</form>
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#StartDate").datepicker();
+        })
+
+
+    </script>
+}
+
+
+

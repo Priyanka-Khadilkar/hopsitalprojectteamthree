@@ -38,6 +38,9 @@ namespace HospitalProjectTeamThree.Data
 
         //Representing the Many in (Many Events to Many Users)
         public virtual ICollection<Event> Events { get; set; }
+
+        //many users to many volunteer positions
+        public virtual ICollection<VolunteerPosition> VolunteerPositions { get; set; }
     }
     //adding roles to user: Admin, Editor, Registered user
     public class ApplicationRole : IdentityRole
@@ -97,5 +100,6 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.JobListing> JobListings { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.RoomBooking> RoomBookings { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.VolunteerPosition> VolunteerPositions { get; set; }
     }
 }

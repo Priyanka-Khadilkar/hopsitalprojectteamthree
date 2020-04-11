@@ -1,0 +1,19 @@
+﻿@model List<HospitalProjectTeamThree.Models.VolunteerPosition>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List of Volunteer Positions</h2>
+
+<div class="tilecontainer">
+    @{
+        foreach (var position in Model)
+        {
+            <div class="itemdetails">
+                <div class="listcat"><a href="/VolunteerPosition/Show/@position.VolunteerPositionID">@position.VolunteerPositionTitle</a></div>
+                <div class="listcat"> Department: <span>@position.Department.DepartmentName</span></div>
+            </div>
+        }
+    }
+
+</div>

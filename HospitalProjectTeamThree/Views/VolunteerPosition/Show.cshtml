@@ -1,0 +1,17 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.ShowVolunteerPosition
+
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show</h2>
+
+<div>Job Title: @Model.VolunteerPosition.VolunteerPositionTitle</div>
+<div>Job Description: @Model.VolunteerPosition.VolunteerPositionDescription</div>
+<div>Department: @Model.VolunteerPosition.Department.DepartmentName</div>
+<div>Salary: @Model.VolunteerPosition.StartDate</div>
+<div> <a href="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID">Edit this Job</a></div>
+<div> <a href="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID">Delete this Job</a></div>
+
+

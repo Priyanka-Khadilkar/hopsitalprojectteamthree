@@ -1,0 +1,20 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.ShowVolunteerPosition
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Are you Sure you want to delete this Volunteer Position</h2>
+<div class="col-md-4">
+    <div>Volunteer Position</div>
+    <div>Volunteer Position Title: @Model.VolunteerPosition.VolunteerPositionTitle</div>
+    <div>Volunteer Position Description: @Model.VolunteerPosition.VolunteerPositionDescription</div>
+    <div>Department: @Model.VolunteerPosition.Department.DepartmentName</div>
+    <div>Start Date: @Model.VolunteerPosition.StartDate</div>
+
+</div>
+<form method="post" action="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID">
+    <input type="hidden" name="VolunteerPositionID" value="@Model.VolunteerPosition.VolunteerPositionID" />
+    <input type="submit" value="Yes" />
+    <a href="/VolunteerPosition/List">No, go back to list</a>
+
+</form>

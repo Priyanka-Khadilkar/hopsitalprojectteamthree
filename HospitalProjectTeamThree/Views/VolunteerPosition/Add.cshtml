@@ -1,0 +1,48 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddVolunteerPosition
+
+
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Add a Job Listing</h2>
+<form class="add" method="post" action="/VolunteerPosition/Add">
+
+    <div>Volunteer Position Title: <input type="text" name="VolunteerPositionTitle" id="VolunteerPositionTitle" /></div>
+    <div>Volunteer Position Description: <input type="text" name="VolunteerPositionDescription" id="VolunteerPositionDescription" /></div>
+
+
+    <div>Start Date: <input type="datetime" name="StartDate" id="StartDate" /></div>
+
+    <div>
+        Department:
+        <select id="DepartmentID" typeof="text" name="DepartmentID">
+            @{
+                foreach (var department in Model.Departments)
+                {
+                    <option value="@department.DepartmentId">@department.DepartmentName</option>
+                }
+
+            }
+        </select>
+
+
+
+    </div>
+
+    <div><input type="submit" value="Add Volunteer Position" /></div>
+</form>
+<a href="/VolunteerPosition/List">Back to list</a>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#StartDate").datepicker();
+        })
+
+    </script>
+}
