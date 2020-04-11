@@ -467,6 +467,10 @@
     <Compile Include="Migrations\202004110117264_updates.designer.cs">
       <DependentUpon>202004110117264_updates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004110134578_Live Wait Times table update.cs" />
+    <Compile Include="Migrations\202004110134578_Live Wait Times table update.designer.cs">
+      <DependentUpon>202004110134578_Live Wait Times table update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1260,6 +1264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004110117264_updates.resx">
       <DependentUpon>202004110117264_updates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110134578_Live Wait Times table update.resx">
+      <DependentUpon>202004110134578_Live Wait Times table update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

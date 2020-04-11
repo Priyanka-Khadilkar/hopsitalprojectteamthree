@@ -15,7 +15,8 @@ namespace HospitalProjectTeamThree.Models
     {
         [Key]
         public int WaitUpdateId { get; set; }
-        public DateTime DateandTime { get; set; }
+        public DateTime WaitUpdateDate { get; set; }
+        public DateTime WaitUpdateTime { get; set; }
         public enum WaitTimeDesc { [Description("LOW")] low, [Description("MEDIUM")] medium, [Description("HIGH")] high }
         public WaitTimeDesc CurrentWaitTime { get; set; }
         public int DepartmentId { get; set; }
