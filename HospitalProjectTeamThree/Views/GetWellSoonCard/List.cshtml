@@ -7,7 +7,7 @@
     ViewBag.Title = "List";
 }
 
-<h2>List of Cards</h2>
+<div><h2>List of Cards</h2></div>
 <div>
     <form method="post" action="">
         <input type="text" name="cardsearch" value="Search" />
@@ -18,7 +18,7 @@
     @{
         foreach (var Card in Model)
         {
-            <div class="col-md-3">
+            <div class="col-md-3 col-sm-6">
                 <div>Message: @Card.Message</div>
                 <div>To: @Card.PatientName <span> @Card.PatientEmail</span></div>
                 <div>Room Number: @Card.RoomNumber</div>                

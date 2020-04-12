@@ -10,10 +10,10 @@
         @{
             if (Model.HasPic == 1)
             {
-                <div class="col-md-4"><img src="~/Images/GetWellCard/@(Model.CardDesignId).@(Model.PicExt)" /></div>
+                <div class="col-md-4 col-sm-4"><img src="~/Images/GetWellCard/@(Model.CardDesignId).@(Model.PicExt)" /></div>
             }
         }
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-8">
             <label for="DesignName">Editting design name</label>
             <input type="text" name="DesignName" value="@Model.DesignName" />
             <input type="hidden" name="CardDesignId" value="@Model.CardDesignId" />

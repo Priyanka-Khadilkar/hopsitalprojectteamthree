@@ -87,7 +87,7 @@ namespace HospitalProjectTeamThree.Controllers
             }
             else
             {
-                int pageSize = 3;
+                int pageSize = 4;
                 int pageNumber = (page ?? 1);
                 List<GetWellSoonCard> GetWellSoonCards = db.GetWellSoonCards.ToList();
                 return View(GetWellSoonCards.ToPagedList(pageNumber, pageSize));

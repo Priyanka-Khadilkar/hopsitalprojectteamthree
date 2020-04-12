@@ -4,34 +4,35 @@
     ViewBag.Title = "Add";
 }
 
-<h2>Add a category</h2>
+<h2>Add a card</h2>
 <form class="add" method="post" action="/GetWellSoonCard/Add">
+    <div>Choose a card: </div>
     <div class="row">
-            Choose a card:
-            @{
-                foreach (var design in Model.CardDesigns)
-                {
-                        <div class="col-md-2">
-                            <img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" class="img-fluid" alt="Image of the card" />
-                            <input type="radio" name="CardDesignId" value="@(design.CardDesignId)" />
-                        </div>
-                }
+
+        @{
+            foreach (var design in Model.CardDesigns)
+            {
+                <div class="col-md-2 col-sm-2">
+                    <img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" class="img-fluid" alt="Image of the card" />
+                    <input type="radio" name="CardDesignId" value="@(design.CardDesignId)" />
+                </div>
             }
+        }
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
             <div>Patient Name: <input type="text" name="PatientName" id="PatientName" /></div>
             <div>Room Number: <input type="text" name="RoomNumber" id="RoomNumber" /></div>
             <div><input type="hidden" name="User_Id" value="@Model.User.Id" /></div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4">
             <div>Patient Email: <input type="text" name="PatientEmail" id="PatientEmail" /></div>
             <div>Message: <textarea type="text" name="message" id="message"></textarea></div>
         </div>
-        <div class="col-md-4">
-            <input type="submit" value="Add card" class="btn btn-primary"/>
+        <div class="col-md-4 col-sm-4">
+            <input type="submit" value="Add card" class="btn btn-primary" />
             <div><a href="/GetWellSoonCard/List">Back to list</a></div>
         </div>
     </div>
-    
+
 </form>

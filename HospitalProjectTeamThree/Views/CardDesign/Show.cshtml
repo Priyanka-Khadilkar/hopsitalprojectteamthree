@@ -5,7 +5,7 @@
 
 <h2>Card Detail</h2>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-6">
         @{
             if (Model.HasPic == 1)
             {
@@ -14,7 +14,7 @@
         }
 
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 col-sm-6">
         <div>Design Name: @Model.DesignName</div>
         <div><a href="/CardDesign/Update/@Model.CardDesignId">Update design</a></div>
         <div><a href="/CardDesign/Delete/@Model.CardDesignId" class="btn btn-warning">Delete design</a></div>

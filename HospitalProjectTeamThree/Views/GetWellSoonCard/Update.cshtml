@@ -12,20 +12,22 @@
         @{
             foreach (var design in Model.CardDesigns)
             {
-                <div class="col-md-2">
+                <div class="col-md-2 col-sm-2">
                     <label for="CardDesignId"><img src="../../Images/GetWellCard/@(design.CardDesignId).@(design.PicExt)" alt="Image of the card" /></label>
                     <input type="radio" name="CardDesignId" id="CardDesignId" value="@(design.CardDesignId)" />
                 </div>
             }
         }
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
         <div>Edit patient name: <input type="text" name="PatientName" value="@Model.GetWellSoonCard.PatientName" /></div>    
         <div>Edit room number: <input type="text" name="RoomNumber" value="@Model.GetWellSoonCard.RoomNumber" /></div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
         <div>Patient Email: <input type="text" name="PatientEmail" id="PatientEmail" value="@Model.GetWellSoonCard.PatientEmail"/></div>
-        <div>Edit your message :  <textarea name="Message">@Model.GetWellSoonCard.Message</textarea></div>    
+        <div>Edit your message :  <textarea name="Message">@Model.GetWellSoonCard.Message</textarea></div>
+    </div>
+    <div class="col-md-4 col-sm-4">
         <div><input type="submit" value="Update the card" class="btn btn-primary" /></div>
         <div><a href="/GetWellSoonCard/List">Back to list</a></div>
     </div>
