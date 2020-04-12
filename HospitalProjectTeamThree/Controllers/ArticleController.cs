@@ -17,7 +17,12 @@ namespace HospitalProjectTeamThree.Controllers
 {
     public class ArticleController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
+
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
+        public ArticleController() { }
         // GET: Article
         public ActionResult Index()
         {
