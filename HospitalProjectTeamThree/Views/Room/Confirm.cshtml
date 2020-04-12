@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Confirm";
 }
-<a href="/Room/List">Make another reservation </a>
+<a href="/Room/ShowAll">Make another reservation </a>
 <h2>Your Booking Information</h2>
 
 <div class="featured">
@@ -44,17 +44,17 @@
         <input type="text" class="form-control" id="fname" name="fname" value="@Model.User.FirstName" readonly>
         <label for="lname">Last Name</label>
         <input type="text" class="form-control" id="lname" name="lname" value="@Model.User.LastName" readonly>
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" value="@Model.User.Email" readonly>
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="email" value="@Model.User.PasswordHash" readonly>
+        <!--<label for="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" value="@Model.User.Email" readonly>
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="email" value="@Model.User.PasswordHash" readonly>-->
         <!--<label for="roomselected">Selected Room</label>
     <input type="text" class="form-control" id="roomselected" name="roomselected" value="@Model.Room.RoomType" readonly>-->
-    <label for="datefrom">Date From(YYYY-MM-DD):</label>
-    <input type="text" class="form-control" id="datefrom" name="datefrom" value="@Model.AllRoomBookings.DateFrom">
-    <label for="dateto">Date To(YYYY-MM-DD):</label>
-    <input type="text" class="form-control" id="dateto" name="dateto" value="@Model.AllRoomBookings.DateTo">
-    <!--<input type="hidden" name="roomId" id="roomId" value="@Model.Room.RoomID" />
+        <label for="datefrom">Date From(YYYY-MM-DD):</label>
+        <input type="text" class="form-control" id="datefrom" name="datefrom" value="@Model.AllRoomBookings.DateFrom">
+        <label for="dateto">Date To(YYYY-MM-DD):</label>
+        <input type="text" class="form-control" id="dateto" name="dateto" value="@Model.AllRoomBookings.DateTo">
+        <!--<input type="hidden" name="roomId" id="roomId" value="@Model.Room.RoomID" />
     <input type="hidden" name="userid" id="userid" value="@Model.User.Id" />-->
 
     </div>
