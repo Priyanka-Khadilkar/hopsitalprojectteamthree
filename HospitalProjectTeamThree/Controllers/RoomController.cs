@@ -34,22 +34,17 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult ShowAll()
         {
+            //Shows list of all available rooms
 
             string query = "Select * from Rooms ";
             List<Room> rooms = db.Rooms.SqlQuery(query).ToList();
             //Debug.WriteLine("Checking connection to database");
             return View(rooms);
         }
-        public ActionResult AdminView()
-        {
-            return View();
-        }
-
       
         public ActionResult ShowOne(int? id)
         {
-
-
+            //This displays one room selected by user, and other rooms available
             //get all info about one room given the id
             Room Room = db.Rooms.SqlQuery("select * from Rooms where RoomID=@RoomID", new SqlParameter("@RoomID", id)).FirstOrDefault();
 
@@ -71,14 +66,14 @@ namespace HospitalProjectTeamThree.Controllers
             FeaturedRoom viewmodel = new FeaturedRoom();
             viewmodel.rooms = rooms;
             viewmodel.room = Room;
-
-
-
+           
             return View(viewmodel);
         }
         public ActionResult RoomBooking(int? id)
         {
-            Debug.WriteLine("Room Id is: " +id);
+            //shos room booked and information about logged in user
+
+            //Debug.WriteLine("Room Id is: " +id);
 
             //get all info about one room given the id
             Room Rooms = db.Rooms.SqlQuery("select * from Rooms where RoomID=@RoomID", new SqlParameter("@RoomID", id)).FirstOrDefault();
@@ -99,6 +94,8 @@ namespace HospitalProjectTeamThree.Controllers
         //[HttpPost]
         public ActionResult Confirm(int? Id,string userid, string datefrom, string dateto, int roomId, bool payment)
         {
+            //On this page user makes a booking and all information goes into the database
+
             // I used GET in form to generate the URL , now I know for sure what is passed 
             // sample URL:localhost:44325/Room/Confirm/499f6a93-9072-47f9-af2e-898178d3c14b?fname=Ivan&lname=Bob&email=ivan%40bob.com&email=ADp9uemS4jRrtoFlyY6Slq0PBD75eJjLudcIuOv5Q63z%2F5g%2F1xa9gd3bBw3%2BwzQR5g%3D%3D&roomselected=Semi-private
             //&datefrom=2020-05-05&dateto=2020-05-10&roomId=2&payment=1
@@ -133,7 +130,6 @@ namespace HospitalProjectTeamThree.Controllers
             viewmodel.AllRoomBookings = selectedbooking;
             return View(viewmodel);
 
-            //return View();
         }
 
     }

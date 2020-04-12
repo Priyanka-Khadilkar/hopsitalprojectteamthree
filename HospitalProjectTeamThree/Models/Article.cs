@@ -13,15 +13,16 @@ namespace HospitalProjectTeamThree.Models
     {
         [Key]
         public int ArticleId { get; set; }
+        //name of the Article
         public string ArticleTitle { get; set; }
+        //Article author
         public string ArticleAuthor { get; set; }
+        //Content of the article
         public string ArticleContent { get; set; }
+        //posted date will be automatically added on submition
         public DateTime DatePosted { get; set; }
 
         
 
-        //public int CrisisId { get; set; }
-        //[ForeignKey("CrisisId")]
-        //public virtual Crisis Crisis { get; set; }
     }
 }

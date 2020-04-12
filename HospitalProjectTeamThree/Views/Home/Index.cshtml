@@ -2,11 +2,15 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-@{ 
-    foreach(var Crisis in Model)
+<!--When Crisis is created word "No" is inserted automatically into crisis database
+    This makes the crisis Active, displaying the link to it on the main page
+    There might be multiple alerts on main page
+    Vitaliy Bulyma
+    -->
+@{
+    foreach (var Crisis in Model)
     {
-        if(Crisis.CrisisFinished == "No" || Crisis.CrisisFinished == "no" || Crisis.CrisisFinished == "")
+        if (Crisis.CrisisFinished == "No" || Crisis.CrisisFinished == "no" || Crisis.CrisisFinished == "")
         {
             <div class="alert">
                 <a href="/Crisis/ViewCrisis/@Crisis.CrisisId">@Crisis.CrisisName</a>

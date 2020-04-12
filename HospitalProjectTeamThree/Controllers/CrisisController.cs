@@ -31,6 +31,7 @@ namespace HospitalProjectTeamThree.Controllers
         // GET: Crisis
         public ActionResult Index()
         {
+            //Redirects the user to appropriate page, based on their credentials
             //check if admin
 
             if (Request.IsAuthenticated)
@@ -53,21 +54,19 @@ namespace HospitalProjectTeamThree.Controllers
             
         }
         public ActionResult List()
-        {
-                           
-            
-            
+        {        
+            //Makes list of all crisis
             string query = "Select * from Crises ";
             List<Crisis> crises = db.Crisiss.SqlQuery(query).ToList();
             //Debug.WriteLine("Checking connection to database");
             return View(crises);
 
         }
+
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult ListAdm()
         {
-
-           
+            //List of all crisis for Administrative view           
             string query = "Select * from Crises ";
             List<Crisis> crises = db.Crisiss.SqlQuery(query).ToList();
             //Debug.WriteLine("Checking connection to database");
@@ -76,7 +75,8 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult ViewCrisis( int? id,  string articlesearchkey,int pagenum= 0)
         {
-            Debug.WriteLine("Crisis Id is:" + id);
+            //Snow all articles related to one selected Crisis            
+            //Debug.WriteLine("Crisis Id is:" + id);
             //get all info about specific crisis
             Crisis Crisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId=@Id", new SqlParameter("@Id", id)).FirstOrDefault();
 
@@ -119,17 +119,12 @@ namespace HospitalProjectTeamThree.Controllers
                 Articles = db.Articles.SqlQuery(pagedquery, newparams.ToArray()).ToList();
             }
             //End of Pagination Algorithm
-            //end
-
-
-
-
+            
+                       
             ShowCrisis viewmodel = new ShowCrisis();
             viewmodel.crises = Crisis;
             viewmodel.articles = Articles;
-
-
-
+           
             return View(viewmodel);
         }
         [Authorize(Roles = "Admin, Editor")]
@@ -138,10 +133,13 @@ namespace HospitalProjectTeamThree.Controllers
             return View();
         }
         [HttpPost]
-
+       
         public ActionResult Add(string CrisisName, string CrisisFinished, string CrisisDesc)
         {
+            //Allows to add crisis
+            //add current date stamp as begigning of crisis
             DateTime CrisisStarted = DateTime.Now;
+            //add word "No" to allow for further logic to create alert on main page
             if (CrisisFinished == "")
             {
                 CrisisFinished = "No";
@@ -156,14 +154,14 @@ namespace HospitalProjectTeamThree.Controllers
                 sqlparams[2] = new SqlParameter("@CrisisFinished", CrisisFinished);
                 sqlparams[3] = new SqlParameter("@CrisisDesc", CrisisDesc);
                 db.Database.ExecuteSqlCommand(query, sqlparams);
-
-            
+                     
             
             return RedirectToAction("CrisisList");
         }
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult Update(int id)
         {
+            
             //retrieves info for a specific crisis
             Crisis selectedcrisis = db.Crisiss.SqlQuery("select * from Crises where CrisisId = @id", new SqlParameter("@id", id)).FirstOrDefault();
 
@@ -172,7 +170,7 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public ActionResult Update(int id, string CrisisName, DateTime CrisisStarted, string CrisisFinished, string CrisisDesc)
         {
-
+            //Allows to update crisis, including updating CrisisFinished, which will remove alert from main page
             //Debug.WriteLine("I am trying to display variables" + id + CrisisName + CrisisStarted + CrisisFinished + CrisisDesc);
 
             // updates the record on the submission

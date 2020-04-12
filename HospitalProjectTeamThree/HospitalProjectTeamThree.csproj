@@ -994,7 +994,6 @@
     <Content Include="Views\Crisis\Add.cshtml" />
     <Content Include="Views\Crisis\Update.cshtml" />
     <Content Include="Views\Crisis\Delete.cshtml" />
-    <Content Include="Views\Article\Admin.cshtml" />
     <Content Include="Views\DoctorsBlog\Add.cshtml" />
     <Content Include="Views\DoctorsBlog\List.cshtml" />
     <Content Include="Views\DoctorsBlog\Show.cshtml" />
@@ -1031,7 +1030,6 @@
     <Content Include="Views\DoctorsBlog\PublicShow.cshtml" />
     <Content Include="Views\Crisis\Index.cshtml" />
     <Content Include="Views\Crisis\ListAdm.cshtml" />
-    <Content Include="Views\Crisis\ViewCrisisAdm.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\ListAdm.cshtml" />
     <Content Include="Views\Event\Add.cshtml" />
