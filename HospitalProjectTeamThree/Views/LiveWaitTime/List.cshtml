@@ -3,6 +3,14 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<form action="/LiveWaitTime/List" method="GET" class="form-inline my-2 my-lg-0">
+    <input type="text" class="form-control mr-sm-2" name="deptsearchkey" id="deptsearchkey" />
+    <input type="submit" class="btn btn-primary" value="Search" />
+</form>
+<div class="float-right">
+    <a href="/LiveWaitTime/List" class="btn btn-primary bottom-margin-10">Back to Full List</a>
+    <a href="/LiveWaitTime/Add" class="btn btn-primary bottom-margin-10">New Live Wait Times Update</a>
+</div>
 <h1>Live Wait Times</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
@@ -35,4 +43,18 @@
         </table>
     </div>
 </div>
-<a href="/LiveWaitTime/Add" class="btn btn-primary bottom-margin-10">New Live Wait Times Update</a>
+<div class="paginate">
+    @{
+        <div class="pagination-list">
+            <a class="btn btn-primary" href="/LiveWaitTime/List?pagenum=@((int)ViewData["pagenum"]-1)&deptsearchkey=@ViewData["deptsearchkey"]" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <div class="btn btn-primary disabled">@ViewData["pagesummary"]</div>
+            <a class="btn btn-primary" href="/LiveWaitTime/List?pagenum=@((int)ViewData["pagenum"]+1)&deptsearchkey=@ViewData["deptsearchkey"]" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    }
+</div>

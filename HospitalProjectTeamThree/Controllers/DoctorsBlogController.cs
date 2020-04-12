@@ -15,8 +15,6 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web.Security;
-//need this for pagination
-using PagedList;
 using Microsoft.AspNet.Identity;
 
 namespace HospitalProjectTeamThree.Controllers
@@ -57,10 +55,38 @@ namespace HospitalProjectTeamThree.Controllers
             }
         }
         [Authorize(Roles = "Admin")]
-        public ActionResult List()
+        public ActionResult List(string blogsearchkey, int pagenum = 0)
         {
-            string query = "Select * from DoctorsBlogs";
-            List<DoctorsBlog> blogs = db.DoctorsBlogs.SqlQuery(query).ToList();
+            List<DoctorsBlog> blogs = db
+                .DoctorsBlogs
+                .Where(b => (blogsearchkey != null) ? b.BlogTitle.Contains(blogsearchkey) : true)
+                .ToList();
+
+            //we start the pagination, we include the searchkey in case there are more than 5 blogs that contain that word in the title
+            int bperpage = 5;
+            int blogcount = blogs.Count();
+            int maxpage = (int)Math.Ceiling((decimal)blogcount / bperpage) - 1;
+            if (maxpage < 0) maxpage = 0;
+            if (pagenum < 0) pagenum = 0;
+            if (pagenum > maxpage) pagenum = maxpage;
+            int start = (int)(bperpage * pagenum);
+            ViewData["pagenum"] = pagenum;
+            ViewData["pagesummary"] = "";
+            if (maxpage > 0)
+            {
+                ViewData["pagesummary"] = (pagenum + 1) + " of " + (maxpage + 1);
+                blogs = db.DoctorsBlogs
+                    .Where(b => (blogsearchkey != null) ? b.BlogTitle.Contains(blogsearchkey) : true)
+                    .OrderBy(b => b.BlogId)
+                    .Skip(start)
+                    .Take(bperpage)
+                    .ToList();
+            } else
+            {
+                // if there are less than the limit per page show page 1 of 1
+                ViewData["pagesummary"] = "1 of 1";
+            }
+
             //Debug.WriteLine("Iam trying to list all the blogs");
             return View(blogs);
         }
@@ -84,10 +110,38 @@ namespace HospitalProjectTeamThree.Controllers
 
             return View(viewModel);
         }
-        public ActionResult PublicList()
+        public ActionResult PublicList(string blogsearchkey, int pagenum = 0)
         {
-            string query = "Select * from DoctorsBlogs";
-            List<DoctorsBlog> blogs = db.DoctorsBlogs.SqlQuery(query).ToList();
+            List<DoctorsBlog> blogs = db
+                .DoctorsBlogs
+                .Where(b => (blogsearchkey != null) ? b.BlogTitle.Contains(blogsearchkey) : true)
+                .ToList();
+
+            //we start the pagination, we include the searchkey in case there are more than 5 blogs that contain that word in the title
+            int bperpage = 5;
+            int blogcount = blogs.Count();
+            int maxpage = (int)Math.Ceiling((decimal)blogcount / bperpage) - 1;
+            if (maxpage < 0) maxpage = 0;
+            if (pagenum < 0) pagenum = 0;
+            if (pagenum > maxpage) pagenum = maxpage;
+            int start = (int)(bperpage * pagenum);
+            ViewData["pagenum"] = pagenum;
+            ViewData["pagesummary"] = "";
+            if (maxpage > 0)
+            {
+                ViewData["pagesummary"] = (pagenum + 1) + " of " + (maxpage + 1);
+                blogs = db.DoctorsBlogs
+                    .Where(b => (blogsearchkey != null) ? b.BlogTitle.Contains(blogsearchkey) : true)
+                    .OrderBy(b => b.BlogId)
+                    .Skip(start)
+                    .Take(bperpage)
+                    .ToList();
+            } else
+            {
+                // if there are less than the limit per page show page 1 of 1
+                ViewData["pagesummary"] = "1 of 1";
+            }
+
             //Debug.WriteLine("Iam trying to list all the blogs");
             return View(blogs);
         }

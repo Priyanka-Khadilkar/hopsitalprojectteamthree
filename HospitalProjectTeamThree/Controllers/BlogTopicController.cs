@@ -15,8 +15,6 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web.Security;
-//need this for pagination
-using PagedList;
 using Microsoft.AspNet.Identity;
 
 namespace HospitalProjectTeamThree.Controllers
@@ -31,18 +29,73 @@ namespace HospitalProjectTeamThree.Controllers
         public BlogTopicController() { }
 
         [Authorize(Roles = "Admin, Editor")]
-        public ActionResult List()
+        public ActionResult List(string topicsearchkey, int pagenum = 0)
         {
-            string query = "Select * from BlogTopics";
-            List<BlogTopic> topics = db.Topics.SqlQuery(query).ToList();
+            List<BlogTopic> topics = db
+                .Topics
+                .Where(b => (topicsearchkey != null) ? b.TopicName.Contains(topicsearchkey) : true)
+                .ToList();
+
+            //we start the pagination, we include the searchkey in case there are more than 5 topics that contain that word in the name
+            int tperpage = 5;
+            int topiccount = topics.Count();
+            int maxpage = (int)Math.Ceiling((decimal)topiccount / tperpage) - 1;
+            if (maxpage < 0) maxpage = 0;
+            if (pagenum < 0) pagenum = 0;
+            if (pagenum > maxpage) pagenum = maxpage;
+            int start = (int)(tperpage * pagenum);
+            ViewData["pagenum"] = pagenum;
+            ViewData["pagesummary"] = "";
+            if (maxpage > 0)
+            {
+                ViewData["pagesummary"] = (pagenum + 1) + " of " + (maxpage + 1);
+                topics = db.Topics
+                    .Where(t => (topicsearchkey != null) ? t.TopicName.Contains(topicsearchkey) : true)
+                    .OrderBy(t => t.TopicId)
+                    .Skip(start)
+                    .Take(tperpage)
+                    .ToList();
+            } else
+            {
+                // if there are less than the limit per page show page 1 of 1
+                ViewData["pagesummary"] = "1 of 1";
+            }
             //Debug.WriteLine("Iam trying to list all the topics");
             return View(topics);
         }
 
-        public ActionResult PublicList()
+        public ActionResult PublicList(string topicsearchkey, int pagenum = 0)
         {
-            string query = "Select * from BlogTopics";
-            List<BlogTopic> topics = db.Topics.SqlQuery(query).ToList();
+            List<BlogTopic> topics = db
+                .Topics
+                .Where(b => (topicsearchkey != null) ? b.TopicName.Contains(topicsearchkey) : true)
+                .ToList();
+
+            //we start the pagination, we include the searchkey in case there are more than 5 topics that contain that word in the name
+            int tperpage = 5;
+            int topiccount = topics.Count();
+            int maxpage = (int)Math.Ceiling((decimal)topiccount / tperpage) - 1;
+            if (maxpage < 0) maxpage = 0;
+            if (pagenum < 0) pagenum = 0;
+            if (pagenum > maxpage) pagenum = maxpage;
+            int start = (int)(tperpage * pagenum);
+            ViewData["pagenum"] = pagenum;
+            ViewData["pagesummary"] = "";
+            if (maxpage > 0)
+            {
+                ViewData["pagesummary"] = (pagenum + 1) + " of " + (maxpage + 1);
+                topics = db.Topics
+                    .Where(t => (topicsearchkey != null) ? t.TopicName.Contains(topicsearchkey) : true)
+                    .OrderBy(t => t.TopicId)
+                    .Skip(start)
+                    .Take(tperpage)
+                    .ToList();
+            }
+            else
+            {
+                // if there are less than the limit per page show page 1 of 1
+                ViewData["pagesummary"] = "1 of 1";
+            }
             //Debug.WriteLine("Iam trying to list all the topics");
             return View(topics);
         }

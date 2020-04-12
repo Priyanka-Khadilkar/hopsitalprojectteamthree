@@ -14,13 +14,13 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="BlogTitle">Blog Title</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="BlogTitle" id="BlogTitle" value="@Model.Blog.BlogTitle" placeholder="Enter Blog Title" />
+                            <input type="text" class="form-control" name="BlogTitle" id="BlogTitle" value="@Model.Blog.BlogTitle" placeholder="Enter Blog Title" required />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="BlogContent">Blog Content</label>
                         <div class="col-sm-10">
-                            <textarea type="text" class="form-control" name="BlogContent" id="BlogContent" placeholder="Enter Blog Content">@Model.Blog.BlogContent</textarea>
+                            <textarea type="text" class="form-control" name="BlogContent" id="BlogContent" placeholder="Enter Blog Content" required>@Model.Blog.BlogContent</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="BlogSource">Blog Source</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="BlogSource" id="BlogSource" value="@Model.Blog.BlogSource" placeholder="Enter Blog Source" />
+                            <input type="text" class="form-control" name="BlogSource" id="BlogSource" value="@Model.Blog.BlogSource" placeholder="Enter Blog Source" required/>
                         </div>
                     </div>
                     <div class="form-group">

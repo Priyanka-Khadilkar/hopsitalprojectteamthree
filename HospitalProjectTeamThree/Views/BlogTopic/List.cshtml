@@ -3,9 +3,18 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<form action="/BlogTopic/List" method="GET" class="form-inline my-2 my-lg-0">
+    <input type="text" class="form-control mr-sm-2" name="topicsearchkey" id="topicsearchkey" />
+    <input type="submit" class="btn btn-primary" value="Search" />
+</form>
+<div class="float-right">
+    <a href="/BlogTopic/List" class="btn btn-primary bottom-margin-10">Back to Full List</a>
+    <a href="/BlogTopic/Add" class="btn btn-primary bottom-margin-10">New Blog Topic</a>
+</div>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
-        List of Blog Topics
+        <h2>List of Blog Topics</h2>
     </div>
     <div class="panel-body">
         <table class="table table-dark top">
@@ -22,7 +31,7 @@
                     {
                         <tr>
                             <td>
-                                 @Topic.TopicId
+                                @Topic.TopicId
                             </td>
                             <td>
                                 <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName</a>
@@ -39,4 +48,18 @@
         </table>
     </div>
 </div>
-<a href="/BlogTopic/Add" class="btn btn-primary bottom-margin-10">New Blog Topic</a>
+<div class="paginate">
+    @{
+        <div class="pagination-list">
+            <a class="btn btn-primary" href="/BlogTopic/List?pagenum=@((int)ViewData["pagenum"]-1)&topicsearchkey=@ViewData["topicsearchkey"]" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <div class="btn btn-primary disabled">@ViewData["pagesummary"]</div>
+            <a class="btn btn-primary" href="/BlogTopic/List?pagenum=@((int)ViewData["pagenum"]+1)&topicsearchkey=@ViewData["topicsearchkey"]" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    }
+</div>

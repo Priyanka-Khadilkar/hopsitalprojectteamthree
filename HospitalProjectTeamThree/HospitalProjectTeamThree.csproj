@@ -479,6 +479,10 @@
     <Compile Include="Migrations\202004110039077_PossibleFix.designer.cs">
       <DependentUpon>202004110039077_PossibleFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004120132066_updates1.cs" />
+    <Compile Include="Migrations\202004120132066_updates1.designer.cs">
+      <DependentUpon>202004120132066_updates1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202004112352161_latest update.cs" />
     <Compile Include="Migrations\202004112352161_latest update.designer.cs">
       <DependentUpon>202004112352161_latest update.cs</DependentUpon>
@@ -1291,6 +1295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004110039077_PossibleFix.resx">
       <DependentUpon>202004110039077_PossibleFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004120132066_updates1.resx">
+      <DependentUpon>202004120132066_updates1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004112352161_latest update.resx">
       <DependentUpon>202004112352161_latest update.cs</DependentUpon>
