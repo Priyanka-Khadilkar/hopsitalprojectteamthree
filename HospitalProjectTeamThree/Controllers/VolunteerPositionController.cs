@@ -121,21 +121,29 @@ namespace HospitalProjectTeamThree.Controllers
         }
         public ActionResult Show(int? id)
         {
-            VolunteerPosition volunteerPosition = db.VolunteerPositions.SqlQuery("select * from VolunteerPositions where VolunteerPositionID = @VolunteerPositionID", new SqlParameter("@VolunteerPositionID", id)).FirstOrDefault();
-            List<Department> department = db.Departments.SqlQuery("select * from Departments inner join VolunteerPositions on VolunteerPositions.DepartmentID = Departments.DepartmentID where VolunteerPositionID = @id", new SqlParameter("@id", id)).ToList();
+           VolunteerPosition volunteerPosition = db.VolunteerPositions.SqlQuery("select * from VolunteerPositions where VolunteerPositionID = @VolunteerPositionID", new SqlParameter("@VolunteerPositionID", id)).FirstOrDefault();
+           //List <VolunteerPosition> volunteerPosition = db.VolunteerPositions.SqlQuery("select * from VolunteerPositions inner join VolunteerPositionApplicationUsers " +
+             //    "on VolunteerPositionApplicationUsers.VolunteerPosition_VolunteerPositionID = VolunteerPositions.VolunteerPositionID " +
+               //  "where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID", new SqlParameter("@VolunteerPositionID", id)).ToList();
+             
 
-           // string query = "select * from VolunteerPositionApplicationUsers where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID";
-          //  var fk_param = new SqlParameter("@VolunteerPositionID", id);
+            List < Department> department = db.Departments.SqlQuery("select * from Departments inner join VolunteerPositions on VolunteerPositions.DepartmentID = Departments.DepartmentID where VolunteerPositionID = @id", new SqlParameter("@id", id)).ToList();
+            List<ApplicationUser> volunteers = db.VolunteerPositions.Where(x => x.VolunteerPositionID == id).SelectMany(c => c.Users).ToList();
+
+
+            // string query = "select * from VolunteerPositionApplicationUsers where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID";
+            //  var fk_param = new SqlParameter("@VolunteerPositionID", id);
 
             //SqlParameter[] sqlparams = new SqlParameter[1];
             // sqlparams[0] = new SqlParameter("@VolunteerPositionID", id);
-            // List<ApplicationUser> volunteers = db.VolunteerPositions.SqlQuery(query, sqlparams).ToList();
+            //  List<ApplicationUser> volunteers = db.VolunteerPositions.SqlQuery(query, sqlparams).ToList();
 
-          //  string fk_query = "select * from VolunteerPositions inner join VolunteerPositionApplicationUsers " +
-           //     "on VolunteerPositionApplicationUsers.VolunteerPosition_VolunteerPositionID = VolunteerPositions.VolunteerPositionID " +
-           //     "where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID";
-          //  var fk_param = new SqlParameter("@VolunteerPositionID", id);
-          //  List<VolunteerPosition> volunteers = db.VolunteerPositions.SqlQuery(fk_query, fk_param).ToList();
+             // string fk_query = "select * from VolunteerPositions inner join VolunteerPositionApplicationUsers " +
+               //  "on VolunteerPositionApplicationUsers.VolunteerPosition_VolunteerPositionID = VolunteerPositions.VolunteerPositionID " +
+              //   "where VolunteerPosition_VolunteerPositionID = @VolunteerPositionID";
+            //  var fk_param = new SqlParameter("@VolunteerPositionID", id);
+             // List<VolunteerPosition> volunteerPosition = db.VolunteerPositions.SqlQuery(fk_query, fk_param).ToList();
+
 
 
 
@@ -150,7 +158,7 @@ namespace HospitalProjectTeamThree.Controllers
             ShowVolunteerPosition ShowVolunteerPositionViewModel = new ShowVolunteerPosition();
             ShowVolunteerPositionViewModel.VolunteerPosition = volunteerPosition;
             ShowVolunteerPositionViewModel.Departments = department;
-           // ShowVolunteerPositionViewModel.Users = volunteers;
+            ShowVolunteerPositionViewModel.Users = volunteers;
 
 
             return View(ShowVolunteerPositionViewModel);

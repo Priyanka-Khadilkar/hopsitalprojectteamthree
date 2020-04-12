@@ -8,17 +8,32 @@
 
 }
 
-<h2>Add a Volunteer Position</h2>
-<form class="add" method="post" action="/VolunteerPosition/Add">
-
-    <div>Volunteer Position Title: <input type="text" name="VolunteerPositionTitle" id="VolunteerPositionTitle" /></div>
-    <div>Volunteer Position Description: <input type="text" name="VolunteerPositionDescription" id="VolunteerPositionDescription" /></div>
-
-
-    <div>Start Date: <input type="datetime" name="StartDate" id="StartDate" /></div>
-
-    <div>
-        Department:
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Add a Volunteer Position
+    </div>
+    <div class="panel-body">
+<form class="form-horizontal" enctype="multipart/form-data" method="post" action="/VolunteerPosition/Add">
+   <div class="form-group">
+        <label class="control-label col-sm-2" for="VolunteerPositionTitle"> Title:</label>
+    <div class="col-sm-10"> 
+        <input type="text" class="form-control" name="VolunteerPositionTitle" id="VolunteerPositionTitle" placeholder="Enter Volunteer Position Title"/>
+    </div>
+   </div>
+   <div class="form-group">
+       <label class="control-label col-sm-2" for="VolunteerPositionDescription"> Description: </label>
+       <div class="col-sm-10">
+           <input type="text" class="form-control" name="VolunteerPositionDescription" id="VolunteerPositionDescription" placeholder="Enter Volunteer Position Description"/>
+       </div>
+   </div>
+   <div class="form-group">
+       <label class="control-label col-sm-2" for="StartDate">Start Date:</label>
+       <div class="col-sm-10">
+          <input type="datetime" class="form-control" name="StartDate" id="StartDate" />
+       </div>
+   </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="DepartmentID">Department:</label>    
         <select id="DepartmentID" typeof="text" name="DepartmentID">
             @{
                 foreach (var department in Model.Departments)
@@ -28,13 +43,16 @@
 
             }
         </select>
-
-
-
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" value="Add Volunteer Position" />
+        </div>
+    </div>
+</form>
+    </div>
     </div>
 
-    <div><input type="submit" value="Add Volunteer Position" /></div>
-</form>
 <a href="/VolunteerPosition/List">Back to list</a>
 
 
@@ -42,6 +60,7 @@
     <script>
         $(function () {
             $("#StartDate").datepicker();
+           // CKEDITOR.replace("VolunteerPositionDescription")
         })
 
     </script>

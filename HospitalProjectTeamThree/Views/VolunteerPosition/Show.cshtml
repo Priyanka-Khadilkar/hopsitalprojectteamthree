@@ -3,33 +3,74 @@
 
 @{
     ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="panel panel-primary top">
+        <div class="panel-heading header-color">
+            Details for Volunteer Position
+        </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                         
+                            <div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Title:</label>
+                                    <div class="col-sm-10">
+                                        <label class="control-label font-weight500">@Model.VolunteerPosition.VolunteerPositionTitle</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Description:</label>
+                                    <div class="col-sm-10">
+                                        <label class="control-label font-weight500">@Model.VolunteerPosition.VolunteerPositionDescription</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Department:</label>
+                                    <div class="col-sm-10">
+                                        <label class="control-label font-weight500">@Model.VolunteerPosition.Department.DepartmentName</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2">Start Date:</label>
+                                    <div class="col-sm-10">
+                                        <label class="control-label font-weight500">@Model.VolunteerPosition.StartDate</label>
+                                    </div>
+                                </div>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="form-group">
+                                        <div> <a href="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID" class="btn btn-warning">Edit this Job</a></div>
+                                        <div> <a href="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID" class="btn btn-danger">Delete this Job</a></div>
+                                    </div>
+                                }
 
-<h2>Show</h2>
+                                @if (User.IsInRole("Registered User"))
+                                {
+                                    <form method="post" action="/VolunteerPosition/SignUp/@Model.VolunteerPosition.VolunteerPositionID">
+                                        <input class="btn btn-primary btn-sm" type="submit" value="Sign Up" />
+                                    </form>
+                                }
 
-<div>Volunteer Position Title: @Model.VolunteerPosition.VolunteerPositionTitle</div>
-<div>Volunteer Position Description: @Model.VolunteerPosition.VolunteerPositionDescription</div>
-<div>Department: @Model.VolunteerPosition.Department.DepartmentName</div>
-<div>Start Date: @Model.VolunteerPosition.StartDate</div>
-<div> <a href="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID">Edit this Job</a></div>
-<div> <a href="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID">Delete this Job</a></div>
-<div>
-    <div>Current Volunteers:</div>
-    <ul>
-        @{
-            foreach (var volunteer in Model.Users)
-            {
-                <li>@volunteer.UserName</li>
-            }
-        }
-    </ul>
-</div>
-
-<div>
-    <form method="post" action="/VolunteerPosition/SignUp/@Model.VolunteerPosition.VolunteerPositionID">
-        <input class="btn btn-primary" type="submit" value="Sign Up" />
-    </form>
-    
-</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>Current Volunteers:</div>
+                            <ul>
+                                @{
+                                    foreach (var volunteer in Model.Users)
+                                    {
+                                        <li>@volunteer.FirstName</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/VolunteerPosition/List" class="btn btn-primary headtop">Back to Volunteer Position List</a>
 
 

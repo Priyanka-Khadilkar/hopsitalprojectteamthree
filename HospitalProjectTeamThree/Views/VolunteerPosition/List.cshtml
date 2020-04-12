@@ -1,19 +1,36 @@
 ﻿@model List<HospitalProjectTeamThree.Models.VolunteerPosition>
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List of Volunteer Positions</h2>
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        List of Volunteer Positions
+    </div>
 
-<div class="tilecontainer">
-    @{
-        foreach (var position in Model)
-        {
-            <div class="itemdetails">
-                <div class="listcat"><a href="/VolunteerPosition/Show/@position.VolunteerPositionID">@position.VolunteerPositionTitle</a></div>
-                <div class="listcat"> Department: <span>@position.Department.DepartmentName</span></div>
+    <div class="panel-body">
+        <div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-12">
+                <div>
+                    @{
+                        foreach (var position in Model)
+                        {
+                                        <div class="col-sm-4">
+                                            <div class="thumbnail">
+                                              <div class="caption text-center" onclick="location.href='/VolunteerPosition/Show/@position.VolunteerPositionID'">
+                                                 <div class="listcat"><span>@position.VolunteerPositionTitle</span></div>
+                                                 <div class="listcat"> Department: <span>@position.Department.DepartmentName</span></div>
+                                              </div>
+                                            </div>
+                                        </div>
+                        }
+                    }
+
+                </div>
             </div>
-        }
-    }
 
+        </div>
+    </div>
 </div>

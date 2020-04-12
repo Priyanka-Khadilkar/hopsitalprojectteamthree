@@ -8,8 +8,9 @@ namespace HospitalProjectTeamThree.Models.ViewModels
 {
     public class ShowVolunteerPosition
     {
-        public virtual VolunteerPosition VolunteerPosition { get; set; }
-        public virtual List<Department> Departments { get; set; }
-        public virtual List<ApplicationUser> Users { get; set; }
+        public  VolunteerPosition VolunteerPosition { get; set; }
+        public  List<Department> Departments { get; set; }
+        public  List<ApplicationUser> Users { get; set; }
+
     }
 }

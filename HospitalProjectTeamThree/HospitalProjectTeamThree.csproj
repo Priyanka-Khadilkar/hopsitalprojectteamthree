@@ -479,6 +479,14 @@
     <Compile Include="Migrations\202004110039077_PossibleFix.designer.cs">
       <DependentUpon>202004110039077_PossibleFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004112352161_latest update.cs" />
+    <Compile Include="Migrations\202004112352161_latest update.designer.cs">
+      <DependentUpon>202004112352161_latest update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004120357574_volunteer position volunteers view.cs" />
+    <Compile Include="Migrations\202004120357574_volunteer position volunteers view.designer.cs">
+      <DependentUpon>202004120357574_volunteer position volunteers view.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -1285,6 +1293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004110039077_PossibleFix.resx">
       <DependentUpon>202004110039077_PossibleFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004112352161_latest update.resx">
+      <DependentUpon>202004112352161_latest update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004120357574_volunteer position volunteers view.resx">
+      <DependentUpon>202004120357574_volunteer position volunteers view.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
