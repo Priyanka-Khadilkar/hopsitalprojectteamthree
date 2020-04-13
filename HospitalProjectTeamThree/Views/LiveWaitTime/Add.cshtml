@@ -40,8 +40,9 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="CurrentWaitTime">Current Wait Time:</label>
                 <div class="col-sm-10">
-                        @Html.EnumDropDownListFor(
-                        x => x.WaitTime.CurrentWaitTime, new {@class="form-control"})
+
+                    @Html.EnumDropDownListFor(
+                     x => x.WaitTime.CurrentWaitTime, new {@class="form-control"})           
                 </div>
             </div>
 

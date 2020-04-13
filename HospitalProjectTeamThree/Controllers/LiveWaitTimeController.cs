@@ -16,6 +16,7 @@ using System.IO;
 using Microsoft.AspNet.Identity.Owin;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
+using System.Web.Mvc.Html;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -174,11 +175,10 @@ namespace HospitalProjectTeamThree.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
-            
+           
             ShowLiveWaitTimes viewmodel = new ShowLiveWaitTimes();
             viewmodel.DepartmentsList = db.Departments.ToList();
             //we use the view model to be able to show the departments list when we add an update
-
             return View(viewmodel);
 
         }
