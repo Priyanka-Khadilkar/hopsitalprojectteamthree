@@ -4,21 +4,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<form action="/DoctorsBlog/List" method="GET" class="form-inline my-2 my-lg-0">
-    <input type="text" class="form-control mr-sm-2" name="blogsearchkey" id="blogsearchkey" />
-    <input type="submit" class="btn btn-primary" value="Search" />
-</form>
-<div class="float-right">
+<div class="btn-floatright">
     <a href="/DoctorsBlog/List" class="btn btn-primary bottom-margin-10">Back to Full List</a>
     <a href="/DoctorsBlog/Add" class="btn btn-primary bottom-margin-10">New Blog Entry</a>
 </div>
-
+<h1>Doctor's Blogs</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
-        <h2>List of Doctor's Blogs</h2>
+        List of Blogs
     </div>
     <div class="panel-body">
+        <form action="/DoctorsBlog/List" method="GET" class="form-inline form-border">
+            <input type="text" class="form-control mr-sm-2" name="blogsearchkey" id="blogsearchkey" placeholder="Search by Title..." />
+            <input type="submit" class="btn btn-default custom-btn" value="Search" />
+        </form>
         <table class="table table-dark top">
             <thead>
                 <tr>

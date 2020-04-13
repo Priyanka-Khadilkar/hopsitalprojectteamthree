@@ -137,6 +137,17 @@ textarea {
     float:right;
     margin-top:20px;
 }
+.user_greeting a {
+   margin-top:3em !important;
+   clear:both;
+   display:block;
+   padding-right:3em;
+}
+.logoff_btn {
+    float:right;
+    margin-top:-34px;
+    margin-bottom:20px;
+}
 /*****************************/
 /*** Vitaliy Bulyma ***/
 /*Styling of "Crisis" Pages*/

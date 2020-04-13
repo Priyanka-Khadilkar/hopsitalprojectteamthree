@@ -3,16 +3,19 @@
     ViewBag.Title = "PublicList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    <form action="/BlogTopic/PublicList" method="GET" class="form-inline my-2 my-lg-0 bottom-margin-10">
-        <input type="text" class="form-control mr-sm-2" name="topicsearchkey" id="topicsearchkey" />
-        <input type="submit" class="btn btn-primary" value="Search" />
-    </form>
+<div class="btn-floatright">
     <a href="/BlogTopic/PublicList" class="btn btn-primary bottom-margin-10">Back to Full List</a>
+</div>
+<h1>Blog Topics</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
-        <h2>List of Blog Topics</h2>
+        List of Topics
     </div>
     <div class="panel-body">
+        <form action="/BlogTopic/PublicList" method="GET" class="form-inline form-border">
+            <input type="text" class="form-control mr-sm-2" name="topicsearchkey" id="topicsearchkey" placeholder="Search by Name..."/>
+            <input type="submit" class="btn btn-default custom-btn" value="Search" />
+        </form>
         <table class="table table-dark top">
             <thead>
                 <tr>
@@ -29,7 +32,7 @@
                                 @Topic.TopicId
                             </td>
                             <td>
-                                <a href="/BlogTopic/Show/@Topic.TopicId">@Topic.TopicName</a>
+                                <a href="/BlogTopic/PublicShow/@Topic.TopicId">@Topic.TopicName</a>
                             </td>
                         </tr>
                     }

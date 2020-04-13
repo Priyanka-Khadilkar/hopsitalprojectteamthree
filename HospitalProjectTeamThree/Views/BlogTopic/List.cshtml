@@ -3,24 +3,24 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<form action="/BlogTopic/List" method="GET" class="form-inline my-2 my-lg-0">
-    <input type="text" class="form-control mr-sm-2" name="topicsearchkey" id="topicsearchkey" />
-    <input type="submit" class="btn btn-primary" value="Search" />
-</form>
-<div class="float-right">
+<div class="btn-floatright">
     <a href="/BlogTopic/List" class="btn btn-primary bottom-margin-10">Back to Full List</a>
     <a href="/BlogTopic/Add" class="btn btn-primary bottom-margin-10">New Blog Topic</a>
 </div>
+<h1>Blog Topics</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
-        <h2>List of Blog Topics</h2>
+        List of Topics
     </div>
     <div class="panel-body">
+        <form action="/BlogTopic/List" method="GET" class="form-inline form-border">
+            <input type="text" class="form-control mr-sm-2" name="topicsearchkey" id="topicsearchkey" placeholder="Search by Name..."/>
+            <input type="submit" class="btn btn-default custom-btn" value="Search" />
+        </form>
         <table class="table table-dark top">
             <thead>
                 <tr>
-                    <th scope="col">Toppic ID</th>
+                    <th scope="col">Topic ID</th>
                     <th scope="col">Name</th>
                     <th scope="col"></th>
                 </tr>

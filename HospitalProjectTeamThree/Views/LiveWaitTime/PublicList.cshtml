@@ -3,11 +3,7 @@
     ViewBag.Title = "PublicList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<form action="/LiveWaitTime/PublicList" method="GET" class="form-inline my-2 my-lg-0">
-    <input type="text" class="form-control mr-sm-2" name="deptsearchkey" id="deptsearchkey" />
-    <input type="submit" class="btn btn-primary" value="Search" />
-</form>
-<div class="float-right">
+<div class="btn-floatright">
     <a href="/LiveWaitTime/PublicList" class="btn btn-primary bottom-margin-10">Back to Full List</a>
 </div>
 <h1>Live Wait Times</h1>
@@ -16,6 +12,10 @@
         List of Departments
     </div>
     <div class="panel-body">
+        <form action="/LiveWaitTime/PublicList" method="GET" class="form-inline form-border">
+            <input type="text" class="form-control mr-sm-2" name="deptsearchkey" id="deptsearchkey" placeholder="Search by Name..." />
+            <input type="submit" class="btn btn-default custom-btn" value="Search" />
+        </form>
         <table class="table table-dark top">
             <thead>
                 <tr>
@@ -27,14 +27,14 @@
                 @{
                     foreach (var Department in Model)
                     {
-                        <tr>
-                            <td>
-                                @Department.DepartmentName
-                            </td>
-                            <td>
-                                <a href="/LiveWaitTime/PublicShow/@Department.DepartmentId">View Updates</a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Department.DepartmentName
+                        </td>
+                        <td>
+                            <a href="/LiveWaitTime/PublicShow/@Department.DepartmentId">View Updates</a>
+                        </td>
+                    </tr>
                     }
                 }
 

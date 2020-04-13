@@ -20,12 +20,16 @@
 
                 <!-- @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
                 <img src="~/Images/Logo/wwwlogo.png" id="hospital__logo" alt="Temiskaming Hospital Logo" />
-                <!--@Html.Partial("_LoginPartial")-->
+
             </div>
             <div class="btn-floatright">
-                <button type="button" class="btn btn-spec">DONATIONS</button>
-                <a href="/Account/Login" type="button" class="btn btn-spec">LOG IN</a>
+                <a href="#" type="button" class="btn btn-spec">DONATIONS</a>
+    <!--<a href="/Account/Login" type="button" class="btn btn-spec">LOG IN</a>-->
+               
+                    @Html.Partial("_LoginPartial")
+
             </div>
+           
             <div class="navbar-collapse collapse spec">
                 <ul class="nav navbar-nav spec">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
