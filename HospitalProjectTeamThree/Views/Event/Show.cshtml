@@ -3,10 +3,14 @@
     ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (User.IsInRole("Admin"))
-{
-    <a href="/Event/RegisteredUserList/@Model.EventId" class="btn btn-primary bottom-margin-10" title="View Registered User List">Registered User List</a>
-}
+<div class="btn-floatright">
+    @if (User.IsInRole("Admin"))
+    {
+        <a href="/Event/RegisteredUserList/@Model.EventId" class="btn btn-primary bottom-margin-10" title="View Registered User List">Registered User List</a>
+    }
+    <a href="/Event/List" class="btn btn-primary bottom-margin-10">Back to Event List</a>
+</div>
+<h1>Events</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
         @Model.EventTitle
@@ -83,7 +87,6 @@
         </div>
     </div>
 </div>
-<a href="/Event/List" class="btn btn-primary headtop">Back to Event List</a>
 @section Scripts {
     <script>
     var eventId;

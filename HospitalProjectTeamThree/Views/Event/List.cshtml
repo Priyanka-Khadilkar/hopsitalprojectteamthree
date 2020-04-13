@@ -5,14 +5,17 @@
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@if (Request.IsAuthenticated)
-{
-    <a href="/Event/RegistrationList" class="btn btn-primary bottom-margin-10" title="Add">Past Event Registration List</a>
-}
-@if (User.IsInRole("Admin"))
-{
-    <a href="/Event/Add" class="btn btn-primary bottom-margin-10" title="Add">Add an Event</a>
-}
+<div class="btn-floatright">
+    @if (Request.IsAuthenticated)
+    {
+        <a href="/Event/RegistrationList" class="btn btn-primary bottom-margin-10" title="Add">Past Event Registration List</a>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <a href="/Event/Add" class="btn btn-primary bottom-margin-10" title="Add">Add an Event</a>
+    }
+</div>
+<h1>Events</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
         Events
