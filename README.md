@@ -147,7 +147,7 @@
      * Description: Only Admin users have full access to this feature, where they can create, update, delete, register and view the events.Also they can see the list of users registered for an event.Registerd Users, Editors can see all list of events, view event details and register for the events.They can also see the past registered events.Guest Users of website can see the list of events, however they can not register for events.
      * Files contributed:
        * Model:
-         * Event.cs, ApplicationUser.cs : These tables have many to many relatioship, One user can register for multiple events, same time multiple events can be registerd by multiple users.
+         * Event.cs, ApplicationUser.cs, ViewModel/RegisteredUserList.cs : These tables have many to many relatioship, One user can register for multiple events, same time multiple events can be registerd by multiple users.
        * View
          * Events
            * Add.cshtml // Can only be accessed by Admin
@@ -158,8 +158,24 @@
            * Update.cshtml //Can only be accessed by Admin
         * Controllers: 
           * EventController: This is where we write all the functionality between our models and views, connecting them to the database.
-           
-           
+     
+  * Online Appointment
+      * Description: Only Admin, Editor users have full access to this feature, where they can book, update, view the Booked appointments and update the Booked Appointments. Registerd Users can book, see list of all booked appointment in past and cancel the appointment.
+      * Files contributed:
+        * Model:
+          * OnlineAppointmentBooking.cs, ApplicationUser.cs : These tables have one to many relationship, One user can book multiple appointments.
+        * View:
+          * OnlineAppointmentBooking
+            * Book.cshtml // Can be accessed by all logged in users(Admin, Editor User, Registered User)
+            * List.cshtml // Can be accessed by Guest user, Editor, Admin and Registered User, However according to role there will be certain restrictions to access features
+            * Update.cshtml // Can be accessed by admin user
+            * View.cshtml // Can be accessed by Guest user, Editor, Admin and Registered User, However according to role there will be certain restrictions to access features
+        * Controllers: 
+          * OnlineAppointmentBookingController: This is where we write all the functionality between our models and views, connecting them to the database.
+       * Contributions: 
+         * Styling of responsive bootstrap forms and tables. 
+         * Implemented CKeditor,boostrap clock picker, datepicker
+         * Resolved git conflicts and migration conflicts.
            
      
   
