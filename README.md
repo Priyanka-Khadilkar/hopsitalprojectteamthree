@@ -43,7 +43,7 @@
        * Controllers: 
         * CardDesignController, GetWellSoonCardController: the algorithm behind the CardDesign's and GetWellSoonCard's views and models
 ### Vitaliy: Public Health Crisis Alert and Long-term Stay at the Hospital
-  * Public Health Crisis Alert
+  **Public Health Crisis Alert**
   
 ![View of All Articles](/HospitalProjectTeamThree/Images/Room/Articles.PNG)
 
@@ -71,7 +71,8 @@
           * ViewCrisis.cs - Public page where users can see all articles related to the crisis
       * Controllers:
         * ArticleController.cs, CrisisControler.cs – enables functionality and interaction between models, views, and databases
-* Long-term Stay at the Hospital
+        
+ **Long-term Stay at the Hospital**
 
 ![View of All Rooms](/HospitalProjectTeamThree/Images/Room/AllRooms.PNG)        
 
