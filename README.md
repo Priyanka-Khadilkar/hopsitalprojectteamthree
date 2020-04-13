@@ -75,8 +75,7 @@
 
 ![View of All Rooms](/HospitalProjectTeamThree/Images/Room/AllRooms.PNG)        
 
-
-   * Description: This feature is designed for hospital users to explore which rooms are available for long-term stay. The list of all rooms available from main menu from main navigation accessible at /Room/ShowAll. In addition to browsing rooms and read their descriptions, logged in users will be able to book a selected room for specified dates.
+ * Description: This feature is designed for hospital users to explore which rooms are available for long-term stay. The list of all rooms available from main menu from main navigation accessible at /Room/ShowAll. In addition to browsing rooms and read their descriptions, logged in users will be able to book a selected room for specified dates.
     
     * Files Contributed:
       * Models:
