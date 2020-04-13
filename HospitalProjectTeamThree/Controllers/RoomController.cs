@@ -131,6 +131,9 @@ namespace HospitalProjectTeamThree.Controllers
             return View(viewmodel);
 
         }
-
+        public ActionResult AdminView()
+        {
+            return View();
+        }
     }
 }
