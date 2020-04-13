@@ -1,7 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -23,10 +20,6 @@ textarea {
     max-width: 280px;
 }
 /*Developer : Priyanka Khadilkar*/
-.top-margin-30 {
-    margin-top: 130px !important;
-}
-
 .bottom-margin-10{
     margin-bottom : 10px;
 }
@@ -96,12 +89,57 @@ textarea {
    text-align:center;
    margin-top:2em;
 }
+.btn.btn-spec {
+    background-color: #f7931e;
+    color:white;
+}
+.navbar-inverse {
+    background-color:white;
+    border-color:white !important;
+    clear: right;
+}
+.collapse-spec {
+    background-color: #7fcdee;
+}
+.navbar-inverse a {
+    color: #07407b !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.navbar-nav.spec {
+    background-color: #7fcdee;
+    border-radius:10px;
+    margin-top:2em;
+    margin-bottom:2em;
+    width:100%;
+}
+.navbar-nav.spec li:hover {
+    background-color: #66aecd;
+    border-radius: 10px;
+}
+.dropdown-menu {
+    background-color: #66aecd;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: #66aecd;
+}
+
+#hospital__logo {
+    width: 400px;
+    height: auto;
+    margin-left: 20px;
+    padding:1em;
+}
+.navbar-collapse.collapse.spec{
+    padding:0;
+}
+.btn-floatright {
+    float:right;
+    margin-top:20px;
+}
 /*****************************/
-
 /*** Vitaliy Bulyma ***/
-   
 /*Styling of "Crisis" Pages*/
-
 .crisiscenter {
     text-align: center;
     padding: 20px;
