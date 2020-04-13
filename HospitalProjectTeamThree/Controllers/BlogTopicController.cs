@@ -27,10 +27,11 @@ namespace HospitalProjectTeamThree.Controllers
         private HospitalProjectTeamThreeContext db = new HospitalProjectTeamThreeContext();
 
         public BlogTopicController() { }
-
+        // Blog Topic Pages will be accessed through the Doctors Blog Pages
         [Authorize(Roles = "Admin, Editor")]
         public ActionResult List(string topicsearchkey, int pagenum = 0)
         {
+            // Admins and Editors will be able to see the full list and the option to add, delete or edit.
             List<BlogTopic> topics = db
                 .Topics
                 .Where(b => (topicsearchkey != null) ? b.TopicName.Contains(topicsearchkey) : true)
@@ -66,6 +67,7 @@ namespace HospitalProjectTeamThree.Controllers
 
         public ActionResult PublicList(string topicsearchkey, int pagenum = 0)
         {
+            //guests and registered users can see the full list of topics
             List<BlogTopic> topics = db
                 .Topics
                 .Where(b => (topicsearchkey != null) ? b.TopicName.Contains(topicsearchkey) : true)
@@ -164,13 +166,13 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public ActionResult Add(string TopicName)
         {
-            //Debug.WriteLine("Want to create a new glob topic named " + TopicName ) ;
+            //Debug.WriteLine("Want to create a new blog topic named " + TopicName ) ;
 
             // We create the query to insert the values we will get into the database
             string query = "insert into BlogTopics (TopicName) values (@TopicName)";
             SqlParameter[] sqlparams = new SqlParameter[1];
 
-            sqlparams[0] = new SqlParameter("@BlogTitle", TopicName);
+            sqlparams[0] = new SqlParameter("@TopicName", TopicName);
 
             db.Database.ExecuteSqlCommand(query, sqlparams);
             // Once added we go back to the list of topics

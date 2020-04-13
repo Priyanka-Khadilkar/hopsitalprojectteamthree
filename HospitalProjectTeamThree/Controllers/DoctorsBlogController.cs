@@ -33,6 +33,7 @@ namespace HospitalProjectTeamThree.Controllers
             // Admin will be sent to the list will all the entries
             // Editor will be sent to their list of entries
             // Registered Users will be sent to the list of all entries but with no access to delete, update or add
+            // Guests will also be redirected to the public list
             if (Request.IsAuthenticated)
             {
                 if (User.IsInRole("Admin"))
@@ -51,7 +52,7 @@ namespace HospitalProjectTeamThree.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("PublicList");
             }
         }
         [Authorize(Roles = "Admin")]
@@ -93,6 +94,8 @@ namespace HospitalProjectTeamThree.Controllers
         [Authorize(Roles = "Editor")]
         public ActionResult DoctorPersonalList()
         {
+            // if an editor(Doctor) is logged in they will only see their blog entries as a list
+            //Debug.WriteLine("Iam trying to list all my blogs");
 
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
@@ -107,6 +110,7 @@ namespace HospitalProjectTeamThree.Controllers
             DoctorPersonalBlogList viewModel = new DoctorPersonalBlogList();
             viewModel.Blog = Blogs;
             viewModel.User = currentUser;
+            // we use the view model so that we can pull only the blogs that user made
 
             return View(viewModel);
         }
@@ -160,8 +164,6 @@ namespace HospitalProjectTeamThree.Controllers
                 return HttpNotFound();
             }
 
-
-
             string topic_query = "select * from BlogTopics inner join BlogTopicDoctorsBlogs on BlogTopics.TopicId = BlogTopicDoctorsBlogs.BlogTopic_TopicId where BlogTopicDoctorsBlogs.DoctorsBlog_BlogId=@BlogId";
             var t_parameter = new SqlParameter("@BlogId", id);
             List<BlogTopic> usedtopics = db.Topics.SqlQuery(topic_query, t_parameter).ToList();
@@ -170,7 +172,7 @@ namespace HospitalProjectTeamThree.Controllers
             List<BlogTopic> AllTopics = db.Topics.SqlQuery(all_topics_query).ToList();
 
             // We use the AddBlogTopic viewmodel so that we can show the topics that are on that blog post and also so that we can see the dropdown list of topics
-            // and add a guest to a booking if we want to
+            // so that the user can add a topic
             AddBlogTopic viewmodel = new AddBlogTopic();
             viewmodel.Blog = doctorsblog;
             viewmodel.BlogTopics = usedtopics;
@@ -212,6 +214,7 @@ namespace HospitalProjectTeamThree.Controllers
             string userId = User.Identity.GetUserId();
             ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
             //We use the AddBlogTopic viewmodel to show the topics and be able to add them to the blog entry.
+            //We also get the user who made the entry through the view model that way it also goes into their personal list.
             AddBlogTopic AddBlogTopicViewModel = new AddBlogTopic();
             AddBlogTopicViewModel.BlogTopics = Topics;
             AddBlogTopicViewModel.User = currentUser;

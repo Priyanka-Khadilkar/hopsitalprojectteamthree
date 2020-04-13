@@ -30,7 +30,12 @@
 
                             foreach (var dept in Model.DepartmentsList)
                             {
-                                <option value="@dept.DepartmentId">@dept.DepartmentName</option>
+                                    var selected = "";
+                                    if (Model.WaitTime.DepartmentId == dept.DepartmentId)
+                                    {
+                                         selected = "selected";
+                                    }
+                                <option value="@dept.DepartmentId" @selected>@dept.DepartmentName</option>
 
                             }
                         }
@@ -53,4 +58,4 @@
         </form>
     </div>
 </div>
-<a href="/LiveWaitTime/Show" class="btn btn-primary headtop">Back to list</a>
+<a href="/LiveWaitTime/Show/@Model.WaitTime.WaitUpdateId" class="btn btn-primary headtop">Back to list</a>

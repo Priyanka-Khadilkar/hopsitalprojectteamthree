@@ -3,42 +3,47 @@
     ViewBag.Title = "PublicShow";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="panel panel-primary top">
-    <div class="panel-heading header-color">
-        Topic: @Model.Topics.TopicName
+    <div class="btn-floatright">
+        <a href="/BlogTopic/PublicList" class="btn btn-primary bottom-margin-10">Topic List</a>
+        <a href="/DoctorsBlog/PublicList" class="btn btn-primary bottom-margin-10">Back to Blog List</a>
     </div>
-    <div class="panel-body">
-        <table class="table table-dark top">
-            <thead>
-                <tr>
-                    <th scope="col">Blog ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Author</th>
-                </tr>
-            </thead>
-            <tbody>
-                @{
-                    foreach (var Blog in Model.Blogs)
-                    {
-                        <tr>
-                            <td>
-                                @Blog.BlogId
-                            </td>
-                            <td>
-                                @Blog.BlogTitle
-                            </td>
-                            <td>
-                                @Blog.BlogDate.ToString("MM/dd/yyyy")
-                            </td>
-                            <td>
-                                @Blog.User.FirstName @Blog.User.LastName
-                            </td>
-                        </tr>
+    <h2>Topic: @Model.Topics.TopicName</h2>
+    <div class="panel panel-primary top">
+        <div class="panel-heading header-color">
+            List of Blogs
+        </div>
+        <div class="panel-body">
+            <table class="table table-dark top">
+                <thead>
+                    <tr>
+                        <th scope="col">Blog ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Author</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (var Blog in Model.Blogs)
+                        {
+                            <tr>
+                                <td>
+                                    @Blog.BlogId
+                                </td>
+                                <td>
+                                    @Blog.BlogTitle
+                                </td>
+                                <td>
+                                    @Blog.BlogDate.ToString("MM/dd/yyyy")
+                                </td>
+                                <td>
+                                    @Blog.User.FirstName @Blog.User.LastName
+                                </td>
+                            </tr>
+                        }
                     }
-                }
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>

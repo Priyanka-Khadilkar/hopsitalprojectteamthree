@@ -32,10 +32,11 @@ namespace HospitalProjectTeamThree.Controllers
 
         public ActionResult Index()
         {
-            // Depending on the user that logs in they will be sent to the doctors blog list,
-            // Admin will be sent to the list will all the entries
-            // Editor will be sent to their list of entries
-            // Registered Users will be sent to the list of all entries but with no access to delete, update or add
+            // Depending on the user that logs in they will be sent to the Live Wait Times department list,
+            // Admin will be sent to the list
+            // Editor will be sent to the public list
+            // Registered Users will be sent to the public list with no access to delete, update or add
+            // Guests will also be redirected to the public list
             if (Request.IsAuthenticated)
             {
                 if (User.IsInRole("Admin"))
@@ -50,7 +51,7 @@ namespace HospitalProjectTeamThree.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("PublicList");
             }
         }
 
@@ -173,9 +174,10 @@ namespace HospitalProjectTeamThree.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
+            
             ShowLiveWaitTimes viewmodel = new ShowLiveWaitTimes();
             viewmodel.DepartmentsList = db.Departments.ToList();
-           
+            //we use the view model to be able to show the departments list when we add an update
 
             return View(viewmodel);
 
@@ -184,16 +186,17 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public ActionResult Add(DateTime WaitUpdateDate, DateTime WaitUpdateTime, int DepartmentId, Enum CurrentWaitTime)
         {
+            //Debug.WriteLine("Want to add an update with a department id of " + DepartmentId ) ;
             LiveWaitTime newUpdate = new LiveWaitTime();
             newUpdate.WaitUpdateDate = WaitUpdateDate;
             newUpdate.WaitUpdateTime = WaitUpdateTime;
             newUpdate.DepartmentId = DepartmentId;
             newUpdate.CurrentWaitTime = LiveWaitTime.WaitTimeDesc.Low;
-
+            //we insert all the data into the database
             db.LiveWaitTimes.Add(newUpdate);
             db.SaveChanges();
-
-            return RedirectToAction("PublicList");
+            //once inserted we go back to the list
+            return RedirectToAction("List");
         }
         [Authorize(Roles = "Admin")]
         public ActionResult Update(int id)
@@ -202,7 +205,7 @@ namespace HospitalProjectTeamThree.Controllers
             ShowLiveWaitTimes viewmodel = new ShowLiveWaitTimes();
             viewmodel.WaitTime = db.LiveWaitTimes.Find(id);
             viewmodel.DepartmentsList = db.Departments.ToList();
-
+            //we use the viewmodel to get the information tu update
 
             return View(viewmodel);
 
@@ -211,34 +214,37 @@ namespace HospitalProjectTeamThree.Controllers
         [HttpPost]
         public ActionResult Update(int id, DateTime WaitUpdateDate, DateTime WaitUpdateTime, int DepartmentId, Enum CurrentWaitTime)
         {
+            //Debug.WriteLine("I want to edit a live wait time update time to " + WaitUpdateTime );
             LiveWaitTime SelectedUpdate = db.LiveWaitTimes.Find(id);
             SelectedUpdate.WaitUpdateDate = WaitUpdateDate;
             SelectedUpdate.WaitUpdateTime = WaitUpdateTime;
             SelectedUpdate.DepartmentId = DepartmentId;
             SelectedUpdate.CurrentWaitTime = LiveWaitTime.WaitTimeDesc.Low;
-
+            //once updated we save to the database
             db.SaveChanges();
-
+            //we redericet the admin to the list
             return RedirectToAction("List");
 
         }
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
+            //Debug.WriteLine("update id is" + id);
+            //we get the id of the update we want to delete from the database
             LiveWaitTime SelectedUpdate = db.LiveWaitTimes.Find(id);
-
+            //we show it in our confirm page
             return View(SelectedUpdate);
         }
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteF(int id)
         {
             LiveWaitTime SelectedUpdate = db.LiveWaitTimes.Find(id);
-
+            // once user confirms the delete the entry is removed from the database
             db.LiveWaitTimes.Remove(SelectedUpdate);
 
             db.SaveChanges();
 
-           
+            //and they are redirected to the list of departments
             return RedirectToAction("List");
         }
         public LiveWaitTimeController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)

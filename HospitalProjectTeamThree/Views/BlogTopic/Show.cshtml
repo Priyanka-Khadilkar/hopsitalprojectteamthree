@@ -3,9 +3,15 @@
     ViewBag.Title = "Show";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <div class="btn-floatright">
+        <a href="/BlogTopic/Update/@Model.Topics.TopicId" class="btn btn-primary bottom-margin-10">Edit Blog Topic</a>
+        <a href="/BlogTopic/List" class="btn btn-primary bottom-margin-10">Back To List </a>
+        <a href="/DoctorsBlog/List" class="btn btn-primary bottom-margin-10">Back to Blog List</a>
+    </div>
+<h2>Topic: @Model.Topics.TopicName</h2>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
-        Topic: @Model.Topics.TopicName
+        List of Blogs
     </div>
     <div class="panel-body">
         <table class="table table-dark top">
@@ -22,24 +28,24 @@
                 @{
                     foreach (var Blog in Model.Blogs)
                     {
-                                <tr>
-                                    <td>
-                                        @Blog.BlogId
-                                    </td>
-                                    <td>
-                                        <a href="/DoctorsBlog/Show/@Blog.BlogId">@Blog.BlogTitle</a>
-                                    </td>
-                                    <td>
-                                        @Blog.BlogDate.ToString("MM/dd/yyyy")
-                                    </td>
-                                    <td>
-                                        @Blog.User.FirstName @Blog.User.LastName  
-                                    </td>
-                                    <td>
-                                        <a href="/DoctorsBlog/Update/@Blog.BlogId" class="btn btn-primary btn-sm">Edit</a>
-                                        <a href="/DoctorsBlog/Delete/@Blog.BlogId" class="btn btn-danger btn-sm">Delete</a>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td>
+                                @Blog.BlogId
+                            </td>
+                            <td>
+                                <a href="/DoctorsBlog/Show/@Blog.BlogId">@Blog.BlogTitle</a>
+                            </td>
+                            <td>
+                                @Blog.BlogDate.ToString("MM/dd/yyyy")
+                            </td>
+                            <td>
+                                @Blog.User.FirstName @Blog.User.LastName
+                            </td>
+                            <td>
+                                <a href="/DoctorsBlog/Update/@Blog.BlogId" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="/DoctorsBlog/Delete/@Blog.BlogId" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
                     }
                 }
 
@@ -47,5 +53,3 @@
         </table>
     </div>
 </div>
-<a href="/BlogTopic/Update/@Model.Topics.TopicId" class="btn btn-primary bottom-margin-10">Edit Blog Topic</a>
-<a href="/BlogTopic/List" class="btn btn-primary bottom-margin-10">Back To List </a>
