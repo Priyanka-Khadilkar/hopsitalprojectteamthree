@@ -1,9 +1,13 @@
-﻿@model List<HospitalProjectTeamThree.Models.OnlineAppointmentBooking>
+﻿@model PagedList.IPagedList<HospitalProjectTeamThree.Models.OnlineAppointmentBooking>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<a href="/OnlineAppointmentBooking/Book" class="btn btn-primary bottom-margin-10" title="Add">Book an Appointment</a>
+<div class="btn-floatright">
+    <a href="/OnlineAppointmentBooking/Book" class="btn btn-primary bottom-margin-10" title="Add">Book an Appointment</a>
+</div>
+<h1>Online Appointment</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
         Appointments
@@ -18,6 +22,7 @@
         <table class="table table-dark top">
             <thead>
                 <tr>
+                    <!--If Logged in user is admin or Editor then add extra fields-->
                     @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
                     {
                         <th scope="col">Patient Name</th>
@@ -55,7 +60,7 @@
                                 </td>
                             }
                             <td>
-                                @onlineAppointment.PreferredDate.ToString("MM/dd/yyyy");
+                                @onlineAppointment.PreferredDate.ToString("MM/dd/yyyy")
                             </td>
                             <td>
                                 @onlineAppointment.PreferredTime
@@ -76,7 +81,7 @@
                                 @status
                             </td>
                             <td>
-                                @onlineAppointment.OnlineAppointmentBookingBookedOn
+                                @onlineAppointment.OnlineAppointmentBookingBookedOn.ToString("MM/dd/yyyy HH:mm:ss")
                             </td>
                             <td>
                                 <a href="/OnlineAppointmentBooking/View/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="View">View</a>
@@ -88,8 +93,8 @@
                                     <a href="/OnlineAppointmentBooking/Update/@onlineAppointment.OnlineAppointmentBookingId" class="btn btn-primary btn-sm" title="Edit">Edit</a>
                                 </td>
                             }
-                            <!--If Logged in Registered User then they can only cancel the appointment if the status of the appointment is In process-->
-                            @if (User.IsInRole("Registered User") && onlineAppointment.OnlineAppointmentBookingStatus == 1)
+                            <!--If Logged in Registered User then they can only cancel the appointment if the status of the appointment is In process or booked-->
+                            @if (User.IsInRole("Registered User") && (onlineAppointment.OnlineAppointmentBookingStatus == 1 || onlineAppointment.OnlineAppointmentBookingStatus == 2))
                             {
                                 var myModal = "myModal" + onlineAppointment.OnlineAppointmentBookingId;
                                 <td>
@@ -122,6 +127,12 @@
                 }
             </tbody>
         </table>
+        <!--passing page list to the view-->
+        <div>
+            <!--Display the link to click on and go to the 2nd page-->
+            @Html.PagedListPager(@Model, page => Url.Action("List",
+            new { page }))
+        </div>
     </div>
 </div>
 @section Scripts {
@@ -132,7 +143,7 @@
         UpdateStatus(onlineAppointmentBookingId)  //calling delete method
     });
 
-    //Function for Update the status if the appointment
+    //Function for update status to cancel
         function UpdateStatus(onlineAppointmentBookingId) {
         var postData = {
             id: onlineAppointmentBookingId

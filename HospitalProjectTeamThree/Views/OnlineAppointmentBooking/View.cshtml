@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="btn-floatright">
+    <a href="/OnlineAppointmentBooking/List" class="btn btn-primary bottom-margin-10">Back to Appointment List</a>
+</div>
+<h1>Online Appointment</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
         View Appointment
@@ -15,6 +19,7 @@
     </div>
     <div class="panel-body">
         <form class="form-horizontal">
+            <!--If Logged in user is admin or Editor then add extra fields-->
             @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
             {
                 <div class="form-group">
@@ -83,5 +88,5 @@
         </form>
     </div>
 </div>
-<a href="/OnlineAppointmentBooking/List" class="btn btn-primary headtop">Back to Appointment List</a>
+
 

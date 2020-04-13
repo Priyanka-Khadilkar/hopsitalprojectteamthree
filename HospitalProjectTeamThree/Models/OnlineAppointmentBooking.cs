@@ -25,6 +25,7 @@ namespace HospitalProjectTeamThree.Models
 
         public DateTime OnlineAppointmentBookingBookedOn { get; set; }
 
+        //represents one to many relationship one user can book multiple appointment.
         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
@@ -32,6 +33,7 @@ namespace HospitalProjectTeamThree.Models
 
     public enum OnlineAppointmentBookingStatus
     {
+        //Enum for OnlineAppointment Status
         [Display(Name = "In Process")]
         InProcess = 1,
         Booked = 2,

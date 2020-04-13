@@ -1,9 +1,14 @@
-﻿@model List<HospitalProjectTeamThree.Models.Event>
+﻿@model PagedList.IPagedList<HospitalProjectTeamThree.Models.Event>
+<!--passing page list to the view-->
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<a href="/Event/RegistrationList" class="btn btn-primary bottom-margin-10" title="Add">Past Event Registration List</a>
+@if (Request.IsAuthenticated)
+{
+    <a href="/Event/RegistrationList" class="btn btn-primary bottom-margin-10" title="Add">Past Event Registration List</a>
+}
 @if (User.IsInRole("Admin"))
 {
     <a href="/Event/Add" class="btn btn-primary bottom-margin-10" title="Add">Add an Event</a>
@@ -13,6 +18,12 @@
         Events
     </div>
     <div class="panel-body">
+        <form class="form-inline form-border" method="post" action="/Event/List">
+            <div class="form-group marginright45">
+                <input type="text" class="form-control" placeholder="Enter Search Keyword" name="SearchText" id="SearchText">
+            </div>
+            <input type="submit" value="Search" class="btn btn-default" />
+        </form>
         <div>
             <div class="col-md-2">&nbsp;</div>
             <div class="col-md-12">
@@ -74,6 +85,12 @@
                         }
                     }
                 </div>
+            </div>
+            <!--passing page list to the view-->
+            <div>
+                <!--Display the link to click on and go to the 2nd page-->
+                @Html.PagedListPager(@Model, page => Url.Action("List",
+                new { page }))
             </div>
         </div>
     </div>

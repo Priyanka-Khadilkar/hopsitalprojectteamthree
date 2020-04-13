@@ -3,6 +3,10 @@
     ViewBag.Title = "Book";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="btn-floatright">
+    <a href="/OnlineAppointmentBooking/List" class="btn btn-primary bottom-margin-10">Back to Appointment List</a>
+</div>
+<h1>Online Appointment</h1>
 <div class="panel panel-primary top">
     <div class="panel-heading header-color">
         Book an Appointment
@@ -53,16 +57,17 @@
         </form>
     </div>
 </div>
-<a href="/OnlineAppointmentBooking/List" class="btn btn-primary headtop">Back to Appointment List</a>
 @section Scripts {
     <script>
         $(function () {
+            //set the datepicker 
             $("#PreferredDate").datepicker();
             $("#DateOfBirth").datepicker();
+            //set the clock picker
             $('.clockpicker').clockpicker({
                 donetext: 'Done'
             });
 
-        }); 
+        });
     </script>
 }
