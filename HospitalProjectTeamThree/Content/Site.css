@@ -149,6 +149,7 @@ textarea {
     margin-bottom:20px;
 }
 /*****************************/
+
 /*** Vitaliy Bulyma ***/
 /*Styling of "Crisis" Pages*/
 .crisiscenter {
@@ -173,7 +174,7 @@ textarea {
 
 .crisismain {
     padding: 20px 40px;
-    border-left: 5px solid black;
+    border-left: 5px solid #66aecd;
     border-radius: 5px;
     width: 58%;
     display: inline-block;
@@ -183,6 +184,7 @@ textarea {
 .right {
     width: 20%;
     border-radius: 10px;
+    border: 1px solid #66aecd;
     padding: 20px;
     display: inline-block;
     vertical-align: top;
