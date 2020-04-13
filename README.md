@@ -8,12 +8,12 @@
   * Push everything
 ## Team members: 
 * Priyanka 
-* Alexa 
+* Alexa Perez - n01353378
 * Viet Phuong (Paul) Tran - n01400583
 * Vitaly Bulyma  - n00224782
 * Kshitija 
 * Eseroghene
-## Team members' feature and contribution"
+## Team members' features and contribution:
 ### Paul: Log in system + Get Well Soon Card
   * Log in system
     * Description: Users will be classified into 3 types with different roles that they have on the site: Admin, Editor, Registered User
@@ -94,4 +94,50 @@
       * Controllers:
         * RoomController.cs – enables functionality and interaction between models, views, and databases
       
-
+### Alexa: Doctor's Blogs + Live Wait Times
+  * Doctor's Blogs
+    * Description: This Feature can be accessed by all users and guests, Editors(Doctors) will be able to write blog entries about their general interests, which can be related to medicine, and they will only be able to see,edit or delete their own blog entries. Admins will have full access to all blog entries and functionalities. Guests and Registered Users will only be able to see the entries.
+    * Files contributed:
+      * Model:
+        * DoctorsBlog.cs, BlogTopic.cs: These have a many to many relationship since one blog can have many topics, and one topic can have many blog entries. A bridging table was created betweeen the two to be able to manipulate data.
+        * AddBlogTopic.cs, DoctorPersonalBlogList.cs: These are the ViewModels created to be able to show the information we want that relates between our tables. Add Blog Topic is so we are able to show the topics on different views and the Doctor Personal Blog List is to show only one doctors blogs.
+      * View:
+        * DoctorsBlog:
+          * Add.cshtml  // Can only be accessed by Admin or Editor users
+          * Delete.cshtml  // Can only be accessed by Admin or Editor users
+          * DoctorPersonalList.cshtml  // Can only be accessed by Editor users to show their entries
+          * Index.cshtml
+          * List.cshtml  // Can only be accessed by Admin or Editor users
+          * PublicList.cshtml  // Can be accessed by Guests or Registered Users
+          * PublicShow.cshtml  // Can be accessed by Guests or Registered Users
+          * Show.cshtml  // Can only be accessed by Admin or Editor users
+          * Update.cshtml  // Can only be accessed by Admin or Editor users
+        * Blog Topic: 
+          * Add.cshtml  // Can only be accessed by Admin or Editor users
+          * Delete.cshtml  // Can only be accessed by Admin or Editor users
+          * List.cshtml  // Can only be accessed by Admin or Editor users
+          * PublicList.cshtml  // Can be accessed by Guests or Registered Users
+          * PublicShow.cshtml  // Can be accessed by Guests or Registered Users
+          * Show.cshtml  // Can only be accessed by Admin or Editor users
+          * Update.cshtml  // Can only be accessed by Admin or Editor users
+       * Controllers: 
+        * DoctorsBlogController, BlogTopicController: This is where we write all the functionality between our models and views, connecting them to the database.
+        
+ * Live Wait Times
+    * Description: Only Admin users have full access to this feature, where they will update the current wait time of the different departments in the hospital, they can add, edit or delete entries. Guests, Registered Users and Editors can view the main Live Wait Times list, where a list od the departments is shown, and see the updates of each department.
+    * Files contributed:
+      * Model:
+        * LiveWaitTime.cs, Department.cs: These tables have a many to one relationship, One Live Wait Time update can only have one department, but a department can be referenced on many updates.
+      * View:
+        * LiveWaitTime:
+         * Add.cshtml  // Can only be accessed by Admin or Editor users
+         * Delete.cshtml  // Can only be accessed by Admin or Editor users
+         * Index.cshtml
+         * List.cshtml  // Can only be accessed by Admin or Editor users
+         * PublicList.cshtml  // Can be accessed by Guests or Registered Users
+         * PublicShow.cshtml  // Can be accessed by Guests or Registered Users
+         * Show.cshtml  // Can only be accessed by Admin or Editor users
+         * Update.cshtml  // Can only be accessed by Admin or Editor users
+       * Controllers: 
+        * LiveWaitTimeController: This is where we write all the functionality between our models and views, connecting them to the database.
+  * Contributions: Styling of header and navigation.
