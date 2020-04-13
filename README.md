@@ -43,8 +43,11 @@
        * Controllers: 
         * CardDesignController, GetWellSoonCardController: the algorithm behind the CardDesign's and GetWellSoonCard's views and models
 ### Vitaliy: Public Health Crisis Alert and Long-term Stay at the Hospital
-  * Public Health Crisis Alert
-    * Description: This feature is only activated when the public health crisis is currently active, and has not been officially ended. All users will be able to see historical list of previous crises, and read articles related to each crisis.  If there is no active public health crisis, there will be no interaction with this feature by any users, and no access to it. To activate the alert on the main page (/Home/Index), the administrator of the page needs to log in, and navigate to /Crisis/Index where, as added security, they will be re-directed to appropriate page based on their permissions. When redirected, administrators can create new “Crisis” entry which will make this crisis active. To deactivate crisis alert, admin can update the crisis from the administrator interface. Administrators also able to add, edit, and delete articles accessible from /Article/Index, where they will be redirected to admin interface
+  **Public Health Crisis Alert**
+  
+![View of All Articles](/HospitalProjectTeamThree/Images/Room/Articles.PNG)
+
+   * Description: This feature is only activated when the public health crisis is currently active, and has not been officially ended. All users will be able to see historical list of previous crises, and read articles related to each crisis.  If there is no active public health crisis, there will be no interaction with this feature by any users, and no access to it. To activate the alert on the main page (/Home/Index), the administrator of the page needs to log in, and navigate to /Crisis/Index where, as added security, they will be re-directed to appropriate page based on their permissions. When redirected, administrators can create new “Crisis” entry which will make this crisis active. To deactivate crisis alert, admin can update the crisis from the administrator interface. Administrators also able to add, edit, and delete articles accessible from /Article/Index, where they will be redirected to admin interface
     * Files Contributed:
       * Models:
         * Crisis.cs – represents information needed to describe the idea of “Crisis” entry, and list of all articles
@@ -68,9 +71,13 @@
           * ViewCrisis.cs - Public page where users can see all articles related to the crisis
       * Controllers:
         * ArticleController.cs, CrisisControler.cs – enables functionality and interaction between models, views, and databases
-  * Long-term Stay at the Hospital
-  ![View of All Rooms](/HospitalProjectTeamThree/Images/Room/AllRooms.png)
-    * Description: This feature is designed for hospital users to explore which rooms are available for long-term stay. The list of all rooms available from main menu from main navigation accessible at /Room/ShowAll. In addition to browsing rooms and read their descriptions, logged in users will be able to book a selected room for specified dates. 
+        
+ **Long-term Stay at the Hospital**
+
+![View of All Rooms](/HospitalProjectTeamThree/Images/Room/AllRooms.PNG)        
+
+ * Description: This feature is designed for hospital users to explore which rooms are available for long-term stay. The list of all rooms available from main menu from main navigation accessible at /Room/ShowAll. In addition to browsing rooms and read their descriptions, logged in users will be able to book a selected room for specified dates.
+    
     * Files Contributed:
       * Models:
         * Room.cs – represents information needed to describe the idea of “Room”, also bookings associated with that room 
