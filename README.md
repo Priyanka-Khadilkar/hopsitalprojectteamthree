@@ -7,7 +7,7 @@
   * Hit build
   * Push everything
 ## Team members: 
-* Priyanka 
+* Priyanka Khadilkar - n01351009
 * Alexa Perez - n01353378
 * Viet Phuong (Paul) Tran - n01400583
 * Vitaly Bulyma  - n00224782
@@ -141,3 +141,26 @@
        * Controllers: 
         * LiveWaitTimeController: This is where we write all the functionality between our models and views, connecting them to the database.
   * Contributions: Styling of header and navigation.
+  
+  ### Priyanka : Events + Online Appointment
+  * Events
+     * Description: Only Admin users have full access to this feature, where they can create, update, delete, register and view the events.Also they can see the list of users registered for an event.Registerd Users, Editors can see all list of events, view event details and register for the events.They can also see the past registered events.Guest Users of website can see the list of events, however they can not register for events.
+     * Files contributed:
+       * Model:
+         * Event.cs, ApplicationUser.cs : These tables have many to many relatioship, One user can register for multiple events, same time multiple events can be registerd by multiple users.
+       * View
+         * Events
+           * Add.cshtml // Can only be accessed by Admin
+           * List.cshtml // Can be accessed by Guest user, Editor, Admin and Registered User, However according to role there will be certain restrictions to access features
+           * RegisteredUserList.cshtml //Can only be accessed by Admin
+           * RegistrationList.cshtml // Can be accessed by All loggedin users(Admin, Editor User, Registered User)
+           * Show.cshtml // Can be accessed by All loggedin users(Admin, Editor User, Registered User)
+           * Update.cshtml //Can only be accessed by Admin
+        * Controllers: 
+          * EventController: This is where we write all the functionality between our models and views, connecting them to the database.
+           
+           
+           
+     
+  
+  
