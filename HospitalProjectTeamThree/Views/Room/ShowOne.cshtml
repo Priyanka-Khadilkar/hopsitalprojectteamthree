@@ -37,7 +37,7 @@
 
         <div class="roomdesc">
 
-            <div class="price center">Room Price: $@Model.room.RoomPrice</div>
+            <div class="price center">Room Price: $@(Model.room.RoomPrice/100)</div>
             <div class="price center">Total Beds: @Model.room.RoomTotalBeds</div>
             <p>@Model.room.RoomDesc</p>
 
@@ -92,7 +92,7 @@
 
             </div>
             <div class="desc"><h2>@Room.RoomType</h2></div>
-            <div class="price center">@Room.RoomPrice</div>
+            <div class="price center">$@(Room.RoomPrice/100)</div>
             <p class="center">Must be logged in to register for a room</p>
             <button><a href="/Room/ShowOne/@Room.RoomID">See Room Details</a></button>
             <!--<input class="center" type="button" value="Login/Register">-->

@@ -36,7 +36,7 @@
 
     <div class="roomdesc">
 
-        <div class="price center">Room Price: $@Model.Room.RoomPrice</div>
+        <div class="price center">Room Price: $@(Model.Room.RoomPrice/100)</div>
         <div class="price center">Total Beds: @Model.Room.RoomTotalBeds</div>
         <p>@Model.Room.RoomDesc</p>
         <!--<div> <button><a href="/Room/RoomBooking/@Model.Room.RoomID">Reserve a room</a></button></div>-->
