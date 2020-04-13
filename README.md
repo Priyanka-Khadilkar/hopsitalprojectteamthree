@@ -44,6 +44,8 @@
         * CardDesignController, GetWellSoonCardController: the algorithm behind the CardDesign's and GetWellSoonCard's views and models
 ### Vitaliy: Public Health Crisis Alert and Long-term Stay at the Hospital
   * Public Health Crisis Alert
+![View of All Articles](/HospitalProjectTeamThree/Images/Room/Articles.png)
+
     * Description: This feature is only activated when the public health crisis is currently active, and has not been officially ended. All users will be able to see historical list of previous crises, and read articles related to each crisis.  If there is no active public health crisis, there will be no interaction with this feature by any users, and no access to it. To activate the alert on the main page (/Home/Index), the administrator of the page needs to log in, and navigate to /Crisis/Index where, as added security, they will be re-directed to appropriate page based on their permissions. When redirected, administrators can create new “Crisis” entry which will make this crisis active. To deactivate crisis alert, admin can update the crisis from the administrator interface. Administrators also able to add, edit, and delete articles accessible from /Article/Index, where they will be redirected to admin interface
     * Files Contributed:
       * Models:
