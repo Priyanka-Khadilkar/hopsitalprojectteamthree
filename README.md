@@ -71,11 +71,12 @@
           * ViewCrisis.cs - Public page where users can see all articles related to the crisis
       * Controllers:
         * ArticleController.cs, CrisisControler.cs – enables functionality and interaction between models, views, and databases
-
-![View of All Rooms](/HospitalProjectTeamThree/Images/Room/AllRooms.PNG)        
 * Long-term Stay at the Hospital
 
-    * Description: This feature is designed for hospital users to explore which rooms are available for long-term stay. The list of all rooms available from main menu from main navigation accessible at /Room/ShowAll. In addition to browsing rooms and read their descriptions, logged in users will be able to book a selected room for specified dates.
+![View of All Rooms](/HospitalProjectTeamThree/Images/Room/AllRooms.PNG)        
+
+
+   * Description: This feature is designed for hospital users to explore which rooms are available for long-term stay. The list of all rooms available from main menu from main navigation accessible at /Room/ShowAll. In addition to browsing rooms and read their descriptions, logged in users will be able to book a selected room for specified dates.
     
     * Files Contributed:
       * Models:
