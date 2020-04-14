@@ -1,0 +1,49 @@
+﻿@model HospitalProjectTeamThree.Models.ViewModels.AddUpdateMedicalStaffDirectory
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<form method="post" action="/MedicalStaffDirectory/UpdateMedicalStaffDirectory">
+    <div class="form-group">
+        <div class="form-group row">
+            <input type="hidden" value="@Model.MedicalStaffDirectory.MedicalStaffDirectoryId" name="medicalDirectoryId" />
+            <label class="col-sm-2 col-form-label">Department Name:</label>
+            <select class="custom-select mr-sm-2" type="text" name="DepartmentID" id="DepartmentID">
+                @{
+                    foreach (var department in @Model.Departments)
+                    {
+                        var selected = "";
+                        if (department.DepartmentId == Model.MedicalStaffDirectory.DepartmentId)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@department.DepartmentId" @selected>@department.DepartmentName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Staff Member Name:</label>
+            <select class="custom-select mr-sm-2" type="text" name="UserId" id="UserId">
+                @{
+                    foreach (var user in @Model.Users)
+                    {
+                        var selected = "";
+                        if (user.Id == Model.MedicalStaffDirectory.UserId)
+                        {
+                            selected = "selected";
+                        }
+                        <option value="@user.Id" @selected>@user.FirstName</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group row">
+            <button class="btn btn-dark" type="submit">Update Staff</button>
+        </div>
+    </div>
+</form>
+

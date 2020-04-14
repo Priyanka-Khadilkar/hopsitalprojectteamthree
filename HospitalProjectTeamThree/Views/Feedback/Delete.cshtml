@@ -1,0 +1,14 @@
+﻿@model HospitalProjectTeamThree.Models.Feedback
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div>
+    <span>Are you sure you want to delete @Model.User.FirstName ?</span>
+</div>
+<div>
+    <a href="/Feedback/ConfirmDelete/@Model.FeedbackFormId">Delete</a>
+    <a href="/Feedback/List">Cancel</a>
+</div>

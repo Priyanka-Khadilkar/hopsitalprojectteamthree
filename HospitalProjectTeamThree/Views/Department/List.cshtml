@@ -1,0 +1,19 @@
+﻿@model List<HospitalProjectTeamThree.Models.Department>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+<div><a href="/Department/Add/">Add Department</a></div>
+@{
+
+    foreach (var Department in Model)
+    {
+    <div>
+        <label>@Department.DepartmentName</label>
+        <a href="/Department/Update/@Department.DepartmentId">Update</a>
+        <a href="/Department/Delete/@Department.DepartmentId">Delete</a>
+    </div>
+    }
+}
+

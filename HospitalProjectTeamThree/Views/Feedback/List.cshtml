@@ -1,0 +1,21 @@
+﻿@model List<HospitalProjectTeamThree.Models.Feedback>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@if (User.IsInRole("Registered User"))
+{
+    <a href="/Feedback/Add/">Add New Feedback</a>
+}
+
+
+
+@{
+
+    foreach (var Feedback in Model)
+    {
+        <div><a href="/Feedback/Show/@Feedback.FeedbackFormId">@Feedback.User.FirstName </a></div>
+    }
+}

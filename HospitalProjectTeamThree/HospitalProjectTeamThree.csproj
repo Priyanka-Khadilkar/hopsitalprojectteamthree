@@ -504,17 +504,9 @@
     <Compile Include="Migrations\202004140307559_job listing and volunteer position styling.designer.cs">
       <DependentUpon>202004140307559_job listing and volunteer position styling.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202004121113105_feedback.cs" />
-    <Compile Include="Migrations\202004121113105_feedback.designer.cs">
-      <DependentUpon>202004121113105_feedback.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004131835298_medicalstaffdirectory.cs" />
-    <Compile Include="Migrations\202004131835298_medicalstaffdirectory.designer.cs">
-      <DependentUpon>202004131835298_medicalstaffdirectory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004132324343_AddUpdateMedicalStaffDirectory.cs" />
-    <Compile Include="Migrations\202004132324343_AddUpdateMedicalStaffDirectory.designer.cs">
-      <DependentUpon>202004132324343_AddUpdateMedicalStaffDirectory.cs</DependentUpon>
+    <Compile Include="Migrations\202004140339524_Feedback Department Medical staff directory.cs" />
+    <Compile Include="Migrations\202004140339524_Feedback Department Medical staff directory.designer.cs">
+      <DependentUpon>202004140339524_Feedback Department Medical staff directory.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1355,14 +1347,8 @@
     <EmbeddedResource Include="Migrations\202004140307559_job listing and volunteer position styling.resx">
       <DependentUpon>202004140307559_job listing and volunteer position styling.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004121113105_feedback.resx">
-      <DependentUpon>202004121113105_feedback.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004131835298_medicalstaffdirectory.resx">
-      <DependentUpon>202004131835298_medicalstaffdirectory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004132324343_AddUpdateMedicalStaffDirectory.resx">
-      <DependentUpon>202004132324343_AddUpdateMedicalStaffDirectory.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004140339524_Feedback Department Medical staff directory.resx">
+      <DependentUpon>202004140339524_Feedback Department Medical staff directory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

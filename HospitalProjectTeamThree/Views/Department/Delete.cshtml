@@ -1,0 +1,14 @@
+﻿@model HospitalProjectTeamThree.Models.Department
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div>
+    <span>Are you sure you want to delete @Model.DepartmentName ?</span>
+</div>
+<div>
+    <a href="/Department/ConfirmDelete/@Model.DepartmentId">Delete</a>
+    <a href="/Department/List">Cancel</a>
+</div>

@@ -1,0 +1,22 @@
+﻿@model HospitalProjectTeamThree.Models.Department
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+<a href="/Department/List">Back</a>
+<form method="post" action="/Department/Update/@Model.DepartmentId">
+    <div class="form-group">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Department Name:</label>
+            <div class="col-sm-10">
+                <input type="text" name="DepartmentName" class="form-control" value="@Model.DepartmentName" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <button class="btn btn-dark" type="submit">Update Department Name</button>
+        </div>
+    </div>
+</form>
+

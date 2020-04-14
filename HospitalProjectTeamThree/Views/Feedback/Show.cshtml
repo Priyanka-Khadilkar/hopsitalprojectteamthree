@@ -1,0 +1,38 @@
+﻿@model HospitalProjectTeamThree.Models.Feedback
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Show Feedback Details</h2>
+@{
+    <a href="/Feedback/List">Back</a>
+    <div>
+        <div><label class="col-form-label">Doctor Name :</label>@Model.DoctorName</div>
+        <div><label class="col-form-label">Feedback Type :</label>@Model.FeedbackType</div>
+        <div>
+            <label class="col-form-label">Overall Ratings:</label>
+
+            <table border="1">
+
+                    <tr>
+                        <th>Staff Knowledge</th>
+                        <td>@Model.StaffKnowledge</td>
+                    </tr>
+
+                    <tr>
+                        <th>Hygiene</th>
+                        <td>@Model.Hygiene</td>
+                    </tr>
+                    <tr>
+                        <th>Waiting Time</th>
+                        <td>@Model.WaitTime</td>
+                    </tr>
+            </table>
+        </div>
+            <label class="col-form-label">How can we improve our service:</label>
+            @Model.Comments
+    </div>
+    <span><a href="/Feedback/Delete/@Model.FeedbackFormId">Delete</a></span>
+}
+
+

@@ -1,0 +1,55 @@
+﻿@model List<HospitalProjectTeamThree.Models.MedicalStaffDirectory>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Medical Staff Directory</h2>
+
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th><center>Department</center></th>
+            <th><center>Name</center></th>
+            <th><center>Email</center></th>
+            <th><center>Phone</center></th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+
+            foreach (var MedicalStaffDirectory in Model)
+            {
+                <tr>
+                    <th><center>@MedicalStaffDirectory.Department.DepartmentName</center></th>
+                    <td>
+                        <center>@MedicalStaffDirectory.User.FirstName</center>
+                    </td>
+                    <td>
+                        <center>@MedicalStaffDirectory.User.Email</center>
+                    </td>
+                    <td>
+                        <center>@MedicalStaffDirectory.User.PhoneNumber</center>
+                    </td>
+                    
+                        @if (User.IsInRole("Admin"))
+                        {
+                <td>
+                    <center><a href="/MedicalStaffDirectory/Update/@MedicalStaffDirectory.MedicalStaffDirectoryId">Update</a></center>
+                    <center><a href="/MedicalStaffDirectory/Delete/@MedicalStaffDirectory.MedicalStaffDirectoryId">Delete</a></center>
+                </td> 
+                          }
+
+
+                    </tr>
+            }
+
+        }
+    </tbody>
+</table>
