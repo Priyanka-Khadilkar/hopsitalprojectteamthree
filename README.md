@@ -11,7 +11,7 @@
 * Alexa Perez - n01353378
 * Viet Phuong (Paul) Tran - n01400583
 * Vitaly Bulyma  - n00224782
-* Kshitija 
+* Kshitija - 01363715
 * Eseroghene Omene - N01374963
 ## Team members' features and contribution:
 ### Paul: Log in system + Get Well Soon Card
@@ -209,7 +209,40 @@ VolunteerPosition Views - Add, Delete, List, Show, Update
 Paul - Authorized Users, Managing View Models, migration management,attention to detail
 Priyanka - styling development, join query, migration management
 Alexa - helped keep me sane! and also attention to detail and migration management
-    
+
+ ### Kshitija Patel - Feedback Form + Medical Staff Directory
+ * Feedback Form
+     * Description: Registered User can add their feedback through this feature.They can also view the list of feedbacks they have submitted and can also delete any of thier feedback if they wish.Admin can see the list of all the feedbacks and can delete any feedback if it seems to be improper.
+     * Files contributed:
+       * Model:
+         * Feedback.cs : These tables have one to many relatioship, One user can give many feedbacks, but one feedback is assigned to that particular user who submitted the feedback.
+       * View
+         * Events
+           * Add.cshtml // Can only be accessed by User only.
+           * List.cshtml // Can be accessed by Admin and Registered User. However User can see the list of feedbacks they gave but Admin can view all feedbacks by all users.
+           * Delete.cshtml //Can be accessed by Admin and Registered User.
+           * Show.cshtml //Can only be accessed by Admin and Register User. 
+        * Controllers: 
+          * FeedbackController: This is where we write all the functionality between our models and views, connecting them to the database.
+     
+  * Medical Staff Directory
+      * Description: Here Guest User And Registered User can view the list of all the departments, staff members, and their contact details. Admin has the access to add, update and delete the staff members in the staff directory.
+      * Files contributed:
+        * Model:
+          * MedicalStaffDirectory.cs, ViewModel/AddUpdateMedicalStaffDirectory.cs : These tables have many to many relationship, One staff member can be in many departments and one department can have multiple staff members.
+        * View:
+          * MedicalStaffDirectory
+            * Add.cshtml // Can be accessed by Admin only
+            * List.cshtml // Can be accessed by Guest user, Editor, Admin and Registered User. However Admin have addition access to the actions in the list such as update and delete.
+            * Update.cshtml // Can be accessed by Admin only.
+            * Delete.cshtml // Can be accessed by Admin only.
+		  * Departments
+			* Add.cshtml // Can be accessed by Admin only
+            * List.cshtml // Can be accessed by Admin only.
+            * Update.cshtml // Can be accessed by Admin only.
+            * Delete.cshtml // Can be accessed by Admin only.
+        * Controllers: 
+          * MedicalStaffDirectoryController: This is where we write all the functionality between our models and views, connecting them to the database. 
            
      
   
