@@ -3,9 +3,10 @@
 
 @{
     ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Show</h2>
+<!--<h2>Show</h2>
 
 <div>Job Title: @Model.JobListing.JobTitle</div>
 <div>Job Description: @Model.JobListing.JobDescription</div>
@@ -13,5 +14,58 @@
 <div>Salary: @Model.JobListing.Salary</div>
 <div> <a href="/JobListing/Update/@Model.JobListing.JobID">Edit this Job</a></div>
 <div> <a href="/JobListing/Delete/@Model.JobListing.JobID">Delete this Job</a></div>
+    -->
+<div class="panel panel-primary top">
+    <div class="panel-heading header-color">
+        Details for @Model.JobListing.JobTitle
+    </div>
+    <div class="panel-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+
+                    <div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Title:</label>
+                            <div class="col-sm-10">
+                                <label class="control-label font-weight500">@Model.JobListing.JobTitle</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Description:</label>
+                            <div class="col-sm-10">
+                                <label class="control-label font-weight500">@Model.JobListing.JobDescription</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Department:</label>
+                            <div class="col-sm-10">
+                                <label class="control-label font-weight500">@Model.JobListing.Department.DepartmentName</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Salary:</label>
+                            <div class="col-sm-10">
+                                <label class="control-label font-weight500">@Model.JobListing.Salary</label>
+                            </div>
+                        </div>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="form-group">
+                                <div class="col-sm-6"> <a href="/JobListing/Update/@Model.JobListing.JobID" class="btn btn-warning">Edit this Job</a></div>
+                                <div class="col-sm-6"> <a href="/JobListing/Delete/@Model.JobListing.JobID" class="btn btn-danger">Delete this Job</a></div>
+                            </div>
+                        }
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/JobListing/List" class="btn btn-primary headtop">Back to Job List</a>
+
 
 

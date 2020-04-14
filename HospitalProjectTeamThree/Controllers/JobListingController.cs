@@ -56,50 +56,71 @@ namespace HospitalProjectTeamThree.Controllers
             string query = "Select * from JobListings";
             List<SqlParameter> sqlparams = new List<SqlParameter>();
 
-          //  if(jobsearchkey!="")
-           // {
+            //LINQ
+            List<JobListing> jobListings = db
+                .JobListings
+                .Where(x =>(jobsearchkey != null) ? x.JobTitle == jobsearchkey || x.JobDescription == jobsearchkey || x.Department.DepartmentName == jobsearchkey : true).ToList();
+             
+            if (User.IsInRole("Registered User"))
+            {
+                string published = "yes";
+                List<JobListing> pubJobListings = db
+               .JobListings
+                .Where(x => (jobsearchkey != null) ? x.JobTitle == jobsearchkey||x.Published == published || x.JobDescription == jobsearchkey || x.Department.DepartmentName == jobsearchkey : true).ToList();
+
+                return View(pubJobListings);
+
+            }
+
+            //  .Where(j => (jobsearchkey != null) ? j.JobTitle.Contains(jobsearchkey) : true)
+            //  .SelectMany(c=>c.Department.DepartmentName.Contains(jobsearchkey): true)
+            //   .ToList();
+            //  if(jobsearchkey!="")
+            // {
             //    query = query + "where JobTitle like @searchkey";
             //    sqlparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
-              //  Debug.WriteLine("updated search should be looking for" + query);
-           // }
+            //  Debug.WriteLine("updated search should be looking for" + query);
+            // }
 
-            List<JobListing> jobListings = db.JobListings.SqlQuery(query, sqlparams.ToArray()).ToList();
+            //   List<JobListing> jobListings = db.JobListings.SqlQuery(query, sqlparams.ToArray()).ToList();
 
             //pagination
-            int perpage = 5;
-            int jobcount = jobListings.Count();
-            int maxpage = (int)Math.Ceiling((decimal)jobcount / perpage) - 1;
-            if (maxpage < 0) maxpage = 0;
-            if (pagenum < 0) pagenum = 0;
-            if (pagenum > maxpage) pagenum = maxpage;
-            int start = (int)(perpage * pagenum);
-            ViewData["pagenum"] = pagenum;
-            ViewData["pagesummary"] = "";
-            if (maxpage > 0)
-            {
-                ViewData["pagesummary"] = (pagenum + 1) + "of" + (maxpage + 1);
-                List<SqlParameter> newparams = new List<SqlParameter>();
+            // int perpage = 5;
+            //  int jobcount = jobListings.Count();
+            //  int maxpage = (int)Math.Ceiling((decimal)jobcount / perpage) - 1;
+            //  if (maxpage < 0) maxpage = 0;
+            //  if (pagenum < 0) pagenum = 0;
+            //  if (pagenum > maxpage) pagenum = maxpage;
+            //  int start = (int)(perpage * pagenum);
+            //  ViewData["pagenum"] = pagenum;
+            //  ViewData["pagesummary"] = "";
+            //  if (maxpage > 0)
+            //  {
+            //   ViewData["pagesummary"] = (pagenum + 1) + "of" + (maxpage + 1);
+            //   List<SqlParameter> newparams = new List<SqlParameter>();
 
-               // if (jobsearchkey!="")
-               // {
-                 //   newparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
-                   // ViewData["jobsearchkey"] = jobsearchkey;
-               // }
-                newparams.Add(new SqlParameter("@start", start));
-                newparams.Add(new SqlParameter("@perpage", perpage));
-                string pagedquery = query + "order by JobID offset @start rows fetch first @perpage rows only";
-                Debug.WriteLine(pagedquery);
-                Debug.WriteLine("offset"+start);
-                Debug.WriteLine("fetch first"+perpage);
+            // if (jobsearchkey!="")
+            // {
+            //   newparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
+            // ViewData["jobsearchkey"] = jobsearchkey;
+            // }
+            // newparams.Add(new SqlParameter("@start", start));
+            //  newparams.Add(new SqlParameter("@perpage", perpage));
+            // string pagedquery = query + "order by JobID offset @start rows fetch first @perpage rows only";
+            // Debug.WriteLine(pagedquery);
+            // Debug.WriteLine("offset"+start);
+            // Debug.WriteLine("fetch first"+perpage);
 
-                jobListings = db.JobListings.SqlQuery(pagedquery, newparams.ToArray()).ToList();
-            }
+            //  jobListings = db.JobListings.SqlQuery(pagedquery, newparams.ToArray()).ToList();
+            //  }
 
             return View(jobListings);
         }
 
         public ActionResult Show(int? id)
         {
+
+
             JobListing jobListing = db.JobListings.SqlQuery("select * from JobListings where JobID=@JobID", new SqlParameter("@JobID", id)).FirstOrDefault();
             List<Department> department = db.Departments.SqlQuery("select * from Departments inner join JobListings on JobListings.DepartmentID = Departments.DepartmentID where JobID = @id", new SqlParameter("@id", id)).ToList();
             if (id==null)

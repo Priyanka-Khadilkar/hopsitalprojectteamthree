@@ -1,20 +1,51 @@
 ﻿@model List<HospitalProjectTeamThree.Models.JobListing>
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>List of Jobs</h2>
+<div class="panel panel-primary top">
+    <div class="panel-heading heading-color">
+        <h2>List of Jobs</h2>
 
-<div class="tilecontainer">
-    @{ 
-        foreach(var job in Model)
-        {
-            <div class="itemdetails">
-                <div class="listcat"><a href="/JobListing/Show/@job.JobID">@job.JobTitle</a></div>
-                <div class="listcat"> Department: <span>@job.Department.DepartmentName</span></div>
+        <form action="/JobListing/List" method="GET" class="form-inline form-border">
+            <input type="text" class="form-control mr-sm-2" name="jobsearchkey" id="jobsearchkey" placeholder="Search" />
+            <input type="submit" class="btn btn-default custom-btn" value="Search" />
+        </form>
+
+    </div>
+
+    <div class="panel-body">
+
+
+
+
+
+        <div>
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-12">
+                <div>
+                    @{
+                        foreach (var job in Model)
+                        {
+                            <div class="col-sm-4">
+                                <div class="thumbnail">
+                                    <div class="caption text-center" onclick="location.href='/JobListing/Show/@job.JobID'">
+                                        <div class="listcat"><span>@job.JobTitle</span></div>
+                                        <div class="listcat"> Department: <span>@job.Department.DepartmentName</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div><a href="/JobListing/Add" class="btn btn-success">Add</a></div>
         }
-    }
+    </div>
+    </div>
 
-</div>
 

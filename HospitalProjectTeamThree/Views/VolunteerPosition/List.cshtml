@@ -1,4 +1,8 @@
-﻿@model List<HospitalProjectTeamThree.Models.VolunteerPosition>
+﻿@model PagedList.IPagedList<HospitalProjectTeamThree.Models.VolunteerPosition>
+    @using PagedList.Mvc;
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<!--model List<HospitalProjectTeamThree.Models.VolunteerPosition>-->
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,19 +21,31 @@
                     @{
                         foreach (var position in Model)
                         {
-                                        <div class="col-sm-4">
-                                            <div class="thumbnail">
-                                              <div class="caption text-center" onclick="location.href='/VolunteerPosition/Show/@position.VolunteerPositionID'">
-                                                 <div class="listcat"><span>@position.VolunteerPositionTitle</span></div>
-                                                 <div class="listcat"> Department: <span>@position.Department.DepartmentName</span></div>
-                                              </div>
-                                            </div>
-                                        </div>
+                            <div class="col-sm-4">
+                                <div class="thumbnail">
+                                    <div class="caption text-center" onclick="location.href='/VolunteerPosition/Show/@position.VolunteerPositionID'">
+                                        <div class="listcat"><span>@position.VolunteerPositionTitle</span></div>
+                                        <div class="listcat"> Department: <span>@position.Department.DepartmentName</span></div>
+                                    </div>
+                                </div>
+                            </div>
                         }
                     }
 
                 </div>
             </div>
+            <div>
+
+                <!--Display Page x of y-->
+                Page @(Model.PageCount < Model.PageNumber ? 0 : @Model.PageNumber) of @Model.PageCount
+                <!--Display the link to click on and go to the another page-->
+                @Html.PagedListPager(@Model, page => Url.Action("List",
+                new { page }))
+            </div>
+            @if (User.IsInRole("Admin"))
+            {
+                <div><a href="/VolunteerPosition/Add" class="btn btn-success">Add</a></div>
+            }
 
         </div>
     </div>

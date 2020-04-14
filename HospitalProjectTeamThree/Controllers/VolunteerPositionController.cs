@@ -15,7 +15,8 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security; 
+using Microsoft.Owin.Security;
+using PagedList;
 
 namespace HospitalProjectTeamThree.Controllers
 {
@@ -47,13 +48,20 @@ namespace HospitalProjectTeamThree.Controllers
                 return View();
             }
         }
-        public ActionResult List (string volunteerpositionsearchkey, int pagenum = 0)
+        public ActionResult List (string volunteerpositionsearchkey, int? page)
         {
             Debug.WriteLine("we are searching for " + volunteerpositionsearchkey);
 
-            string query = "Select * from VolunteerPositions";
-            List<SqlParameter> sqlparams = new List<SqlParameter>();
+            List<VolunteerPosition> volunteerPositions = db.VolunteerPositions.ToList();
+            
+            //pagination
+            int perpage = 5;
+            int pagenum = (page ?? 1);
 
+
+            return View(volunteerPositions.ToPagedList(pagenum, perpage));
+
+            //search function
             //  if(jobsearchkey!="")
             // {
             //    query = query + "where JobTitle like @searchkey";
@@ -61,40 +69,40 @@ namespace HospitalProjectTeamThree.Controllers
             //  Debug.WriteLine("updated search should be looking for" + query);
             // }
 
-            List<VolunteerPosition> volunteerPositions = db.VolunteerPositions.SqlQuery(query, sqlparams.ToArray()).ToList();
+            //  List<VolunteerPosition> volunteerPositions = db.VolunteerPositions.SqlQuery(query, sqlparams.ToArray()).ToList();
 
-            //pagination
-            int perpage = 5;
-            int positioncount = volunteerPositions.Count();
-            int maxpage = (int)Math.Ceiling((decimal)positioncount / perpage) - 1;
-            if (maxpage < 0) maxpage = 0;
-            if (pagenum < 0) pagenum = 0;
-            if (pagenum > maxpage) pagenum = maxpage;
-            int start = (int)(perpage * pagenum);
-            ViewData["pagenum"] = pagenum;
-            ViewData["pagesummary"] = "";
-            if (maxpage > 0)
-            {
-                ViewData["pagesummary"] = (pagenum + 1) + "of" + (maxpage + 1);
-                List<SqlParameter> newparams = new List<SqlParameter>();
 
-                // if (jobsearchkey!="")
-                // {
-                //   newparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
-                // ViewData["jobsearchkey"] = jobsearchkey;
-                // }
-                newparams.Add(new SqlParameter("@start", start));
-                newparams.Add(new SqlParameter("@perpage", perpage));
-                string pagedquery = query + "order by VolunteerPositionID offset @start rows fetch first @perpage rows only";
-                Debug.WriteLine(pagedquery);
-                Debug.WriteLine("offset" + start);
-                Debug.WriteLine("fetch first" + perpage);
+            // int positioncount = volunteerPositions.Count();
+            //  int maxpage = (int)Math.Ceiling((decimal)positioncount / perpage) - 1;
+            //  if (maxpage < 0) maxpage = 0;
+            // if (pagenum < 0) pagenum = 0;
+            // if (pagenum > maxpage) pagenum = maxpage;
+            //  int start = (int)(perpage * pagenum);
+            //  ViewData["pagenum"] = pagenum;
+            //  ViewData["pagesummary"] = "";
+            // if (maxpage > 0)
+            // {
+            //   ViewData["pagesummary"] = (pagenum + 1) + "of" + (maxpage + 1);
+            //   List<SqlParameter> newparams = new List<SqlParameter>();
 
-                volunteerPositions = db.VolunteerPositions.SqlQuery(pagedquery, newparams.ToArray()).ToList();
-            }
+            // if (jobsearchkey!="")
+            // {
+            //   newparams.Add(new SqlParameter("@searchkey", "%" + jobsearchkey + "%"));
+            // ViewData["jobsearchkey"] = jobsearchkey;
+            // }
+            //  newparams.Add(new SqlParameter("@start", start));
+            //  newparams.Add(new SqlParameter("@perpage", perpage));
+            //  string pagedquery = query +  " order by VolunteerPositionID offset @start rows fetch first @perpage rows only";
+            //   Debug.WriteLine(pagedquery);
+            //  Debug.WriteLine("offset" + start);
+            //  Debug.WriteLine("fetch first" + perpage);
 
-            return View(volunteerPositions);
+            //  volunteerPositions = db.VolunteerPositions.SqlQuery(pagedquery, newparams.ToArray()).ToList();
+            //  }
+
+
         }
+        [Authorize(Roles = "Admin, Editor" )]
         public ActionResult Add()
         {
             List<Department> Departments = db.Departments.SqlQuery("select * from departments").ToList();
@@ -105,6 +113,7 @@ namespace HospitalProjectTeamThree.Controllers
             return View(viewModel);
         }
         [HttpPost]
+     
         public ActionResult Add(string VolunteerPositionTitle, string VolunteerPositionDescription, DateTime StartDate, int DepartmentID)
         {
             string query = "insert into VolunteerPositions (VolunteerPositionTitle, VolunteerPositionDescription, StartDate, DepartmentID)values (@VolunteerPositionTitle, @VolunteerPositionDescription, @StartDate, @DepartmentID)";
@@ -164,16 +173,19 @@ namespace HospitalProjectTeamThree.Controllers
             return View(ShowVolunteerPositionViewModel);
 
         }
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Update(int id)
         {
             VolunteerPosition selectedVolunteerPosition = db.VolunteerPositions.SqlQuery("select * from VolunteerPositions where VolunteerPositionID=@VolunteerPositionID", new SqlParameter("@VolunteerPositionID", id)).FirstOrDefault();
             List<Department> departments = db.Departments.SqlQuery("select * from Departments").ToList();
-           // string userId = User.Identity.GetUserId();
+            List<ApplicationUser> volunteers = db.VolunteerPositions.Where(x => x.VolunteerPositionID == id).SelectMany(c => c.Users).ToList();
+            // string userId = User.Identity.GetUserId();
             //ApplicationUser currentUser = db.Users.FirstOrDefault(x => x.Id == userId);
 
             UpdateVolunteerPosition UpdateVolunteerPositionViewModel = new UpdateVolunteerPosition();
             UpdateVolunteerPositionViewModel.VolunteerPosition = selectedVolunteerPosition;
             UpdateVolunteerPositionViewModel.Departments = departments;
+            UpdateVolunteerPositionViewModel.Users = volunteers;
            // UpdateJobListingViewModel.User = currentUser;
 
             return View(UpdateVolunteerPositionViewModel);

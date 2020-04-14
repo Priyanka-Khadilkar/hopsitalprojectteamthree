@@ -7,7 +7,7 @@
 }
     <div class="panel panel-primary top">
         <div class="panel-heading header-color">
-            Details for Volunteer Position
+            Details for @Model.VolunteerPosition.VolunteerPositionTitle
         </div>
             <div class="panel-body">
                 <div class="container-fluid">
@@ -42,8 +42,8 @@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <div class="form-group">
-                                        <div> <a href="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID" class="btn btn-warning">Edit this Job</a></div>
-                                        <div> <a href="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID" class="btn btn-danger">Delete this Job</a></div>
+                                        <div class="col-sm-6"> <a href="/VolunteerPosition/Update/@Model.VolunteerPosition.VolunteerPositionID" class="btn btn-warning">Edit this Position</a></div>
+                                        <div class="col-sm-6"> <a href="/VolunteerPosition/Delete/@Model.VolunteerPosition.VolunteerPositionID" class="btn btn-danger">Delete this Position</a></div>
                                     </div>
                                 }
 
