@@ -100,6 +100,8 @@ namespace HospitalProjectTeamThree.Data
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.JobListing> JobListings { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Event> Events { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.RoomBooking> RoomBookings { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.Feedback> Feedbacks { get; set; }
+        public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.MedicalStaffDirectory> MedicalStaffDirectories { get; set; }
         public System.Data.Entity.DbSet<HospitalProjectTeamThree.Models.VolunteerPosition> VolunteerPositions { get; set; }
     }
 }

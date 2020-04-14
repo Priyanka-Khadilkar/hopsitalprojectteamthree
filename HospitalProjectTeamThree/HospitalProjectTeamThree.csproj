@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,7 +53,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -164,9 +169,6 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -179,13 +181,16 @@
     <Compile Include="Controllers\BlogTopicController.cs" />
     <Compile Include="Controllers\CardDesignController.cs" />
     <Compile Include="Controllers\CrisisController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DoctorsBlogController.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\GetWellSoonCardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobListingController.cs" />
     <Compile Include="Controllers\LiveWaitTimeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MedicalStaffDirectoryController.cs" />
     <Compile Include="Controllers\OnlineAppointmentBookingController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
@@ -499,12 +504,25 @@
     <Compile Include="Migrations\202004140307559_job listing and volunteer position styling.designer.cs">
       <DependentUpon>202004140307559_job listing and volunteer position styling.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004121113105_feedback.cs" />
+    <Compile Include="Migrations\202004121113105_feedback.designer.cs">
+      <DependentUpon>202004121113105_feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004131835298_medicalstaffdirectory.cs" />
+    <Compile Include="Migrations\202004131835298_medicalstaffdirectory.designer.cs">
+      <DependentUpon>202004131835298_medicalstaffdirectory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004132324343_AddUpdateMedicalStaffDirectory.cs" />
+    <Compile Include="Migrations\202004132324343_AddUpdateMedicalStaffDirectory.designer.cs">
+      <DependentUpon>202004132324343_AddUpdateMedicalStaffDirectory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogTopic.cs" />
     <Compile Include="Models\CardDesign.cs" />
     <Compile Include="Models\EventUser.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\GetWellSoonCard.cs" />
     <Compile Include="Models\Crisis.cs" />
     <Compile Include="Models\Department.cs" />
@@ -514,6 +532,7 @@
     <Compile Include="Models\JobListing.cs" />
     <Compile Include="Models\LiveWaitTime.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MedicalStaffDirectory.cs" />
     <Compile Include="Models\OnlineAppointmentBooking.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\Room.cs" />
@@ -521,6 +540,7 @@
     <Compile Include="Models\ViewModels\AddBlogTopic.cs" />
     <Compile Include="Models\ViewModels\AddGetWellCard.cs" />
     <Compile Include="Models\ViewModels\AddJobListing.cs" />
+    <Compile Include="Models\ViewModels\AddUpdateMedicalStaffDirectory.cs" />
     <Compile Include="Models\ViewModels\AddVolunteerPosition.cs" />
     <Compile Include="Models\ViewModels\DoctorPersonalBlogList.cs" />
     <Compile Include="Models\ViewModels\FeaturedRoom.cs" />
@@ -1074,6 +1094,18 @@
     <Content Include="Views\LiveWaitTime\Index.cshtml" />
     <Content Include="Views\Event\RegistrationList.cshtml" />
     <Content Include="Views\Event\RegisteredUserList.cshtml" />
+    <Content Include="Views\Feedback\Add.cshtml" />
+    <Content Include="Views\Feedback\Delete.cshtml" />
+    <Content Include="Views\Feedback\List.cshtml" />
+    <Content Include="Views\Feedback\Show.cshtml" />
+    <Content Include="Views\MedicalStaffDirectory\Add.cshtml" />
+    <Content Include="Views\MedicalStaffDirectory\List.cshtml" />
+    <Content Include="Views\Department\Add.cshtml" />
+    <Content Include="Views\Department\List.cshtml" />
+    <Content Include="Views\Department\Update.cshtml" />
+    <Content Include="Views\MedicalStaffDirectory\Update.cshtml" />
+    <Content Include="Views\MedicalStaffDirectory\Delete.cshtml" />
+    <Content Include="Views\Department\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1323,6 +1355,15 @@
     <EmbeddedResource Include="Migrations\202004140307559_job listing and volunteer position styling.resx">
       <DependentUpon>202004140307559_job listing and volunteer position styling.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004121113105_feedback.resx">
+      <DependentUpon>202004121113105_feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004131835298_medicalstaffdirectory.resx">
+      <DependentUpon>202004131835298_medicalstaffdirectory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004132324343_AddUpdateMedicalStaffDirectory.resx">
+      <DependentUpon>202004132324343_AddUpdateMedicalStaffDirectory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.changeregisterview.resources" />
@@ -1369,9 +1410,9 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

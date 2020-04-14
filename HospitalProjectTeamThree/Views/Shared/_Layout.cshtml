@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Temiskaming Hospital</title>
+    <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,66 +17,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <!-- @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
-                <img src="~/Images/Logo/wwwlogo.png" id="hospital__logo" alt="Temiskaming Hospital Logo" />
-
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="btn-floatright" id="org_btns">
-                <a href="#" type="button" id="donations_btn" class="btn btn-spec">DONATIONS</a>
-    <!--<a href="/Account/Login" type="button" class="btn btn-spec">LOG IN</a>-->
-               
-                    @Html.Partial("_LoginPartial")
-
-            </div>
-           
-            <div class="navbar-collapse collapse spec">
-                <ul class="nav navbar-nav spec">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Role", "List", "Role")</li>
+                    <li>@Html.ActionLink("Events", "List", "Event")</li>
+                    <li>@Html.ActionLink("Online Appointment", "Book", "OnlineAppointmentBooking")</li>
+                    <li>@Html.ActionLink("Account", "AdminRegister", "Account")</li>
                     <li>@Html.ActionLink("Get Well Soon Card", "Index", "GetWellSoonCard")</li>
                     <li>@Html.ActionLink("Long-Term Stay", "ShowAll", "Room")</li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle spec" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ONLINE SERVICES</a>
-                        <div class="dropdown-menu">
-                            <span class="dropdwon-item">@Html.ActionLink("Online Appointment", "Book", "OnlineAppointmentBooking")</span>
-                            <span class="dropdown-item">@Html.ActionLink("Events", "List", "Event")</span>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle spec" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">JOIN OUR TEAM</a>
-                        <div class="dropdown-menu">
-                            <span class="dropdwon-item">@Html.ActionLink("Job Listings", "List", "JobListing")</span>
-                            <span class="dropdown-item">@Html.ActionLink("Volunteer Postings", "List", "VolunteerPosition")</span>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle spec" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CONTACT US </a>
-                        <div class="dropdown-menu">
-                            <span class="dropdwon-item">@Html.ActionLink("Staff Directory", "List", "StaffDirectory")</span>
-                            <span class="dropdown-item">@Html.ActionLink("Feedback Form", "List", "FeedbackForm")</span>
-                        </div>
-                    </li>
-                    <li>@Html.ActionLink("Doctor's Blogs", "Index", "DoctorsBlog")</li>
-                    <li>@Html.ActionLink("Live Wait Times", "Index", "LiveWaitTime")</li>
+                    <li>@Html.ActionLink("Job Listings", "List", "JobListing")</li>
+                    <li>@Html.ActionLink("Volunteer Postings", "List", "VolunteerPosition")</li>
+                    <li>@Html.ActionLink("Feedback Form", "List", "Feedback")</li>
+                    <li>@Html.ActionLink("Medical Staff Directory", "List", "MedicalStaffDirectory")</li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-
-
     <div class="container body-content top-margin-30">
         @RenderBody()
         <hr />
         <footer>
-            <div>
-                <img src="~/Images/Logo/wwwlogo.png" id="hospital__logo_footer" alt="Temiskaming Hospital Logo" />
-                <p>&copy; @DateTime.Now.Year - Copyright Temiskaming Hospital</p>
-            </div>
-            <div class="smicons-floatright">
-                <img src="~/Images/Logo/facebookicon.png" class="social_icons" alt="Facebook Icon" />
-                <img src="~/Images/Logo/twittericon.png" class="social_icons" alt="Twitter Icon" />
-                <img src="~/Images/Logo/youtubeicon.png" class="social_icons" alt="Youtube Icon" />
-            </div>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
