@@ -76,11 +76,12 @@ textarea {
     float:right;
 }
 .blog-content {
-    text-align:center;
-    text-justify:distribute-all-lines;
-    max-width:300px;
-    margin-top:3em;
-    margin-bottom:3em;
+    text-align: center;
+    text-justify: distribute-all-lines;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 3em;
+    margin-bottom: 3em;
 }
 .blog-source{
     float:left;
