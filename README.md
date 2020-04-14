@@ -12,7 +12,7 @@
 * Viet Phuong (Paul) Tran - n01400583
 * Vitaly Bulyma  - n00224782
 * Kshitija 
-* Eseroghene
+* Eseroghene Omene - N01374963
 ## Team members' features and contribution:
 ### Paul: Log in system + Get Well Soon Card
   * Log in system
@@ -176,6 +176,40 @@
     * Styling of responsive bootstrap forms and tables. 
     * Implemented CKeditor,boostrap clock picker, datepicker
     * Resolved git conflicts and migration conflicts.
+   
+   ### Eseroghene Omene - Job Listings and Volunteer Positions
+   ##Job Listing
+  Description:  A job listing can be created by an admin staff and viewed by all.  When viewed by a registered user only the job postings which are published will be displayed. 
+    All users are able to search the job postings and find accoring to job title, job description or department. 
+    An Admin has the ability to create, read, update and delete positions as well as add new departments.  An editor is able to do the same except for adding new departments. 
+    One user can post several job postings, and a department can have several job postings.  But one job posting is only related to one department.  If an admin needs to fill the same position in a different department (ie. receptionist)  they will have to create a new posting, to avoid any confusions.   
+    A registered user, or general public visitor to the site will be able to view the list of jobs and the details pertaining to the job. 
+    **File Contributions
+    JobListingController
+    JobListing Model
+    AddJobListing ViewModel
+    ShowJobListing ViewModel
+    UpdateJobListing ViewModel
+    JobListing Views - Add, Delete, Index, List, Show, Update
+
+##Volunteer Positions
+Description: A volunteer position can be created by an admin staff and viewed by all, including who is currently volunteering.  Registered users are able to sign up for a volunteer position.  A position can have many volunteers, and a volunteer can sign up for as many positions as they choose. 
+Five volunteer positions are listed on each page.
+A department can have many volunteer positions, and each volunteer position can only have one department in order to avoid any confusion. 
+Only Admin and Editor can add new, update or delete a volunteer position. 
+**File Contributions
+VolunteerPositionController
+VolunteerPosition Model
+AddVolunteerPosition ViewModel
+ShowVolunteerPosition ViewModel
+UpdateVolunteerPosition ViewModel
+VolunteerPosition Views - Add, Delete, List, Show, Update
+
+**People/Code Help
+Paul - Authorized Users, Managing View Models, migration management,attention to detail
+Priyanka - styling development, join query, migration management
+Alexa - helped keep me sane! and also attention to detail and migration management
+    
            
      
   
