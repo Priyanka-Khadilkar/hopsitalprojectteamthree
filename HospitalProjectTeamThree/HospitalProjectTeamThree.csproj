@@ -491,6 +491,10 @@
     <Compile Include="Migrations\202004120357574_volunteer position volunteers view.designer.cs">
       <DependentUpon>202004120357574_volunteer position volunteers view.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004132253411_updated live wait times.cs" />
+    <Compile Include="Migrations\202004132253411_updated live wait times.designer.cs">
+      <DependentUpon>202004132253411_updated live wait times.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
@@ -579,6 +583,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Logo\facebookicon.png" />
+    <Content Include="Images\Logo\twittericon.png" />
+    <Content Include="Images\Logo\wwwlogo.png" />
+    <Content Include="Images\Logo\youtubeicon.png" />
     <Content Include="Images\Room\private.jpg" />
     <Content Include="Images\Room\public.jpg" />
     <Content Include="Images\Room\semiprivate.jpg" />
@@ -1304,6 +1312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004120357574_volunteer position volunteers view.resx">
       <DependentUpon>202004120357574_volunteer position volunteers view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004132253411_updated live wait times.resx">
+      <DependentUpon>202004132253411_updated live wait times.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.adddummydât.resources" />
     <EmbeddedResource Include="obj\Debug\HospitalProjectTeamThree.Migrations.addingcarddesign.resources" />

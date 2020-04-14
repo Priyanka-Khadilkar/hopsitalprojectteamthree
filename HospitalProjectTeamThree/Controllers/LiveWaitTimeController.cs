@@ -184,14 +184,14 @@ namespace HospitalProjectTeamThree.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Add(DateTime WaitUpdateDate, DateTime WaitUpdateTime, int DepartmentId, Enum CurrentWaitTime)
+        public ActionResult Add(DateTime WaitUpdateDate, DateTime WaitUpdateTime, int DepartmentId, int WaitTimeList)
         {
             //Debug.WriteLine("Want to add an update with a department id of " + DepartmentId ) ;
             LiveWaitTime newUpdate = new LiveWaitTime();
             newUpdate.WaitUpdateDate = WaitUpdateDate;
             newUpdate.WaitUpdateTime = WaitUpdateTime;
             newUpdate.DepartmentId = DepartmentId;
-            newUpdate.CurrentWaitTime = LiveWaitTime.WaitTimeDesc.Low;
+            newUpdate.CurrentWaitTime = WaitTimeList;
             //we insert all the data into the database
             db.LiveWaitTimes.Add(newUpdate);
             db.SaveChanges();
@@ -212,14 +212,14 @@ namespace HospitalProjectTeamThree.Controllers
         }
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Update(int id, DateTime WaitUpdateDate, DateTime WaitUpdateTime, int DepartmentId, Enum CurrentWaitTime)
+        public ActionResult Update(int id, DateTime WaitUpdateDate, DateTime WaitUpdateTime, int DepartmentId, int WaitTimeList)
         {
             //Debug.WriteLine("I want to edit a live wait time update time to " + WaitUpdateTime );
             LiveWaitTime SelectedUpdate = db.LiveWaitTimes.Find(id);
             SelectedUpdate.WaitUpdateDate = WaitUpdateDate;
             SelectedUpdate.WaitUpdateTime = WaitUpdateTime;
             SelectedUpdate.DepartmentId = DepartmentId;
-            SelectedUpdate.CurrentWaitTime = LiveWaitTime.WaitTimeDesc.Low;
+            SelectedUpdate.CurrentWaitTime = WaitTimeList;
             //once updated we save to the database
             db.SaveChanges();
             //we redericet the admin to the list

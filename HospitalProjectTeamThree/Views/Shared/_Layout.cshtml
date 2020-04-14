@@ -22,8 +22,8 @@
                 <img src="~/Images/Logo/wwwlogo.png" id="hospital__logo" alt="Temiskaming Hospital Logo" />
 
             </div>
-            <div class="btn-floatright">
-                <a href="#" type="button" class="btn btn-spec">DONATIONS</a>
+            <div class="btn-floatright" id="org_btns">
+                <a href="#" type="button" id="donations_btn" class="btn btn-spec">DONATIONS</a>
     <!--<a href="/Account/Login" type="button" class="btn btn-spec">LOG IN</a>-->
                
                     @Html.Partial("_LoginPartial")
@@ -56,7 +56,15 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Temiskaming Hospital</p>
+            <div>
+                <img src="~/Images/Logo/wwwlogo.png" id="hospital__logo_footer" alt="Temiskaming Hospital Logo" />
+                <p>&copy; @DateTime.Now.Year - Copyright Temiskaming Hospital</p>
+            </div>
+            <div class="smicons-floatright">
+                <img src="~/Images/Logo/facebookicon.png" class="social_icons" alt="Facebook Icon" />
+                <img src="~/Images/Logo/twittericon.png" class="social_icons" alt="Twitter Icon" />
+                <img src="~/Images/Logo/youtubeicon.png" class="social_icons" alt="Youtube Icon" />
+            </div>
         </footer>
     </div>
 

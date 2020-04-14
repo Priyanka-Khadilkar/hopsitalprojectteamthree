@@ -17,10 +17,13 @@ namespace HospitalProjectTeamThree.Models
         public int WaitUpdateId { get; set; }
         public DateTime WaitUpdateDate { get; set; }
         public DateTime WaitUpdateTime { get; set; }
-        public enum WaitTimeDesc { Low = 0, Medium = 1, High = 3 }
-        public WaitTimeDesc CurrentWaitTime { get; set; }
+
+        public int CurrentWaitTime { get; set; }
         public int DepartmentId { get; set; }
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
     }
+
+
+    public enum WaitTimeDesc { Low = 1, Medium = 2, High = 3 }
 }

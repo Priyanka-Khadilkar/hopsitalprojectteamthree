@@ -130,6 +130,12 @@ textarea {
     margin-left: 20px;
     padding:1em;
 }
+#hospital__logo_footer {
+    width: 200px;
+    height: auto;
+    margin-left: 20px;
+    padding: 1em;
+}
 .navbar-collapse.collapse.spec{
     padding:0;
 }
@@ -148,8 +154,50 @@ textarea {
     margin-top:-34px;
     margin-bottom:20px;
 }
+.social_icons {
+    width: 30px;
+    height: auto;
+}
+.smicons-floatright {
+    float: right;
+    margin-top: -3.5em;
+}
+.smicons-floatright img {
+    display: inline !important;
+}
+@media screen and (max-width: 800px) {
+    #org_btns {
+        position: absolute;
+        top: -11px;
+    }
+    #hospital__logo {
+        margin:auto;
+        margin-top:50px;
+    }
+    .dropdown-item {
+        display: block;
+    }
+    .navbar-collapse.spec.collapse.in {
+        width: 400px;
+        padding-left: 3em;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 600px) {
+    #org_btns {
+        position:absolute;
+        top:-11px;
+    }
+    .dropdown-item {
+        display:block;
+    }
+    .navbar-collapse.spec.collapse.in{
+        width:400px;
+        padding-left:3em;
+        margin:auto;
+    }
+}
 /*****************************/
-
 /*** Vitaliy Bulyma ***/
 /*Styling of "Crisis" Pages*/
 .crisiscenter {

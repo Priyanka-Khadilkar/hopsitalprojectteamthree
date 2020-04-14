@@ -35,7 +35,14 @@
                                 @WaitTimes.WaitUpdateTime.ToString("h:mm tt")
                             </td>
                             <td>
-                                @WaitTimes.CurrentWaitTime
+                                @{
+                                    
+                                    var status = Enum.GetName(typeof(HospitalProjectTeamThree.Models.WaitTimeDesc),
+                                        Convert.ToInt32(WaitTimes.CurrentWaitTime));
+                                 
+                                    }
+                             
+                                @status
                             </td>
                             <td>
                                 <a href="/LiveWaitTime/Update/@WaitTimes.WaitUpdateId" class="btn btn-primary btn-sm">Edit</a>
