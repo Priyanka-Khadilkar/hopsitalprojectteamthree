@@ -173,9 +173,9 @@
         * Controllers: 
           * OnlineAppointmentBookingController: This is where we write all the functionality between our models and views, connecting them to the database.
   * Contributions: 
-         * Styling of responsive bootstrap forms and tables. 
-         * Implemented CKeditor,boostrap clock picker, datepicker
-         * Resolved git conflicts and migration conflicts.
+    * Styling of responsive bootstrap forms and tables. 
+    * Implemented CKeditor,boostrap clock picker, datepicker
+    * Resolved git conflicts and migration conflicts.
            
      
   
