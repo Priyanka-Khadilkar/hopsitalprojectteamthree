@@ -140,7 +140,7 @@
          * Update.cshtml  // Can only be accessed by Admin or Editor users
        * Controllers: 
         * LiveWaitTimeController: This is where we write all the functionality between our models and views, connecting them to the database.
-  * Contributions: Styling of header and navigation.
+  * Contributions: Styling of header, footer and navigation.
   
   ### Priyanka : Events + Online Appointment
   * Events
