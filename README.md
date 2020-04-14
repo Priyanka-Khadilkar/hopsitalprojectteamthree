@@ -172,7 +172,7 @@
             * View.cshtml // Can be accessed by Guest user, Editor, Admin and Registered User, However according to role there will be certain restrictions to access features
         * Controllers: 
           * OnlineAppointmentBookingController: This is where we write all the functionality between our models and views, connecting them to the database.
-       * Contributions: 
+  * Contributions: 
          * Styling of responsive bootstrap forms and tables. 
          * Implemented CKeditor,boostrap clock picker, datepicker
          * Resolved git conflicts and migration conflicts.
