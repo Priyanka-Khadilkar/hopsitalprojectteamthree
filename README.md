@@ -178,7 +178,7 @@
     * Resolved git conflicts and migration conflicts.
    
    ### Eseroghene Omene - Job Listings and Volunteer Positions
-   ##Job Listing
+   ## Job Listing
   Description:  A job listing can be created by an admin staff and viewed by all.  When viewed by a registered user only the job postings which are published will be displayed. 
     All users are able to search the job postings and find accoring to job title, job description or department. 
     An Admin has the ability to create, read, update and delete positions as well as add new departments.  An editor is able to do the same except for adding new departments. 
@@ -192,11 +192,12 @@
     UpdateJobListing ViewModel
     JobListing Views - Add, Delete, Index, List, Show, Update
 
-##Volunteer Positions
+## Volunteer Positions
 Description: A volunteer position can be created by an admin staff and viewed by all, including who is currently volunteering.  Registered users are able to sign up for a volunteer position.  A position can have many volunteers, and a volunteer can sign up for as many positions as they choose. 
 Five volunteer positions are listed on each page.
 A department can have many volunteer positions, and each volunteer position can only have one department in order to avoid any confusion. 
 Only Admin and Editor can add new, update or delete a volunteer position. 
+
 **File Contributions
 VolunteerPositionController
 VolunteerPosition Model
